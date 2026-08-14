@@ -39,11 +39,14 @@ button{padding:9px;margin:3px;border:0;border-radius:6px;font-weight:bold;cursor
 </div>
 
 <script>
+
 let token = '';
 let data = [];
 
 function showStatus(message,type='normal'){
+
     const status=document.getElementById('status');
+
     status.style.display='block';
     status.textContent=message;
 
@@ -56,7 +59,14 @@ function showStatus(message,type='normal'){
     }
 }
 
+
+/* =========================
+   LOGIN
+========================= */
+
 async function login(){
+
+    console.log('LOGIN BUTTON CLICKED');
 
     const passwordInput=document.getElementById('p');
     const loginBox=document.getElementById('login');
@@ -65,8 +75,12 @@ async function login(){
 
     const password=passwordInput.value.trim();
 
+    console.log('Password entered:', password ? 'YES' : 'NO');
+
     if(!password){
+
         alert('Please enter admin password');
+
         return;
     }
 
@@ -75,11 +89,15 @@ async function login(){
 
     try{
 
+        console.log('Sending POST /api/login');
+
         const response=await fetch('/api/login',{
             method:'POST',
+
             headers:{
                 'Content-Type':'application/json'
             },
+
             body:JSON.stringify({
                 password:password
             })
@@ -87,11 +105,19 @@ async function login(){
 
         const result=await response.json();
 
-        console.log('Login response:',response.status,result);
+        console.log(
+            'Login response:',
+            response.status,
+            result
+        );
 
         if(!response.ok){
 
-            alert(result.error || result.message || 'Wrong password');
+            alert(
+                result.error ||
+                result.message ||
+                'Wrong password'
+            );
 
             loginBtn.disabled=false;
             loginBtn.textContent='LOGIN';
@@ -101,9 +127,14 @@ async function login(){
 
         if(!result.token){
 
-            alert('Login successful, but token was not received.');
+            alert(
+                'Login successful, but token was not received.'
+            );
 
-            console.error('Login response does not contain token:',result);
+            console.error(
+                'Login response does not contain token:',
+                result
+            );
 
             loginBtn.disabled=false;
             loginBtn.textContent='LOGIN';
@@ -113,64 +144,116 @@ async function login(){
 
         token=result.token;
 
-        console.log('Login successful');
+        console.log(
+            'LOGIN SUCCESSFUL - TOKEN RECEIVED'
+        );
+
+        console.log(
+            'Token length:',
+            token.length
+        );
 
         loginBox.style.display='none';
         appBox.style.display='block';
 
-        showStatus('Login successful. Loading products...');
+        showStatus(
+            'Login successful. Loading products...'
+        );
 
         await load();
 
     }catch(error){
 
-        console.error('Login error:',error);
+        console.error(
+            'LOGIN ERROR:',
+            error
+        );
 
-        alert('Login connection error. Please try again.');
+        alert(
+            'Login connection error. Please try again.'
+        );
 
         loginBtn.disabled=false;
         loginBtn.textContent='LOGIN';
     }
 }
 
+
+/* =========================
+   LOAD PRODUCTS
+========================= */
+
 async function load(){
+
+    console.log(
+        'LOADING PRODUCTS: GET /api/products'
+    );
 
     try{
 
         const response=await fetch('/api/products');
 
-        console.log('Products response:',response.status);
+        console.log(
+            'Products response:',
+            response.status
+        );
 
         if(!response.ok){
+
             throw new Error(
-                'Products API returned status '+response.status
+                'Products API returned status '+
+                response.status
             );
         }
 
         const result=await response.json();
 
+        console.log(
+            'Products received:',
+            result
+        );
+
         if(!Array.isArray(result)){
-            console.error('Invalid products response:',result);
-            throw new Error('Products data is not an array.');
+
+            console.error(
+                'Invalid products response:',
+                result
+            );
+
+            throw new Error(
+                'Products data is not an array.'
+            );
         }
 
         data=result;
 
         renderItems();
 
-        showStatus('Products loaded successfully.');
+        showStatus(
+            'Products loaded successfully.'
+        );
 
         setTimeout(()=>{
-            const status=document.getElementById('status');
-            if(status) status.style.display='none';
+
+            const status=
+                document.getElementById('status');
+
+            if(status){
+                status.style.display='none';
+            }
+
         },2000);
 
     }catch(error){
 
-        console.error('Load products error:',error);
+        console.error(
+            'LOAD PRODUCTS ERROR:',
+            error
+        );
 
         showStatus(
-            'Products load نہیں ہو سکے: '+error.message,
+            'Products load نہیں ہو سکے: '+
+            error.message,
             'error'
         );
 
@@ -179,34 +262,74 @@ async function load(){
     }
 }
 
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
 function renderItems(){
 
     const items=document.getElementById('items');
 
     if(!data.length){
-        items.innerHTML='<p>No products found.</p>';
+
+        items.innerHTML=
+            '<p>No products found.</p>';
+
         return;
     }
 
     items.innerHTML=data.map((x,i)=>`
+
         <div class="row">
+
             <b>${escapeHtml(x.name || '')}</b>
+
             <br>
+
             ${escapeHtml(x.category || '')}
+
             <br>
-            <button class="dark" onclick="edit(${i})">EDIT</button>
-            <button class="red" onclick="del(${x.id})">DELETE</button>
+
+            <button
+                class="dark"
+                onclick="edit(${i})">
+                EDIT
+            </button>
+
+            <button
+                class="red"
+                onclick="del(${x.id})">
+                DELETE
+            </button>
+
         </div>
+
     `).join('');
 }
 
+
+/* =========================
+   EDIT / NEW ITEM
+========================= */
+
 function edit(i){
 
-    const editor=document.getElementById('editor');
+    console.log(
+        'EDIT FUNCTION CALLED. INDEX:',
+        i
+    );
+
+    const editor=
+        document.getElementById('editor');
 
     let x;
 
     if(i<0){
+
+        console.log(
+            'Creating NEW product'
+        );
 
         x={
             name:'',
@@ -224,44 +347,62 @@ function edit(i){
 
     }else{
 
-        x=data[i];
+        console.log(
+            'Editing existing product:',
+            data[i]
+        );
 
+        x=data[i];
     }
 
-    const variants=Array.isArray(x.variants)
+    const variants=
+        Array.isArray(x.variants)
         ? x.variants
         : [];
 
     editor.innerHTML=`
+
         <div class="row">
 
-            <input id="en"
+            <input
+                id="en"
                 placeholder="Item name"
                 value="${escapeAttr(x.name || '')}">
 
-            <input id="ec"
+            <input
+                id="ec"
                 placeholder="Category"
                 value="${escapeAttr(x.category || '')}">
 
-            <input id="eo"
+            <input
+                id="eo"
                 placeholder="Option title"
                 value="${escapeAttr(x.optionTitle || 'SIZE')}">
 
-            <input id="ei"
+            <input
+                id="ei"
                 placeholder="Image URL"
                 value="${escapeAttr(x.img || '')}">
 
             <div id="vs">
+
                 ${variants.map(v=>variant(v)).join('')}
+
             </div>
 
-            <button onclick="addv()">＋ VARIANT</button>
+            <button onclick="addv()">
+                ＋ VARIANT
+            </button>
 
-            <button class="green" onclick="save(${i})">
+            <button
+                class="green"
+                onclick="save(${i})">
                 SAVE
             </button>
 
-            <button class="dark" onclick="cancelEdit()">
+            <button
+                class="dark"
+                onclick="cancelEdit()">
                 CANCEL
             </button>
 
@@ -269,24 +410,34 @@ function edit(i){
     `;
 }
 
+
+/* =========================
+   VARIANT
+========================= */
+
 function variant(v={}){
 
     return `
+
         <div class="row">
 
-            <input class="vl"
+            <input
+                class="vl"
                 placeholder="Size / Color / Type"
                 value="${escapeAttr(v.label || '')}">
 
-            <input class="vc"
+            <input
+                class="vc"
                 placeholder="Code"
                 value="${escapeAttr(v.code || '')}">
 
-            <input class="vi"
+            <input
+                class="vi"
                 placeholder="Image URL"
                 value="${escapeAttr(v.img || '')}">
 
-            <button class="red"
+            <button
+                class="red"
                 onclick="this.parentElement.remove()">
                 REMOVE
             </button>
@@ -295,7 +446,16 @@ function variant(v={}){
     `;
 }
 
+
+/* =========================
+   ADD VARIANT
+========================= */
+
 function addv(){
+
+    console.log(
+        'ADD VARIANT BUTTON CLICKED'
+    );
 
     const vs=document.getElementById('vs');
 
@@ -305,30 +465,160 @@ function addv(){
     );
 }
 
+
+/* =========================
+   CANCEL
+========================= */
+
 function cancelEdit(){
 
-    document.getElementById('editor').innerHTML='';
+    console.log(
+        'CANCEL EDIT'
+    );
+
+    document.getElementById(
+        'editor'
+    ).innerHTML='';
 }
 
+
+/* =========================
+   SAVE PRODUCT
+========================= */
+
 async function save(i){
+
+    console.log(
+        '=============================='
+    );
+
+    console.log(
+        'SAVE BUTTON CLICKED'
+    );
+
+    console.log(
+        'Edit index:',
+        i
+    );
+
+    console.log(
+        'Token exists:',
+        token ? 'YES' : 'NO'
+    );
+
+    console.log(
+        'Token length:',
+        token ? token.length : 0
+    );
+
+    console.log(
+        'Current products:',
+        data
+    );
+
+    console.log(
+        '=============================='
+    );
 
     try{
 
         if(!token){
-            alert('Login session missing. Please login again.');
+
+            console.error(
+                'SAVE STOPPED: TOKEN IS EMPTY'
+            );
+
+            alert(
+                'Login session missing. Please login again.'
+            );
+
             return;
         }
 
-        const name=document.getElementById('en').value.trim();
-        const category=document.getElementById('ec').value.trim();
+
+        const nameElement=
+            document.getElementById('en');
+
+        const categoryElement=
+            document.getElementById('ec');
+
+        const optionElement=
+            document.getElementById('eo');
+
+        const imageElement=
+            document.getElementById('ei');
+
+
+        console.log(
+            'Form elements:',
+            {
+                name: !!nameElement,
+                category: !!categoryElement,
+                optionTitle: !!optionElement,
+                image: !!imageElement
+            }
+        );
+
+
+        if(
+            !nameElement ||
+            !categoryElement ||
+            !optionElement ||
+            !imageElement
+        ){
+
+            throw new Error(
+                'Product form fields not found.'
+            );
+        }
+
+
+        const name=
+            nameElement.value.trim();
+
+        const category=
+            categoryElement.value.trim();
+
         const optionTitle=
-            document.getElementById('eo').value.trim() || 'SIZE';
-        const img=document.getElementById('ei').value.trim();
+            optionElement.value.trim() ||
+            'SIZE';
+
+        const img=
+            imageElement.value.trim();
+
+
+        console.log(
+            'Product name:',
+            name
+        );
+
+        console.log(
+            'Category:',
+            category
+        );
+
 
         if(!name){
-            alert('Please enter item name.');
+
+            alert(
+                'Please enter item name.'
+            );
+
             return;
         }
+
+
+        const variantRows=
+            document.querySelectorAll(
+                '#vs .row'
+            );
+
+
+        console.log(
+            'Variant rows found:',
+            variantRows.length
+        );
+
 
         const product={
 
@@ -341,140 +631,360 @@ async function save(i){
             img:img,
 
             variants:[
-                ...document.querySelectorAll('#vs .row')
+                ...variantRows
             ]
             .map(row=>{
 
-                const inputs=row.querySelectorAll('input');
+                const inputs=
+                    row.querySelectorAll(
+                        'input'
+                    );
 
                 return{
-                    label:inputs[0].value.trim(),
-                    size:inputs[0].value.trim(),
-                    code:inputs[1].value.trim(),
-                    img:inputs[2].value.trim()
+
+                    label:
+                        inputs[0]
+                        ? inputs[0].value.trim()
+                        : '',
+
+                    size:
+                        inputs[0]
+                        ? inputs[0].value.trim()
+                        : '',
+
+                    code:
+                        inputs[1]
+                        ? inputs[1].value.trim()
+                        : '',
+
+                    img:
+                        inputs[2]
+                        ? inputs[2].value.trim()
+                        : ''
+
                 };
 
             })
             .filter(x=>x.label)
         };
 
+
+        console.log(
+            'PRODUCT TO SEND:',
+            product
+        );
+
+
         const url=i<0
             ? '/api/products'
             : '/api/products/'+data[i].id;
 
-        const method=i<0 ? 'POST' : 'PUT';
 
-        const response=await fetch(url,{
+        const method=
+            i<0
+            ? 'POST'
+            : 'PUT';
 
-            method:method,
-
-            headers:{
-                'Content-Type':'application/json',
-                'Authorization':'Bearer '+token
-            },
-
-            body:JSON.stringify(product)
-
-        });
-
-        const result=
-            await response.json().catch(()=>({}));
 
         console.log(
-            'Save response:',
-            response.status,
+            'FETCH URL:',
+            url
+        );
+
+        console.log(
+            'FETCH METHOD:',
+            method
+        );
+
+        console.log(
+            'SENDING PRODUCT REQUEST NOW...'
+        );
+
+
+        const response=
+            await fetch(
+                url,
+                {
+
+                    method:method,
+
+                    headers:{
+
+                        'Content-Type':
+                            'application/json',
+
+                        'Authorization':
+                            'Bearer '+token
+
+                    },
+
+                    body:
+                        JSON.stringify(product)
+
+                }
+            );
+
+
+        console.log(
+            'SAVE FETCH COMPLETED'
+        );
+
+        console.log(
+            'SAVE HTTP STATUS:',
+            response.status
+        );
+
+
+        const result=
+            await response
+            .json()
+            .catch(()=>({}));
+
+
+        console.log(
+            'SAVE SERVER RESPONSE:',
             result
         );
+
 
         if(!response.ok){
 
             throw new Error(
+
                 result.error ||
                 result.message ||
                 'Save failed'
+
             );
         }
 
-        alert('Product saved successfully.');
 
-        document.getElementById('editor').innerHTML='';
+        alert(
+            'Product saved successfully.'
+        );
+
+
+        document.getElementById(
+            'editor'
+        ).innerHTML='';
+
 
         await load();
 
+
     }catch(error){
 
-        console.error('Save error:',error);
+        console.error(
+            '=============================='
+        );
+
+        console.error(
+            'SAVE ERROR:',
+            error
+        );
+
+        console.error(
+            '=============================='
+        );
 
         alert(
-            'Product save نہیں ہوا: '+error.message
+            'Product save نہیں ہوا: '+
+            error.message
         );
     }
 }
 
+
+/* =========================
+   DELETE PRODUCT
+========================= */
+
 async function del(id){
 
+    console.log(
+        '=============================='
+    );
+
+    console.log(
+        'DELETE BUTTON CLICKED'
+    );
+
+    console.log(
+        'Product ID:',
+        id
+    );
+
+    console.log(
+        'Token exists:',
+        token ? 'YES' : 'NO'
+    );
+
+    console.log(
+        '=============================='
+    );
+
+
     if(!confirm('Delete item?')){
+
+        console.log(
+            'DELETE CANCELLED BY USER'
+        );
+
         return;
     }
+
 
     try{
 
         if(!token){
-            alert('Login session missing. Please login again.');
+
+            console.error(
+                'DELETE STOPPED: TOKEN IS EMPTY'
+            );
+
+            alert(
+                'Login session missing. Please login again.'
+            );
+
             return;
         }
 
-        const response=await fetch(
-            '/api/products/'+id,
-            {
-                method:'DELETE',
-                headers:{
-                    'Authorization':'Bearer '+token
-                }
-            }
-        );
 
-        const result=
-            await response.json().catch(()=>({}));
+        const url=
+            '/api/products/'+id;
+
 
         console.log(
-            'Delete response:',
-            response.status,
+            'DELETE URL:',
+            url
+        );
+
+        console.log(
+            'DELETE METHOD: DELETE'
+        );
+
+        console.log(
+            'SENDING DELETE REQUEST NOW...'
+        );
+
+
+        const response=
+            await fetch(
+                url,
+                {
+
+                    method:'DELETE',
+
+                    headers:{
+
+                        'Authorization':
+                            'Bearer '+token
+
+                    }
+
+                }
+            );
+
+
+        console.log(
+            'DELETE FETCH COMPLETED'
+        );
+
+        console.log(
+            'DELETE HTTP STATUS:',
+            response.status
+        );
+
+
+        const result=
+            await response
+            .json()
+            .catch(()=>({}));
+
+
+        console.log(
+            'DELETE SERVER RESPONSE:',
             result
         );
+
 
         if(!response.ok){
 
             throw new Error(
+
                 result.error ||
                 result.message ||
                 'Delete failed'
+
             );
         }
 
-        alert('Product deleted successfully.');
+
+        alert(
+            'Product deleted successfully.'
+        );
+
 
         await load();
 
+
     }catch(error){
 
-        console.error('Delete error:',error);
+        console.error(
+            '=============================='
+        );
+
+        console.error(
+            'DELETE ERROR:',
+            error
+        );
+
+        console.error(
+            '=============================='
+        );
 
         alert(
-            'Product delete نہیں ہوا: '+error.message
+            'Product delete نہیں ہوا: '+
+            error.message
         );
     }
 }
 
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
 function escapeHtml(value){
 
     return String(value)
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;')
-        .replace(/'/g,'&#039;');
+
+        .replace(
+            /&/g,
+            '&amp;'
+        )
+
+        .replace(
+            /</g,
+            '&lt;'
+        )
+
+        .replace(
+            />/g,
+            '&gt;'
+        )
+
+        .replace(
+            /"/g,
+            '&quot;'
+        )
+
+        .replace(
+            /'/g,
+            '&#039;'
+        );
 }
+
 
 function escapeAttr(value){
 
