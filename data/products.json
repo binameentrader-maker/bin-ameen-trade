@@ -1,1 +1,38 @@
-
+[
+  {
+    "id": 1,
+    "name": "VASELINE HAIR TONIC",
+    "category": "HAIR OIL",
+    "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
+    "variants": [
+      {
+        "label": "100ML",
+        "code": "VHT-100",
+        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
+      },
+      {
+        "label": "200ML",
+        "code": "VHT-200",
+        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
+      },
+      {
+        "label": "400ML",
+        "code": "VHT-400",
+        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "CLEOPATRA SOAP",
+    "category": "SOAPS",
+    "img": "https://lh3.googleusercontent.com/d/1tWIizEXA51Mx3YUvRGvDAOdrk-E735NL",
+    "variants": [
+      {
+        "label": "120GM",
+        "code": "CLP-120",
+        "img": "https://lh3.googleusercontent.com/d/1tWIizEXA51Mx3YUvRGvDAOdrk-E735NL"
+      }
+    ]
+  }
+]
