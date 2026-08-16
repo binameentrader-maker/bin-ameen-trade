@@ -21,18 +21,5 @@
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
       }
     ]
-  },
-  {
-    "id": 7,
-    "name": "CLEOPATRA SOAP",
-    "category": "SOAPS",
-    "img": "https://lh3.googleusercontent.com/d/1tWIizEXA51Mx3YUvRGvDAOdrk-E735NL",
-    "variants": [
-      {
-        "label": "120GM",
-        "code": "CLP-120",
-        "img": "https://lh3.googleusercontent.com/d/1tWIizEXA51Mx3YUvRGvDAOdrk-E735NL"
-      }
-    ]
   }
 ]
