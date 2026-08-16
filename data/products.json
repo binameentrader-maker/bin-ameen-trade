@@ -33,13 +33,13 @@
         "label": "100ML",
         "size": "100ML",
         "code": "JBS-100",
-        "img": "https://drive.google.com/uc?export=view&id=1EVO5p9XoPusDaf2LbfS5oqEqLu3ev6KN"
+        "img": "https://drive.google.com/thumbnail?id=1EVO5p9XoPusDaf2LbfS5oqEqLu3ev6KN&sz=w1000"
       },
       {
         "label": "200ML",
         "size": "200ML",
         "code": "JBS-200",
-        "img": ""
+        "img": "https://drive.google.com/thumbnail?id=1EVO5p9XoPusDaf2LbfS5oqEqLu3ev6KN&sz=w1000"
       }
     ]
   }
