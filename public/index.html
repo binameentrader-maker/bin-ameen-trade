@@ -1,24 +1,877 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>BIN AMEEN TRADER</title>
+
 <style>
-body{margin:0;background:#c8d3df;font-family:Arial;color:#1f293d;padding:12px}.wrap{max-width:480px;margin:auto}
-header,.card,.cartbox{background:#fff;border:2px solid #8fa0b5;border-radius:12px;padding:12px;margin-bottom:12px}
-h2{text-align:center;margin:4px}.cats{display:flex;gap:6px;overflow:auto;margin:10px 0}.cats button,button{border:0;border-radius:7px;padding:9px;font-weight:bold;cursor:pointer}.cats button{background:#fff;border:1px solid #8fa0b5}.active,.main{background:#1f293d!important;color:#fff}.search{width:100%;padding:10px;border:2px solid #8fa0b5;border-radius:8px;box-sizing:border-box}
-.card{display:flex;gap:10px;align-items:center}.pic{width:85px;height:85px;border:1px solid #8fa0b5;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.pic img{max-width:100%;max-height:100%}.info{flex:1}.code,.v{font-size:12px;font-weight:bold;background:#f1f5f9;padding:4px 7px;border-radius:5px}.vs{display:flex;gap:4px;flex-wrap:wrap;margin:5px 0}.v.active{background:#1f293d;color:#fff}.q{display:flex;gap:5px;align-items:center}.q button{background:#475569;color:white}.cartbox{display:none}.cartbox.open{display:block}.item{padding:8px;border:1px solid #8fa0b5;border-radius:6px;margin:5px 0}
-</style></head><body><div class="wrap">
-<header><h2>BIN AMEEN TRADER</h2><div style="text-align:center">Call: 03331390045</div></header>
-<button class="main" style="width:100%" onclick="showCart()">View Cart (<span id="count">0</span>)</button>
-<div class="cats" id="cats"></div><input class="search" id="search" placeholder="Search product name or SKU code..."><div id="list"></div>
-<div class="cartbox" id="cart"><h3>Your Selected Items</h3><div id="cartItems"></div><button class="main" style="width:100%" onclick="wa()">Send Order on WhatsApp</button></div>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#c8d3df;
+  font-family:Arial,sans-serif;
+  color:#1f293d;
+  padding:12px;
+}
+
+.wrap{
+  max-width:480px;
+  margin:auto;
+}
+
+header,.card,.cartbox{
+  background:#fff;
+  border:2px solid #8fa0b5;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:12px;
+}
+
+h2{
+  text-align:center;
+  margin:4px;
+}
+
+.cats{
+  display:flex;
+  gap:6px;
+  overflow:auto;
+  margin:10px 0;
+  padding-bottom:3px;
+}
+
+button{
+  border:0;
+  border-radius:7px;
+  padding:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.cats button{
+  background:#fff;
+  border:1px solid #8fa0b5;
+  white-space:nowrap;
+}
+
+.active,.main{
+  background:#1f293d!important;
+  color:#fff;
+}
+
+.search{
+  width:100%;
+  padding:10px;
+  border:2px solid #8fa0b5;
+  border-radius:8px;
+  margin-bottom:12px;
+}
+
+.card{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.pic{
+  width:100px;
+  height:110px;
+  border:1px solid #8fa0b5;
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+  background:#fff;
+  cursor:pointer;
+}
+
+.pic img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+
+.watermark{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  font-size:9px;
+  font-weight:bold;
+  color:rgba(31,41,61,.18);
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+.info{
+  flex:1;
+  min-width:0;
+}
+
+.code,.v{
+  font-size:12px;
+  font-weight:bold;
+  background:#f1f5f9;
+  padding:4px 7px;
+  border-radius:5px;
+}
+
+.name{
+  display:block;
+  margin-top:5px;
+}
+
+.variant-control{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  margin:7px 0;
+}
+
+.variant-control button{
+  padding:6px 9px;
+  background:#475569;
+  color:#fff;
+}
+
+.variant-label{
+  flex:1;
+  text-align:center;
+  font-size:12px;
+  font-weight:bold;
+  background:#f1f5f9;
+  padding:6px;
+  border-radius:5px;
+}
+
+.q{
+  display:flex;
+  gap:5px;
+  align-items:center;
+}
+
+.q button{
+  background:#475569;
+  color:white;
+  min-width:32px;
+}
+
+.cartbox{
+  display:none;
+}
+
+.cartbox.open{
+  display:block;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.item{
+  padding:10px;
+  border:1px solid #8fa0b5;
+  border-radius:8px;
+  margin:7px 0;
+  background:#f8fafc;
+}
+
+.item-name{
+  font-weight:bold;
+}
+
+.item-info{
+  font-size:13px;
+  margin:4px 0;
+}
+
+.cart-controls{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top:7px;
+}
+
+.cart-controls button{
+  background:#475569;
+  color:#fff;
+}
+
+.remove{
+  margin-left:auto;
+  background:#991b1b!important;
+}
+
+.cart-total{
+  font-weight:bold;
+  padding:8px 0;
+}
+
+.viewer{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.viewer.open{
+  display:flex;
+}
+
+.viewer-box{
+  width:min(95vw,500px);
+  max-height:90vh;
+  background:#fff;
+  border-radius:12px;
+  padding:15px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.viewer-box img{
+  max-width:100%;
+  max-height:80vh;
+  object-fit:contain;
+}
+
+.viewer-watermark{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  font-size:20px;
+  font-weight:bold;
+  color:rgba(31,41,61,.18);
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+.close-viewer{
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#1f293d;
+  color:#fff;
+  font-size:20px;
+  padding:0;
+}
+
+@media(max-width:380px){
+  .pic{
+    width:85px;
+    height:95px;
+  }
+
+  .card{
+    gap:7px;
+  }
+
+  .variant-label{
+    font-size:11px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<header>
+  <h2>BIN AMEEN TRADER</h2>
+  <div style="text-align:center">Call: 03331390045</div>
+</header>
+
+<button class="main" style="width:100%" onclick="showCart()">
+  View Cart (<span id="count">0</span>)
+</button>
+
+<div class="cats" id="cats"></div>
+
+<input
+  class="search"
+  id="search"
+  placeholder="Search product name or SKU code..."
+>
+
+<div id="list"></div>
+
+<div class="cartbox" id="cart">
+
+  <div class="cart-header">
+    <h3>Your Selected Items</h3>
+    <button onclick="closeCart()">✕</button>
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-total">
+    Total Items: <span id="cartTotal">0</span>
+  </div>
+
+  <button
+    class="main"
+    style="width:100%"
+    onclick="wa()"
+  >
+    Send Order on WhatsApp
+  </button>
+
 </div>
+
+</div>
+
+<!-- IMAGE VIEWER -->
+
+<div class="viewer" id="viewer" onclick="closeViewer(event)">
+
+  <div class="viewer-box">
+
+    <button
+      class="close-viewer"
+      onclick="closeViewer()"
+    >
+      ✕
+    </button>
+
+    <img id="viewerImg" src="" alt="Product">
+
+    <div class="viewer-watermark">
+      BIN AMEEN TRADER
+    </div>
+
+  </div>
+
+</div>
+
 <script>
-let products=[],sel={},cart={},category="ALL";
-async function load(){products=await fetch('/api/products').then(r=>r.json());products.forEach(p=>sel[p.id]=0);drawCats();render()}
-function drawCats(){let a=['ALL',...new Set(products.map(p=>p.category))];cats.innerHTML=a.map(x=>`<button class="${x==category?'active':''}" onclick="category='${x}';drawCats();render()">${x==='ALL'?'ALL ITEMS':x}</button>`).join('')}
-function render(){let q=search.value.toLowerCase();let a=products.filter(p=>(category==='ALL'||p.category===category)&&(p.name.toLowerCase().includes(q)||p.variants.some(v=>(v.code||'').toLowerCase().includes(q))));list.innerHTML=a.length?'':'<div class=card>No items found</div>';a.forEach(p=>{let i=sel[p.id]||0,v=p.variants[i],k=p.id+'_'+v.label,n=cart[k]?.qty||0;let d=document.createElement('div');d.className='card';d.innerHTML=`<div class=pic><img src="${v.img||p.img||''}"></div><div class=info><span class=code>CODE: ${v.code}</span><b>${p.name}</b><div class=vs>${p.variants.map((x,j)=>`<button class="v ${j==i?'active':''}" onclick="sel[${p.id}]=${j};render()">${x.label}</button>`).join('')}</div><div class=q><button onclick="change(${p.id},-1)">−</button><b>${n}</b><button onclick="change(${p.id},1)">+</button></div></div>`;list.appendChild(d)})}
-function change(id,d){let p=products.find(x=>x.id===id),v=p.variants[sel[id]||0],k=p.id+'_'+v.label,n=(cart[k]?.qty||0)+d;if(n<=0)delete cart[k];else cart[k]={name:p.name,variant:v.label,code:v.code,qty:n};count.textContent=Object.values(cart).reduce((s,x)=>s+x.qty,0);render()}
-function showCart(){cartbox.classList.toggle('open');cartItems.innerHTML=Object.keys(cart).map(k=>{let x=cart[k];return `<div class=item><b>${x.name}</b><br>${x.variant} | Code: ${x.code} | Qty: ${x.qty}</div>`}).join('')||'<div class=item>Cart is empty</div>'}
-function wa(){let m='*NEW ORDER - BIN AMEEN TRADER*\n\n';Object.values(cart).forEach((x,i)=>m+=`${i+1}. *${x.name}*\nVariant: ${x.variant}\nCode: ${x.code} | Qty: *${x.qty}*\n\n`);if(!Object.keys(cart).length)return alert('Cart is empty');open('https://wa.me/923331390045?text='+encodeURIComponent(m))}
-search.oninput=render;load();
-</script></body></html>
+
+let products=[];
+let sel={};
+let cart={};
+let category="ALL";
+
+/* LOAD PRODUCTS */
+
+async function load(){
+
+  try{
+
+    const r=await fetch('/api/products');
+
+    products=await r.json();
+
+    products.forEach(p=>{
+      sel[p.id]=0;
+    });
+
+    drawCats();
+    render();
+    updateCartCount();
+
+  }catch(e){
+
+    list.innerHTML=
+      '<div class="card">Unable to load products.</div>';
+
+    console.error(e);
+  }
+}
+
+
+/* CATEGORIES */
+
+function drawCats(){
+
+  const a=[
+    'ALL',
+    ...new Set(
+      products.map(p=>p.category).filter(Boolean)
+    )
+  ];
+
+  cats.innerHTML=a.map(x=>`
+
+    <button
+      class="${x==category?'active':''}"
+      onclick="setCategory('${escapeHtml(x)}')"
+    >
+      ${x==='ALL'?'ALL ITEMS':escapeHtml(x)}
+    </button>
+
+  `).join('');
+}
+
+function setCategory(x){
+
+  category=x;
+
+  drawCats();
+  render();
+}
+
+
+/* RENDER PRODUCTS */
+
+function render(){
+
+  const q=search.value.toLowerCase().trim();
+
+  const a=products.filter(p=>{
+
+    const name=(p.name||'').toLowerCase();
+
+    const variants=Array.isArray(p.variants)
+      ?p.variants
+      :[];
+
+    const code=variants.some(v=>
+      (v.code||'').toLowerCase().includes(q)
+    );
+
+    return (
+      (category==='ALL'||p.category===category)
+      &&
+      (name.includes(q)||code)
+    );
+  });
+
+  list.innerHTML='';
+
+  if(!a.length){
+
+    list.innerHTML=
+      '<div class="card">No items found</div>';
+
+    return;
+  }
+
+  a.forEach(p=>{
+
+    if(!Array.isArray(p.variants)||!p.variants.length)
+      return;
+
+    let i=sel[p.id]||0;
+
+    if(i>=p.variants.length)
+      i=0;
+
+    const v=p.variants[i];
+
+    const k=p.id+'_'+v.label;
+
+    const n=cart[k]?.qty||0;
+
+    const d=document.createElement('div');
+
+    d.className='card';
+
+    const image=v.img||p.img||'';
+
+    d.innerHTML=`
+
+      <div
+        class="pic"
+        onclick="openViewer('${escapeAttr(image)}')"
+      >
+
+        <img
+          src="${escapeAttr(image)}"
+          alt="${escapeAttr(p.name||'Product')}"
+          onerror="this.style.display='none'"
+        >
+
+        <div class="watermark">
+          BIN AMEEN TRADER
+        </div>
+
+      </div>
+
+      <div class="info">
+
+        <span class="code">
+          CODE: ${escapeHtml(v.code||'')}
+        </span>
+
+        <b class="name">
+          ${escapeHtml(p.name||'')}
+        </b>
+
+        <div class="variant-control">
+
+          <button
+            onclick="prevVariant(${p.id})"
+          >
+            ‹
+          </button>
+
+          <div class="variant-label">
+            ${escapeHtml(v.label||'')}
+          </div>
+
+          <button
+            onclick="nextVariant(${p.id})"
+          >
+            ›
+          </button>
+
+        </div>
+
+        <div class="q">
+
+          <button
+            onclick="change(${p.id},-1)"
+          >
+            −
+          </button>
+
+          <b>${n}</b>
+
+          <button
+            onclick="change(${p.id},1)"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    list.appendChild(d);
+
+  });
+}
+
+
+/* PREVIOUS VARIANT */
+
+function prevVariant(id){
+
+  const p=products.find(x=>x.id===id);
+
+  if(!p||!p.variants?.length)
+    return;
+
+  let i=sel[id]||0;
+
+  i--;
+
+  if(i<0)
+    i=p.variants.length-1;
+
+  sel[id]=i;
+
+  render();
+}
+
+
+/* NEXT VARIANT */
+
+function nextVariant(id){
+
+  const p=products.find(x=>x.id===id);
+
+  if(!p||!p.variants?.length)
+    return;
+
+  let i=sel[id]||0;
+
+  i++;
+
+  if(i>=p.variants.length)
+    i=0;
+
+  sel[id]=i;
+
+  render();
+}
+
+
+/* CHANGE QUANTITY */
+
+function change(id,d){
+
+  const p=products.find(x=>x.id===id);
+
+  if(!p||!p.variants?.length)
+    return;
+
+  const v=p.variants[sel[id]||0];
+
+  const k=p.id+'_'+v.label;
+
+  let n=(cart[k]?.qty||0)+d;
+
+  if(n<=0){
+
+    delete cart[k];
+
+  }else{
+
+    cart[k]={
+      id:p.id,
+      name:p.name,
+      variant:v.label,
+      code:v.code||'',
+      img:v.img||p.img||'',
+      qty:n
+    };
+
+  }
+
+  updateCartCount();
+
+  render();
+
+  if(cart.classList.contains('open'))
+    renderCart();
+}
+
+
+/* CART COUNT */
+
+function updateCartCount(){
+
+  const total=Object.values(cart)
+    .reduce((s,x)=>s+x.qty,0);
+
+  count.textContent=total;
+
+  cartTotal.textContent=total;
+}
+
+
+/* SHOW CART */
+
+function showCart(){
+
+  cart.classList.add('open');
+
+  renderCart();
+
+  window.scrollTo({
+    top:document.body.scrollHeight,
+    behavior:'smooth'
+  });
+}
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+  cart.classList.remove('open');
+}
+
+
+/* RENDER CART */
+
+function renderCart(){
+
+  const keys=Object.keys(cart);
+
+  if(!keys.length){
+
+    cartItems.innerHTML=
+      '<div class="item">Cart is empty</div>';
+
+    updateCartCount();
+
+    return;
+  }
+
+  cartItems.innerHTML=keys.map(k=>{
+
+    const x=cart[k];
+
+    return `
+
+      <div class="item">
+
+        <div class="item-name">
+          ${escapeHtml(x.name)}
+        </div>
+
+        <div class="item-info">
+          ${escapeHtml(x.variant)}
+          |
+          Code: ${escapeHtml(x.code)}
+        </div>
+
+        <div class="cart-controls">
+
+          <button
+            onclick="cartChange('${escapeAttr(k)}',-1)"
+          >
+            −
+          </button>
+
+          <b>${x.qty}</b>
+
+          <button
+            onclick="cartChange('${escapeAttr(k)}',1)"
+          >
+            +
+          </button>
+
+          <button
+            class="remove"
+            onclick="removeCart('${escapeAttr(k)}')"
+          >
+            Remove
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }).join('');
+
+  updateCartCount();
+}
+
+
+/* CART QUANTITY */
+
+function cartChange(k,d){
+
+  if(!cart[k])
+    return;
+
+  cart[k].qty+=d;
+
+  if(cart[k].qty<=0)
+    delete cart[k];
+
+  renderCart();
+  render();
+}
+
+
+/* REMOVE CART ITEM */
+
+function removeCart(k){
+
+  delete cart[k];
+
+  renderCart();
+  render();
+}
+
+
+/* IMAGE VIEWER */
+
+function openViewer(src){
+
+  if(!src)
+    return;
+
+  viewerImg.src=src;
+
+  viewer.classList.add('open');
+
+  document.body.style.overflow='hidden';
+}
+
+
+/* CLOSE IMAGE VIEWER */
+
+function closeViewer(e){
+
+  if(e && e.target!==viewer)
+    return;
+
+  viewer.classList.remove('open');
+
+  viewerImg.src='';
+
+  document.body.style.overflow='';
+}
+
+
+/* WHATSAPP */
+
+function wa(){
+
+  const keys=Object.keys(cart);
+
+  if(!keys.length){
+
+    alert('Cart is empty');
+
+    return;
+  }
+
+  let m='*NEW ORDER - BIN AMEEN TRADER*\\n\\n';
+
+  keys.forEach((k,i)=>{
+
+    const x=cart[k];
+
+    m+=
+      `${i+1}. *${x.name}*\\n`+
+      `Variant: ${x.variant}\\n`+
+      `Code: ${x.code} | Qty: *${x.qty}*\\n\\n`;
+
+  });
+
+  open(
+    'https://wa.me/923331390045?text='+
+    encodeURIComponent(m)
+  );
+
+}
+
+
+/* BASIC HTML SAFETY */
+
+function escapeHtml(str){
+
+  return String(str??'')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+}
+
+function escapeAttr(str){
+
+  return escapeHtml(str);
+}
+
+
+/* SEARCH */
+
+search.oninput=render;
+
+
+/* START */
+
+load();
+
+</script>
+
+</body>
+</html>
