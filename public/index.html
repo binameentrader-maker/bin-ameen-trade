@@ -7,22 +7,14 @@
 <title>BIN AMEEN TRADER</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
-
-html,body{
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box}
 
 body{
+  margin:0;
   background:#c8d3df;
   font-family:Arial,sans-serif;
   color:#1f293d;
   padding:12px;
-  -webkit-user-select:none;
-  user-select:none;
 }
 
 .wrap{
@@ -43,21 +35,23 @@ h2{
   margin:4px;
 }
 
-/* CART BUTTON */
-
-.cart-open-btn{
-  width:100%;
-  background:#1f293d;
-  color:#fff;
+button{
   border:0;
   border-radius:7px;
-  padding:11px;
+  padding:9px;
   font-weight:bold;
   cursor:pointer;
-  margin-bottom:10px;
 }
 
-/* CATEGORIES */
+.main{
+  background:#1f293d;
+  color:#fff;
+}
+
+.cart-button{
+  width:100%;
+  margin-bottom:10px;
+}
 
 .cats{
   display:flex;
@@ -65,21 +59,6 @@ h2{
   overflow:auto;
   margin:10px 0;
   padding-bottom:3px;
-  scrollbar-width:none;
-}
-
-.cats::-webkit-scrollbar{
-  display:none;
-}
-
-button{
-  border:0;
-  border-radius:7px;
-  padding:9px;
-  font-weight:bold;
-  cursor:pointer;
-  -webkit-user-select:none;
-  user-select:none;
 }
 
 .cats button{
@@ -88,12 +67,10 @@ button{
   white-space:nowrap;
 }
 
-.active,.main{
+.active{
   background:#1f293d!important;
   color:#fff;
 }
-
-/* SEARCH */
 
 .search{
   width:100%;
@@ -101,13 +78,7 @@ button{
   border:2px solid #8fa0b5;
   border-radius:8px;
   margin-bottom:12px;
-  background:#fff;
-  color:#1f293d;
-  -webkit-user-select:text;
-  user-select:text;
 }
-
-/* PRODUCT CARD */
 
 .card{
   display:flex;
@@ -127,21 +98,21 @@ button{
   position:relative;
   overflow:hidden;
   background:#fff;
-  cursor:zoom-in;
+  cursor:pointer;
 
-  -webkit-touch-callout:none;
+  /* IMAGE PROTECTION */
   -webkit-user-select:none;
   user-select:none;
+  -webkit-touch-callout:none;
   -webkit-tap-highlight-color:transparent;
 }
 
 .pic img{
-  width:100%;
-  height:100%;
   max-width:100%;
   max-height:100%;
   object-fit:contain;
 
+  /* IMAGE PROTECTION */
   pointer-events:none;
   -webkit-user-drag:none;
   user-select:none;
@@ -215,7 +186,10 @@ button{
   min-width:32px;
 }
 
-/* CART MODAL */
+
+/* =========================
+   CART MODAL
+========================= */
 
 .cart-overlay{
   display:none;
@@ -251,12 +225,10 @@ button{
   padding:12px;
   background:#1f293d;
   color:#fff;
-  flex-shrink:0;
 }
 
 .cart-header h3{
   margin:0;
-  font-size:17px;
 }
 
 .cart-close{
@@ -266,11 +238,10 @@ button{
   border-radius:50%;
   background:#fff;
   color:#1f293d;
-  font-size:19px;
-  font-weight:bold;
+  font-size:18px;
 }
 
-.cart-scroll{
+.cart-items{
   overflow-y:auto;
   padding:10px;
 }
@@ -285,13 +256,11 @@ button{
 
 .item-name{
   font-weight:bold;
-  line-height:1.35;
 }
 
 .item-info{
   font-size:13px;
   margin:4px 0;
-  color:#475569;
 }
 
 .cart-controls{
@@ -304,7 +273,6 @@ button{
 .cart-controls button{
   background:#475569;
   color:#fff;
-  min-width:32px;
 }
 
 .remove{
@@ -316,7 +284,6 @@ button{
   border-top:1px solid #8fa0b5;
   padding:10px;
   background:#fff;
-  flex-shrink:0;
 }
 
 .cart-total{
@@ -329,24 +296,18 @@ button{
   background:#16a34a;
   color:#fff;
   padding:12px;
-  border-radius:8px;
-  font-weight:bold;
-  border:0;
 }
 
-.empty-cart{
-  text-align:center;
-  padding:25px 10px;
-  color:#64748b;
-}
 
-/* IMAGE VIEWER */
+/* =========================
+   IMAGE VIEWER
+========================= */
 
 .viewer{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.82);
+  background:rgba(0,0,0,.75);
   z-index:9999;
   align-items:center;
   justify-content:center;
@@ -370,7 +331,6 @@ button{
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
 }
 
 .viewer-box img{
@@ -395,7 +355,6 @@ button{
   color:rgba(31,41,61,.18);
   white-space:nowrap;
   pointer-events:none;
-  user-select:none;
 }
 
 .close-viewer{
@@ -412,7 +371,11 @@ button{
   z-index:5;
 }
 
-/* MOBILE */
+.empty-cart{
+  text-align:center;
+  padding:25px 10px;
+  color:#64748b;
+}
 
 @media(max-width:380px){
 
@@ -428,6 +391,7 @@ button{
   .variant-label{
     font-size:11px;
   }
+
 }
 </style>
 </head>
@@ -443,37 +407,46 @@ button{
   </div>
 </header>
 
+
+<!-- CART BUTTON -->
+
 <button
-  id="viewCartButton"
-  class="cart-open-btn"
+  id="viewCartBtn"
+  class="main cart-button"
   type="button"
 >
   View Cart (<span id="count">0</span>)
 </button>
 
+
+<!-- CATEGORIES -->
+
 <div class="cats" id="cats"></div>
+
+
+<!-- SEARCH -->
 
 <input
   class="search"
   id="search"
-  type="search"
   placeholder="Search product name or SKU code..."
-  autocomplete="off"
 >
+
+
+<!-- PRODUCTS -->
 
 <div id="list"></div>
 
 </div>
 
 
-<!-- ================= CART MODAL ================= -->
+<!-- =========================
+     CART MODAL
+========================= -->
 
 <div
   class="cart-overlay"
   id="cartOverlay"
-  role="dialog"
-  aria-modal="true"
-  aria-hidden="true"
 >
 
   <div
@@ -486,21 +459,22 @@ button{
       <h3>Your Selected Items</h3>
 
       <button
-        id="cartCloseButton"
+        id="cartCloseBtn"
         class="cart-close"
         type="button"
-        aria-label="Close Cart"
       >
         ✕
       </button>
 
     </div>
 
-    <div class="cart-scroll">
+
+    <div class="cart-items">
 
       <div id="cartItems"></div>
 
     </div>
+
 
     <div class="cart-footer">
 
@@ -510,7 +484,7 @@ button{
       </div>
 
       <button
-        id="whatsappButton"
+        id="whatsappBtn"
         class="whatsapp-btn"
         type="button"
       >
@@ -524,26 +498,21 @@ button{
 </div>
 
 
-<!-- ================= IMAGE VIEWER ================= -->
+<!-- =========================
+     IMAGE VIEWER
+========================= -->
 
 <div
   class="viewer"
   id="viewer"
-  role="dialog"
-  aria-modal="true"
-  aria-hidden="true"
 >
 
-  <div
-    class="viewer-box"
-    id="viewerBox"
-  >
+  <div class="viewer-box">
 
     <button
-      id="closeViewerButton"
+      id="closeViewerBtn"
       class="close-viewer"
       type="button"
-      aria-label="Close Image"
     >
       ✕
     </button>
@@ -566,81 +535,77 @@ button{
 
 <script>
 
-/* =========================================================
+/* =========================
    DATA
-========================================================= */
+========================= */
 
-let products = [];
-let selectedVariant = {};
-let cartData = {};
-let category = "ALL";
+let products=[];
+let sel={};
+let cartData={};
+let category="ALL";
 
 
-/* =========================================================
-   DOM ELEMENTS
-========================================================= */
+/* =========================
+   DOM
+========================= */
 
-const list = document.getElementById("list");
-const cats = document.getElementById("cats");
-const search = document.getElementById("search");
+const list =
+  document.getElementById("list");
 
-const count = document.getElementById("count");
-const cartTotal = document.getElementById("cartTotal");
+const cats =
+  document.getElementById("cats");
 
-const cartOverlay = document.getElementById("cartOverlay");
-const cartItems = document.getElementById("cartItems");
+const search =
+  document.getElementById("search");
 
-const viewCartButton =
-  document.getElementById("viewCartButton");
+const count =
+  document.getElementById("count");
 
-const cartCloseButton =
-  document.getElementById("cartCloseButton");
+const cartTotal =
+  document.getElementById("cartTotal");
 
-const whatsappButton =
-  document.getElementById("whatsappButton");
+const cartOverlay =
+  document.getElementById("cartOverlay");
+
+const cartItems =
+  document.getElementById("cartItems");
+
+const viewCartBtn =
+  document.getElementById("viewCartBtn");
+
+const cartCloseBtn =
+  document.getElementById("cartCloseBtn");
+
+const whatsappBtn =
+  document.getElementById("whatsappBtn");
 
 const viewer =
   document.getElementById("viewer");
 
-const viewerBox =
-  document.getElementById("viewerBox");
-
 const viewerImg =
   document.getElementById("viewerImg");
 
-const closeViewerButton =
-  document.getElementById("closeViewerButton");
+const closeViewerBtn =
+  document.getElementById("closeViewerBtn");
 
 
-/* =========================================================
+/* =========================
    LOAD PRODUCTS
-========================================================= */
+========================= */
 
 async function load(){
 
   try{
 
-    const response =
-      await fetch("/api/products", {
-        cache:"no-store"
-      });
+    const r =
+      await fetch('/api/products');
 
-    if(!response.ok){
-      throw new Error(
-        "Products API returned " +
-        response.status
-      );
-    }
+    products =
+      await r.json();
 
-    products = await response.json();
+    products.forEach(p=>{
 
-    if(!Array.isArray(products)){
-      products=[];
-    }
-
-    products.forEach(function(product){
-
-      selectedVariant[product.id]=0;
+      sel[p.id]=0;
 
     });
 
@@ -650,77 +615,91 @@ async function load(){
 
     updateCartCount();
 
-  }catch(error){
-
-    console.error(error);
+  }catch(e){
 
     list.innerHTML =
       '<div class="card">' +
       'Unable to load products.' +
       '</div>';
 
+    console.error(e);
+
   }
 
 }
 
 
-/* =========================================================
+/* =========================
    CATEGORIES
-========================================================= */
+========================= */
 
 function drawCats(){
 
-  const categories = [
-    "ALL",
+  const a=[
+    'ALL',
     ...new Set(
       products
-        .map(function(product){
-          return product.category;
-        })
+        .map(p=>p.category)
         .filter(Boolean)
     )
   ];
 
-  cats.innerHTML = categories
-    .map(function(item){
+  cats.innerHTML=a.map(x=>`
 
-      return `
-        <button
-          type="button"
-          class="${item === category ? "active" : ""}"
-          data-category="${escapeHtml(item)}"
-        >
-          ${item === "ALL"
-            ? "ALL ITEMS"
-            : escapeHtml(item)}
-        </button>
-      `;
+    <button
+      class="${x==category?'active':''}"
+      data-category="${escapeHtml(x)}"
+      type="button"
+    >
+      ${x==='ALL'
+        ?'ALL ITEMS'
+        :escapeHtml(x)}
+    </button>
 
-    })
-    .join("");
+  `).join('');
+
 
   cats
     .querySelectorAll("button")
-    .forEach(function(button){
+    .forEach(btn=>{
 
-      button.addEventListener("click",function(){
+      btn.addEventListener(
+        "click",
+        function(){
 
-        category =
-          button.dataset.category;
+          category =
+            btn.dataset.category;
 
-        drawCats();
-        render();
+          drawCats();
 
-      });
+          render();
+
+        }
+      );
 
     });
 
 }
 
 
-/* =========================================================
+/* =========================
+   CATEGORY
+========================= */
+
+function setCategory(x){
+
+  category=x;
+
+  drawCats();
+
+  render();
+
+}
+
+
+/* =========================
    RENDER PRODUCTS
-========================================================= */
+========================= */
 
 function render(){
 
@@ -729,58 +708,52 @@ function render(){
       .toLowerCase()
       .trim();
 
-  const filtered =
-    products.filter(function(product){
+
+  const a =
+    products.filter(p=>{
 
       const name =
-        String(product.name || "")
-          .toLowerCase();
+        (p.name||'')
+        .toLowerCase();
+
 
       const variants =
-        Array.isArray(product.variants)
-          ? product.variants
-          : [];
+        Array.isArray(p.variants)
+          ?p.variants
+          :[];
 
-      const codeMatch =
-        variants.some(function(variant){
 
-          return String(
-            variant.code || ""
-          )
-          .toLowerCase()
-          .includes(q);
+      const code =
+        variants.some(v=>
 
-        });
+          (v.code||'')
+            .toLowerCase()
+            .includes(q)
 
-      const skuMatch =
-        variants.some(function(variant){
+        );
 
-          return String(
-            variant.sku || ""
-          )
-          .toLowerCase()
-          .includes(q);
-
-        });
-
-      const categoryMatch =
-        category === "ALL" ||
-        product.category === category;
 
       return (
-        categoryMatch &&
+
+        (category==='ALL' ||
+         p.category===category)
+
+        &&
+
         (
           name.includes(q) ||
-          codeMatch ||
-          skuMatch
+          code
         )
+
       );
 
     });
 
-  list.innerHTML = "";
 
-  if(!filtered.length){
+  list.innerHTML='';
+
+
+  if(!a.length){
 
     list.innerHTML =
       '<div class="card">' +
@@ -788,109 +761,119 @@ function render(){
       '</div>';
 
     return;
+
   }
 
-  filtered.forEach(function(product){
+
+  a.forEach(p=>{
 
     if(
-      !Array.isArray(product.variants) ||
-      !product.variants.length
+      !Array.isArray(p.variants) ||
+      !p.variants.length
     ){
+
       return;
+
     }
 
-    let index =
-      selectedVariant[product.id] || 0;
 
-    if(index >= product.variants.length){
-      index=0;
-      selectedVariant[product.id]=0;
+    let i =
+      sel[p.id]||0;
+
+
+    if(i>=p.variants.length){
+
+      i=0;
+
     }
 
-    const variant =
-      product.variants[index];
 
-    const variantKey =
-      getVariantKey(variant,index);
+    const v =
+      p.variants[i];
 
-    const cartKey =
-      String(product.id) +
-      "_" +
-      variantKey;
 
-    const quantity =
-      cartData[cartKey]?.qty || 0;
+    const k =
+      p.id+'_'+v.label;
+
+
+    const n =
+      cartData[k]?.qty||0;
+
+
+    const d =
+      document.createElement('div');
+
+
+    d.className='card';
+
 
     const image =
-      variant.img ||
-      variant.image ||
-      product.img ||
-      product.image ||
-      "";
+      v.img ||
+      p.img ||
+      '';
 
-    const card =
+
+    /* =====================
+       IMAGE
+    ===================== */
+
+    const pic =
       document.createElement("div");
 
-    card.className="card";
+    pic.className="pic";
 
-
-    /* IMAGE */
-
-    const picture =
-      document.createElement("div");
-
-    picture.className="pic";
-
-    picture.setAttribute(
-      "aria-label",
-      "View product image"
-    );
 
     const img =
       document.createElement("img");
 
     img.src=image;
 
-    img.alt =
-      product.name || "Product";
+    img.alt=
+      p.name||'Product';
 
     img.draggable=false;
 
-    img.setAttribute(
-      "draggable",
-      "false"
-    );
 
     img.addEventListener(
       "error",
       function(){
-        img.style.display="none";
+
+        img.style.display='none';
+
       }
     );
+
 
     const watermark =
       document.createElement("div");
 
-    watermark.className="watermark";
+    watermark.className=
+      "watermark";
 
-    watermark.textContent =
+    watermark.textContent=
       "BIN AMEEN TRADER";
 
-    picture.appendChild(img);
-    picture.appendChild(watermark);
+
+    pic.appendChild(img);
+
+    pic.appendChild(watermark);
 
 
-    /* IMPORTANT:
-       Image viewer event is attached to parent,
-       while actual IMG has pointer-events:none.
+    /*
+      IMPORTANT:
+      صرف pic پر click event ہے۔
+      IMG پر pointer-events:none ہے۔
+      اس طرح image tap کرنے پر
+      viewer کھلے گا۔
     */
 
-    picture.addEventListener(
+    pic.addEventListener(
       "click",
-      function(event){
+      function(e){
 
-        event.preventDefault();
-        event.stopPropagation();
+        e.preventDefault();
+
+        e.stopPropagation();
 
         openViewer(image);
 
@@ -898,368 +881,359 @@ function render(){
     );
 
 
-    /* PRODUCT INFO */
+    /* =====================
+       INFO
+    ===================== */
 
     const info =
       document.createElement("div");
 
     info.className="info";
 
+
     const code =
       document.createElement("span");
 
     code.className="code";
 
-    code.textContent =
+    code.textContent=
       "CODE: " +
-      (variant.code ||
-       variant.sku ||
-       "");
+      (v.code||'');
+
 
     const name =
       document.createElement("b");
 
     name.className="name";
 
-    name.textContent =
-      product.name || "";
+    name.textContent=
+      p.name||'';
 
 
-    /* VARIANT CONTROL */
+    /* =====================
+       VARIANTS
+    ===================== */
 
     const variantControl =
       document.createElement("div");
 
-    variantControl.className =
+    variantControl.className=
       "variant-control";
 
-    const previousButton =
+
+    const prev =
       document.createElement("button");
 
-    previousButton.type="button";
+    prev.type="button";
 
-    previousButton.textContent="‹";
+    prev.textContent="‹";
 
-    previousButton.addEventListener(
+
+    prev.addEventListener(
       "click",
-      function(event){
+      function(e){
 
-        event.preventDefault();
-        event.stopPropagation();
+        e.preventDefault();
 
-        prevVariant(product.id);
+        e.stopPropagation();
+
+        prevVariant(p.id);
 
       }
     );
 
-    const variantLabel =
+
+    const label =
       document.createElement("div");
 
-    variantLabel.className =
+    label.className=
       "variant-label";
 
-    variantLabel.textContent =
-      variant.label ||
-      variant.size ||
-      "";
+    label.textContent=
+      v.label||'';
 
 
-    const nextButton =
+    const next =
       document.createElement("button");
 
-    nextButton.type="button";
+    next.type="button";
 
-    nextButton.textContent="›";
+    next.textContent="›";
 
-    nextButton.addEventListener(
+
+    next.addEventListener(
       "click",
-      function(event){
+      function(e){
 
-        event.preventDefault();
-        event.stopPropagation();
+        e.preventDefault();
 
-        nextVariant(product.id);
+        e.stopPropagation();
+
+        nextVariant(p.id);
 
       }
     );
 
-    variantControl.appendChild(
-      previousButton
-    );
 
-    variantControl.appendChild(
-      variantLabel
-    );
+    variantControl.appendChild(prev);
 
-    variantControl.appendChild(
-      nextButton
-    );
+    variantControl.appendChild(label);
+
+    variantControl.appendChild(next);
 
 
-    /* QUANTITY */
+    /* =====================
+       QUANTITY
+    ===================== */
 
-    const quantityBox =
+    const qbox =
       document.createElement("div");
 
-    quantityBox.className="q";
+    qbox.className="q";
+
 
     const minus =
       document.createElement("button");
 
     minus.type="button";
+
     minus.textContent="−";
+
 
     minus.addEventListener(
       "click",
       function(){
 
-        change(product.id,-1);
+        change(p.id,-1);
 
       }
     );
 
+
     const number =
       document.createElement("b");
 
-    number.textContent =
-      quantity;
+    number.textContent=n;
 
 
     const plus =
       document.createElement("button");
 
     plus.type="button";
+
     plus.textContent="+";
+
 
     plus.addEventListener(
       "click",
       function(){
 
-        change(product.id,1);
+        change(p.id,1);
 
       }
     );
 
-    quantityBox.appendChild(minus);
-    quantityBox.appendChild(number);
-    quantityBox.appendChild(plus);
+
+    qbox.appendChild(minus);
+
+    qbox.appendChild(number);
+
+    qbox.appendChild(plus);
 
 
     info.appendChild(code);
+
     info.appendChild(name);
+
     info.appendChild(variantControl);
-    info.appendChild(quantityBox);
 
-    card.appendChild(picture);
-    card.appendChild(info);
+    info.appendChild(qbox);
 
-    list.appendChild(card);
+
+    d.appendChild(pic);
+
+    d.appendChild(info);
+
+
+    list.appendChild(d);
 
   });
 
 }
 
 
-/* =========================================================
-   VARIANT KEY
-========================================================= */
-
-function getVariantKey(variant,index){
-
-  return String(
-    variant.label ||
-    variant.size ||
-    variant.code ||
-    variant.sku ||
-    index
-  );
-
-}
-
-
-/* =========================================================
+/* =========================
    PREVIOUS VARIANT
-========================================================= */
+========================= */
 
 function prevVariant(id){
 
-  const product =
-    products.find(function(item){
+  const p =
+    products.find(x=>x.id===id);
 
-      return String(item.id) === String(id);
-
-    });
 
   if(
-    !product ||
-    !Array.isArray(product.variants) ||
-    !product.variants.length
+    !p ||
+    !p.variants?.length
   ){
+
     return;
+
   }
 
-  let index =
-    selectedVariant[product.id] || 0;
 
-  index--;
+  let i =
+    sel[id]||0;
 
-  if(index < 0){
-    index =
-      product.variants.length - 1;
+
+  i--;
+
+
+  if(i<0){
+
+    i=
+      p.variants.length-1;
+
   }
 
-  selectedVariant[product.id]=index;
+
+  sel[id]=i;
 
   render();
 
 }
 
 
-/* =========================================================
+/* =========================
    NEXT VARIANT
-========================================================= */
+========================= */
 
 function nextVariant(id){
 
-  const product =
-    products.find(function(item){
+  const p =
+    products.find(x=>x.id===id);
 
-      return String(item.id) === String(id);
-
-    });
 
   if(
-    !product ||
-    !Array.isArray(product.variants) ||
-    !product.variants.length
+    !p ||
+    !p.variants?.length
   ){
+
     return;
+
   }
 
-  let index =
-    selectedVariant[product.id] || 0;
 
-  index++;
+  let i =
+    sel[id]||0;
 
-  if(index >= product.variants.length){
-    index=0;
+
+  i++;
+
+
+  if(i>=p.variants.length){
+
+    i=0;
+
   }
 
-  selectedVariant[product.id]=index;
+
+  sel[id]=i;
 
   render();
 
 }
 
 
-/* =========================================================
-   CHANGE PRODUCT QUANTITY
-========================================================= */
+/* =========================
+   CHANGE QUANTITY
+========================= */
 
 function change(id,d){
 
-  const product =
-    products.find(function(item){
+  const p =
+    products.find(x=>x.id===id);
 
-      return String(item.id) === String(id);
-
-    });
 
   if(
-    !product ||
-    !Array.isArray(product.variants) ||
-    !product.variants.length
+    !p ||
+    !p.variants?.length
   ){
+
     return;
+
   }
 
-  const index =
-    selectedVariant[product.id] || 0;
 
-  const variant =
-    product.variants[index];
+  const v =
+    p.variants[
+      sel[id]||0
+    ];
 
-  const variantKey =
-    getVariantKey(variant,index);
 
-  const cartKey =
-    String(product.id) +
-    "_" +
-    variantKey;
+  const k =
+    p.id+'_'+v.label;
 
-  let quantity =
-    cartData[cartKey]?.qty || 0;
 
-  quantity += d;
+  let n =
+    (cartData[k]?.qty||0)+d;
 
-  if(quantity <= 0){
 
-    delete cartData[cartKey];
+  if(n<=0){
+
+    delete cartData[k];
 
   }else{
 
-    cartData[cartKey]={
+    cartData[k]={
 
-      id:product.id,
+      id:p.id,
 
-      name:
-        product.name || "",
+      name:p.name,
 
-      variant:
-        variant.label ||
-        variant.size ||
-        "",
+      variant:v.label,
 
-      code:
-        variant.code ||
-        variant.sku ||
-        "",
+      code:v.code||'',
 
-      img:
-        variant.img ||
-        variant.image ||
-        product.img ||
-        product.image ||
-        "",
+      img:v.img||p.img||'',
 
-      qty:quantity
+      qty:n
 
     };
 
   }
 
-  saveCart();
 
   updateCartCount();
 
   render();
 
+
   if(
-    cartOverlay.classList.contains("open")
+    cartOverlay.classList.contains('open')
   ){
+
     renderCart();
+
   }
 
 }
 
 
-/* =========================================================
+/* =========================
    CART COUNT
-========================================================= */
+========================= */
 
 function updateCartCount(){
 
   const total =
     Object.values(cartData)
       .reduce(
-        function(sum,item){
-
-          return sum +
-            Number(item.qty || 0);
-
-        },
+        (s,x)=>
+          s+Number(x.qty||0),
         0
       );
+
 
   count.textContent=total;
 
@@ -1268,26 +1242,344 @@ function updateCartCount(){
 }
 
 
-/* =========================================================
-   OPEN CART
-========================================================= */
+/* =========================
+   SHOW CART
+========================= */
 
 function showCart(){
 
   renderCart();
 
-  cartOverlay.classList.add("open");
+  cartOverlay.classList.add('open');
 
-  cartOverlay.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-  document.body.style.overflow="hidden";
+  document.body.style.overflow=
+    'hidden';
 
 }
 
 
-/* =========================================================
+/* =========================
    CLOSE CART
-==============
+========================= */
+
+function closeCart(){
+
+  cartOverlay.classList.remove('open');
+
+  document.body.style.overflow='';
+
+}
+
+
+/* =========================
+   RENDER CART
+========================= */
+
+function renderCart(){
+
+  const keys =
+    Object.keys(cartData);
+
+
+  if(!keys.length){
+
+    cartItems.innerHTML =
+      '<div class="empty-cart">' +
+      'Cart is empty' +
+      '</div>';
+
+    updateCartCount();
+
+    return;
+
+  }
+
+
+  cartItems.innerHTML='';
+
+
+  keys.forEach(k=>{
+
+    const x =
+      cartData[k];
+
+
+    const item =
+      document.createElement("div");
+
+    item.className="item";
+
+
+    const itemName =
+      document.createElement("div");
+
+    itemName.className=
+      "item-name";
+
+    itemName.textContent=
+      x.name;
+
+
+    const itemInfo =
+      document.createElement("div");
+
+    itemInfo.className=
+      "item-info";
+
+    itemInfo.textContent=
+      x.variant+
+      " | Code: "+
+      x.code;
+
+
+    const controls =
+      document.createElement("div");
+
+    controls.className=
+      "cart-controls";
+
+
+    const minus =
+      document.createElement("button");
+
+    minus.type="button";
+
+    minus.textContent="−";
+
+
+    minus.addEventListener(
+      "click",
+      function(){
+
+        cartChange(k,-1);
+
+      }
+    );
+
+
+    const qty =
+      document.createElement("b");
+
+    qty.textContent=
+      x.qty;
+
+
+    const plus =
+      document.createElement("button");
+
+    plus.type="button";
+
+    plus.textContent="+";
+
+
+    plus.addEventListener(
+      "click",
+      function(){
+
+        cartChange(k,1);
+
+      }
+    );
+
+
+    const remove =
+      document.createElement("button");
+
+    remove.type="button";
+
+    remove.className="remove";
+
+    remove.textContent=
+      "Remove";
+
+
+    remove.addEventListener(
+      "click",
+      function(){
+
+        removeCart(k);
+
+      }
+    );
+
+
+    controls.appendChild(minus);
+
+    controls.appendChild(qty);
+
+    controls.appendChild(plus);
+
+    controls.appendChild(remove);
+
+
+    item.appendChild(itemName);
+
+    item.appendChild(itemInfo);
+
+    item.appendChild(controls);
+
+
+    cartItems.appendChild(item);
+
+  });
+
+
+  updateCartCount();
+
+}
+
+
+/* =========================
+   CART CHANGE
+========================= */
+
+function cartChange(k,d){
+
+  if(!cartData[k]){
+
+    return;
+
+  }
+
+
+  cartData[k].qty += d;
+
+
+  if(cartData[k].qty<=0){
+
+    delete cartData[k];
+
+  }
+
+
+  renderCart();
+
+  render();
+
+}
+
+
+/* =========================
+   REMOVE
+========================= */
+
+function removeCart(k){
+
+  delete cartData[k];
+
+  renderCart();
+
+  render();
+
+}
+
+
+/* =========================
+   IMAGE VIEWER
+========================= */
+
+function openViewer(src){
+
+  if(!src){
+
+    return;
+
+  }
+
+
+  viewerImg.src=src;
+
+  viewer.classList.add('open');
+
+  document.body.style.overflow=
+    'hidden';
+
+}
+
+
+/* =========================
+   CLOSE VIEWER
+========================= */
+
+function closeViewer(){
+
+  viewer.classList.remove('open');
+
+  viewerImg.src='';
+
+  document.body.style.overflow='';
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+function wa(){
+
+  const keys =
+    Object.keys(cartData);
+
+
+  if(!keys.length){
+
+    alert('Cart is empty');
+
+    return;
+
+  }
+
+
+  let m =
+    '*NEW ORDER - BIN AMEEN TRADER*\\n\\n';
+
+
+  keys.forEach((k,i)=>{
+
+    const x =
+      cartData[k];
+
+
+    m +=
+      `${i+1}. *${x.name}*\\n`+
+      `Variant: ${x.variant}\\n`+
+      `Code: ${x.code} | Qty: *${x.qty}*\\n\\n`;
+
+  });
+
+
+  window.open(
+    'https://wa.me/923331390045?text='+
+    encodeURIComponent(m),
+    '_blank'
+  );
+
+}
+
+
+/* =========================
+   BASIC HTML SAFETY
+========================= */
+
+function escapeHtml(str){
+
+  return String(str??'')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+search.oninput=render;
+
+
+/* =========================
+   CART BUTTON EVENTS
