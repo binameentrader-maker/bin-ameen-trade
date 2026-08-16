@@ -21,5 +21,20 @@
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
       }
     ]
+  },
+  {
+    "id": 1786909578959,
+    "name": "JOHSONS BABY SHAMPOO",
+    "category": "ACCESSORIES",
+    "optionTitle": "SIZE",
+    "img": "",
+    "variants": [
+      {
+        "label": "100ML",
+        "size": "100ML",
+        "code": "JBS-100ML",
+        "img": "https://drive.google.com/uc?export=view&id=1EVO5p9XoPusDaf2LbfS5oqEqLu3ev6KN"
+      }
+    ]
   }
 ]
