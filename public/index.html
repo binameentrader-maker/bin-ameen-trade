@@ -3,23 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>BIN AMEEN TRADER</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
 padding:8px;
 background:#c8d3df;
 font-family:Arial,sans-serif;
-color:#1f293d
+color:#1f293d;
 }
 
 .wrap{
 max-width:480px;
-margin:auto
+margin:auto;
 }
+
+/* ================= HEADER ================= */
 
 header{
 background:#fff;
@@ -27,17 +33,19 @@ border:2px solid #8fa0b5;
 border-radius:3px;
 padding:9px;
 margin-bottom:8px;
-text-align:center
+text-align:center;
 }
 
 header h2{
 margin:2px 0;
-font-size:21px
+font-size:21px;
 }
 
 header div{
-font-size:14px
+font-size:14px;
 }
+
+/* ================= CART BUTTON ================= */
 
 .cart-top{
 width:100%;
@@ -48,14 +56,16 @@ border-radius:3px;
 padding:11px;
 font-size:16px;
 font-weight:bold;
-margin-bottom:8px
+margin-bottom:8px;
 }
+
+/* ================= CATEGORIES ================= */
 
 .categories{
 display:flex;
 gap:5px;
 overflow-x:auto;
-padding:2px 0 7px
+padding:2px 0 7px;
 }
 
 .categories button{
@@ -66,13 +76,15 @@ border:1px solid #8fa0b5;
 border-radius:3px;
 padding:7px 10px;
 font-size:11px;
-font-weight:bold
+font-weight:bold;
 }
 
 .categories button.active{
 background:#1f293d;
-color:#fff
+color:#fff;
 }
+
+/* ================= SEARCH ================= */
 
 .search{
 width:100%;
@@ -81,8 +93,10 @@ border:2px solid #8fa0b5;
 border-radius:3px;
 font-size:14px;
 margin-bottom:8px;
-outline:none
+outline:none;
 }
+
+/* ================= PRODUCT CARD ================= */
 
 .card{
 background:#fff;
@@ -90,9 +104,10 @@ border:2px solid #8fa0b5;
 border-radius:3px;
 padding:7px;
 margin-bottom:7px;
+
 display:flex;
 gap:8px;
-align-items:center
+align-items:center;
 }
 
 .pic{
@@ -104,7 +119,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 background:#fff;
-overflow:hidden
+overflow:hidden;
+cursor:pointer;
+position:relative;
 }
 
 .pic img{
@@ -112,12 +129,13 @@ max-width:100%;
 max-height:100%;
 object-fit:contain;
 user-select:none;
--webkit-user-drag:none
+-webkit-user-drag:none;
+pointer-events:none;
 }
 
 .info{
 flex:1;
-min-width:0
+min-width:0;
 }
 
 .name{
@@ -125,7 +143,7 @@ display:block;
 font-size:13px;
 font-weight:bold;
 line-height:1.2;
-margin-bottom:4px
+margin-bottom:4px;
 }
 
 .code{
@@ -135,14 +153,14 @@ font-weight:bold;
 background:#f1f5f9;
 padding:3px 5px;
 border-radius:2px;
-margin-bottom:4px
+margin-bottom:4px;
 }
 
 .vs{
 display:flex;
 gap:3px;
 flex-wrap:wrap;
-margin:3px 0
+margin:3px 0;
 }
 
 .v{
@@ -151,19 +169,20 @@ border:1px solid #8fa0b5;
 border-radius:3px;
 padding:5px 7px;
 font-size:10px;
-font-weight:bold
+font-weight:bold;
+cursor:pointer;
 }
 
 .v.active{
 background:#1f293d;
-color:#fff
+color:#fff;
 }
 
 .q{
 display:flex;
 align-items:center;
 gap:5px;
-margin-top:4px
+margin-top:4px;
 }
 
 .q button{
@@ -174,13 +193,13 @@ border-radius:3px;
 background:#475569;
 color:#fff;
 font-size:17px;
-font-weight:bold
+font-weight:bold;
 }
 
 .q b{
 min-width:18px;
 text-align:center;
-font-size:13px
+font-size:13px;
 }
 
 .no-items{
@@ -189,34 +208,218 @@ border:2px solid #8fa0b5;
 border-radius:3px;
 padding:20px;
 text-align:center;
-font-weight:bold
+font-weight:bold;
 }
 
 
-/* =========================
+/* =================================================
+   PRODUCT VIEW / IMAGE VIEW
+================================================= */
+
+#productView{
+display:none;
+position:fixed;
+inset:0;
+z-index:9000;
+background:#c8d3df;
+overflow-y:auto;
+}
+
+#productView.open{
+display:block;
+}
+
+.view-inner{
+max-width:480px;
+margin:auto;
+padding:8px;
+}
+
+/* View header */
+
+.view-header{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:3px;
+padding:9px;
+margin-bottom:8px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+}
+
+.view-title{
+font-size:17px;
+font-weight:bold;
+}
+
+.close-view{
+background:#1f293d;
+color:#fff;
+border:0;
+border-radius:3px;
+padding:8px 12px;
+font-weight:bold;
+}
+
+/* Big image */
+
+.big-image-box{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:3px;
+padding:10px;
+position:relative;
+text-align:center;
+}
+
+.big-image{
+width:100%;
+height:330px;
+object-fit:contain;
+user-select:none;
+-webkit-user-drag:none;
+pointer-events:none;
+}
+
+/* Watermark */
+
+.watermark{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-25deg);
+
+font-size:28px;
+font-weight:bold;
+
+color:rgba(31,41,61,.13);
+
+pointer-events:none;
+user-select:none;
+
+white-space:nowrap;
+}
+
+/* View information */
+
+.view-info{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:3px;
+padding:10px;
+margin-top:8px;
+}
+
+.view-name{
+font-size:17px;
+font-weight:bold;
+line-height:1.25;
+margin-bottom:6px;
+}
+
+.view-code{
+display:inline-block;
+background:#f1f5f9;
+padding:5px 8px;
+font-size:12px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+/* Variant buttons */
+
+.view-variants{
+display:flex;
+gap:5px;
+flex-wrap:wrap;
+margin-bottom:8px;
+}
+
+.view-variant{
+background:#f1f5f9;
+border:1px solid #8fa0b5;
+border-radius:3px;
+padding:8px 10px;
+font-weight:bold;
+font-size:12px;
+}
+
+.view-variant.active{
+background:#1f293d;
+color:#fff;
+}
+
+/* Quantity in view */
+
+.view-quantity{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+margin:8px 0;
+}
+
+.view-quantity button{
+width:42px;
+height:38px;
+border:0;
+border-radius:3px;
+background:#475569;
+color:white;
+font-size:22px;
+font-weight:bold;
+}
+
+.view-quantity b{
+font-size:18px;
+min-width:30px;
+text-align:center;
+}
+
+/* Next Back */
+
+.view-navigation{
+display:flex;
+gap:8px;
+margin-top:8px;
+}
+
+.view-navigation button{
+flex:1;
+border:0;
+border-radius:3px;
+padding:12px;
+font-size:15px;
+font-weight:bold;
+background:#1f293d;
+color:white;
+}
+
+
+/* =================================================
    SEPARATE CART SCREEN
-========================= */
+================================================= */
 
 #cartScreen{
 display:none;
 position:fixed;
-left:0;
-top:0;
-right:0;
-bottom:0;
+inset:0;
+z-index:9999;
 background:#c8d3df;
-z-index:99999;
-overflow-y:auto
+overflow-y:auto;
 }
 
 #cartScreen.open{
-display:block
+display:block;
 }
 
 .cart-inner{
 max-width:480px;
 margin:auto;
-padding:8px
+padding:8px;
 }
 
 .cart-header{
@@ -225,14 +428,16 @@ border:2px solid #8fa0b5;
 border-radius:3px;
 padding:10px;
 margin-bottom:8px;
+
 display:flex;
 align-items:center;
-justify-content:space-between
+justify-content:space-between;
+gap:8px;
 }
 
 .cart-header h2{
 margin:0;
-font-size:19px
+font-size:19px;
 }
 
 .back-btn{
@@ -241,7 +446,7 @@ color:#fff;
 border:0;
 border-radius:3px;
 padding:8px 11px;
-font-weight:bold
+font-weight:bold;
 }
 
 .cart-item{
@@ -249,24 +454,24 @@ background:#fff;
 border:2px solid #8fa0b5;
 border-radius:3px;
 padding:9px;
-margin-bottom:7px
+margin-bottom:7px;
 }
 
 .cart-item-name{
 font-weight:bold;
-font-size:14px
+font-size:14px;
 }
 
 .cart-item-details{
 font-size:12px;
-margin-top:4px
+margin-top:4px;
 }
 
 .cart-controls{
 display:flex;
 align-items:center;
 gap:6px;
-margin-top:7px
+margin-top:7px;
 }
 
 .cart-controls button{
@@ -275,11 +480,11 @@ color:#fff;
 border:0;
 border-radius:3px;
 padding:5px 10px;
-font-weight:bold
+font-weight:bold;
 }
 
 .cart-controls .remove{
-background:#991b1b
+background:#991b1b;
 }
 
 .whatsapp{
@@ -291,7 +496,7 @@ border-radius:3px;
 padding:12px;
 font-size:15px;
 font-weight:bold;
-margin-top:5px
+margin-top:5px;
 }
 
 .empty{
@@ -300,49 +505,171 @@ border:2px solid #8fa0b5;
 border-radius:3px;
 padding:25px;
 text-align:center;
-font-weight:bold
+font-weight:bold;
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     HOME / CATALOGUE
-========================= -->
+
+<!-- =================================================
+     HOME SCREEN
+================================================= -->
 
 <div class="wrap" id="homeScreen">
 
 <header>
+
 <h2>BIN AMEEN TRADER</h2>
-<div>Call: 03331390045</div>
+
+<div>
+Call: 03331390045
+</div>
+
 </header>
 
-<!-- صرف CART BUTTON -->
+
+<!-- CART ONLY BUTTON -->
+
 <button class="cart-top" onclick="openCart()">
+
 View Cart (<span id="count">0</span>)
+
 </button>
 
-<!-- CATEGORIES -->
-<div class="categories" id="categories"></div>
+
+<!-- CATEGORY -->
+
+<div
+class="categories"
+id="categories">
+</div>
+
 
 <!-- SEARCH -->
+
 <input
 class="search"
 id="search"
 placeholder="Search product name or SKU code..."
 >
 
+
 <!-- PRODUCTS -->
+
 <div id="list"></div>
 
 </div>
 
 
-<!-- =========================
-     الگ CART SCREEN
-     HOME SCREEN سے باہر
-========================= -->
+
+<!-- =================================================
+     PRODUCT VIEW SCREEN
+================================================= -->
+
+<div id="productView">
+
+<div class="view-inner">
+
+<div class="view-header">
+
+<div class="view-title">
+Product View
+</div>
+
+<button
+class="close-view"
+onclick="closeProductView()"
+>
+← Back
+</button>
+
+</div>
+
+
+<div class="big-image-box">
+
+<img
+id="viewImage"
+class="big-image"
+draggable="false"
+oncontextmenu="return false"
+>
+
+<div class="watermark">
+BIN AMEEN TRADER
+</div>
+
+</div>
+
+
+<div class="view-info">
+
+<div
+id="viewName"
+class="view-name">
+</div>
+
+
+<div
+id="viewCode"
+class="view-code">
+</div>
+
+
+<!-- VARIANTS -->
+
+<div
+id="viewVariants"
+class="view-variants">
+</div>
+
+
+<!-- QUANTITY -->
+
+<div class="view-quantity">
+
+<button onclick="viewQuantity(-1)">
+−
+</button>
+
+<b id="viewQty">0</b>
+
+<button onclick="viewQuantity(1)">
++
+</button>
+
+</div>
+
+
+<!-- NEXT / BACK -->
+
+<div class="view-navigation">
+
+<button onclick="previousProduct()">
+← Previous
+</button>
+
+<button onclick="nextProduct()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =================================================
+     SEPARATE CART SCREEN
+================================================= -->
 
 <div id="cartScreen">
 
@@ -350,17 +677,27 @@ placeholder="Search product name or SKU code..."
 
 <div class="cart-header">
 
-<h2>Your Selected Items</h2>
+<h2>
+Your Selected Items
+</h2>
 
-<button class="back-btn" onclick="closeCart()">
+<button
+class="back-btn"
+onclick="closeCart()"
+>
 ← Back
 </button>
 
 </div>
 
+
 <div id="cartItems"></div>
 
-<button class="whatsapp" onclick="sendWhatsApp()">
+
+<button
+class="whatsapp"
+onclick="sendWhatsApp()"
+>
 Send Order on WhatsApp
 </button>
 
@@ -369,85 +706,124 @@ Send Order on WhatsApp
 </div>
 
 
+
 <script>
 
+
+/* =================================================
+   DATA
+================================================= */
+
 let products=[];
+
 let selectedVariant={};
+
 let cart={};
+
 let currentCategory="ALL";
 
+let viewProductIndex=0;
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+
+/* =================================================
+   LOAD
+================================================= */
 
 async function loadProducts(){
 
 try{
 
-const response=await fetch("/api/products");
+const response=
+await fetch("/api/products");
 
 if(!response.ok){
+
 throw new Error("Products API Error");
+
 }
 
 products=await response.json();
 
+
 products.forEach(p=>{
+
 selectedVariant[p.id]=0;
+
 });
 
+
 drawCategories();
+
 renderProducts();
+
 
 }catch(error){
 
 console.error(error);
 
 document.getElementById("list").innerHTML=
-'<div class="no-items">Products load نہیں ہو سکے۔</div>';
+`
+<div class="no-items">
+Products load نہیں ہو سکے۔
+</div>
+`;
 
 }
 
 }
 
 
-/* =========================
+/* =================================================
    CATEGORIES
-========================= */
+================================================= */
 
 function drawCategories(){
 
-const box=document.getElementById("categories");
+const box=
+document.getElementById("categories");
+
 
 const categories=[
 "ALL",
 ...new Set(
+
 products
+
 .map(p=>p.category)
-.filter(c=>c && String(c).trim()!=="")
+
+.filter(c=>
+c &&
+String(c).trim()!==""
+)
+
 )
 ];
 
-box.innerHTML=categories.map(category=>{
+
+box.innerHTML=
+categories.map(category=>{
 
 const active=
 currentCategory===category
 ?"active"
 :"";
 
-const title=
-category==="ALL"
-?"ALL ITEMS"
-:category;
 
 return `
+
 <button
 class="${active}"
 onclick="selectCategory(${JSON.stringify(category)})"
 >
-${escapeHtml(title)}
+
+${escapeHtml(
+category==="ALL"
+?"ALL ITEMS"
+:category
+)}
+
 </button>
+
 `;
 
 }).join("");
@@ -455,15 +831,16 @@ ${escapeHtml(title)}
 }
 
 
-/* =========================
-   CHANGE CATEGORY
-========================= */
+/* =================================================
+   CATEGORY CHANGE
+================================================= */
 
 function selectCategory(category){
 
 currentCategory=category;
 
 drawCategories();
+
 renderProducts();
 
 window.scrollTo({
@@ -474,30 +851,36 @@ behavior:"smooth"
 }
 
 
-/* =========================
+/* =================================================
    RENDER PRODUCTS
-========================= */
+================================================= */
 
 function renderProducts(){
 
-const list=document.getElementById("list");
+const list=
+document.getElementById("list");
+
 
 const query=
-document.getElementById("search")
+document
+.getElementById("search")
 .value
 .toLowerCase()
 .trim();
 
 
-const filtered=products.filter(p=>{
+const filtered=
+products.filter(p=>{
 
 const categoryOK=
 currentCategory==="ALL" ||
 p.category===currentCategory;
 
+
 const name=
 String(p.name||"")
 .toLowerCase();
+
 
 const codeMatch=
 Array.isArray(p.variants) &&
@@ -507,8 +890,10 @@ String(v.code||"")
 .includes(query)
 );
 
+
 const nameMatch=
 name.includes(query);
+
 
 return categoryOK &&
 (
@@ -523,7 +908,11 @@ codeMatch
 if(filtered.length===0){
 
 list.innerHTML=
-'<div class="no-items">No items found</div>';
+`
+<div class="no-items">
+No items found
+</div>
+`;
 
 return;
 
@@ -532,24 +921,29 @@ return;
 
 list.innerHTML="";
 
+
 filtered.forEach(product=>{
-createProduct(product,list);
+
+createProductCard(product,list);
+
 });
 
 }
 
 
-/* =========================
+/* =================================================
    PRODUCT CARD
-========================= */
+================================================= */
 
-function createProduct(product,list){
+function createProductCard(product,list){
 
 if(
 !Array.isArray(product.variants) ||
 product.variants.length===0
 ){
+
 return;
+
 }
 
 
@@ -558,7 +952,9 @@ selectedVariant[product.id]||0;
 
 
 if(index>=product.variants.length){
+
 index=0;
+
 }
 
 
@@ -583,6 +979,7 @@ product.img ||
 const card=
 document.createElement("div");
 
+
 card.className="card";
 
 
@@ -590,7 +987,7 @@ card.innerHTML=`
 
 <div
 class="pic"
-onclick="openProduct(${product.id})"
+onclick="openProductView(${product.id})"
 oncontextmenu="return false"
 >
 
@@ -605,27 +1002,46 @@ oncontextmenu="return false"
 
 <div class="info">
 
+
 <span class="name">
-${escapeHtml(product.name||"")}
+
+${escapeHtml(
+product.name||""
+)}
+
 </span>
 
+
 <span class="code">
-CODE: ${escapeHtml(variant.code||"")}
+
+CODE:
+${escapeHtml(
+variant.code||""
+)}
+
 </span>
 
 
 <div class="vs">
 
-${product.variants.map((v,i)=>`
+${
+product.variants
+.map((v,i)=>`
 
 <button
 class="v ${i===index?"active":""}"
 onclick="selectVariant(${product.id},${i})"
 >
-${escapeHtml(v.label||"")}
+
+${escapeHtml(
+v.label||""
+)}
+
 </button>
 
-`).join("")}
+`).join("")
+}
+
 
 </div>
 
@@ -638,7 +1054,9 @@ onclick="changeQuantity(${product.id},-1)"
 −
 </button>
 
-<b>${qty}</b>
+<b>
+${qty}
+</b>
 
 <button
 onclick="changeQuantity(${product.id},1)"
@@ -648,7 +1066,9 @@ onclick="changeQuantity(${product.id},1)"
 
 </div>
 
+
 </div>
+
 `;
 
 
@@ -657,9 +1077,9 @@ list.appendChild(card);
 }
 
 
-/* =========================
-   VARIANT
-========================= */
+/* =================================================
+   SELECT VARIANT
+================================================= */
 
 function selectVariant(id,index){
 
@@ -670,9 +1090,9 @@ renderProducts();
 }
 
 
-/* =========================
-   QUANTITY
-========================= */
+/* =================================================
+   CHANGE QUANTITY
+================================================= */
 
 function changeQuantity(id,direction){
 
@@ -684,6 +1104,7 @@ if(!product)return;
 
 const index=
 selectedVariant[id]||0;
+
 
 const variant=
 product.variants[index];
@@ -704,67 +1125,348 @@ delete cart[key];
 }else{
 
 cart[key]={
+
 name:product.name,
+
 variant:variant.label,
+
 code:variant.code,
+
 img:variant.img||product.img||"",
+
 qty:newQty
+
 };
 
 }
 
 
-updateCount();
+updateCartCount();
 
 renderProducts();
 
 }
 
 
-/* =========================
+/* =================================================
    CART COUNT
-========================= */
+================================================= */
 
-function updateCount(){
+function updateCartCount(){
 
 const total=
 Object.values(cart)
 .reduce(
-(sum,item)=>sum+Number(item.qty||0),
+(sum,item)=>
+sum+Number(item.qty||0),
 0
 );
 
-document.getElementById("count").textContent=total;
+
+document.getElementById("count")
+.textContent=total;
 
 }
 
 
-/* =========================
-   OPEN CART
-========================= */
+/* =================================================
+   PRODUCT VIEW
+================================================= */
 
-function openCart(){
+function openProductView(id){
 
-/*
-  صرف الگ Cart Screen دکھائیں
-  Home screen میں Cart کبھی
-  render نہیں ہوگا۔
-*/
+const index=
+products.findIndex(
+p=>p.id===id
+);
 
-renderCart();
+if(index<0)return;
+
+
+viewProductIndex=index;
+
+
+renderProductView();
+
 
 document
-.getElementById("cartScreen")
+.getElementById("productView")
 .classList.add("open");
+
 
 document.body.style.overflow="hidden";
 
 }
 
 
-/* =========================
-   CLOSE CART
-========================= */
+/* =================================================
+   RENDER PRODUCT VIEW
+================================================= */
+
+function renderProductView(){
+
+const product=
+products[viewProductIndex];
+
+if(!product)return;
+
+
+let variantIndex=
+selectedVariant[product.id]||0;
+
+
+if(
+variantIndex>=product.variants.length
+){
+
+variantIndex=0;
+
+selectedVariant[product.id]=0;
+
+}
+
+
+const variant=
+product.variants[variantIndex];
+
+
+const image=
+variant.img ||
+product.img ||
+"";
+
+
+document.getElementById("viewImage")
+.src=image;
+
+
+document.getElementById("viewName")
+.textContent=
+product.name || "";
+
+
+document.getElementById("viewCode")
+.textContent=
+"CODE: "+(variant.code||"");
+
+
+/* VARIANT BUTTONS */
+
+document.getElementById("viewVariants")
+.innerHTML=
+
+product.variants
+.map((v,i)=>`
+
+<button
+class="view-variant ${
+i===variantIndex
+?"active"
+:""
+}"
+onclick="selectViewVariant(${i})"
+>
+
+${escapeHtml(
+v.label||""
+)}
+
+</button>
+
+`)
+.join("");
+
+
+/* QUANTITY */
+
+const key=
+product.id+"_"+variant.label;
+
+
+document.getElementById("viewQty")
+.textContent=
+cart[key]?.qty||0;
+
+}
+
+
+/* =================================================
+   VIEW VARIANT
+================================================= */
+
+function selectViewVariant(index){
+
+const product=
+products[viewProductIndex];
+
+if(!product)return;
+
+
+selectedVariant[product.id]=index;
+
+renderProductView();
+
+renderProducts();
+
+}
+
+
+/* =================================================
+   VIEW QUANTITY
+================================================= */
+
+function viewQuantity(direction){
+
+const product=
+products[viewProductIndex];
+
+if(!product)return;
+
+
+const index=
+selectedVariant[product.id]||0;
+
+
+const variant=
+product.variants[index];
+
+
+const key=
+product.id+"_"+variant.label;
+
+
+const newQty=
+(cart[key]?.qty||0)+direction;
+
+
+if(newQty<=0){
+
+delete cart[key];
+
+}else{
+
+cart[key]={
+
+name:product.name,
+
+variant:variant.label,
+
+code:variant.code,
+
+img:variant.img||product.img||"",
+
+qty:newQty
+
+};
+
+}
+
+
+updateCartCount();
+
+renderProductView();
+
+renderProducts();
+
+}
+
+
+/* =================================================
+   NEXT PRODUCT
+================================================= */
+
+function nextProduct(){
+
+if(products.length===0)return;
+
+
+let next=
+viewProductIndex+1;
+
+
+if(next>=products.length){
+
+next=0;
+
+}
+
+
+viewProductIndex=next;
+
+
+renderProductView();
+
+}
+
+
+/* =================================================
+   PREVIOUS PRODUCT
+================================================= */
+
+function previousProduct(){
+
+if(products.length===0)return;
+
+
+let previous=
+viewProductIndex-1;
+
+
+if(previous<0){
+
+previous=products.length-1;
+
+}
+
+
+viewProductIndex=previous;
+
+
+renderProductView();
+
+}
+
+
+/* =================================================
+   CLOSE PRODUCT VIEW
+================================================= */
+
+function closeProductView(){
+
+document
+.getElementById("productView")
+.classList.remove("open");
+
+
+document.body.style.overflow="";
+
+renderProducts();
+
+}
+
+
+/* =================================================
+   CART OPEN
+================================================= */
+
+function openCart(){
+
+renderCart();
+
+
+document
+.getElementById("cartScreen")
+.classList.add("open");
+
+
+document.body.style.overflow="hidden";
+
+}
+
+
+/* =================================================
+   CART CLOSE
+================================================= */
 
 function closeCart(){
 
@@ -772,19 +1474,21 @@ document
 .getElementById("cartScreen")
 .classList.remove("open");
 
+
 document.body.style.overflow="";
 
 }
 
 
-/* =========================
+/* =================================================
    RENDER CART
-========================= */
+================================================= */
 
 function renderCart(){
 
 const box=
 document.getElementById("cartItems");
+
 
 const items=
 Object.values(cart);
@@ -793,51 +1497,74 @@ Object.values(cart);
 if(items.length===0){
 
 box.innerHTML=
-'<div class="empty">Cart is empty</div>';
+`
+<div class="empty">
+Cart is empty
+</div>
+`;
 
 return;
 
 }
 
 
-box.innerHTML=items.map((item,index)=>`
+box.innerHTML=
+
+items.map((item,index)=>`
 
 <div class="cart-item">
 
 <div class="cart-item-name">
-${index+1}. ${escapeHtml(item.name)}
+
+${index+1}.
+${escapeHtml(item.name)}
+(${escapeHtml(item.variant)})
+
 </div>
 
+
 <div class="cart-item-details">
-${escapeHtml(item.variant)}
+
+Code:
+${escapeHtml(item.code)}
+
 &nbsp; | &nbsp;
-Code: ${escapeHtml(item.code)}
-&nbsp; | &nbsp;
-Qty: <b>${item.qty}</b>
+
+Qty:
+<b>${item.qty}</b>
+
 </div>
+
 
 <div class="cart-controls">
 
+
 <button
-onclick="cartChange('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}',-1)"
+onclick="changeCartItem('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}',-1)"
 >
 −
 </button>
 
-<b>${item.qty}</b>
+
+<b>
+${item.qty}
+</b>
+
 
 <button
-onclick="cartChange('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}',1)"
+onclick="changeCartItem('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}',1)"
 >
 +
 </button>
 
+
 <button
 class="remove"
-onclick="removeCart('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}')"
+onclick="removeCartItem('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}')"
 >
 Remove
 </button>
+
 
 </div>
 
@@ -848,17 +1575,23 @@ Remove
 }
 
 
-/* =========================
-   CART + / -
-========================= */
+/* =================================================
+   CART + -
+================================================= */
 
-function cartChange(name,variant,direction){
+function changeCartItem(
+name,
+variant,
+direction
+){
 
 const key=
-Object.keys(cart).find(k=>
+Object.keys(cart)
+.find(k=>
 cart[k].name===name &&
 cart[k].variant===variant
 );
+
 
 if(!key)return;
 
@@ -867,44 +1600,57 @@ cart[key].qty+=direction;
 
 
 if(cart[key].qty<=0){
+
 delete cart[key];
+
 }
 
 
-updateCount();
+updateCartCount();
+
 renderCart();
+
 renderProducts();
 
 }
 
 
-/* =========================
-   REMOVE CART
-========================= */
+/* =================================================
+   REMOVE CART ITEM
+================================================= */
 
-function removeCart(name,variant){
+function removeCartItem(
+name,
+variant
+){
 
 const key=
-Object.keys(cart).find(k=>
+Object.keys(cart)
+.find(k=>
 cart[k].name===name &&
 cart[k].variant===variant
 );
 
+
 if(key){
+
 delete cart[key];
+
 }
 
 
-updateCount();
+updateCartCount();
+
 renderCart();
+
 renderProducts();
 
 }
 
 
-/* =========================
+/* =================================================
    WHATSAPP
-========================= */
+================================================= */
 
 function sendWhatsApp(){
 
@@ -915,6 +1661,7 @@ Object.values(cart);
 if(items.length===0){
 
 alert("Cart is empty");
+
 return;
 
 }
@@ -927,79 +1674,13 @@ let message=
 items.forEach((item,index)=>{
 
 message+=
+
 `${index+1}. *${item.name}* (${item.variant})\n`+
+
 `   Code: ${item.code} | Qty: *${item.qty}*\n\n`;
 
 });
 
 
 const url=
-"https://wa.me/923331390045?text="+
-encodeURIComponent(message);
-
-
-window.open(url,"_blank");
-
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-document
-.getElementById("search")
-.addEventListener("input",renderProducts);
-
-
-/* =========================
-   PRODUCT IMAGE
-   TEMPORARY FUNCTION
-========================= */
-
-function openProduct(id){
-
-/*
-  Product image popup کا existing
-  feature یہاں بعد میں add کیا جا سکتا ہے۔
-  ابھی image پر click کرنے سے
-  کوئی download نہیں ہوگا۔
-*/
-
-}
-
-
-/* =========================
-   HELPERS
-========================= */
-
-function escapeHtml(value){
-
-return String(value||"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-function escapeAttribute(value){
-
-return escapeHtml(value)
-.replace(/`/g,"&#096;");
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-loadProducts();
-
-</script>
-
-</body>
-</html>
+"https://wa.me/923331390045?text=
