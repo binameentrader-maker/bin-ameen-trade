@@ -14,62 +14,51 @@ body{
   background:#c8d3df;
   font-family:Arial,sans-serif;
   color:#1f293d;
-  padding:12px;
+  padding:12px
 }
 
 .wrap{
   max-width:480px;
-  margin:auto;
+  margin:auto
 }
 
-header,.card{
+header,.card,.cartbox{
   background:#fff;
   border:2px solid #8fa0b5;
   border-radius:12px;
   padding:12px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 
 h2{
   text-align:center;
-  margin:4px;
-}
-
-button{
-  border:0;
-  border-radius:7px;
-  padding:9px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.main{
-  background:#1f293d;
-  color:#fff;
-}
-
-.cart-button{
-  width:100%;
-  margin-bottom:10px;
+  margin:4px
 }
 
 .cats{
   display:flex;
   gap:6px;
   overflow:auto;
-  margin:10px 0;
-  padding-bottom:3px;
+  margin:10px 0
+}
+
+.cats button,button{
+  border:0;
+  border-radius:7px;
+  padding:9px;
+  font-weight:bold;
+  cursor:pointer
 }
 
 .cats button{
   background:#fff;
   border:1px solid #8fa0b5;
-  white-space:nowrap;
+  white-space:nowrap
 }
 
-.active{
+.active,.main{
   background:#1f293d!important;
-  color:#fff;
+  color:#fff
 }
 
 .search{
@@ -77,18 +66,18 @@ button{
   padding:10px;
   border:2px solid #8fa0b5;
   border-radius:8px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 
 .card{
   display:flex;
   gap:10px;
-  align-items:center;
+  align-items:center
 }
 
 .pic{
-  width:100px;
-  height:110px;
+  width:90px;
+  height:90px;
   border:1px solid #8fa0b5;
   border-radius:7px;
   display:flex;
@@ -98,44 +87,18 @@ button{
   position:relative;
   overflow:hidden;
   background:#fff;
-  cursor:pointer;
-
-  /* IMAGE PROTECTION */
-  -webkit-user-select:none;
-  user-select:none;
-  -webkit-touch-callout:none;
-  -webkit-tap-highlight-color:transparent;
+  cursor:pointer
 }
 
 .pic img{
   max-width:100%;
   max-height:100%;
-  object-fit:contain;
-
-  /* IMAGE PROTECTION */
-  pointer-events:none;
-  -webkit-user-drag:none;
-  user-select:none;
-  -webkit-user-select:none;
-  -webkit-touch-callout:none;
-}
-
-.watermark{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%) rotate(-25deg);
-  font-size:9px;
-  font-weight:bold;
-  color:rgba(31,41,61,.18);
-  white-space:nowrap;
-  pointer-events:none;
-  user-select:none;
+  object-fit:contain
 }
 
 .info{
   flex:1;
-  min-width:0;
+  min-width:0
 }
 
 .code,.v{
@@ -143,255 +106,186 @@ button{
   font-weight:bold;
   background:#f1f5f9;
   padding:4px 7px;
-  border-radius:5px;
+  border-radius:5px
 }
 
 .name{
   display:block;
-  margin-top:5px;
+  margin-top:5px
 }
 
-.variant-control{
+.variantRow{
   display:flex;
   align-items:center;
   gap:4px;
-  margin:7px 0;
+  margin:6px 0
 }
 
-.variant-control button{
-  padding:6px 9px;
+.variantRow button{
   background:#475569;
   color:#fff;
+  padding:6px 10px
 }
 
-.variant-label{
+.variantLabel{
   flex:1;
   text-align:center;
   font-size:12px;
   font-weight:bold;
   background:#f1f5f9;
-  padding:6px;
   border-radius:5px;
+  padding:6px
 }
 
 .q{
   display:flex;
   gap:5px;
-  align-items:center;
+  align-items:center
 }
 
 .q button{
   background:#475569;
   color:white;
-  min-width:32px;
-}
-
-
-/* =========================
-   CART MODAL
-========================= */
-
-.cart-overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:9990;
-  background:rgba(0,0,0,.65);
-  padding:15px;
-  align-items:center;
-  justify-content:center;
-}
-
-.cart-overlay.open{
-  display:flex;
+  min-width:32px
 }
 
 .cartbox{
-  width:min(100%,480px);
-  max-height:90vh;
-  background:#fff;
-  border:2px solid #8fa0b5;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 15px 50px rgba(0,0,0,.35);
-  display:flex;
-  flex-direction:column;
+  display:none
 }
 
-.cart-header{
+.cartbox.open{
+  display:block
+}
+
+.cartHeader{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:12px;
-  background:#1f293d;
-  color:#fff;
+  justify-content:space-between
 }
 
-.cart-header h3{
-  margin:0;
-}
-
-.cart-close{
-  width:34px;
-  height:34px;
-  padding:0;
-  border-radius:50%;
-  background:#fff;
-  color:#1f293d;
-  font-size:18px;
-}
-
-.cart-items{
-  overflow-y:auto;
-  padding:10px;
+.cartHeader button{
+  background:#475569;
+  color:white
 }
 
 .item{
   padding:10px;
   border:1px solid #8fa0b5;
-  border-radius:8px;
+  border-radius:7px;
   margin:7px 0;
-  background:#f8fafc;
+  background:#f8fafc
 }
 
-.item-name{
-  font-weight:bold;
+.itemName{
+  font-weight:bold
 }
 
-.item-info{
+.itemInfo{
   font-size:13px;
-  margin:4px 0;
+  margin-top:4px
 }
 
-.cart-controls{
+.cartControls{
   display:flex;
-  align-items:center;
   gap:6px;
-  margin-top:7px;
+  align-items:center;
+  margin-top:8px
 }
 
-.cart-controls button{
+.cartControls button{
   background:#475569;
-  color:#fff;
+  color:#fff
 }
 
-.remove{
+.removeBtn{
   margin-left:auto;
-  background:#991b1b!important;
+  background:#a11!important
 }
 
-.cart-footer{
-  border-top:1px solid #8fa0b5;
-  padding:10px;
-  background:#fff;
-}
-
-.cart-total{
+.total{
   font-weight:bold;
-  padding:5px 0 9px;
+  margin:10px 0
 }
 
-.whatsapp-btn{
-  width:100%;
-  background:#16a34a;
-  color:#fff;
-  padding:12px;
-}
-
-
-/* =========================
-   IMAGE VIEWER
-========================= */
+/* IMAGE VIEWER */
 
 .viewer{
   display:none;
   position:fixed;
+  z-index:99999;
   inset:0;
-  background:rgba(0,0,0,.75);
-  z-index:9999;
+  background:rgba(0,0,0,.78);
   align-items:center;
   justify-content:center;
-  padding:20px;
-
-  -webkit-user-select:none;
-  user-select:none;
+  padding:15px
 }
 
 .viewer.open{
-  display:flex;
+  display:flex
 }
 
-.viewer-box{
+.viewerBox{
+  position:relative;
   width:min(95vw,500px);
   max-height:90vh;
   background:#fff;
   border-radius:12px;
   padding:15px;
-  position:relative;
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:center
 }
 
-.viewer-box img{
+.viewerBox img{
   max-width:100%;
-  max-height:80vh;
-  object-fit:contain;
-
-  pointer-events:none;
-  -webkit-user-drag:none;
-  user-select:none;
-  -webkit-user-select:none;
-  -webkit-touch-callout:none;
+  max-height:82vh;
+  object-fit:contain
 }
 
-.viewer-watermark{
+.closeViewer{
   position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%) rotate(-25deg);
-  font-size:20px;
-  font-weight:bold;
-  color:rgba(31,41,61,.18);
-  white-space:nowrap;
-  pointer-events:none;
-}
-
-.close-viewer{
-  position:absolute;
-  right:8px;
-  top:8px;
-  width:36px;
-  height:36px;
+  right:7px;
+  top:7px;
+  width:38px;
+  height:38px;
   border-radius:50%;
   background:#1f293d;
   color:#fff;
   font-size:20px;
   padding:0;
-  z-index:5;
+  z-index:2
 }
 
-.empty-cart{
+.watermark{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  font-size:15px;
+  font-weight:bold;
+  color:rgba(31,41,61,.18);
+  white-space:nowrap;
+  pointer-events:none
+}
+
+.viewerWatermark{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  font-size:22px;
+  font-weight:bold;
+  color:rgba(31,41,61,.18);
+  white-space:nowrap;
+  pointer-events:none
+}
+
+.loading{
   text-align:center;
-  padding:25px 10px;
-  color:#64748b;
-}
-
-@media(max-width:380px){
-
-  .pic{
-    width:85px;
-    height:95px;
-  }
-
-  .card{
-    gap:7px;
-  }
-
-  .variant-label{
-    font-size:11px;
-  }
-
+  padding:20px;
+  background:#fff;
+  border:2px solid #8fa0b5;
+  border-radius:12px
 }
 </style>
 </head>
@@ -401,143 +295,77 @@ button{
 <div class="wrap">
 
 <header>
-  <h2>BIN AMEEN TRADER</h2>
-  <div style="text-align:center">
-    Call: 03331390045
-  </div>
+<h2>BIN AMEEN TRADER</h2>
+<div style="text-align:center">Call: 03331390045</div>
 </header>
 
-
-<!-- CART BUTTON -->
-
-<button
-  id="viewCartBtn"
-  class="main cart-button"
-  type="button"
->
-  View Cart (<span id="count">0</span>)
+<button class="main" style="width:100%" onclick="showCart()">
+View Cart (<span id="count">0</span>)
 </button>
-
-
-<!-- CATEGORIES -->
 
 <div class="cats" id="cats"></div>
 
-
-<!-- SEARCH -->
-
 <input
-  class="search"
-  id="search"
-  placeholder="Search product name or SKU code..."
+class="search"
+id="search"
+placeholder="Search product name or SKU code..."
 >
 
+<div id="list">
+<div class="loading">Loading products...</div>
+</div>
 
-<!-- PRODUCTS -->
+<div class="cartbox" id="cart">
 
-<div id="list"></div>
+<div class="cartHeader">
+<h3>Your Selected Items</h3>
+<button onclick="closeCart()">✕</button>
+</div>
+
+<div id="cartItems"></div>
+
+<div class="total">
+Total Items: <span id="cartTotal">0</span>
+</div>
+
+<button
+class="main"
+style="width:100%"
+onclick="wa()"
+>
+Send Order on WhatsApp
+</button>
+
+</div>
 
 </div>
 
 
-<!-- =========================
-     CART MODAL
-========================= -->
+<!-- IMAGE VIEWER -->
 
-<div
-  class="cart-overlay"
-  id="cartOverlay"
+<div class="viewer" id="viewer">
+
+<div class="viewerBox">
+
+<button
+class="closeViewer"
+onclick="closeViewer()"
 >
+✕
+</button>
 
-  <div
-    class="cartbox"
-    onclick="event.stopPropagation()"
-  >
+<img id="viewerImg" src="" alt="Product">
 
-    <div class="cart-header">
-
-      <h3>Your Selected Items</h3>
-
-      <button
-        id="cartCloseBtn"
-        class="cart-close"
-        type="button"
-      >
-        ✕
-      </button>
-
-    </div>
-
-
-    <div class="cart-items">
-
-      <div id="cartItems"></div>
-
-    </div>
-
-
-    <div class="cart-footer">
-
-      <div class="cart-total">
-        Total Items:
-        <span id="cartTotal">0</span>
-      </div>
-
-      <button
-        id="whatsappBtn"
-        class="whatsapp-btn"
-        type="button"
-      >
-        Send Order on WhatsApp
-      </button>
-
-    </div>
-
-  </div>
-
+<div class="viewerWatermark">
+BIN AMEEN TRADER
 </div>
 
-
-<!-- =========================
-     IMAGE VIEWER
-========================= -->
-
-<div
-  class="viewer"
-  id="viewer"
->
-
-  <div class="viewer-box">
-
-    <button
-      id="closeViewerBtn"
-      class="close-viewer"
-      type="button"
-    >
-      ✕
-    </button>
-
-    <img
-      id="viewerImg"
-      src=""
-      alt="Product"
-      draggable="false"
-    >
-
-    <div class="viewer-watermark">
-      BIN AMEEN TRADER
-    </div>
-
-  </div>
+</div>
 
 </div>
 
 
 <script>
-
-/* =========================
-   DATA
-========================= */
 
 let products=[];
 let sel={};
@@ -545,1041 +373,706 @@ let cartData={};
 let category="ALL";
 
 
-/* =========================
-   DOM
-========================= */
+/* ELEMENTS */
 
-const list =
-  document.getElementById("list");
-
-const cats =
-  document.getElementById("cats");
-
-const search =
-  document.getElementById("search");
-
-const count =
-  document.getElementById("count");
-
-const cartTotal =
-  document.getElementById("cartTotal");
-
-const cartOverlay =
-  document.getElementById("cartOverlay");
-
-const cartItems =
-  document.getElementById("cartItems");
-
-const viewCartBtn =
-  document.getElementById("viewCartBtn");
-
-const cartCloseBtn =
-  document.getElementById("cartCloseBtn");
-
-const whatsappBtn =
-  document.getElementById("whatsappBtn");
-
-const viewer =
-  document.getElementById("viewer");
-
-const viewerImg =
-  document.getElementById("viewerImg");
-
-const closeViewerBtn =
-  document.getElementById("closeViewerBtn");
+const catsEl=document.getElementById("cats");
+const searchEl=document.getElementById("search");
+const listEl=document.getElementById("list");
+const cartEl=document.getElementById("cart");
+const cartItemsEl=document.getElementById("cartItems");
+const countEl=document.getElementById("count");
+const cartTotalEl=document.getElementById("cartTotal");
+const viewerEl=document.getElementById("viewer");
+const viewerImgEl=document.getElementById("viewerImg");
 
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+/* LOAD PRODUCTS */
 
 async function load(){
 
-  try{
+try{
 
-    const r =
-      await fetch('/api/products');
+const response=await fetch("/api/products");
 
-    products =
-      await r.json();
+if(!response.ok){
+throw new Error("API error: "+response.status);
+}
 
-    products.forEach(p=>{
+const data=await response.json();
 
-      sel[p.id]=0;
+if(!Array.isArray(data)){
+throw new Error("Products data is not an array");
+}
 
-    });
+products=data;
 
-    drawCats();
+products.forEach(function(p){
+sel[p.id]=0;
+});
 
-    render();
+drawCats();
+render();
 
-    updateCartCount();
+}catch(error){
 
-  }catch(e){
+console.error(error);
 
-    list.innerHTML =
-      '<div class="card">' +
-      'Unable to load products.' +
-      '</div>';
+listEl.innerHTML=
+'<div class="card">Unable to load products.</div>';
 
-    console.error(e);
-
-  }
+}
 
 }
 
 
-/* =========================
-   CATEGORIES
-========================= */
+/* CATEGORIES */
 
 function drawCats(){
 
-  const a=[
-    'ALL',
-    ...new Set(
-      products
-        .map(p=>p.category)
-        .filter(Boolean)
-    )
-  ];
+const categorySet=new Set();
 
-  cats.innerHTML=a.map(x=>`
+products.forEach(function(p){
 
-    <button
-      class="${x==category?'active':''}"
-      data-category="${escapeHtml(x)}"
-      type="button"
-    >
-      ${x==='ALL'
-        ?'ALL ITEMS'
-        :escapeHtml(x)}
-    </button>
+if(p.category){
+categorySet.add(p.category);
+}
 
-  `).join('');
+});
 
+const categories=["ALL",...categorySet];
 
-  cats
-    .querySelectorAll("button")
-    .forEach(btn=>{
+catsEl.innerHTML="";
 
-      btn.addEventListener(
-        "click",
-        function(){
+categories.forEach(function(x){
 
-          category =
-            btn.dataset.category;
+const btn=document.createElement("button");
 
-          drawCats();
+btn.textContent=
+x==="ALL" ? "ALL ITEMS" : x;
 
-          render();
+if(x===category){
+btn.className="active";
+}
 
-        }
-      );
+btn.onclick=function(){
 
-    });
+category=x;
+
+drawCats();
+render();
+
+};
+
+catsEl.appendChild(btn);
+
+});
 
 }
 
 
-/* =========================
-   CATEGORY
-========================= */
-
-function setCategory(x){
-
-  category=x;
-
-  drawCats();
-
-  render();
-
-}
-
-
-/* =========================
-   RENDER PRODUCTS
-========================= */
+/* RENDER PRODUCTS */
 
 function render(){
 
-  const q =
-    search.value
-      .toLowerCase()
-      .trim();
+const q=searchEl.value.toLowerCase().trim();
 
+const filtered=products.filter(function(p){
 
-  const a =
-    products.filter(p=>{
+const name=String(p.name||"").toLowerCase();
 
-      const name =
-        (p.name||'')
-        .toLowerCase();
+const variants=Array.isArray(p.variants)
+? p.variants
+: [];
 
+const codeMatch=variants.some(function(v){
 
-      const variants =
-        Array.isArray(p.variants)
-          ?p.variants
-          :[];
+return String(v.code||"")
+.toLowerCase()
+.includes(q);
 
+});
 
-      const code =
-        variants.some(v=>
+const categoryMatch=
+category==="ALL" ||
+p.category===category;
 
-          (v.code||'')
-            .toLowerCase()
-            .includes(q)
+return categoryMatch &&
+(name.includes(q)||codeMatch);
 
-        );
+});
 
 
-      return (
+listEl.innerHTML="";
 
-        (category==='ALL' ||
-         p.category===category)
 
-        &&
+if(!filtered.length){
 
-        (
-          name.includes(q) ||
-          code
-        )
+listEl.innerHTML=
+'<div class="card">No items found</div>';
 
-      );
-
-    });
-
-
-  list.innerHTML='';
-
-
-  if(!a.length){
-
-    list.innerHTML =
-      '<div class="card">' +
-      'No items found' +
-      '</div>';
-
-    return;
-
-  }
-
-
-  a.forEach(p=>{
-
-    if(
-      !Array.isArray(p.variants) ||
-      !p.variants.length
-    ){
-
-      return;
-
-    }
-
-
-    let i =
-      sel[p.id]||0;
-
-
-    if(i>=p.variants.length){
-
-      i=0;
-
-    }
-
-
-    const v =
-      p.variants[i];
-
-
-    const k =
-      p.id+'_'+v.label;
-
-
-    const n =
-      cartData[k]?.qty||0;
-
-
-    const d =
-      document.createElement('div');
-
-
-    d.className='card';
-
-
-    const image =
-      v.img ||
-      p.img ||
-      '';
-
-
-    /* =====================
-       IMAGE
-    ===================== */
-
-    const pic =
-      document.createElement("div");
-
-    pic.className="pic";
-
-
-    const img =
-      document.createElement("img");
-
-    img.src=image;
-
-    img.alt=
-      p.name||'Product';
-
-    img.draggable=false;
-
-
-    img.addEventListener(
-      "error",
-      function(){
-
-        img.style.display='none';
-
-      }
-    );
-
-
-    const watermark =
-      document.createElement("div");
-
-    watermark.className=
-      "watermark";
-
-    watermark.textContent=
-      "BIN AMEEN TRADER";
-
-
-    pic.appendChild(img);
-
-    pic.appendChild(watermark);
-
-
-    /*
-      IMPORTANT:
-      صرف pic پر click event ہے۔
-      IMG پر pointer-events:none ہے۔
-      اس طرح image tap کرنے پر
-      viewer کھلے گا۔
-    */
-
-    pic.addEventListener(
-      "click",
-      function(e){
-
-        e.preventDefault();
-
-        e.stopPropagation();
-
-        openViewer(image);
-
-      }
-    );
-
-
-    /* =====================
-       INFO
-    ===================== */
-
-    const info =
-      document.createElement("div");
-
-    info.className="info";
-
-
-    const code =
-      document.createElement("span");
-
-    code.className="code";
-
-    code.textContent=
-      "CODE: " +
-      (v.code||'');
-
-
-    const name =
-      document.createElement("b");
-
-    name.className="name";
-
-    name.textContent=
-      p.name||'';
-
-
-    /* =====================
-       VARIANTS
-    ===================== */
-
-    const variantControl =
-      document.createElement("div");
-
-    variantControl.className=
-      "variant-control";
-
-
-    const prev =
-      document.createElement("button");
-
-    prev.type="button";
-
-    prev.textContent="‹";
-
-
-    prev.addEventListener(
-      "click",
-      function(e){
-
-        e.preventDefault();
-
-        e.stopPropagation();
-
-        prevVariant(p.id);
-
-      }
-    );
-
-
-    const label =
-      document.createElement("div");
-
-    label.className=
-      "variant-label";
-
-    label.textContent=
-      v.label||'';
-
-
-    const next =
-      document.createElement("button");
-
-    next.type="button";
-
-    next.textContent="›";
-
-
-    next.addEventListener(
-      "click",
-      function(e){
-
-        e.preventDefault();
-
-        e.stopPropagation();
-
-        nextVariant(p.id);
-
-      }
-    );
-
-
-    variantControl.appendChild(prev);
-
-    variantControl.appendChild(label);
-
-    variantControl.appendChild(next);
-
-
-    /* =====================
-       QUANTITY
-    ===================== */
-
-    const qbox =
-      document.createElement("div");
-
-    qbox.className="q";
-
-
-    const minus =
-      document.createElement("button");
-
-    minus.type="button";
-
-    minus.textContent="−";
-
-
-    minus.addEventListener(
-      "click",
-      function(){
-
-        change(p.id,-1);
-
-      }
-    );
-
-
-    const number =
-      document.createElement("b");
-
-    number.textContent=n;
-
-
-    const plus =
-      document.createElement("button");
-
-    plus.type="button";
-
-    plus.textContent="+";
-
-
-    plus.addEventListener(
-      "click",
-      function(){
-
-        change(p.id,1);
-
-      }
-    );
-
-
-    qbox.appendChild(minus);
-
-    qbox.appendChild(number);
-
-    qbox.appendChild(plus);
-
-
-    info.appendChild(code);
-
-    info.appendChild(name);
-
-    info.appendChild(variantControl);
-
-    info.appendChild(qbox);
-
-
-    d.appendChild(pic);
-
-    d.appendChild(info);
-
-
-    list.appendChild(d);
-
-  });
+return;
 
 }
 
 
-/* =========================
-   PREVIOUS VARIANT
-========================= */
+filtered.forEach(function(p){
+
+if(!Array.isArray(p.variants)||!p.variants.length){
+return;
+}
+
+let index=sel[p.id]||0;
+
+if(index>=p.variants.length){
+index=0;
+sel[p.id]=0;
+}
+
+const v=p.variants[index];
+
+const key=p.id+"_"+v.label;
+
+const quantity=
+cartData[key]
+? cartData[key].qty
+: 0;
+
+const card=document.createElement("div");
+
+card.className="card";
+
+
+/* IMAGE */
+
+const pic=document.createElement("div");
+
+pic.className="pic";
+
+pic.onclick=function(){
+
+openViewer(v.img||p.img||"");
+
+};
+
+
+const img=document.createElement("img");
+
+img.src=v.img||p.img||"";
+
+img.alt=p.name||"";
+
+pic.appendChild(img);
+
+
+/* WATERMARK */
+
+const wm=document.createElement("div");
+
+wm.className="watermark";
+
+wm.textContent="BIN AMEEN TRADER";
+
+pic.appendChild(wm);
+
+
+/* INFO */
+
+const info=document.createElement("div");
+
+info.className="info";
+
+
+const code=document.createElement("span");
+
+code.className="code";
+
+code.textContent="CODE: "+(v.code||"");
+
+
+const name=document.createElement("b");
+
+name.className="name";
+
+name.textContent=p.name||"";
+
+
+/* VARIANT ROW */
+
+const variantRow=document.createElement("div");
+
+variantRow.className="variantRow";
+
+
+const leftBtn=document.createElement("button");
+
+leftBtn.textContent="‹";
+
+leftBtn.onclick=function(){
+
+prevVariant(p.id);
+
+};
+
+
+const label=document.createElement("div");
+
+label.className="variantLabel";
+
+label.textContent=v.label||"";
+
+
+const rightBtn=document.createElement("button");
+
+rightBtn.textContent="›";
+
+rightBtn.onclick=function(){
+
+nextVariant(p.id);
+
+};
+
+
+variantRow.appendChild(leftBtn);
+variantRow.appendChild(label);
+variantRow.appendChild(rightBtn);
+
+
+/* QUANTITY */
+
+const qbox=document.createElement("div");
+
+qbox.className="q";
+
+
+const minus=document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(){
+
+change(p.id,-1);
+
+};
+
+
+const qty=document.createElement("b");
+
+qty.textContent=quantity;
+
+
+const plus=document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+change(p.id,1);
+
+};
+
+
+qbox.appendChild(minus);
+qbox.appendChild(qty);
+qbox.appendChild(plus);
+
+
+info.appendChild(code);
+info.appendChild(name);
+info.appendChild(variantRow);
+info.appendChild(qbox);
+
+card.appendChild(pic);
+card.appendChild(info);
+
+listEl.appendChild(card);
+
+});
+
+}
+
+
+/* PREVIOUS VARIANT */
 
 function prevVariant(id){
 
-  const p =
-    products.find(x=>x.id===id);
+const p=products.find(function(x){
+return x.id===id;
+});
 
+if(!p||!p.variants||!p.variants.length){
+return;
+}
 
-  if(
-    !p ||
-    !p.variants?.length
-  ){
+let i=sel[id]||0;
 
-    return;
+i--;
 
-  }
+if(i<0){
+i=p.variants.length-1;
+}
 
+sel[id]=i;
 
-  let i =
-    sel[id]||0;
-
-
-  i--;
-
-
-  if(i<0){
-
-    i=
-      p.variants.length-1;
-
-  }
-
-
-  sel[id]=i;
-
-  render();
+render();
 
 }
 
 
-/* =========================
-   NEXT VARIANT
-========================= */
+/* NEXT VARIANT */
 
 function nextVariant(id){
 
-  const p =
-    products.find(x=>x.id===id);
+const p=products.find(function(x){
+return x.id===id;
+});
 
+if(!p||!p.variants||!p.variants.length){
+return;
+}
 
-  if(
-    !p ||
-    !p.variants?.length
-  ){
+let i=sel[id]||0;
 
-    return;
+i++;
 
-  }
+if(i>=p.variants.length){
+i=0;
+}
 
+sel[id]=i;
 
-  let i =
-    sel[id]||0;
-
-
-  i++;
-
-
-  if(i>=p.variants.length){
-
-    i=0;
-
-  }
-
-
-  sel[id]=i;
-
-  render();
+render();
 
 }
 
 
-/* =========================
-   CHANGE QUANTITY
-========================= */
+/* PRODUCT QUANTITY */
 
 function change(id,d){
 
-  const p =
-    products.find(x=>x.id===id);
+const p=products.find(function(x){
+return x.id===id;
+});
+
+if(!p||!p.variants||!p.variants.length){
+return;
+}
+
+const v=p.variants[sel[id]||0];
+
+const key=p.id+"_"+v.label;
+
+let newQty=
+(cartData[key]?.qty||0)+d;
 
 
-  if(
-    !p ||
-    !p.variants?.length
-  ){
+if(newQty<=0){
 
-    return;
+delete cartData[key];
 
-  }
+}else{
 
+cartData[key]={
+name:p.name,
+variant:v.label,
+code:v.code||"",
+img:v.img||p.img||"",
+qty:newQty
+};
 
-  const v =
-    p.variants[
-      sel[id]||0
-    ];
+}
 
+updateCartCount();
 
-  const k =
-    p.id+'_'+v.label;
+render();
 
-
-  let n =
-    (cartData[k]?.qty||0)+d;
-
-
-  if(n<=0){
-
-    delete cartData[k];
-
-  }else{
-
-    cartData[k]={
-
-      id:p.id,
-
-      name:p.name,
-
-      variant:v.label,
-
-      code:v.code||'',
-
-      img:v.img||p.img||'',
-
-      qty:n
-
-    };
-
-  }
-
-
-  updateCartCount();
-
-  render();
-
-
-  if(
-    cartOverlay.classList.contains('open')
-  ){
-
-    renderCart();
-
-  }
+if(cartEl.classList.contains("open")){
+renderCart();
+}
 
 }
 
 
-/* =========================
-   CART COUNT
-========================= */
+/* CART COUNT */
 
 function updateCartCount(){
 
-  const total =
-    Object.values(cartData)
-      .reduce(
-        (s,x)=>
-          s+Number(x.qty||0),
-        0
-      );
+const total=Object.values(cartData)
+.reduce(function(sum,item){
+return sum+item.qty;
+},0);
 
-
-  count.textContent=total;
-
-  cartTotal.textContent=total;
+countEl.textContent=total;
+cartTotalEl.textContent=total;
 
 }
 
 
-/* =========================
-   SHOW CART
-========================= */
+/* OPEN CART */
 
 function showCart(){
 
-  renderCart();
+cartEl.classList.add("open");
 
-  cartOverlay.classList.add('open');
+renderCart();
 
-  document.body.style.overflow=
-    'hidden';
+cartEl.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 }
 
 
-/* =========================
-   CLOSE CART
-========================= */
+/* CLOSE CART */
 
 function closeCart(){
 
-  cartOverlay.classList.remove('open');
-
-  document.body.style.overflow='';
+cartEl.classList.remove("open");
 
 }
 
 
-/* =========================
-   RENDER CART
-========================= */
+/* RENDER CART */
 
 function renderCart(){
 
-  const keys =
-    Object.keys(cartData);
+const keys=Object.keys(cartData);
 
+if(!keys.length){
 
-  if(!keys.length){
+cartItemsEl.innerHTML=
+'<div class="item">Cart is empty</div>';
 
-    cartItems.innerHTML =
-      '<div class="empty-cart">' +
-      'Cart is empty' +
-      '</div>';
+updateCartCount();
 
-    updateCartCount();
-
-    return;
-
-  }
-
-
-  cartItems.innerHTML='';
-
-
-  keys.forEach(k=>{
-
-    const x =
-      cartData[k];
-
-
-    const item =
-      document.createElement("div");
-
-    item.className="item";
-
-
-    const itemName =
-      document.createElement("div");
-
-    itemName.className=
-      "item-name";
-
-    itemName.textContent=
-      x.name;
-
-
-    const itemInfo =
-      document.createElement("div");
-
-    itemInfo.className=
-      "item-info";
-
-    itemInfo.textContent=
-      x.variant+
-      " | Code: "+
-      x.code;
-
-
-    const controls =
-      document.createElement("div");
-
-    controls.className=
-      "cart-controls";
-
-
-    const minus =
-      document.createElement("button");
-
-    minus.type="button";
-
-    minus.textContent="−";
-
-
-    minus.addEventListener(
-      "click",
-      function(){
-
-        cartChange(k,-1);
-
-      }
-    );
-
-
-    const qty =
-      document.createElement("b");
-
-    qty.textContent=
-      x.qty;
-
-
-    const plus =
-      document.createElement("button");
-
-    plus.type="button";
-
-    plus.textContent="+";
-
-
-    plus.addEventListener(
-      "click",
-      function(){
-
-        cartChange(k,1);
-
-      }
-    );
-
-
-    const remove =
-      document.createElement("button");
-
-    remove.type="button";
-
-    remove.className="remove";
-
-    remove.textContent=
-      "Remove";
-
-
-    remove.addEventListener(
-      "click",
-      function(){
-
-        removeCart(k);
-
-      }
-    );
-
-
-    controls.appendChild(minus);
-
-    controls.appendChild(qty);
-
-    controls.appendChild(plus);
-
-    controls.appendChild(remove);
-
-
-    item.appendChild(itemName);
-
-    item.appendChild(itemInfo);
-
-    item.appendChild(controls);
-
-
-    cartItems.appendChild(item);
-
-  });
-
-
-  updateCartCount();
+return;
 
 }
 
 
-/* =========================
-   CART CHANGE
-========================= */
-
-function cartChange(k,d){
-
-  if(!cartData[k]){
-
-    return;
-
-  }
+cartItemsEl.innerHTML="";
 
 
-  cartData[k].qty += d;
+keys.forEach(function(key){
+
+const x=cartData[key];
+
+const item=document.createElement("div");
+
+item.className="item";
 
 
-  if(cartData[k].qty<=0){
+const name=document.createElement("div");
 
-    delete cartData[k];
+name.className="itemName";
 
-  }
+name.textContent=x.name;
 
 
-  renderCart();
+const info=document.createElement("div");
 
-  render();
+info.className="itemInfo";
+
+info.textContent=
+x.variant+
+" | Code: "+
+x.code;
+
+
+const controls=document.createElement("div");
+
+controls.className="cartControls";
+
+
+const minus=document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(){
+
+cartChange(key,-1);
+
+};
+
+
+const qty=document.createElement("b");
+
+qty.textContent=x.qty;
+
+
+const plus=document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+cartChange(key,1);
+
+};
+
+
+const remove=document.createElement("button");
+
+remove.className="removeBtn";
+
+remove.textContent="Remove";
+
+remove.onclick=function(){
+
+removeCart(key);
+
+};
+
+
+controls.appendChild(minus);
+controls.appendChild(qty);
+controls.appendChild(plus);
+controls.appendChild(remove);
+
+item.appendChild(name);
+item.appendChild(info);
+item.appendChild(controls);
+
+cartItemsEl.appendChild(item);
+
+});
+
+updateCartCount();
 
 }
 
 
-/* =========================
-   REMOVE
-========================= */
+/* CART QUANTITY */
 
-function removeCart(k){
+function cartChange(key,d){
 
-  delete cartData[k];
+if(!cartData[key]){
+return;
+}
 
-  renderCart();
+cartData[key].qty+=d;
 
-  render();
+if(cartData[key].qty<=0){
+delete cartData[key];
+}
+
+renderCart();
+render();
 
 }
 
 
-/* =========================
-   IMAGE VIEWER
-========================= */
+/* REMOVE ITEM */
+
+function removeCart(key){
+
+delete cartData[key];
+
+renderCart();
+render();
+
+}
+
+
+/* IMAGE VIEWER */
 
 function openViewer(src){
 
-  if(!src){
+if(!src){
+return;
+}
 
-    return;
+viewerImgEl.src=src;
 
-  }
+viewerEl.classList.add("open");
 
-
-  viewerImg.src=src;
-
-  viewer.classList.add('open');
-
-  document.body.style.overflow=
-    'hidden';
+document.body.style.overflow="hidden";
 
 }
 
 
-/* =========================
-   CLOSE VIEWER
-========================= */
+/* CLOSE VIEWER */
 
 function closeViewer(){
 
-  viewer.classList.remove('open');
+viewerEl.classList.remove("open");
 
-  viewerImg.src='';
+viewerImgEl.src="";
 
-  document.body.style.overflow='';
+document.body.style.overflow="";
 
 }
 
 
-/* =========================
-   WHATSAPP
-========================= */
+/* CLOSE VIEWER WHEN CLICKING OUTSIDE */
+
+viewerEl.addEventListener("click",function(e){
+
+if(e.target===viewerEl){
+closeViewer();
+}
+
+});
+
+
+/* WHATSAPP */
 
 function wa(){
 
-  const keys =
-    Object.keys(cartData);
+const keys=Object.keys(cartData);
+
+if(!keys.length){
+
+alert("Cart is empty");
+
+return;
+
+}
+
+let message=
+"*NEW ORDER - BIN AMEEN TRADER*\\n\\n";
 
 
-  if(!keys.length){
+keys.forEach(function(key,index){
 
-    alert('Cart is empty');
+const x=cartData[key];
 
-    return;
+message+=
+(index+1)+
+". *"+
+x.name+
+"*\\n"+
+"Variant: "+
+x.variant+
+"\\n"+
+"Code: "+
+x.code+
+" | Qty: *"+
+x.qty+
+"*\\n\\n";
 
-  }
-
-
-  let m =
-    '*NEW ORDER - BIN AMEEN TRADER*\\n\\n';
-
-
-  keys.forEach((k,i)=>{
-
-    const x =
-      cartData[k];
-
-
-    m +=
-      `${i+1}. *${x.name}*\\n`+
-      `Variant: ${x.variant}\\n`+
-      `Code: ${x.code} | Qty: *${x.qty}*\\n\\n`;
-
-  });
+});
 
 
-  window.open(
-    'https://wa.me/923331390045?text='+
-    encodeURIComponent(m),
-    '_blank'
-  );
+window.open(
+"https://wa.me/923331390045?text="+
+encodeURIComponent(message),
+"_blank"
+);
 
 }
 
 
-/* =========================
-   BASIC HTML SAFETY
-========================= */
+/* SEARCH */
 
-function escapeHtml(str){
-
-  return String(str??'')
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;')
-    .replace(/'/g,'&#039;');
-
-}
+searchEl.addEventListener("input",render);
 
 
-/* =========================
-   SEARCH
-========================= */
+/* START */
 
-search.oninput=render;
+load();
 
+</script>
 
-/* =========================
-   CART BUTTON EVENTS
+</body>
+</html>
