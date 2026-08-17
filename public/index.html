@@ -22,64 +22,134 @@ max-width:480px;
 margin:auto
 }
 
-header,.card{
+/* HEADER */
+
+header{
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:12px;
+border-radius:14px;
 padding:12px;
-margin-bottom:12px
+margin-bottom:12px;
+text-align:center
 }
 
-h2{
-text-align:center;
-margin:4px
+.logoBox{
+border:2px solid #8fa0b5;
+border-radius:10px;
+padding:10px 6px;
+font-size:29px;
+font-weight:900;
+letter-spacing:.5px;
+background:#fff
 }
 
-.cats{
+.phoneRow{
 display:flex;
-gap:6px;
-overflow:auto;
-margin:10px 0
+align-items:center;
+justify-content:center;
+margin-top:22px;
+position:relative
 }
 
-.cats button,button{
+.phoneLine{
+height:3px;
+background:#9aa7b9;
+position:absolute;
+left:40px;
+right:40px;
+top:50%
+}
+
+.phoneBox{
+position:relative;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:30px;
+padding:7px 18px;
+font-size:18px;
+font-weight:bold;
+z-index:1
+}
+
+/* CART BUTTON */
+
+.main{
+background:#1f293d!important;
+color:#fff;
 border:0;
-border-radius:7px;
+border-radius:10px;
+padding:15px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer
+}
+
+button{
+border:0;
+border-radius:8px;
 padding:9px;
 font-weight:bold;
 cursor:pointer
 }
 
-.cats button{
-background:#fff;
-border:1px solid #8fa0b5;
-white-space:nowrap
+/* CATEGORIES */
+
+.cats{
+display:flex;
+gap:8px;
+overflow:auto;
+margin:14px 0
 }
 
-.active,.main{
-background:#1f293d!important;
-color:#fff
+.cats button{
+background:#fff;
+border:2px solid #8fa0b5;
+white-space:nowrap;
+font-size:16px;
+padding:12px 20px
 }
+
+.cats .active{
+background:#1f293d;
+color:#fff;
+border-color:#1f293d
+}
+
+/* SEARCH */
 
 .search{
 width:100%;
-padding:10px;
+padding:14px;
 border:2px solid #8fa0b5;
-border-radius:8px;
-margin-bottom:12px
+border-radius:10px;
+font-size:16px;
+margin-bottom:12px;
+outline:none
 }
 
+.search:focus{
+border-color:#1f293d
+}
+
+/* PRODUCT CARD */
+
 .card{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:14px;
+padding:14px;
+margin-bottom:12px;
 display:flex;
-gap:10px;
-align-items:center
+gap:14px;
+align-items:center;
+box-shadow:0 1px 1px rgba(31,41,61,.05)
 }
 
 .pic{
-width:90px;
-height:90px;
+width:145px;
+height:145px;
 border:1px solid #8fa0b5;
-border-radius:7px;
+border-radius:8px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -88,7 +158,6 @@ position:relative;
 overflow:hidden;
 background:#fff;
 cursor:pointer;
--webkit-user-select:none;
 user-select:none
 }
 
@@ -97,6 +166,7 @@ max-width:100%;
 max-height:100%;
 object-fit:contain;
 pointer-events:none;
+user-select:none;
 -webkit-user-drag:none
 }
 
@@ -105,58 +175,115 @@ flex:1;
 min-width:0
 }
 
-.code,.v{
-font-size:12px;
+/* CODE */
+
+.code{
+display:inline-block;
+font-size:17px;
 font-weight:bold;
-background:#f1f5f9;
-padding:4px 7px;
-border-radius:5px
+background:#f8fafc;
+border:2px solid #8fa0b5;
+padding:6px 10px;
+border-radius:7px;
+color:#475569
 }
+
+/* PRODUCT NAME */
 
 .name{
 display:block;
-margin-top:5px
+font-size:19px;
+font-weight:900;
+margin-top:7px;
+line-height:1.15
 }
+
+/* VARIANTS */
 
 .variantRow{
 display:flex;
 align-items:center;
-gap:4px;
-margin:6px 0
+gap:8px;
+margin:10px 0 8px
 }
 
-.variantRow button{
+/* 2 VARIANTS */
+
+.twoVariant{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+.variantBtn{
+background:#fff;
+border:2px solid #8fa0b5;
+color:#475569;
+font-size:17px;
+padding:9px 18px;
+border-radius:8px
+}
+
+.variantBtn.selected{
+background:#1f293d;
+color:#fff;
+border-color:#1f293d
+}
+
+/* 3+ VARIANTS */
+
+.arrowBtn{
 background:#475569;
 color:#fff;
-padding:6px 10px
+font-size:20px;
+width:48px;
+height:43px;
+padding:0
 }
 
 .variantLabel{
 flex:1;
 text-align:center;
-font-size:12px;
+font-size:17px;
 font-weight:bold;
-background:#f1f5f9;
-border-radius:5px;
-padding:6px
+background:#f8fafc;
+border:2px solid #8fa0b5;
+border-radius:8px;
+padding:10px 5px;
+white-space:nowrap
 }
+
+/* QUANTITY */
 
 .q{
 display:flex;
-gap:5px;
+gap:8px;
 align-items:center
 }
 
 .q button{
 background:#475569;
-color:white;
-min-width:32px
+color:#fff;
+font-size:21px;
+width:48px;
+height:43px;
+padding:0
 }
 
+.qtyBox{
+min-width:65px;
+height:43px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:8px;
+font-size:20px;
+color:#111
+}
 
-/* =========================
-   CART MODAL
-========================= */
+/* CART MODAL */
 
 .cartOverlay{
 display:none;
@@ -165,13 +292,13 @@ inset:0;
 background:rgba(0,0,0,.65);
 z-index:9000;
 padding:15px;
-overflow:auto
+overflow:auto;
+align-items:center;
+justify-content:center
 }
 
 .cartOverlay.open{
-display:flex;
-align-items:center;
-justify-content:center
+display:flex
 }
 
 .cartbox{
@@ -181,8 +308,7 @@ overflow:auto;
 background:#fff;
 border:2px solid #8fa0b5;
 border-radius:14px;
-padding:14px;
-box-shadow:0 10px 35px rgba(0,0,0,.3)
+padding:14px
 }
 
 .cartHeader{
@@ -201,34 +327,35 @@ margin:0
 .cartClose{
 background:#475569;
 color:#fff;
-width:38px;
-height:38px;
-padding:0;
-font-size:20px
+width:40px;
+height:40px;
+font-size:20px;
+padding:0
 }
 
 .item{
-padding:10px;
+padding:11px;
 border:1px solid #8fa0b5;
-border-radius:7px;
-margin:7px 0;
+border-radius:8px;
+margin:8px 0;
 background:#f8fafc
 }
 
 .itemName{
-font-weight:bold
+font-weight:bold;
+font-size:16px
 }
 
 .itemInfo{
 font-size:13px;
-margin-top:4px
+margin-top:5px
 }
 
 .cartControls{
 display:flex;
-gap:6px;
+gap:7px;
 align-items:center;
-margin-top:8px
+margin-top:9px
 }
 
 .cartControls button{
@@ -243,15 +370,27 @@ background:#a11!important
 
 .total{
 font-weight:bold;
-margin:10px 0;
-padding-top:5px;
+margin:12px 0;
+padding-top:8px;
 border-top:1px solid #d1d5db
 }
 
+/* EMAIL FOOTER */
 
-/* =========================
-   IMAGE VIEWER
-========================= */
+.emailFooter{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:12px;
+padding:14px 8px;
+margin-top:8px;
+margin-bottom:10px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+color:#475569
+}
+
+/* IMAGE VIEWER */
 
 .viewer{
 display:none;
@@ -262,7 +401,6 @@ background:rgba(0,0,0,.82);
 align-items:center;
 justify-content:center;
 padding:15px;
--webkit-user-select:none;
 user-select:none
 }
 
@@ -287,23 +425,22 @@ overflow:hidden
 max-width:100%;
 max-height:100%;
 object-fit:contain;
--webkit-user-drag:none;
+pointer-events:none;
 user-select:none;
-pointer-events:none
+-webkit-user-drag:none
 }
 
 .closeViewer{
 position:absolute;
 right:7px;
 top:7px;
-width:38px;
-height:38px;
+width:40px;
+height:40px;
 border-radius:50%;
 background:#1f293d;
 color:#fff;
 font-size:20px;
-padding:0;
-z-index:2
+padding:0
 }
 
 .watermark{
@@ -337,6 +474,63 @@ background:#fff;
 border:2px solid #8fa0b5;
 border-radius:12px
 }
+
+/* MOBILE */
+
+@media(max-width:420px){
+
+.logoBox{
+font-size:25px
+}
+
+.card{
+padding:10px;
+gap:10px
+}
+
+.pic{
+width:115px;
+height:115px
+}
+
+.code{
+font-size:14px
+}
+
+.name{
+font-size:16px
+}
+
+.variantBtn{
+font-size:14px;
+padding:8px 12px
+}
+
+.arrowBtn{
+width:40px;
+height:38px
+}
+
+.variantLabel{
+font-size:14px;
+padding:8px 3px
+}
+
+.q button{
+width:40px;
+height:38px
+}
+
+.qtyBox{
+height:38px;
+min-width:55px
+}
+
+.emailFooter{
+font-size:17px
+}
+
+}
 </style>
 </head>
 
@@ -344,16 +538,44 @@ border-radius:12px
 
 <div class="wrap">
 
+<!-- HEADER -->
+
 <header>
-<h2>BIN AMEEN TRADER</h2>
-<div style="text-align:center">Call: 03331390045</div>
+
+<div class="logoBox">
+BIN AMEEN TRADER
+</div>
+
+<div class="phoneRow">
+
+<div class="phoneLine"></div>
+
+<div class="phoneBox">
+☎ 03331390045
+</div>
+
+</div>
+
 </header>
 
-<button class="main" style="width:100%" onclick="showCart()">
-View Cart (<span id="count">0</span>)
+
+<!-- CART -->
+
+<button
+class="main"
+style="width:100%"
+onclick="showCart()"
+>
+🛒 View Cart (<span id="count">0</span>)
 </button>
 
+
+<!-- CATEGORIES -->
+
 <div class="cats" id="cats"></div>
+
+
+<!-- SEARCH -->
 
 <input
 class="search"
@@ -361,22 +583,31 @@ id="search"
 placeholder="Search product name or SKU code..."
 >
 
+
+<!-- PRODUCTS -->
+
 <div id="list">
 <div class="loading">Loading products...</div>
 </div>
 
+
+<!-- EMAIL -->
+
+<div class="emailFooter">
+✉ binameentrader@gmail.com
+</div>
+
 </div>
 
 
-<!-- =========================
-     CART MODAL
-========================= -->
+<!-- CART MODAL -->
 
 <div class="cartOverlay" id="cartOverlay">
 
 <div class="cartbox">
 
 <div class="cartHeader">
+
 <h3>Your Selected Items</h3>
 
 <button
@@ -407,9 +638,7 @@ Send Order on WhatsApp
 </div>
 
 
-<!-- =========================
-     IMAGE VIEWER
-========================= -->
+<!-- IMAGE VIEWER -->
 
 <div class="viewer" id="viewer">
 
@@ -446,8 +675,6 @@ let cartData={};
 let category="ALL";
 
 
-/* ELEMENTS */
-
 const catsEl=document.getElementById("cats");
 const searchEl=document.getElementById("search");
 const listEl=document.getElementById("list");
@@ -461,9 +688,7 @@ const viewerEl=document.getElementById("viewer");
 const viewerImgEl=document.getElementById("viewerImg");
 
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+/* LOAD */
 
 async function load(){
 
@@ -502,9 +727,7 @@ listEl.innerHTML=
 }
 
 
-/* =========================
-   CATEGORIES
-========================= */
+/* CATEGORIES */
 
 function drawCats(){
 
@@ -549,9 +772,7 @@ catsEl.appendChild(btn);
 }
 
 
-/* =========================
-   RENDER PRODUCTS
-========================= */
+/* RENDER */
 
 function render(){
 
@@ -574,14 +795,13 @@ return String(v.code||"")
 
 });
 
-return (
+return(
 (category==="ALL"||p.category===category)
 &&
 (name.includes(q)||codeMatch)
 );
 
 });
-
 
 listEl.innerHTML="";
 
@@ -618,25 +838,18 @@ cartData[key]
 :0;
 
 
-/* CARD */
-
 const card=document.createElement("div");
-
 card.className="card";
 
 
 /* IMAGE */
 
 const pic=document.createElement("div");
-
 pic.className="pic";
 
 pic.onclick=function(){
-
 openViewer(v.img||p.img||"");
-
 };
-
 
 const img=document.createElement("img");
 
@@ -660,101 +873,132 @@ pic.appendChild(wm);
 /* INFO */
 
 const info=document.createElement("div");
-
 info.className="info";
 
+
+/* CODE */
 
 const code=document.createElement("span");
 
 code.className="code";
+code.textContent="CODE: "+(v.code||"");
 
-code.textContent=
-"CODE: "+(v.code||"");
 
+/* NAME */
 
 const name=document.createElement("b");
 
 name.className="name";
-
 name.textContent=p.name||"";
 
 
-/* VARIANT */
+/* VARIANTS */
 
-const variantRow=document.createElement("div");
-
-variantRow.className="variantRow";
+let variantArea=document.createElement("div");
 
 
-const leftBtn=document.createElement("button");
+/*
+ONLY 2 VARIANTS:
+show both sizes.
+*/
 
-leftBtn.textContent="‹";
+if(p.variants.length===2){
 
-leftBtn.onclick=function(e){
+variantArea.className="twoVariant";
+
+p.variants.forEach(function(item,j){
+
+const btn=document.createElement("button");
+
+btn.className="variantBtn";
+
+if(j===index){
+btn.classList.add("selected");
+}
+
+btn.textContent=item.label||"";
+
+btn.onclick=function(e){
 
 e.stopPropagation();
 
-prevVariant(p.id);
+sel[p.id]=j;
 
+render();
+
+};
+
+variantArea.appendChild(btn);
+
+});
+
+}else{
+
+/*
+3 OR MORE:
+keep left/right system
+*/
+
+variantArea.className="variantRow";
+
+const left=document.createElement("button");
+
+left.className="arrowBtn";
+left.textContent="‹";
+
+left.onclick=function(){
+prevVariant(p.id);
 };
 
 
 const label=document.createElement("div");
 
 label.className="variantLabel";
-
 label.textContent=v.label||"";
 
 
-const rightBtn=document.createElement("button");
+const right=document.createElement("button");
 
-rightBtn.textContent="›";
+right.className="arrowBtn";
+right.textContent="›";
 
-rightBtn.onclick=function(e){
-
-e.stopPropagation();
-
+right.onclick=function(){
 nextVariant(p.id);
-
 };
 
 
-variantRow.appendChild(leftBtn);
-variantRow.appendChild(label);
-variantRow.appendChild(rightBtn);
+variantArea.appendChild(left);
+variantArea.appendChild(label);
+variantArea.appendChild(right);
+
+}
 
 
 /* QUANTITY */
 
 const qbox=document.createElement("div");
-
 qbox.className="q";
 
 
 const minus=document.createElement("button");
-
 minus.textContent="−";
 
 minus.onclick=function(){
-
 change(p.id,-1);
-
 };
 
 
-const qty=document.createElement("b");
+const qty=document.createElement("div");
 
+qty.className="qtyBox";
 qty.textContent=quantity;
 
 
 const plus=document.createElement("button");
-
 plus.textContent="+";
 
 plus.onclick=function(){
-
 change(p.id,1);
-
 };
 
 
@@ -763,11 +1007,9 @@ qbox.appendChild(qty);
 qbox.appendChild(plus);
 
 
-/* ADD */
-
 info.appendChild(code);
 info.appendChild(name);
-info.appendChild(variantRow);
+info.appendChild(variantArea);
 info.appendChild(qbox);
 
 card.appendChild(pic);
@@ -780,19 +1022,13 @@ listEl.appendChild(card);
 }
 
 
-/* =========================
-   PREVIOUS VARIANT
-========================= */
+/* PREVIOUS */
 
 function prevVariant(id){
 
-const p=products.find(function(x){
-return x.id===id;
-});
+const p=products.find(x=>x.id===id);
 
-if(!p||!p.variants||!p.variants.length){
-return;
-}
+if(!p||!p.variants.length)return;
 
 let i=sel[id]||0;
 
@@ -809,19 +1045,13 @@ render();
 }
 
 
-/* =========================
-   NEXT VARIANT
-========================= */
+/* NEXT */
 
 function nextVariant(id){
 
-const p=products.find(function(x){
-return x.id===id;
-});
+const p=products.find(x=>x.id===id);
 
-if(!p||!p.variants||!p.variants.length){
-return;
-}
+if(!p||!p.variants.length)return;
 
 let i=sel[id]||0;
 
@@ -838,19 +1068,13 @@ render();
 }
 
 
-/* =========================
-   PRODUCT QUANTITY
-========================= */
+/* CHANGE QUANTITY */
 
 function change(id,d){
 
-const p=products.find(function(x){
-return x.id===id;
-});
+const p=products.find(x=>x.id===id);
 
-if(!p||!p.variants||!p.variants.length){
-return;
-}
+if(!p||!p.variants.length)return;
 
 const v=p.variants[sel[id]||0];
 
@@ -876,7 +1100,6 @@ qty:newQty
 }
 
 updateCartCount();
-
 render();
 
 if(cartOverlay.classList.contains("open")){
@@ -886,17 +1109,13 @@ renderCart();
 }
 
 
-/* =========================
-   CART COUNT
-========================= */
+/* CART COUNT */
 
 function updateCartCount(){
 
 const total=
 Object.values(cartData)
-.reduce(function(sum,item){
-return sum+item.qty;
-},0);
+.reduce((sum,item)=>sum+item.qty,0);
 
 countEl.textContent=total;
 cartTotalEl.textContent=total;
@@ -904,9 +1123,7 @@ cartTotalEl.textContent=total;
 }
 
 
-/* =========================
-   OPEN CART
-========================= */
+/* OPEN CART */
 
 function showCart(){
 
@@ -919,9 +1136,7 @@ document.body.style.overflow="hidden";
 }
 
 
-/* =========================
-   CLOSE CART
-========================= */
+/* CLOSE CART */
 
 function closeCart(){
 
@@ -932,9 +1147,7 @@ document.body.style.overflow="";
 }
 
 
-/* =========================
-   CART CONTENT
-========================= */
+/* CART */
 
 function renderCart(){
 
@@ -966,7 +1179,6 @@ item.className="item";
 const name=document.createElement("div");
 
 name.className="itemName";
-
 name.textContent=x.name;
 
 
@@ -975,9 +1187,7 @@ const info=document.createElement("div");
 info.className="itemInfo";
 
 info.textContent=
-x.variant+
-" | Code: "+
-x.code;
+"("+x.variant+") | Code: "+x.code;
 
 
 const controls=document.createElement("div");
@@ -990,9 +1200,7 @@ const minus=document.createElement("button");
 minus.textContent="−";
 
 minus.onclick=function(){
-
 cartChange(key,-1);
-
 };
 
 
@@ -1006,22 +1214,17 @@ const plus=document.createElement("button");
 plus.textContent="+";
 
 plus.onclick=function(){
-
 cartChange(key,1);
-
 };
 
 
 const remove=document.createElement("button");
 
 remove.className="removeBtn";
-
 remove.textContent="Remove";
 
 remove.onclick=function(){
-
 removeCart(key);
-
 };
 
 
@@ -1043,15 +1246,11 @@ updateCartCount();
 }
 
 
-/* =========================
-   CART QUANTITY
-========================= */
+/* CART CHANGE */
 
 function cartChange(key,d){
 
-if(!cartData[key]){
-return;
-}
+if(!cartData[key])return;
 
 cartData[key].qty+=d;
 
@@ -1065,9 +1264,7 @@ render();
 }
 
 
-/* =========================
-   REMOVE ITEM
-========================= */
+/* REMOVE */
 
 function removeCart(key){
 
@@ -1079,15 +1276,11 @@ render();
 }
 
 
-/* =========================
-   IMAGE VIEWER
-========================= */
+/* IMAGE VIEWER */
 
 function openViewer(src){
 
-if(!src){
-return;
-}
+if(!src)return;
 
 viewerImgEl.src=src;
 
@@ -1098,9 +1291,7 @@ document.body.style.overflow="hidden";
 }
 
 
-/* =========================
-   CLOSE IMAGE VIEWER
-========================= */
+/* CLOSE VIEWER */
 
 function closeViewer(){
 
@@ -1113,7 +1304,7 @@ document.body.style.overflow="";
 }
 
 
-/* CLICK OUTSIDE IMAGE */
+/* OUTSIDE IMAGE */
 
 viewerEl.addEventListener("click",function(e){
 
@@ -1124,7 +1315,7 @@ closeViewer();
 });
 
 
-/* PREVENT IMAGE CONTEXT MENU */
+/* BLOCK IMAGE CONTEXT MENU */
 
 document.addEventListener("contextmenu",function(e){
 
@@ -1141,20 +1332,7 @@ e.preventDefault();
 });
 
 
-/* PREVENT IMAGE DRAG */
-
-document.addEventListener("dragstart",function(e){
-
-if(e.target.tagName==="IMG"){
-e.preventDefault();
-}
-
-});
-
-
-/* =========================
-   WHATSAPP ORDER
-========================= */
+/* WHATSAPP */
 
 function wa(){
 
@@ -1163,7 +1341,6 @@ const keys=Object.keys(cartData);
 if(!keys.length){
 
 alert("Cart is empty");
-
 return;
 
 }
@@ -1171,8 +1348,7 @@ return;
 
 /*
 IMPORTANT:
-Use actual \n line breaks.
-Do NOT use \\n.
+Actual line breaks.
 */
 
 let message=
@@ -1205,19 +1381,15 @@ encodeURIComponent(message),
 "_blank"
 );
 
+
+/* SEARCH */
+
 }
-
-
-/* =========================
-   SEARCH
-========================= */
 
 searchEl.addEventListener("input",render);
 
 
-/* =========================
-   CLOSE CART BY OUTSIDE TAP
-========================= */
+/* OUTSIDE CART */
 
 cartOverlay.addEventListener("click",function(e){
 
