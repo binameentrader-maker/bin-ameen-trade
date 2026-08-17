@@ -10,282 +10,332 @@
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  background:#c8d3df;
-  font-family:Arial,sans-serif;
-  color:#1f293d;
-  padding:12px
+margin:0;
+background:#c8d3df;
+font-family:Arial,sans-serif;
+color:#1f293d;
+padding:12px
 }
 
 .wrap{
-  max-width:480px;
-  margin:auto
+max-width:480px;
+margin:auto
 }
 
-header,.card,.cartbox{
-  background:#fff;
-  border:2px solid #8fa0b5;
-  border-radius:12px;
-  padding:12px;
-  margin-bottom:12px
+header,.card{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:12px;
+padding:12px;
+margin-bottom:12px
 }
 
 h2{
-  text-align:center;
-  margin:4px
+text-align:center;
+margin:4px
 }
 
 .cats{
-  display:flex;
-  gap:6px;
-  overflow:auto;
-  margin:10px 0
+display:flex;
+gap:6px;
+overflow:auto;
+margin:10px 0
 }
 
 .cats button,button{
-  border:0;
-  border-radius:7px;
-  padding:9px;
-  font-weight:bold;
-  cursor:pointer
+border:0;
+border-radius:7px;
+padding:9px;
+font-weight:bold;
+cursor:pointer
 }
 
 .cats button{
-  background:#fff;
-  border:1px solid #8fa0b5;
-  white-space:nowrap
+background:#fff;
+border:1px solid #8fa0b5;
+white-space:nowrap
 }
 
 .active,.main{
-  background:#1f293d!important;
-  color:#fff
+background:#1f293d!important;
+color:#fff
 }
 
 .search{
-  width:100%;
-  padding:10px;
-  border:2px solid #8fa0b5;
-  border-radius:8px;
-  margin-bottom:12px
+width:100%;
+padding:10px;
+border:2px solid #8fa0b5;
+border-radius:8px;
+margin-bottom:12px
 }
 
 .card{
-  display:flex;
-  gap:10px;
-  align-items:center
+display:flex;
+gap:10px;
+align-items:center
 }
 
 .pic{
-  width:90px;
-  height:90px;
-  border:1px solid #8fa0b5;
-  border-radius:7px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  position:relative;
-  overflow:hidden;
-  background:#fff;
-  cursor:pointer
+width:90px;
+height:90px;
+border:1px solid #8fa0b5;
+border-radius:7px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+position:relative;
+overflow:hidden;
+background:#fff;
+cursor:pointer;
+-webkit-user-select:none;
+user-select:none
 }
 
 .pic img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+pointer-events:none;
+-webkit-user-drag:none
 }
 
 .info{
-  flex:1;
-  min-width:0
+flex:1;
+min-width:0
 }
 
 .code,.v{
-  font-size:12px;
-  font-weight:bold;
-  background:#f1f5f9;
-  padding:4px 7px;
-  border-radius:5px
+font-size:12px;
+font-weight:bold;
+background:#f1f5f9;
+padding:4px 7px;
+border-radius:5px
 }
 
 .name{
-  display:block;
-  margin-top:5px
+display:block;
+margin-top:5px
 }
 
 .variantRow{
-  display:flex;
-  align-items:center;
-  gap:4px;
-  margin:6px 0
+display:flex;
+align-items:center;
+gap:4px;
+margin:6px 0
 }
 
 .variantRow button{
-  background:#475569;
-  color:#fff;
-  padding:6px 10px
+background:#475569;
+color:#fff;
+padding:6px 10px
 }
 
 .variantLabel{
-  flex:1;
-  text-align:center;
-  font-size:12px;
-  font-weight:bold;
-  background:#f1f5f9;
-  border-radius:5px;
-  padding:6px
+flex:1;
+text-align:center;
+font-size:12px;
+font-weight:bold;
+background:#f1f5f9;
+border-radius:5px;
+padding:6px
 }
 
 .q{
-  display:flex;
-  gap:5px;
-  align-items:center
+display:flex;
+gap:5px;
+align-items:center
 }
 
 .q button{
-  background:#475569;
-  color:white;
-  min-width:32px
+background:#475569;
+color:white;
+min-width:32px
+}
+
+
+/* =========================
+   CART MODAL
+========================= */
+
+.cartOverlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+z-index:9000;
+padding:15px;
+overflow:auto
+}
+
+.cartOverlay.open{
+display:flex;
+align-items:center;
+justify-content:center
 }
 
 .cartbox{
-  display:none
-}
-
-.cartbox.open{
-  display:block
+width:min(100%,480px);
+max-height:90vh;
+overflow:auto;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:14px;
+padding:14px;
+box-shadow:0 10px 35px rgba(0,0,0,.3)
 }
 
 .cartHeader{
-  display:flex;
-  align-items:center;
-  justify-content:space-between
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid #d1d5db;
+padding-bottom:8px;
+margin-bottom:8px
 }
 
-.cartHeader button{
-  background:#475569;
-  color:white
+.cartHeader h3{
+margin:0
+}
+
+.cartClose{
+background:#475569;
+color:#fff;
+width:38px;
+height:38px;
+padding:0;
+font-size:20px
 }
 
 .item{
-  padding:10px;
-  border:1px solid #8fa0b5;
-  border-radius:7px;
-  margin:7px 0;
-  background:#f8fafc
+padding:10px;
+border:1px solid #8fa0b5;
+border-radius:7px;
+margin:7px 0;
+background:#f8fafc
 }
 
 .itemName{
-  font-weight:bold
+font-weight:bold
 }
 
 .itemInfo{
-  font-size:13px;
-  margin-top:4px
+font-size:13px;
+margin-top:4px
 }
 
 .cartControls{
-  display:flex;
-  gap:6px;
-  align-items:center;
-  margin-top:8px
+display:flex;
+gap:6px;
+align-items:center;
+margin-top:8px
 }
 
 .cartControls button{
-  background:#475569;
-  color:#fff
+background:#475569;
+color:#fff
 }
 
 .removeBtn{
-  margin-left:auto;
-  background:#a11!important
+margin-left:auto;
+background:#a11!important
 }
 
 .total{
-  font-weight:bold;
-  margin:10px 0
+font-weight:bold;
+margin:10px 0;
+padding-top:5px;
+border-top:1px solid #d1d5db
 }
 
-/* IMAGE VIEWER */
+
+/* =========================
+   IMAGE VIEWER
+========================= */
 
 .viewer{
-  display:none;
-  position:fixed;
-  z-index:99999;
-  inset:0;
-  background:rgba(0,0,0,.78);
-  align-items:center;
-  justify-content:center;
-  padding:15px
+display:none;
+position:fixed;
+z-index:99999;
+inset:0;
+background:rgba(0,0,0,.82);
+align-items:center;
+justify-content:center;
+padding:15px;
+-webkit-user-select:none;
+user-select:none
 }
 
 .viewer.open{
-  display:flex
+display:flex
 }
 
 .viewerBox{
-  position:relative;
-  width:min(95vw,500px);
-  max-height:90vh;
-  background:#fff;
-  border-radius:12px;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center
+position:relative;
+width:min(95vw,500px);
+height:min(85vh,650px);
+background:#fff;
+border-radius:12px;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden
 }
 
 .viewerBox img{
-  max-width:100%;
-  max-height:82vh;
-  object-fit:contain
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+-webkit-user-drag:none;
+user-select:none;
+pointer-events:none
 }
 
 .closeViewer{
-  position:absolute;
-  right:7px;
-  top:7px;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  background:#1f293d;
-  color:#fff;
-  font-size:20px;
-  padding:0;
-  z-index:2
+position:absolute;
+right:7px;
+top:7px;
+width:38px;
+height:38px;
+border-radius:50%;
+background:#1f293d;
+color:#fff;
+font-size:20px;
+padding:0;
+z-index:2
 }
 
 .watermark{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%) rotate(-25deg);
-  font-size:15px;
-  font-weight:bold;
-  color:rgba(31,41,61,.18);
-  white-space:nowrap;
-  pointer-events:none
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-25deg);
+font-size:15px;
+font-weight:bold;
+color:rgba(31,41,61,.18);
+white-space:nowrap;
+pointer-events:none
 }
 
 .viewerWatermark{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%) rotate(-25deg);
-  font-size:22px;
-  font-weight:bold;
-  color:rgba(31,41,61,.18);
-  white-space:nowrap;
-  pointer-events:none
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-25deg);
+font-size:22px;
+font-weight:bold;
+color:rgba(31,41,61,.18);
+white-space:nowrap;
+pointer-events:none
 }
 
 .loading{
-  text-align:center;
-  padding:20px;
-  background:#fff;
-  border:2px solid #8fa0b5;
-  border-radius:12px
+text-align:center;
+padding:20px;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:12px
 }
 </style>
 </head>
@@ -315,11 +365,27 @@ placeholder="Search product name or SKU code..."
 <div class="loading">Loading products...</div>
 </div>
 
-<div class="cartbox" id="cart">
+</div>
+
+
+<!-- =========================
+     CART MODAL
+========================= -->
+
+<div class="cartOverlay" id="cartOverlay">
+
+<div class="cartbox">
 
 <div class="cartHeader">
 <h3>Your Selected Items</h3>
-<button onclick="closeCart()">✕</button>
+
+<button
+class="cartClose"
+onclick="closeCart()"
+>
+✕
+</button>
+
 </div>
 
 <div id="cartItems"></div>
@@ -341,7 +407,9 @@ Send Order on WhatsApp
 </div>
 
 
-<!-- IMAGE VIEWER -->
+<!-- =========================
+     IMAGE VIEWER
+========================= -->
 
 <div class="viewer" id="viewer">
 
@@ -354,7 +422,12 @@ onclick="closeViewer()"
 ✕
 </button>
 
-<img id="viewerImg" src="" alt="Product">
+<img
+id="viewerImg"
+src=""
+alt="Product"
+draggable="false"
+>
 
 <div class="viewerWatermark">
 BIN AMEEN TRADER
@@ -378,15 +451,19 @@ let category="ALL";
 const catsEl=document.getElementById("cats");
 const searchEl=document.getElementById("search");
 const listEl=document.getElementById("list");
-const cartEl=document.getElementById("cart");
+
+const cartOverlay=document.getElementById("cartOverlay");
 const cartItemsEl=document.getElementById("cartItems");
 const countEl=document.getElementById("count");
 const cartTotalEl=document.getElementById("cartTotal");
+
 const viewerEl=document.getElementById("viewer");
 const viewerImgEl=document.getElementById("viewerImg");
 
 
-/* LOAD PRODUCTS */
+/* =========================
+   LOAD PRODUCTS
+========================= */
 
 async function load(){
 
@@ -395,13 +472,13 @@ try{
 const response=await fetch("/api/products");
 
 if(!response.ok){
-throw new Error("API error: "+response.status);
+throw new Error("API error");
 }
 
 const data=await response.json();
 
 if(!Array.isArray(data)){
-throw new Error("Products data is not an array");
+throw new Error("Invalid products data");
 }
 
 products=data;
@@ -425,7 +502,9 @@ listEl.innerHTML=
 }
 
 
-/* CATEGORIES */
+/* =========================
+   CATEGORIES
+========================= */
 
 function drawCats(){
 
@@ -470,7 +549,9 @@ catsEl.appendChild(btn);
 }
 
 
-/* RENDER PRODUCTS */
+/* =========================
+   RENDER PRODUCTS
+========================= */
 
 function render(){
 
@@ -480,9 +561,10 @@ const filtered=products.filter(function(p){
 
 const name=String(p.name||"").toLowerCase();
 
-const variants=Array.isArray(p.variants)
-? p.variants
-: [];
+const variants=
+Array.isArray(p.variants)
+?p.variants
+:[];
 
 const codeMatch=variants.some(function(v){
 
@@ -492,18 +574,16 @@ return String(v.code||"")
 
 });
 
-const categoryMatch=
-category==="ALL" ||
-p.category===category;
-
-return categoryMatch &&
-(name.includes(q)||codeMatch);
+return (
+(category==="ALL"||p.category===category)
+&&
+(name.includes(q)||codeMatch)
+);
 
 });
 
 
 listEl.innerHTML="";
-
 
 if(!filtered.length){
 
@@ -534,8 +614,11 @@ const key=p.id+"_"+v.label;
 
 const quantity=
 cartData[key]
-? cartData[key].qty
-: 0;
+?cartData[key].qty
+:0;
+
+
+/* CARD */
 
 const card=document.createElement("div");
 
@@ -558,8 +641,8 @@ openViewer(v.img||p.img||"");
 const img=document.createElement("img");
 
 img.src=v.img||p.img||"";
-
 img.alt=p.name||"";
+img.draggable=false;
 
 pic.appendChild(img);
 
@@ -569,7 +652,6 @@ pic.appendChild(img);
 const wm=document.createElement("div");
 
 wm.className="watermark";
-
 wm.textContent="BIN AMEEN TRADER";
 
 pic.appendChild(wm);
@@ -586,7 +668,8 @@ const code=document.createElement("span");
 
 code.className="code";
 
-code.textContent="CODE: "+(v.code||"");
+code.textContent=
+"CODE: "+(v.code||"");
 
 
 const name=document.createElement("b");
@@ -596,7 +679,7 @@ name.className="name";
 name.textContent=p.name||"";
 
 
-/* VARIANT ROW */
+/* VARIANT */
 
 const variantRow=document.createElement("div");
 
@@ -607,7 +690,9 @@ const leftBtn=document.createElement("button");
 
 leftBtn.textContent="‹";
 
-leftBtn.onclick=function(){
+leftBtn.onclick=function(e){
+
+e.stopPropagation();
 
 prevVariant(p.id);
 
@@ -625,7 +710,9 @@ const rightBtn=document.createElement("button");
 
 rightBtn.textContent="›";
 
-rightBtn.onclick=function(){
+rightBtn.onclick=function(e){
+
+e.stopPropagation();
 
 nextVariant(p.id);
 
@@ -676,6 +763,8 @@ qbox.appendChild(qty);
 qbox.appendChild(plus);
 
 
+/* ADD */
+
 info.appendChild(code);
 info.appendChild(name);
 info.appendChild(variantRow);
@@ -691,7 +780,9 @@ listEl.appendChild(card);
 }
 
 
-/* PREVIOUS VARIANT */
+/* =========================
+   PREVIOUS VARIANT
+========================= */
 
 function prevVariant(id){
 
@@ -718,7 +809,9 @@ render();
 }
 
 
-/* NEXT VARIANT */
+/* =========================
+   NEXT VARIANT
+========================= */
 
 function nextVariant(id){
 
@@ -745,7 +838,9 @@ render();
 }
 
 
-/* PRODUCT QUANTITY */
+/* =========================
+   PRODUCT QUANTITY
+========================= */
 
 function change(id,d){
 
@@ -763,7 +858,6 @@ const key=p.id+"_"+v.label;
 
 let newQty=
 (cartData[key]?.qty||0)+d;
-
 
 if(newQty<=0){
 
@@ -785,18 +879,21 @@ updateCartCount();
 
 render();
 
-if(cartEl.classList.contains("open")){
+if(cartOverlay.classList.contains("open")){
 renderCart();
 }
 
 }
 
 
-/* CART COUNT */
+/* =========================
+   CART COUNT
+========================= */
 
 function updateCartCount(){
 
-const total=Object.values(cartData)
+const total=
+Object.values(cartData)
 .reduce(function(sum,item){
 return sum+item.qty;
 },0);
@@ -807,32 +904,37 @@ cartTotalEl.textContent=total;
 }
 
 
-/* OPEN CART */
+/* =========================
+   OPEN CART
+========================= */
 
 function showCart(){
 
-cartEl.classList.add("open");
-
 renderCart();
 
-cartEl.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
+cartOverlay.classList.add("open");
+
+document.body.style.overflow="hidden";
 
 }
 
 
-/* CLOSE CART */
+/* =========================
+   CLOSE CART
+========================= */
 
 function closeCart(){
 
-cartEl.classList.remove("open");
+cartOverlay.classList.remove("open");
+
+document.body.style.overflow="";
 
 }
 
 
-/* RENDER CART */
+/* =========================
+   CART CONTENT
+========================= */
 
 function renderCart(){
 
@@ -848,7 +950,6 @@ updateCartCount();
 return;
 
 }
-
 
 cartItemsEl.innerHTML="";
 
@@ -942,7 +1043,9 @@ updateCartCount();
 }
 
 
-/* CART QUANTITY */
+/* =========================
+   CART QUANTITY
+========================= */
 
 function cartChange(key,d){
 
@@ -962,7 +1065,9 @@ render();
 }
 
 
-/* REMOVE ITEM */
+/* =========================
+   REMOVE ITEM
+========================= */
 
 function removeCart(key){
 
@@ -974,7 +1079,9 @@ render();
 }
 
 
-/* IMAGE VIEWER */
+/* =========================
+   IMAGE VIEWER
+========================= */
 
 function openViewer(src){
 
@@ -991,7 +1098,9 @@ document.body.style.overflow="hidden";
 }
 
 
-/* CLOSE VIEWER */
+/* =========================
+   CLOSE IMAGE VIEWER
+========================= */
 
 function closeViewer(){
 
@@ -1004,7 +1113,7 @@ document.body.style.overflow="";
 }
 
 
-/* CLOSE VIEWER WHEN CLICKING OUTSIDE */
+/* CLICK OUTSIDE IMAGE */
 
 viewerEl.addEventListener("click",function(e){
 
@@ -1015,7 +1124,37 @@ closeViewer();
 });
 
 
-/* WHATSAPP */
+/* PREVENT IMAGE CONTEXT MENU */
+
+document.addEventListener("contextmenu",function(e){
+
+if(
+e.target.tagName==="IMG" ||
+e.target.closest(".pic") ||
+e.target.closest(".viewerBox")
+){
+
+e.preventDefault();
+
+}
+
+});
+
+
+/* PREVENT IMAGE DRAG */
+
+document.addEventListener("dragstart",function(e){
+
+if(e.target.tagName==="IMG"){
+e.preventDefault();
+}
+
+});
+
+
+/* =========================
+   WHATSAPP ORDER
+========================= */
 
 function wa(){
 
@@ -1029,8 +1168,15 @@ return;
 
 }
 
+
+/*
+IMPORTANT:
+Use actual \n line breaks.
+Do NOT use \\n.
+*/
+
 let message=
-"*NEW ORDER - BIN AMEEN TRADER*\\n\\n";
+"*NEW ORDER - BIN AMEEN TRADER*\n\n";
 
 
 keys.forEach(function(key,index){
@@ -1041,15 +1187,14 @@ message+=
 (index+1)+
 ". *"+
 x.name+
-"*\\n"+
-"Variant: "+
+"* ("+
 x.variant+
-"\\n"+
-"Code: "+
+")\n"+
+"   Code: "+
 x.code+
 " | Qty: *"+
 x.qty+
-"*\\n\\n";
+"*\n\n";
 
 });
 
@@ -1063,9 +1208,24 @@ encodeURIComponent(message),
 }
 
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 searchEl.addEventListener("input",render);
+
+
+/* =========================
+   CLOSE CART BY OUTSIDE TAP
+========================= */
+
+cartOverlay.addEventListener("click",function(e){
+
+if(e.target===cartOverlay){
+closeCart();
+}
+
+});
 
 
 /* START */
