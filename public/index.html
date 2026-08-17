@@ -18,7 +18,12 @@ color:#1f293d;
 
 body{padding:7px}
 
-.wrap{max-width:480px;margin:auto}
+.wrap{
+max-width:480px;
+margin:auto;
+}
+
+/* HEADER */
 
 header{
 background:#fff;
@@ -62,6 +67,8 @@ font-weight:bold;
 z-index:1;
 }
 
+/* BUTTONS */
+
 button{
 border:0;
 border-radius:0;
@@ -77,6 +84,8 @@ padding:11px;
 font-size:16px;
 font-weight:bold;
 }
+
+/* CATEGORIES */
 
 .cats{
 display:flex;
@@ -96,7 +105,10 @@ padding:7px 12px;
 .cats button.active{
 background:#1f293d;
 color:#fff;
+border-color:#1f293d;
 }
+
+/* SEARCH */
 
 .search{
 width:100%;
@@ -107,6 +119,8 @@ margin-bottom:8px;
 outline:none;
 background:#fff;
 }
+
+/* PRODUCT CARD */
 
 .card{
 background:#fff;
@@ -192,6 +206,7 @@ padding:5px 9px;
 .variantBtn.selected{
 background:#1f293d;
 color:#fff;
+border-color:#1f293d;
 }
 
 .variantRow{
@@ -223,6 +238,8 @@ overflow:hidden;
 text-overflow:ellipsis;
 }
 
+/* QUANTITY */
+
 .q{
 display:flex;
 gap:4px;
@@ -248,6 +265,8 @@ background:#fff;
 border:2px solid #8fa0b5;
 font-size:15px;
 }
+
+/* CART */
 
 .cartOverlay{
 display:none;
@@ -338,7 +357,7 @@ padding-top:7px;
 border-top:1px solid #d1d5db;
 }
 
-/* ================= PRODUCT VIEWER ================= */
+/* ================= IMAGE PRODUCT VIEWER ================= */
 
 .viewer{
 display:none;
@@ -375,16 +394,17 @@ height:38px;
 background:#1f293d;
 color:#fff;
 font-size:20px;
-z-index:5;
+z-index:10;
+padding:0;
 }
 
 .viewerTitle{
-padding:4px 42px 8px 4px;
+padding:5px 45px 8px 5px;
 font-size:16px;
 font-weight:900;
-line-height:1.2;
+line-height:1.25;
 text-align:center;
-min-height:45px;
+min-height:48px;
 }
 
 .viewerImageArea{
@@ -400,8 +420,6 @@ overflow:hidden;
 }
 
 .viewerImageArea img{
-max-width:100%;
-max-height:100%;
 width:100%;
 height:100%;
 object-fit:contain;
@@ -431,7 +449,7 @@ padding:7px 2px;
 text-align:center;
 font-size:14px;
 font-weight:bold;
-padding:5px;
+padding:4px;
 }
 
 .viewerNav{
@@ -443,7 +461,7 @@ margin-top:6px;
 .viewerNav button{
 flex:1;
 height:42px;
-font-size:18px;
+font-size:17px;
 background:#475569;
 color:#fff;
 }
@@ -503,9 +521,13 @@ width:88px;
 height:88px;
 }
 
-.name{font-size:13px}
+.name{
+font-size:13px;
+}
 
-.code{font-size:10px}
+.code{
+font-size:10px;
+}
 
 .variantBtn{
 font-size:11px;
@@ -520,6 +542,13 @@ font-size:15px;
 font-size:21px;
 }
 
+}
+
+img{
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+user-select:none;
+-webkit-user-drag:none;
 }
 </style>
 </head>
@@ -564,7 +593,11 @@ autocomplete="off"
 >
 
 <div id="list">
-<div class="loading">Loading products...</div>
+
+<div class="loading">
+Loading products...
+</div>
+
 </div>
 
 <div class="emailFooter">
@@ -608,10 +641,11 @@ Send Order on WhatsApp
 </button>
 
 </div>
+
 </div>
 
 
-<!-- PRODUCT SELECTION VIEWER -->
+<!-- PRODUCT VIEWER -->
 
 <div class="viewer" id="viewer">
 
@@ -671,12 +705,14 @@ Next →
 
 <button
 class="viewerAdd"
+id="viewerAdd"
 onclick="addViewerToCart()"
 >
 🛒 Add This Item to Cart
 </button>
 
 </div>
+
 </div>
 
 
@@ -687,7 +723,7 @@ let sel={};
 let cartData={};
 let category="ALL";
 
-/* VIEWER STATE */
+/* VIEWER */
 let viewerProductIndex=0;
 let viewerVariantIndex=0;
 
@@ -705,9 +741,10 @@ const viewerImgEl=document.getElementById("viewerImg");
 const viewerTitleEl=document.getElementById("viewerTitle");
 const viewerCodeEl=document.getElementById("viewerCode");
 const viewerVariantEl=document.getElementById("viewerVariant");
+const viewerAddEl=document.getElementById("viewerAdd");
 
 
-/* ================= LOAD PRODUCTS ================= */
+/* ================= LOAD ================= */
 
 async function load(){
 
@@ -716,46 +753,51 @@ listEl.innerHTML=
 
 try{
 
-const response=await fetch(
-"/api/products?_"+Date.now(),
-{
+const response=await fetch("/api/products",{
 method:"GET",
 cache:"no-store"
-}
-);
-
-const text=await response.text();
+});
 
 if(!response.ok){
 
+const errorText=await response.text();
+
 throw new Error(
-"API HTTP "+response.status+" — "+text.substring(0,300)
+"API Error "+response.status+" : "+errorText
 );
 
 }
 
-let data;
-
-try{
-data=JSON.parse(text);
-}catch(e){
-throw new Error(
-"API نے JSON کے بجائے دوسرا جواب دیا۔"
-);
-}
+const data=await response.json();
 
 if(!Array.isArray(data)){
-throw new Error("Products data درست نہیں ہے۔");
+
+throw new Error(
+"Products data array نہیں ہے۔"
+);
+
 }
 
 products=data;
+
+/*
+آپ کے موجودہ JSON structure کے مطابق
+variants کو normalize کیا جا رہا ہے۔
+*/
 
 products.forEach(function(p){
 
 if(!Array.isArray(p.variants)){
 
+p.variants=[];
+
+}
+
+if(p.variants.length===0){
+
 p.variants=[{
-label:p.label||"",
+label:"",
+size:"",
 code:p.code||"",
 img:p.img||""
 }];
@@ -767,16 +809,17 @@ sel[p.id]=0;
 });
 
 drawCats();
+
 render();
 
 }catch(error){
 
-console.error(error);
+console.error("PRODUCT ERROR:",error);
 
 listEl.innerHTML=
 '<div class="errorBox">'+
 '<b>Products Load Error</b><br><br>'+
-escapeHTML(error.message)+
+escapeHtml(error.message)+
 '</div>';
 
 }
@@ -786,7 +829,7 @@ escapeHTML(error.message)+
 
 /* ================= ESCAPE ================= */
 
-function escapeHTML(text){
+function escapeHtml(text){
 
 const div=document.createElement("div");
 
@@ -801,17 +844,22 @@ return div.innerHTML;
 
 function drawCats(){
 
-const set=new Set();
+const categorySet=new Set();
 
 products.forEach(function(p){
 
 if(p.category){
-set.add(p.category);
+
+categorySet.add(p.category);
+
 }
 
 });
 
-const categories=["ALL",...set];
+const categories=[
+"ALL",
+...Array.from(categorySet)
+];
 
 catsEl.innerHTML="";
 
@@ -820,10 +868,14 @@ categories.forEach(function(x){
 const btn=document.createElement("button");
 
 btn.textContent=
-x==="ALL"?"ALL ITEMS":x;
+x==="ALL"
+?"ALL ITEMS"
+:x;
 
 if(x===category){
+
 btn.className="active";
+
 }
 
 btn.onclick=function(){
@@ -831,6 +883,7 @@ btn.onclick=function(){
 category=x;
 
 drawCats();
+
 render();
 
 };
@@ -847,12 +900,15 @@ catsEl.appendChild(btn);
 function render(){
 
 const q=
-searchEl.value.toLowerCase().trim();
+searchEl.value
+.toLowerCase()
+.trim();
 
 const filtered=products.filter(function(p){
 
 const name=
-String(p.name||"").toLowerCase();
+String(p.name||"")
+.toLowerCase();
 
 const variants=
 Array.isArray(p.variants)
@@ -867,13 +923,27 @@ return String(v.code||"")
 
 });
 
+const labelMatch=
+variants.some(function(v){
+
+return String(v.label||"")
+.toLowerCase()
+.includes(q);
+
+});
+
 return(
 (category==="ALL"||p.category===category)
 &&
-(name.includes(q)||codeMatch)
+(
+name.includes(q)||
+codeMatch||
+labelMatch
+)
 );
 
 });
+
 
 listEl.innerHTML="";
 
@@ -886,20 +956,26 @@ return;
 
 }
 
+
 filtered.forEach(function(p){
 
-if(!p.variants.length)return;
+const variants=p.variants;
 
-let index=sel[p.id]||0;
+let index=
+Number(sel[p.id]||0);
 
-if(index>=p.variants.length){
+if(index<0||index>=variants.length){
+
 index=0;
+
 sel[p.id]=0;
+
 }
 
-const v=p.variants[index];
+const v=variants[index];
 
-const key=p.id+"_"+index;
+const key=
+String(p.id)+"_"+String(index);
 
 const quantity=
 cartData[key]
@@ -909,33 +985,38 @@ cartData[key]
 
 /* CARD */
 
-const card=document.createElement("div");
+const card=
+document.createElement("div");
 
 card.className="card";
 
 
 /* IMAGE */
 
-const pic=document.createElement("div");
+const pic=
+document.createElement("div");
 
 pic.className="pic";
 
 pic.onclick=function(){
-
-/*
-IMAGE پر click کرنے سے
-PRODUCT VIEWER کھلے گا
-*/
 
 openProductViewer(p.id,index);
 
 };
 
 
-const img=document.createElement("img");
+const img=
+document.createElement("img");
 
-img.src=v.img||p.img||"";
-img.alt=p.name||"";
+img.src=
+v.img||
+p.img||
+"";
+
+img.alt=
+p.name||
+"Product";
+
 img.draggable=false;
 
 pic.appendChild(img);
@@ -943,12 +1024,16 @@ pic.appendChild(img);
 
 /* INFO */
 
-const info=document.createElement("div");
+const info=
+document.createElement("div");
 
 info.className="info";
 
 
-const code=document.createElement("span");
+/* CODE */
+
+const code=
+document.createElement("span");
 
 code.className="code";
 
@@ -956,32 +1041,44 @@ code.textContent=
 "CODE: "+(v.code||"");
 
 
-const name=document.createElement("b");
+/* NAME */
+
+const name=
+document.createElement("b");
 
 name.className="name";
 
-name.textContent=p.name||"";
+name.textContent=
+p.name||"";
 
 
 /* VARIANTS */
 
-const variantArea=document.createElement("div");
+const variantArea=
+document.createElement("div");
 
-if(p.variants.length===2){
+
+if(variants.length===2){
 
 variantArea.className="twoVariant";
 
-p.variants.forEach(function(item,j){
+variants.forEach(function(item,j){
 
-const btn=document.createElement("button");
+const btn=
+document.createElement("button");
 
 btn.className="variantBtn";
 
 if(j===index){
+
 btn.classList.add("selected");
+
 }
 
-btn.textContent=item.label||"";
+btn.textContent=
+item.label||
+item.size||
+"";
 
 btn.onclick=function(e){
 
@@ -1001,9 +1098,12 @@ variantArea.appendChild(btn);
 
 variantArea.className="variantRow";
 
-const left=document.createElement("button");
+
+const left=
+document.createElement("button");
 
 left.className="arrowBtn";
+
 left.textContent="‹";
 
 left.onclick=function(e){
@@ -1014,15 +1114,23 @@ prevVariant(p.id);
 
 };
 
-const label=document.createElement("div");
+
+const label=
+document.createElement("div");
 
 label.className="variantLabel";
 
-label.textContent=v.label||"";
+label.textContent=
+v.label||
+v.size||
+"";
 
-const right=document.createElement("button");
+
+const right=
+document.createElement("button");
 
 right.className="arrowBtn";
+
 right.textContent="›";
 
 right.onclick=function(e){
@@ -1033,8 +1141,11 @@ nextVariant(p.id);
 
 };
 
+
 variantArea.appendChild(left);
+
 variantArea.appendChild(label);
+
 variantArea.appendChild(right);
 
 }
@@ -1042,11 +1153,14 @@ variantArea.appendChild(right);
 
 /* QUANTITY */
 
-const qbox=document.createElement("div");
+const qbox=
+document.createElement("div");
 
 qbox.className="q";
 
-const minus=document.createElement("button");
+
+const minus=
+document.createElement("button");
 
 minus.textContent="−";
 
@@ -1058,13 +1172,17 @@ change(p.id,-1);
 
 };
 
-const qty=document.createElement("div");
+
+const qty=
+document.createElement("div");
 
 qty.className="qtyBox";
 
 qty.textContent=quantity;
 
-const plus=document.createElement("button");
+
+const plus=
+document.createElement("button");
 
 plus.textContent="+";
 
@@ -1076,16 +1194,24 @@ change(p.id,1);
 
 };
 
+
 qbox.appendChild(minus);
+
 qbox.appendChild(qty);
+
 qbox.appendChild(plus);
 
+
 info.appendChild(code);
+
 info.appendChild(name);
+
 info.appendChild(variantArea);
+
 info.appendChild(qbox);
 
 card.appendChild(pic);
+
 card.appendChild(info);
 
 listEl.appendChild(card);
@@ -1095,20 +1221,28 @@ listEl.appendChild(card);
 }
 
 
-/* ================= NORMAL VARIANTS ================= */
+/* ================= VARIANT CHANGE ================= */
 
 function prevVariant(id){
 
-const p=products.find(x=>String(x.id)===String(id));
+const p=
+products.find(function(x){
+
+return String(x.id)===String(id);
+
+});
 
 if(!p)return;
 
-let i=sel[p.id]||0;
+let i=
+Number(sel[p.id]||0);
 
 i--;
 
 if(i<0){
+
 i=p.variants.length-1;
+
 }
 
 sel[p.id]=i;
@@ -1117,18 +1251,27 @@ render();
 
 }
 
+
 function nextVariant(id){
 
-const p=products.find(x=>String(x.id)===String(id));
+const p=
+products.find(function(x){
+
+return String(x.id)===String(id);
+
+});
 
 if(!p)return;
 
-let i=sel[p.id]||0;
+let i=
+Number(sel[p.id]||0);
 
 i++;
 
 if(i>=p.variants.length){
+
 i=0;
+
 }
 
 sel[p.id]=i;
@@ -1138,26 +1281,25 @@ render();
 }
 
 
-/* ================= PRODUCT VIEWER ================= */
+/* ================= OPEN PRODUCT VIEWER ================= */
 
-/*
-یہ اصل selection system ہے۔
-Image پر click کرنے سے یہی کھلے گا۔
-*/
-
-function openProductViewer(productId,variantIndex){
+function openProductViewer(id,variantIndex){
 
 const index=
 products.findIndex(function(p){
-return String(p.id)===String(productId);
+
+return String(p.id)===String(id);
+
 });
 
-if(index<0)return;
+if(index===-1)return;
 
 viewerProductIndex=index;
-viewerVariantIndex=variantIndex||0;
 
-showViewerProduct();
+viewerVariantIndex=
+Number(variantIndex||0);
+
+showViewer();
 
 viewerEl.classList.add("open");
 
@@ -1166,39 +1308,53 @@ document.body.style.overflow="hidden";
 }
 
 
-function showViewerProduct(){
+/* ================= SHOW VIEWER ================= */
 
-const p=products[viewerProductIndex];
+function showViewer(){
+
+const p=
+products[viewerProductIndex];
 
 if(!p)return;
 
-if(!Array.isArray(p.variants)||
-!p.variants.length)return;
+const variants=p.variants||[];
 
-if(viewerVariantIndex<0){
-viewerVariantIndex=p.variants.length-1;
-}
+if(!variants.length)return;
 
-if(viewerVariantIndex>=p.variants.length){
+if(
+viewerVariantIndex<0||
+viewerVariantIndex>=variants.length
+){
+
 viewerVariantIndex=0;
+
 }
 
-const v=p.variants[viewerVariantIndex];
+const v=
+variants[viewerVariantIndex];
 
 
-/* FULL PRODUCT NAME */
+/*
+FULL PRODUCT NAME
+*/
 
 viewerTitleEl.textContent=
 p.name||"";
 
 
-/* IMAGE */
+/*
+IMAGE
+*/
 
 viewerImgEl.src=
-v.img||p.img||"";
+v.img||
+p.img||
+"";
 
 
-/* CODE */
+/*
+CODE
+*/
 
 viewerCodeEl.textContent=
 v.code
@@ -1206,13 +1362,43 @@ v.code
 :"";
 
 
-/* VARIANT */
+/*
+SIZE / VARIANT
+*/
 
 viewerVariantEl.textContent=
-v.label
-?v.label
-:"";
+v.label||
+v.size||
+"";
 
+
+/*
+KEEP MAIN SELECTION IN SYNC
+*/
+
+sel[p.id]=viewerVariantIndex;
+
+
+/*
+UPDATE BUTTON
+*/
+
+const key=
+String(p.id)+"_"+String(viewerVariantIndex);
+
+if(cartData[key]){
+
+viewerAddEl.textContent=
+"✓ Already in Cart ("+
+cartData[key].qty+
+")";
+
+}else{
+
+viewerAddEl.textContent=
+"🛒 Add This Item to Cart";
+
+}
 
 }
 
@@ -1223,23 +1409,24 @@ function viewerNext(){
 
 if(!products.length)return;
 
-const p=products[viewerProductIndex];
+const current=
+products[viewerProductIndex];
 
-if(!p)return;
+if(!current)return;
+
 
 /*
-اگر اسی product کے variants ہیں
-تو پہلے اگلا variant
+پہلے اسی product کا اگلا variant
 */
 
 if(
-Array.isArray(p.variants) &&
-viewerVariantIndex<p.variants.length-1
+viewerVariantIndex<
+current.variants.length-1
 ){
 
 viewerVariantIndex++;
 
-showViewerProduct();
+showViewer();
 
 return;
 
@@ -1247,18 +1434,22 @@ return;
 
 
 /*
-ورنہ اگلا PRODUCT
+پھر اگلا product
 */
 
 viewerProductIndex++;
 
-if(viewerProductIndex>=products.length){
+if(
+viewerProductIndex>=products.length
+){
+
 viewerProductIndex=0;
+
 }
 
 viewerVariantIndex=0;
 
-showViewerProduct();
+showViewer();
 
 }
 
@@ -1269,19 +1460,21 @@ function viewerPrev(){
 
 if(!products.length)return;
 
-const p=products[viewerProductIndex];
+const current=
+products[viewerProductIndex];
 
-if(!p)return;
+if(!current)return;
+
 
 /*
-اگر پہلے variant موجود ہے
+پہلے اسی product کا previous variant
 */
 
 if(viewerVariantIndex>0){
 
 viewerVariantIndex--;
 
-showViewerProduct();
+showViewer();
 
 return;
 
@@ -1289,39 +1482,45 @@ return;
 
 
 /*
-ورنہ پچھلا PRODUCT
+پھر previous product
 */
 
 viewerProductIndex--;
 
 if(viewerProductIndex<0){
-viewerProductIndex=products.length-1;
+
+viewerProductIndex=
+products.length-1;
+
 }
 
-const previous=products[viewerProductIndex];
+const previous=
+products[viewerProductIndex];
 
 viewerVariantIndex=
 previous.variants.length-1;
 
-showViewerProduct();
+showViewer();
 
 }
 
 
-/* ================= ADD VIEWER ITEM TO CART ================= */
+/* ================= ADD VIEWER ITEM ================= */
 
 function addViewerToCart(){
 
-const p=products[viewerProductIndex];
+const p=
+products[viewerProductIndex];
 
 if(!p)return;
 
-const v=p.variants[viewerVariantIndex];
+const v=
+p.variants[viewerVariantIndex];
 
 if(!v)return;
 
 const key=
-p.id+"_"+viewerVariantIndex;
+String(p.id)+"_"+String(viewerVariantIndex);
 
 if(cartData[key]){
 
@@ -1331,7 +1530,7 @@ cartData[key].qty++;
 
 cartData[key]={
 name:p.name||"",
-variant:v.label||"",
+variant:v.label||v.size||"",
 code:v.code||"",
 img:v.img||p.img||"",
 qty:1
@@ -1339,43 +1538,29 @@ qty:1
 
 }
 
-updateCartCount();
-
-/*
-اسی selected variant کو main page پر بھی select کر دیں
-*/
-
 sel[p.id]=viewerVariantIndex;
 
-showAddedMessage();
+updateCartCount();
 
 render();
 
-}
+showViewer();
 
+const old=
+viewerAddEl.textContent;
 
-/* ================= ADDED MESSAGE ================= */
-
-function showAddedMessage(){
-
-const btn=
-document.querySelector(".viewerAdd");
-
-if(!btn)return;
-
-const old=btn.textContent;
-
-btn.textContent="✓ Added to Cart";
-
-btn.style.background="#475569";
+viewerAddEl.textContent=
+"✓ Added to Cart";
 
 setTimeout(function(){
 
-btn.textContent=old;
+if(viewerEl.classList.contains("open")){
 
-btn.style.background="";
+showViewer();
 
-},1000);
+}
+
+},900);
 
 }
 
@@ -1393,36 +1578,33 @@ document.body.style.overflow="";
 }
 
 
-/* ================= VIEWER OUTSIDE CLICK ================= */
-
-viewerEl.addEventListener(
-"click",
-function(e){
-
-if(e.target===viewerEl){
-closeViewer();
-}
-
-});
-
-
 /* ================= QUANTITY ================= */
 
 function change(id,d){
 
 const p=
-products.find(x=>String(x.id)===String(id));
+products.find(function(x){
+
+return String(x.id)===String(id);
+
+});
 
 if(!p)return;
 
-const index=sel[p.id]||0;
+const index=
+Number(sel[p.id]||0);
 
-const v=p.variants[index];
+const v=
+p.variants[index];
 
-const key=p.id+"_"+index;
+if(!v)return;
+
+const key=
+String(p.id)+"_"+String(index);
 
 const newQty=
 (cartData[key]?.qty||0)+d;
+
 
 if(newQty<=0){
 
@@ -1432,7 +1614,7 @@ delete cartData[key];
 
 cartData[key]={
 name:p.name||"",
-variant:v.label||"",
+variant:v.label||v.size||"",
 code:v.code||"",
 img:v.img||p.img||"",
 qty:newQty
@@ -1441,10 +1623,13 @@ qty:newQty
 }
 
 updateCartCount();
+
 render();
 
 if(cartOverlay.classList.contains("open")){
+
 renderCart();
+
 }
 
 }
@@ -1455,18 +1640,22 @@ renderCart();
 function updateCartCount(){
 
 const total=
-Object.values(cartData).reduce(
-function(sum,item){
-return sum+Number(item.qty||0);
+Object.values(cartData)
+.reduce(function(sum,item){
+
+return sum+
+Number(item.qty||0);
+
 },0);
 
 countEl.textContent=total;
+
 cartTotalEl.textContent=total;
 
 }
 
 
-/* ================= CART ================= */
+/* ================= OPEN CART ================= */
 
 function showCart(){
 
@@ -1478,6 +1667,9 @@ document.body.style.overflow="hidden";
 
 }
 
+
+/* ================= CLOSE CART ================= */
+
 function closeCart(){
 
 cartOverlay.classList.remove("open");
@@ -1486,6 +1678,8 @@ document.body.style.overflow="";
 
 }
 
+
+/* ================= RENDER CART ================= */
 
 function renderCart(){
 
@@ -1505,60 +1699,19 @@ return;
 
 cartItemsEl.innerHTML="";
 
+
 keys.forEach(function(key,index){
 
-const x=cartData[key];
+const x=
+cartData[key];
 
-const item=document.createElement("div");
+const item=
+document.createElement("div");
 
 item.className="item";
 
-const name=document.createElement("div");
 
-name.className="itemName";
+const name=
+document.createElement("div");
 
-name.textContent=
-(index+1)+". "+x.name;
-
-const info=document.createElement("div");
-
-info.className="itemInfo";
-
-info.textContent=
-"("+x.variant+") | Code: "+x.code;
-
-const controls=document.createElement("div");
-
-controls.className="cartControls";
-
-const minus=document.createElement("button");
-
-minus.textContent="−";
-
-minus.onclick=function(){
-cartChange(key,-1);
-};
-
-const qty=document.createElement("b");
-
-qty.textContent=x.qty;
-
-const plus=document.createElement("button");
-
-plus.textContent="+";
-
-plus.onclick=function(){
-cartChange(key,1);
-};
-
-const remove=document.createElement("button");
-
-remove.className="removeBtn";
-
-remove.textContent="Remove";
-
-remove.onclick=function(){
-removeCart(key);
-};
-
-contro
+name.className="ite
