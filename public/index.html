@@ -1,1091 +1,1097 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>BIN AMEEN TRADER</title>
 
 <style>
+*{box-sizing:border-box}
 
-*{
-box-sizing:border-box;
+html,body{
+  margin:0;
+  padding:0;
+  background:#c8d3df;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#1f293d;
+  -webkit-user-select:none;
+  user-select:none;
 }
 
-body{
-margin:0;
-padding:8px;
-background:#c8d3df;
-font-family:Arial,sans-serif;
-color:#1f293d;
-}
+body{padding:8px}
 
 .wrap{
-max-width:480px;
-margin:auto;
+  width:100%;
+  max-width:480px;
+  margin:auto;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:9px;
-margin-bottom:8px;
-text-align:center;
+  background:#fff;
+  border:2px solid #8fa0b5;
+  padding:8px;
+  margin-bottom:8px;
+  border-radius:0;
 }
 
 header h2{
-margin:2px 0;
-font-size:21px;
+  text-align:center;
+  font-size:23px;
+  margin:2px 0 4px;
 }
 
 header div{
-font-size:14px;
+  text-align:center;
+  font-size:14px;
 }
 
-/* ================= CART BUTTON ================= */
+/* BUTTONS */
 
-.cart-top{
-width:100%;
-background:#1f293d;
-color:#fff;
-border:0;
-border-radius:3px;
-padding:11px;
-font-size:16px;
-font-weight:bold;
-margin-bottom:8px;
+button{
+  border:0;
+  border-radius:0;
+  padding:7px 9px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:13px;
 }
 
-/* ================= CATEGORIES ================= */
-
-.categories{
-display:flex;
-gap:5px;
-overflow-x:auto;
-padding:2px 0 7px;
+.main{
+  background:#1f293d;
+  color:white;
 }
 
-.categories button{
-flex-shrink:0;
-background:#fff;
-color:#1f293d;
-border:1px solid #8fa0b5;
-border-radius:3px;
-padding:7px 10px;
-font-size:11px;
-font-weight:bold;
+.cartTop{
+  width:100%;
+  margin-bottom:8px;
+  padding:10px;
+  font-size:15px;
 }
 
-.categories button.active{
-background:#1f293d;
-color:#fff;
+/* CATEGORIES */
+
+.cats{
+  display:flex;
+  gap:5px;
+  overflow-x:auto;
+  margin:7px 0;
+  padding-bottom:2px;
 }
 
-/* ================= SEARCH ================= */
+.cats button{
+  background:#fff;
+  border:1px solid #8fa0b5;
+  white-space:nowrap;
+}
+
+.cats .active{
+  background:#1f293d;
+  color:white;
+}
+
+/* SEARCH */
 
 .search{
-width:100%;
-padding:9px;
-border:2px solid #8fa0b5;
-border-radius:3px;
-font-size:14px;
-margin-bottom:8px;
-outline:none;
+  width:100%;
+  padding:9px;
+  border:2px solid #8fa0b5;
+  border-radius:0;
+  background:white;
+  font-size:14px;
+  margin-bottom:8px;
 }
 
-/* ================= PRODUCT CARD ================= */
+/* PRODUCT CARD */
 
 .card{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:7px;
-margin-bottom:7px;
-
-display:flex;
-gap:8px;
-align-items:center;
+  background:#fff;
+  border:2px solid #8fa0b5;
+  border-radius:0;
+  padding:7px;
+  margin-bottom:7px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  min-height:105px;
 }
 
+/* IMAGE */
+
 .pic{
-width:82px;
-height:82px;
-flex-shrink:0;
-border:1px solid #d0d7df;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#fff;
-overflow:hidden;
-cursor:pointer;
-position:relative;
+  width:82px;
+  height:82px;
+  border:1px solid #8fa0b5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+  background:white;
+  cursor:pointer;
 }
 
 .pic img{
-max-width:100%;
-max-height:100%;
-object-fit:contain;
-user-select:none;
--webkit-user-drag:none;
-pointer-events:none;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  pointer-events:none;
+  -webkit-user-drag:none;
 }
+
+/* WATERMARK */
+
+.pic:after{
+  content:"BIN AMEEN";
+  position:absolute;
+  font-size:9px;
+  font-weight:bold;
+  color:rgba(31,41,61,.16);
+  transform:rotate(-25deg);
+  pointer-events:none;
+}
+
+/* INFO */
 
 .info{
-flex:1;
-min-width:0;
+  flex:1;
+  min-width:0;
 }
 
-.name{
-display:block;
-font-size:13px;
-font-weight:bold;
-line-height:1.2;
-margin-bottom:4px;
+.productName{
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+
+  font-size:13px;
+  font-weight:bold;
+  line-height:16px;
+  margin:2px 0 5px;
 }
 
-.code{
-display:inline-block;
-font-size:10px;
-font-weight:bold;
-background:#f1f5f9;
-padding:3px 5px;
-border-radius:2px;
-margin-bottom:4px;
+/* VARIANT NAV */
+
+.variantNav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  margin:3px 0 5px;
 }
 
-.vs{
-display:flex;
-gap:3px;
-flex-wrap:wrap;
-margin:3px 0;
+.variantNav button{
+  background:#475569;
+  color:white;
+  width:30px;
+  height:27px;
+  padding:0;
+  flex-shrink:0;
 }
 
-.v{
-background:#f1f5f9;
-border:1px solid #8fa0b5;
-border-radius:3px;
-padding:5px 7px;
-font-size:10px;
-font-weight:bold;
-cursor:pointer;
+.variantCode{
+  background:#f1f5f9;
+  border:1px solid #cbd5e1;
+  padding:5px 7px;
+  font-size:11px;
+  font-weight:bold;
+  min-width:70px;
+  text-align:center;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
-.v.active{
-background:#1f293d;
-color:#fff;
-}
+/* QUANTITY */
 
 .q{
-display:flex;
-align-items:center;
-gap:5px;
-margin-top:4px;
+  display:flex;
+  align-items:center;
+  gap:5px;
 }
 
 .q button{
-width:28px;
-height:25px;
-border:0;
-border-radius:3px;
-background:#475569;
-color:#fff;
-font-size:17px;
-font-weight:bold;
+  background:#475569;
+  color:white;
+  width:29px;
+  height:27px;
+  padding:0;
 }
 
 .q b{
-min-width:18px;
-text-align:center;
-font-size:13px;
+  min-width:18px;
+  text-align:center;
+  font-size:13px;
 }
-
-.no-items{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:20px;
-text-align:center;
-font-weight:bold;
-}
-
-
-/* =================================================
-   PRODUCT VIEW / IMAGE VIEW
-================================================= */
-
-#productView{
-display:none;
-position:fixed;
-inset:0;
-z-index:9000;
-background:#c8d3df;
-overflow-y:auto;
-}
-
-#productView.open{
-display:block;
-}
-
-.view-inner{
-max-width:480px;
-margin:auto;
-padding:8px;
-}
-
-/* View header */
-
-.view-header{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:9px;
-margin-bottom:8px;
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:8px;
-}
-
-.view-title{
-font-size:17px;
-font-weight:bold;
-}
-
-.close-view{
-background:#1f293d;
-color:#fff;
-border:0;
-border-radius:3px;
-padding:8px 12px;
-font-weight:bold;
-}
-
-/* Big image */
-
-.big-image-box{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:10px;
-position:relative;
-text-align:center;
-}
-
-.big-image{
-width:100%;
-height:330px;
-object-fit:contain;
-user-select:none;
--webkit-user-drag:none;
-pointer-events:none;
-}
-
-/* Watermark */
-
-.watermark{
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%) rotate(-25deg);
-
-font-size:28px;
-font-weight:bold;
-
-color:rgba(31,41,61,.13);
-
-pointer-events:none;
-user-select:none;
-
-white-space:nowrap;
-}
-
-/* View information */
-
-.view-info{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:10px;
-margin-top:8px;
-}
-
-.view-name{
-font-size:17px;
-font-weight:bold;
-line-height:1.25;
-margin-bottom:6px;
-}
-
-.view-code{
-display:inline-block;
-background:#f1f5f9;
-padding:5px 8px;
-font-size:12px;
-font-weight:bold;
-margin-bottom:8px;
-}
-
-/* Variant buttons */
-
-.view-variants{
-display:flex;
-gap:5px;
-flex-wrap:wrap;
-margin-bottom:8px;
-}
-
-.view-variant{
-background:#f1f5f9;
-border:1px solid #8fa0b5;
-border-radius:3px;
-padding:8px 10px;
-font-weight:bold;
-font-size:12px;
-}
-
-.view-variant.active{
-background:#1f293d;
-color:#fff;
-}
-
-/* Quantity in view */
-
-.view-quantity{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-margin:8px 0;
-}
-
-.view-quantity button{
-width:42px;
-height:38px;
-border:0;
-border-radius:3px;
-background:#475569;
-color:white;
-font-size:22px;
-font-weight:bold;
-}
-
-.view-quantity b{
-font-size:18px;
-min-width:30px;
-text-align:center;
-}
-
-/* Next Back */
-
-.view-navigation{
-display:flex;
-gap:8px;
-margin-top:8px;
-}
-
-.view-navigation button{
-flex:1;
-border:0;
-border-radius:3px;
-padding:12px;
-font-size:15px;
-font-weight:bold;
-background:#1f293d;
-color:white;
-}
-
 
 /* =================================================
    SEPARATE CART SCREEN
 ================================================= */
 
-#cartScreen{
-display:none;
-position:fixed;
-inset:0;
-z-index:9999;
-background:#c8d3df;
-overflow-y:auto;
+.cartScreen{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9998;
+  background:#c8d3df;
+  overflow:auto;
 }
 
-#cartScreen.open{
-display:block;
+.cartScreen.open{
+  display:block;
 }
 
-.cart-inner{
-max-width:480px;
-margin:auto;
-padding:8px;
+.cartPage{
+  width:100%;
+  max-width:480px;
+  margin:auto;
+  padding:8px;
 }
 
-.cart-header{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:10px;
-margin-bottom:8px;
+.cartHeader{
+  background:#fff;
+  border:2px solid #8fa0b5;
+  padding:10px;
+  margin-bottom:7px;
 
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-.cart-header h2{
-margin:0;
-font-size:19px;
+.cartHeader h3{
+  margin:0;
+  font-size:18px;
 }
 
-.back-btn{
-background:#1f293d;
-color:#fff;
-border:0;
-border-radius:3px;
-padding:8px 11px;
-font-weight:bold;
+.cartBack{
+  background:#1f293d;
+  color:white;
+  padding:8px 12px;
 }
 
-.cart-item{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:9px;
-margin-bottom:7px;
+.item{
+  background:#fff;
+  border:2px solid #8fa0b5;
+  padding:8px;
+  margin-bottom:6px;
+  font-size:13px;
 }
 
-.cart-item-name{
-font-weight:bold;
-font-size:14px;
+.cartQty{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin-top:7px;
 }
 
-.cart-item-details{
-font-size:12px;
-margin-top:4px;
+.cartQty button{
+  background:#475569;
+  color:white;
+  min-width:30px;
+  height:28px;
+  padding:0;
 }
 
-.cart-controls{
-display:flex;
-align-items:center;
-gap:6px;
-margin-top:7px;
+.cartQty .remove{
+  background:#991b1b;
+  padding:0 9px;
 }
 
-.cart-controls button{
-background:#475569;
-color:#fff;
-border:0;
-border-radius:3px;
-padding:5px 10px;
-font-weight:bold;
+.cartBottom{
+  display:flex;
+  gap:5px;
+  margin-top:8px;
 }
 
-.cart-controls .remove{
-background:#991b1b;
+.cartBottom button{
+  flex:1;
+  padding:11px 5px;
 }
 
 .whatsapp{
-width:100%;
-background:#128c7e;
-color:#fff;
-border:0;
-border-radius:3px;
-padding:12px;
-font-size:15px;
-font-weight:bold;
-margin-top:5px;
+  background:#128c7e;
+  color:white;
 }
 
-.empty{
-background:#fff;
-border:2px solid #8fa0b5;
-border-radius:3px;
-padding:25px;
-text-align:center;
-font-weight:bold;
+.emptyCart{
+  background:#fff;
+  border:2px solid #8fa0b5;
+  padding:20px;
+  text-align:center;
 }
 
+/* =================================================
+   FULL PRODUCT VIEW
+================================================= */
+
+.viewer{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#fff;
+  overflow:auto;
+}
+
+.viewer.open{
+  display:block;
+}
+
+.viewerTop{
+  height:48px;
+  background:#1f293d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 10px;
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+
+.viewerTop button{
+  background:#fff;
+  color:#1f293d;
+  min-width:70px;
+}
+
+.viewerBody{
+  max-width:600px;
+  margin:auto;
+  padding:12px;
+  text-align:center;
+}
+
+.viewerImageBox{
+  width:100%;
+  height:min(68vh,650px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background:#fff;
+  border:1px solid #ddd;
+  overflow:hidden;
+}
+
+.viewerImageBox img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  pointer-events:none;
+  -webkit-user-drag:none;
+}
+
+.viewerWatermark{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  font-size:30px;
+  font-weight:bold;
+  color:rgba(31,41,61,.13);
+  pointer-events:none;
+  white-space:nowrap;
+}
+
+.viewerName{
+  font-size:19px;
+  font-weight:bold;
+  line-height:24px;
+  margin:12px 4px 6px;
+}
+
+.viewerNav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  margin:8px 0;
+}
+
+.viewerNav button{
+  background:#1f293d;
+  color:#fff;
+  width:45px;
+  height:38px;
+  font-size:20px;
+}
+
+.viewerCode{
+  border:2px solid #8fa0b5;
+  background:#f1f5f9;
+  padding:9px 15px;
+  min-width:110px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.viewerQty{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+
+.viewerQty button{
+  background:#1f293d;
+  color:#fff;
+  width:42px;
+  height:38px;
+  font-size:20px;
+}
+
+.viewerQty b{
+  min-width:35px;
+  font-size:18px;
+}
+
+.noItems{
+  background:#fff;
+  border:2px solid #8fa0b5;
+  padding:12px;
+  text-align:center;
+}
+
+@media(max-width:380px){
+
+  body{padding:6px}
+
+  header h2{font-size:20px}
+
+  .pic{
+    width:72px;
+    height:72px;
+  }
+
+  .card{
+    min-height:91px;
+    padding:6px;
+  }
+
+  .productName{
+    font-size:12px;
+    line-height:14px;
+  }
+
+  .viewerName{
+    font-size:17px;
+  }
+
+}
 </style>
 </head>
 
-
 <body>
 
+<!-- ================= HOME ================= -->
 
-<!-- =================================================
-     HOME SCREEN
-================================================= -->
-
-<div class="wrap" id="homeScreen">
+<div class="wrap" id="home">
 
 <header>
-
-<h2>BIN AMEEN TRADER</h2>
-
-<div>
-Call: 03331390045
-</div>
-
+  <h2>BIN AMEEN TRADER</h2>
+  <div>Call: 03331390045</div>
 </header>
 
-
-<!-- CART ONLY BUTTON -->
-
-<button class="cart-top" onclick="openCart()">
-
-View Cart (<span id="count">0</span>)
-
+<button class="main cartTop" onclick="openCart()">
+  View Cart (<span id="count">0</span>)
 </button>
 
-
-<!-- CATEGORY -->
-
-<div
-class="categories"
-id="categories">
-</div>
-
-
-<!-- SEARCH -->
+<div class="cats" id="cats"></div>
 
 <input
-class="search"
-id="search"
-placeholder="Search product name or SKU code..."
+  class="search"
+  id="search"
+  placeholder="Search product name or SKU code..."
+  autocomplete="off"
 >
-
-
-<!-- PRODUCTS -->
 
 <div id="list"></div>
 
 </div>
 
 
+<!-- ================= SEPARATE CART ================= -->
 
-<!-- =================================================
-     PRODUCT VIEW SCREEN
-================================================= -->
+<div class="cartScreen" id="cartScreen">
 
-<div id="productView">
+  <div class="cartPage">
 
-<div class="view-inner">
+    <div class="cartHeader">
 
-<div class="view-header">
+      <h3>Your Selected Items</h3>
 
-<div class="view-title">
-Product View
-</div>
+      <button
+        class="cartBack"
+        onclick="closeCart()"
+      >
+        ← Back
+      </button>
 
-<button
-class="close-view"
-onclick="closeProductView()"
->
-← Back
-</button>
+    </div>
 
-</div>
+    <div id="cartItems"></div>
 
+    <div class="cartBottom">
 
-<div class="big-image-box">
+      <button
+        class="main"
+        onclick="closeCart()"
+      >
+        Continue Shopping
+      </button>
 
-<img
-id="viewImage"
-class="big-image"
-draggable="false"
-oncontextmenu="return false"
->
+      <button
+        class="whatsapp"
+        onclick="wa()"
+      >
+        WhatsApp Order
+      </button>
 
-<div class="watermark">
-BIN AMEEN TRADER
-</div>
+    </div>
 
-</div>
-
-
-<div class="view-info">
-
-<div
-id="viewName"
-class="view-name">
-</div>
-
-
-<div
-id="viewCode"
-class="view-code">
-</div>
-
-
-<!-- VARIANTS -->
-
-<div
-id="viewVariants"
-class="view-variants">
-</div>
-
-
-<!-- QUANTITY -->
-
-<div class="view-quantity">
-
-<button onclick="viewQuantity(-1)">
-−
-</button>
-
-<b id="viewQty">0</b>
-
-<button onclick="viewQuantity(1)">
-+
-</button>
+  </div>
 
 </div>
 
 
-<!-- NEXT / BACK -->
+<!-- ================= PRODUCT VIEW ================= -->
 
-<div class="view-navigation">
+<div class="viewer" id="viewer">
 
-<button onclick="previousProduct()">
-← Previous
-</button>
+  <div class="viewerTop">
 
-<button onclick="nextProduct()">
-Next →
-</button>
+    <button onclick="closeViewer()">
+      ← Back
+    </button>
+
+    <b>PRODUCT VIEW</b>
+
+    <button onclick="cartFromViewer()">
+      Cart (<span id="viewerCount">0</span>)
+    </button>
+
+  </div>
+
+  <div class="viewerBody">
+
+    <div class="viewerImageBox">
+
+      <img
+        id="viewerImg"
+        src=""
+        alt=""
+        draggable="false"
+        oncontextmenu="return false"
+      >
+
+      <div class="viewerWatermark">
+        BIN AMEEN TRADER
+      </div>
+
+    </div>
+
+    <div
+      class="viewerName"
+      id="viewerName">
+    </div>
+
+    <div class="viewerNav">
+
+      <button onclick="previousVariant()">
+        ←
+      </button>
+
+      <div
+        class="viewerCode"
+        id="viewerCode">
+      </div>
+
+      <button onclick="nextVariant()">
+        →
+      </button>
+
+    </div>
+
+    <div class="viewerQty">
+
+      <button onclick="viewerChange(-1)">
+        −
+      </button>
+
+      <b id="viewerQty">0</b>
+
+      <button onclick="viewerChange(1)">
+        +
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =================================================
-     SEPARATE CART SCREEN
-================================================= -->
-
-<div id="cartScreen">
-
-<div class="cart-inner">
-
-<div class="cart-header">
-
-<h2>
-Your Selected Items
-</h2>
-
-<button
-class="back-btn"
-onclick="closeCart()"
->
-← Back
-</button>
-
-</div>
-
-
-<div id="cartItems"></div>
-
-
-<button
-class="whatsapp"
-onclick="sendWhatsApp()"
->
-Send Order on WhatsApp
-</button>
-
-</div>
-
-</div>
-
 
 
 <script>
-
 
 /* =================================================
    DATA
 ================================================= */
 
 let products=[];
-
-let selectedVariant={};
-
+let sel={};
 let cart={};
 
-let currentCategory="ALL";
+let category="ALL";
 
-let viewProductIndex=0;
+let viewerProduct=null;
+let viewerIndex=0;
 
 
 /* =================================================
    LOAD
 ================================================= */
 
-async function loadProducts(){
+async function load(){
 
-try{
+  try{
 
-const response=
-await fetch("/api/products");
+    const response=
+      await fetch("/api/products");
 
-if(!response.ok){
+    if(!response.ok){
+      throw new Error("API error");
+    }
 
-throw new Error("Products API Error");
+    const data=
+      await response.json();
 
-}
+    products=
+      Array.isArray(data)
+      ? data
+      : [];
 
-products=await response.json();
+    products.forEach(p=>{
 
+      if(!Array.isArray(p.variants)){
+        p.variants=[];
+      }
 
-products.forEach(p=>{
+      if(p.variants.length===0){
 
-selectedVariant[p.id]=0;
+        p.variants=[{
+          label:"",
+          code:p.code||"",
+          img:p.img||""
+        }];
 
-});
+      }
 
+      sel[p.id]=0;
 
-drawCategories();
+    });
 
-renderProducts();
+    drawCats();
+    render();
 
+  }catch(error){
 
-}catch(error){
+    console.error(error);
 
-console.error(error);
+    document.getElementById("list").innerHTML=
+      '<div class="noItems">Unable to load products.</div>';
 
-document.getElementById("list").innerHTML=
-`
-<div class="no-items">
-Products load نہیں ہو سکے۔
-</div>
-`;
-
-}
-
-}
-
-
-/* =================================================
-   CATEGORIES
-================================================= */
-
-function drawCategories(){
-
-const box=
-document.getElementById("categories");
-
-
-const categories=[
-"ALL",
-...new Set(
-
-products
-
-.map(p=>p.category)
-
-.filter(c=>
-c &&
-String(c).trim()!==""
-)
-
-)
-];
-
-
-box.innerHTML=
-categories.map(category=>{
-
-const active=
-currentCategory===category
-?"active"
-:"";
-
-
-return `
-
-<button
-class="${active}"
-onclick="selectCategory(${JSON.stringify(category)})"
->
-
-${escapeHtml(
-category==="ALL"
-?"ALL ITEMS"
-:category
-)}
-
-</button>
-
-`;
-
-}).join("");
+  }
 
 }
 
 
 /* =================================================
-   CATEGORY CHANGE
+   CATEGORY NORMALIZATION
+   یہ category filtering کو مضبوط کرتا ہے
 ================================================= */
 
-function selectCategory(category){
+function cleanCategory(value){
 
-currentCategory=category;
-
-drawCategories();
-
-renderProducts();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+  return String(value||"")
+    .trim()
+    .toLowerCase();
 
 }
 
 
 /* =================================================
-   RENDER PRODUCTS
+   DRAW CATEGORIES
 ================================================= */
 
-function renderProducts(){
+function drawCats(){
 
-const list=
-document.getElementById("list");
+  const seen=new Set();
 
+  const categories=[];
 
-const query=
-document
-.getElementById("search")
-.value
-.toLowerCase()
-.trim();
+  products.forEach(p=>{
 
+    const original=
+      String(p.category||"").trim();
 
-const filtered=
-products.filter(p=>{
+    if(!original)return;
 
-const categoryOK=
-currentCategory==="ALL" ||
-p.category===currentCategory;
+    const key=
+      cleanCategory(original);
 
+    if(!seen.has(key)){
 
-const name=
-String(p.name||"")
-.toLowerCase();
+      seen.add(key);
 
+      categories.push(original);
 
-const codeMatch=
-Array.isArray(p.variants) &&
-p.variants.some(v=>
-String(v.code||"")
-.toLowerCase()
-.includes(query)
-);
+    }
+
+  });
 
 
-const nameMatch=
-name.includes(query);
+  const allCategories=[
+    "ALL",
+    ...categories
+  ];
 
 
-return categoryOK &&
-(
-query==="" ||
-nameMatch ||
-codeMatch
-);
+  document.getElementById("cats").innerHTML=
 
-});
+    allCategories.map(x=>{
 
+      const active=
+        cleanCategory(x)===
+        cleanCategory(category)
+        ? "active"
+        : "";
 
-if(filtered.length===0){
-
-list.innerHTML=
-`
-<div class="no-items">
-No items found
-</div>
-`;
-
-return;
-
-}
+      const label=
+        x==="ALL"
+        ? "ALL ITEMS"
+        : x;
 
 
-list.innerHTML="";
+      return `
 
+        <button
+          class="${active}"
+          onclick='setCategory(${JSON.stringify(x)})'
+        >
 
-filtered.forEach(product=>{
+          ${escapeHTML(label)}
 
-createProductCard(product,list);
+        </button>
 
-});
+      `;
+
+    }).join("");
 
 }
 
 
 /* =================================================
-   PRODUCT CARD
+   SET CATEGORY
 ================================================= */
 
-function createProductCard(product,list){
+function setCategory(x){
 
-if(
-!Array.isArray(product.variants) ||
-product.variants.length===0
-){
+  category=x;
 
-return;
+  drawCats();
 
-}
+  render();
 
-
-let index=
-selectedVariant[product.id]||0;
-
-
-if(index>=product.variants.length){
-
-index=0;
-
-}
-
-
-const variant=
-product.variants[index];
-
-
-const key=
-product.id+"_"+variant.label;
-
-
-const qty=
-cart[key]?.qty||0;
-
-
-const image=
-variant.img ||
-product.img ||
-"";
-
-
-const card=
-document.createElement("div");
-
-
-card.className="card";
-
-
-card.innerHTML=`
-
-<div
-class="pic"
-onclick="openProductView(${product.id})"
-oncontextmenu="return false"
->
-
-<img
-src="${escapeAttribute(image)}"
-draggable="false"
-oncontextmenu="return false"
->
-
-</div>
-
-
-<div class="info">
-
-
-<span class="name">
-
-${escapeHtml(
-product.name||""
-)}
-
-</span>
-
-
-<span class="code">
-
-CODE:
-${escapeHtml(
-variant.code||""
-)}
-
-</span>
-
-
-<div class="vs">
-
-${
-product.variants
-.map((v,i)=>`
-
-<button
-class="v ${i===index?"active":""}"
-onclick="selectVariant(${product.id},${i})"
->
-
-${escapeHtml(
-v.label||""
-)}
-
-</button>
-
-`).join("")
-}
-
-
-</div>
-
-
-<div class="q">
-
-<button
-onclick="changeQuantity(${product.id},-1)"
->
-−
-</button>
-
-<b>
-${qty}
-</b>
-
-<button
-onclick="changeQuantity(${product.id},1)"
->
-+
-</button>
-
-</div>
-
-
-</div>
-
-`;
-
-
-list.appendChild(card);
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
 /* =================================================
-   SELECT VARIANT
+   RENDER
 ================================================= */
 
-function selectVariant(id,index){
+function render(){
 
-selectedVariant[id]=index;
+  const searchValue=
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase()
+      .trim();
 
-renderProducts();
+
+  const list=
+    document.getElementById("list");
+
+
+  const selectedCategory=
+    cleanCategory(category);
+
+
+  const filtered=
+    products.filter(p=>{
+
+      const productCategory=
+        cleanCategory(p.category);
+
+
+      const categoryOK=
+        selectedCategory==="all" ||
+        productCategory===selectedCategory;
+
+
+      const name=
+        String(p.name||"")
+          .toLowerCase();
+
+
+      const variantMatch=
+        p.variants.some(v=>{
+
+          const code=
+            String(v.code||"")
+              .toLowerCase();
+
+          const label=
+            String(v.label||"")
+              .toLowerCase();
+
+          const variantName=
+            String(v.name||"")
+              .toLowerCase();
+
+          return(
+            code.includes(searchValue) ||
+            label.includes(searchValue) ||
+            variantName.includes(searchValue)
+          );
+
+        });
+
+
+      return(
+        categoryOK &&
+        (
+          searchValue==="" ||
+          name.includes(searchValue) ||
+          variantMatch
+        )
+      );
+
+    });
+
+
+  if(!filtered.length){
+
+    list.innerHTML=
+      '<div class="noItems">No items found</div>';
+
+    return;
+
+  }
+
+
+  list.innerHTML="";
+
+
+  filtered.forEach(p=>{
+
+    let index=
+      Number(sel[p.id]||0);
+
+
+    if(index<0)index=0;
+
+    if(index>=p.variants.length){
+      index=0;
+    }
+
+    sel[p.id]=index;
+
+
+    const v=
+      p.variants[index];
+
+
+    const key=
+      p.id+"_"+index;
+
+
+    const qty=
+      cart[key]?.qty||0;
+
+
+    const image=
+      v.img ||
+      p.img ||
+      "";
+
+
+    const card=
+      document.createElement("div");
+
+
+    card.className="card";
+
+
+    card.innerHTML=`
+
+      <div
+        class="pic"
+        onclick="openViewer(${Number(p.id)},${index})"
+      >
+
+        <img
+          src="${escapeAttr(image)}"
+          alt=""
+          draggable="false"
+          oncontextmenu="return false"
+        >
+
+      </div>
+
+
+      <div class="info">
+
+        <span class="productName">
+          ${escapeHTML(
+            getVariantName(p,v)
+          )}
+        </span>
+
+
+        <div class="variantNav">
+
+          <button
+            onclick="changeVariant(${Number(p.id)},-1)"
+          >
+            ←
+          </button>
+
+
+          <div class="variantCode">
+
+            ${escapeHTML(
+              v.code||"CODE"
+            )}
+
+          </div>
+
+
+          <button
+            onclick="changeVariant(${Number(p.id)},1)"
+          >
+            →
+          </button>
+
+        </div>
+
+
+        <div class="q">
+
+          <button
+            onclick="change(${Number(p.id)},-1)"
+          >
+            −
+          </button>
+
+          <b>${qty}</b>
+
+          <button
+            onclick="change(${Number(p.id)},1)"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    list.appendChild(card);
+
+  });
+
+}
+
+
+/* =================================================
+   VARIANT NAME
+================================================= */
+
+function getVariantName(product,variant){
+
+  if(variant && variant.name){
+    return variant.name;
+  }
+
+  if(
+    variant &&
+    variant.label
+  ){
+
+    return(
+      product.name+
+      " "+
+      variant.label
+    );
+
+  }
+
+  return product.name||"";
+
+}
+
+
+/* =================================================
+   CHANGE VARIANT
+================================================= */
+
+function changeVariant(id,d){
+
+  const p=
+    products.find(x=>x.id===id);
+
+  if(
+    !p ||
+    !p.variants ||
+    !p.variants.length
+  ){
+    return;
+  }
+
+
+  let i=
+    Number(sel[id]||0);
+
+
+  i+=d;
+
+
+  if(i<0){
+    i=p.variants.length-1;
+  }
+
+  if(i>=p.variants.length){
+    i=0;
+  }
+
+
+  sel[id]=i;
+
+  render();
 
 }
 
@@ -1094,56 +1100,65 @@ renderProducts();
    CHANGE QUANTITY
 ================================================= */
 
-function changeQuantity(id,direction){
+function change(id,d){
 
-const product=
-products.find(p=>p.id===id);
+  const p=
+    products.find(x=>x.id===id);
 
-if(!product)return;
-
-
-const index=
-selectedVariant[id]||0;
+  if(!p)return;
 
 
-const variant=
-product.variants[index];
+  const index=
+    Number(sel[id]||0);
 
 
-const key=
-product.id+"_"+variant.label;
+  const v=
+    p.variants[index];
 
 
-const newQty=
-(cart[key]?.qty||0)+direction;
+  const key=
+    p.id+"_"+index;
 
 
-if(newQty<=0){
-
-delete cart[key];
-
-}else{
-
-cart[key]={
-
-name:product.name,
-
-variant:variant.label,
-
-code:variant.code,
-
-img:variant.img||product.img||"",
-
-qty:newQty
-
-};
-
-}
+  const newQty=
+    (cart[key]?.qty||0)+d;
 
 
-updateCartCount();
+  if(newQty<=0){
 
-renderProducts();
+    delete cart[key];
+
+  }else{
+
+    cart[key]={
+
+      name:
+        getVariantName(p,v),
+
+      productName:
+        p.name||"",
+
+      variant:
+        v.label||"",
+
+      code:
+        v.code||"",
+
+      qty:newQty,
+
+      img:
+        v.img||
+        p.img||
+        ""
+
+    };
+
+  }
+
+
+  updateCartCount();
+
+  render();
 
 }
 
@@ -1154,328 +1169,53 @@ renderProducts();
 
 function updateCartCount(){
 
-const total=
-Object.values(cart)
-.reduce(
-(sum,item)=>
-sum+Number(item.qty||0),
-0
-);
+  const total=
+    Object.values(cart)
+      .reduce(
+        (sum,x)=>
+          sum+Number(x.qty||0),
+        0
+      );
 
 
-document.getElementById("count")
-.textContent=total;
-
-}
+  document.getElementById("count")
+    .textContent=total;
 
 
-/* =================================================
-   PRODUCT VIEW
-================================================= */
-
-function openProductView(id){
-
-const index=
-products.findIndex(
-p=>p.id===id
-);
-
-if(index<0)return;
-
-
-viewProductIndex=index;
-
-
-renderProductView();
-
-
-document
-.getElementById("productView")
-.classList.add("open");
-
-
-document.body.style.overflow="hidden";
+  document.getElementById("viewerCount")
+    .textContent=total;
 
 }
 
 
 /* =================================================
-   RENDER PRODUCT VIEW
-================================================= */
-
-function renderProductView(){
-
-const product=
-products[viewProductIndex];
-
-if(!product)return;
-
-
-let variantIndex=
-selectedVariant[product.id]||0;
-
-
-if(
-variantIndex>=product.variants.length
-){
-
-variantIndex=0;
-
-selectedVariant[product.id]=0;
-
-}
-
-
-const variant=
-product.variants[variantIndex];
-
-
-const image=
-variant.img ||
-product.img ||
-"";
-
-
-document.getElementById("viewImage")
-.src=image;
-
-
-document.getElementById("viewName")
-.textContent=
-product.name || "";
-
-
-document.getElementById("viewCode")
-.textContent=
-"CODE: "+(variant.code||"");
-
-
-/* VARIANT BUTTONS */
-
-document.getElementById("viewVariants")
-.innerHTML=
-
-product.variants
-.map((v,i)=>`
-
-<button
-class="view-variant ${
-i===variantIndex
-?"active"
-:""
-}"
-onclick="selectViewVariant(${i})"
->
-
-${escapeHtml(
-v.label||""
-)}
-
-</button>
-
-`)
-.join("");
-
-
-/* QUANTITY */
-
-const key=
-product.id+"_"+variant.label;
-
-
-document.getElementById("viewQty")
-.textContent=
-cart[key]?.qty||0;
-
-}
-
-
-/* =================================================
-   VIEW VARIANT
-================================================= */
-
-function selectViewVariant(index){
-
-const product=
-products[viewProductIndex];
-
-if(!product)return;
-
-
-selectedVariant[product.id]=index;
-
-renderProductView();
-
-renderProducts();
-
-}
-
-
-/* =================================================
-   VIEW QUANTITY
-================================================= */
-
-function viewQuantity(direction){
-
-const product=
-products[viewProductIndex];
-
-if(!product)return;
-
-
-const index=
-selectedVariant[product.id]||0;
-
-
-const variant=
-product.variants[index];
-
-
-const key=
-product.id+"_"+variant.label;
-
-
-const newQty=
-(cart[key]?.qty||0)+direction;
-
-
-if(newQty<=0){
-
-delete cart[key];
-
-}else{
-
-cart[key]={
-
-name:product.name,
-
-variant:variant.label,
-
-code:variant.code,
-
-img:variant.img||product.img||"",
-
-qty:newQty
-
-};
-
-}
-
-
-updateCartCount();
-
-renderProductView();
-
-renderProducts();
-
-}
-
-
-/* =================================================
-   NEXT PRODUCT
-================================================= */
-
-function nextProduct(){
-
-if(products.length===0)return;
-
-
-let next=
-viewProductIndex+1;
-
-
-if(next>=products.length){
-
-next=0;
-
-}
-
-
-viewProductIndex=next;
-
-
-renderProductView();
-
-}
-
-
-/* =================================================
-   PREVIOUS PRODUCT
-================================================= */
-
-function previousProduct(){
-
-if(products.length===0)return;
-
-
-let previous=
-viewProductIndex-1;
-
-
-if(previous<0){
-
-previous=products.length-1;
-
-}
-
-
-viewProductIndex=previous;
-
-
-renderProductView();
-
-}
-
-
-/* =================================================
-   CLOSE PRODUCT VIEW
-================================================= */
-
-function closeProductView(){
-
-document
-.getElementById("productView")
-.classList.remove("open");
-
-
-document.body.style.overflow="";
-
-renderProducts();
-
-}
-
-
-/* =================================================
-   CART OPEN
+   OPEN SEPARATE CART
 ================================================= */
 
 function openCart(){
 
-renderCart();
+  renderCart();
 
+  document
+    .getElementById("cartScreen")
+    .classList.add("open");
 
-document
-.getElementById("cartScreen")
-.classList.add("open");
-
-
-document.body.style.overflow="hidden";
+  document.body.style.overflow="hidden";
 
 }
 
 
 /* =================================================
-   CART CLOSE
+   CLOSE CART
 ================================================= */
 
 function closeCart(){
 
-document
-.getElementById("cartScreen")
-.classList.remove("open");
+  document
+    .getElementById("cartScreen")
+    .classList.remove("open");
 
-
-document.body.style.overflow="";
+  document.body.style.overflow="";
 
 }
 
@@ -1486,201 +1226,210 @@ document.body.style.overflow="";
 
 function renderCart(){
 
-const box=
-document.getElementById("cartItems");
+  const box=
+    document.getElementById("cartItems");
 
 
-const items=
-Object.values(cart);
+  const items=
+    Object.values(cart);
 
 
-if(items.length===0){
+  if(!items.length){
 
-box.innerHTML=
-`
-<div class="empty">
-Cart is empty
-</div>
-`;
+    box.innerHTML=
+      '<div class="emptyCart">Cart is empty</div>';
 
-return;
+    return;
 
-}
+  }
 
 
-box.innerHTML=
+  box.innerHTML=
 
-items.map((item,index)=>`
+    items.map((x,i)=>{
 
-<div class="cart-item">
+      return`
 
-<div class="cart-item-name">
+        <div class="item">
 
-${index+1}.
-${escapeHtml(item.name)}
-(${escapeHtml(item.variant)})
+          <b>
+            ${i+1}.
+            ${escapeHTML(
+              x.productName||x.name
+            )}
+          </b>
 
-</div>
+          ${
+            x.variant
+            ? ` (${escapeHTML(x.variant)})`
+            : ""
+          }
 
+          <br>
 
-<div class="cart-item-details">
+          Code:
+          ${escapeHTML(x.code||"")}
 
-Code:
-${escapeHtml(item.code)}
+          &nbsp; | &nbsp;
 
-&nbsp; | &nbsp;
-
-Qty:
-<b>${item.qty}</b>
-
-</div>
-
-
-<div class="cart-controls">
-
-
-<button
-onclick="changeCartItem('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}',-1)"
->
-−
-</button>
+          Qty:
+          <b>${x.qty}</b>
 
 
-<b>
-${item.qty}
-</b>
+          <div class="cartQty">
 
+            <button
+              onclick="cartChange(${i},-1)"
+            >
+              −
+            </button>
 
-<button
-onclick="changeCartItem('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}',1)"
->
-+
-</button>
+            <b>${x.qty}</b>
 
+            <button
+              onclick="cartChange(${i},1)"
+            >
+              +
+            </button>
 
-<button
-class="remove"
-onclick="removeCartItem('${escapeAttribute(item.name)}','${escapeAttribute(item.variant)}')"
->
-Remove
-</button>
+            <button
+              class="remove"
+              onclick="cartRemove(${i})"
+            >
+              Remove
+            </button>
 
+          </div>
 
-</div>
+        </div>
 
-</div>
+      `;
 
-`).join("");
+    }).join("");
 
 }
 
 
 /* =================================================
-   CART + -
+   CART CHANGE
 ================================================= */
 
-function changeCartItem(
-name,
-variant,
-direction
-){
+function cartChange(index,d){
 
-const key=
-Object.keys(cart)
-.find(k=>
-cart[k].name===name &&
-cart[k].variant===variant
-);
+  const keys=
+    Object.keys(cart);
+
+  const key=
+    keys[index];
 
 
-if(!key)return;
+  if(!key)return;
 
 
-cart[key].qty+=direction;
+  cart[key].qty+=d;
 
 
-if(cart[key].qty<=0){
+  if(cart[key].qty<=0){
 
-delete cart[key];
+    delete cart[key];
 
-}
+  }
 
 
-updateCartCount();
+  updateCartCount();
 
-renderCart();
+  renderCart();
 
-renderProducts();
+  render();
 
 }
 
 
 /* =================================================
-   REMOVE CART ITEM
+   CART REMOVE
 ================================================= */
 
-function removeCartItem(
-name,
-variant
-){
+function cartRemove(index){
 
-const key=
-Object.keys(cart)
-.find(k=>
-cart[k].name===name &&
-cart[k].variant===variant
-);
+  const keys=
+    Object.keys(cart);
+
+  const key=
+    keys[index];
 
 
-if(key){
+  if(key){
 
-delete cart[key];
+    delete cart[key];
 
-}
+  }
 
 
-updateCartCount();
+  updateCartCount();
 
-renderCart();
+  renderCart();
 
-renderProducts();
+  render();
 
 }
 
 
 /* =================================================
-   WHATSAPP
+   PRODUCT VIEW
 ================================================= */
 
-function sendWhatsApp(){
+function openViewer(id,index){
 
-const items=
-Object.values(cart);
+  const p=
+    products.find(x=>x.id===id);
+
+  if(!p)return;
 
 
-if(items.length===0){
+  viewerProduct=p;
 
-alert("Cart is empty");
+  viewerIndex=
+    Math.max(
+      0,
+      Math.min(
+        index,
+        p.variants.length-1
+      )
+    );
 
-return;
+
+  updateViewer();
+
+
+  document
+    .getElementById("viewer")
+    .classList.add("open");
+
+
+  document.body.style.overflow="hidden";
 
 }
 
 
-let message=
-"*NEW ORDER - BIN AMEEN TRADER*\n\n";
+/* =================================================
+   CLOSE VIEWER
+================================================= */
+
+function closeViewer(){
+
+  document
+    .getElementById("viewer")
+    .classList.remove("open");
+
+  document.body.style.overflow="";
+
+}
 
 
-items.forEach((item,index)=>{
+/* =================================================
+   UPDATE VIEWER
+================================================= */
 
-message+=
+function updateViewer(){
 
-`${index+1}. *${item.name}* (${item.variant})\n`+
-
-`   Code: ${item.code} | Qty: *${item.qty}*\n\n`;
-
-});
-
-
-const url=
-"https://wa.me/923331390045?text=
+  if(!viewerPr
