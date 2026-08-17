@@ -7,20 +7,24 @@
     "variants": [
       {
         "label": "100ML",
+        "size": "100ML",
         "code": "VHT-100",
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
       },
       {
         "label": "200ML",
+        "size": "200ML",
         "code": "VHT-200",
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
       },
       {
-        "label": "400ML",
+        "label": "300ML",
+        "size": "300ML",
         "code": "VHT-400",
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
       }
-    ]
+    ],
+    "optionTitle": "SIZE"
   },
   {
     "id": 1786909578959,
