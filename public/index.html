@@ -382,65 +382,169 @@ font-weight:bold;
 color:#475569;
 }
 
-/* IMAGE VIEWER */
+
+/* ==================================================
+   FULL PRODUCT VIEWER
+================================================== */
+
 .viewer{
 display:none;
 position:fixed;
 z-index:99999;
 inset:0;
-background:rgba(0,0,0,.82);
-align-items:center;
-justify-content:center;
-padding:10px;
+background:#fff;
+overflow:auto;
 }
 
 .viewer.open{
-display:flex;
+display:block;
 }
 
-.viewerBox{
-position:relative;
-width:min(95vw,480px);
-height:min(85vh,600px);
+.viewerTop{
+height:50px;
+background:#1f293d;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 7px;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.viewerTop button{
 background:#fff;
-padding:12px;
+color:#1f293d;
+font-size:13px;
+font-weight:bold;
+padding:7px 10px;
+}
+
+.viewerTitle{
+font-size:14px;
+font-weight:bold;
+}
+
+.viewerBody{
+width:100%;
+max-width:560px;
+margin:auto;
+padding:10px;
+text-align:center;
+}
+
+/* BIG IMAGE */
+.viewerImageBox{
+width:100%;
+height:min(62vh,520px);
+background:#fff;
+border:2px solid #8fa0b5;
+position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
 overflow:hidden;
 }
 
-.viewerBox img{
+.viewerImageBox img{
 max-width:100%;
 max-height:100%;
+width:100%;
+height:100%;
 object-fit:contain;
 pointer-events:none;
 -webkit-user-drag:none;
 }
 
-.closeViewer{
-position:absolute;
-right:5px;
-top:5px;
-width:35px;
-height:35px;
-background:#1f293d;
-color:#fff;
-font-size:18px;
-padding:0;
-}
-
+/* BIG WATERMARK */
 .viewerWatermark{
 position:absolute;
 left:50%;
 top:50%;
 transform:translate(-50%,-50%) rotate(-25deg);
-font-size:20px;
+font-size:28px;
 font-weight:bold;
-color:rgba(31,41,61,.16);
+color:rgba(31,41,61,.15);
 white-space:nowrap;
 pointer-events:none;
 }
+
+/* FULL NAME */
+.viewerName{
+font-size:19px;
+font-weight:900;
+line-height:23px;
+margin:10px 2px 7px;
+}
+
+/* VARIANT NAV */
+.viewerNav{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:5px;
+margin:7px 0;
+}
+
+.viewerNav button{
+background:#475569;
+color:#fff;
+width:42px;
+height:38px;
+font-size:22px;
+padding:0;
+}
+
+.viewerCode{
+min-width:125px;
+max-width:230px;
+background:#f1f5f9;
+border:2px solid #8fa0b5;
+padding:9px 7px;
+font-size:14px;
+font-weight:bold;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+}
+
+/* VIEWER QUANTITY */
+.viewerQty{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:7px;
+margin:8px 0;
+}
+
+.viewerQty button{
+background:#1f293d;
+color:#fff;
+width:45px;
+height:40px;
+font-size:23px;
+padding:0;
+}
+
+.viewerQtyValue{
+min-width:45px;
+height:40px;
+border:2px solid #8fa0b5;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:bold;
+}
+
+/* VIEWER CART BUTTON */
+.viewerCartButton{
+width:100%;
+margin-top:5px;
+}
+
 
 /* LOADING / ERROR */
 .loading{
@@ -459,6 +563,7 @@ font-size:13px;
 line-height:20px;
 word-break:break-word;
 }
+
 
 @media(max-width:420px){
 
@@ -521,7 +626,39 @@ font-size:14px;
 padding:8px 4px;
 }
 
+.viewerName{
+font-size:17px;
+line-height:21px;
 }
+
+.viewerImageBox{
+height:58vh;
+}
+
+.viewerCode{
+min-width:100px;
+font-size:12px;
+}
+
+.viewerNav button{
+width:38px;
+height:35px;
+}
+
+.viewerQty button{
+width:40px;
+height:37px;
+}
+
+.viewerQtyValue{
+height:37px;
+min-width:40px;
+}
+
+}
+
+
+/* IMAGE PROTECTION */
 
 img{
 -webkit-touch-callout:none;
@@ -553,6 +690,9 @@ BIN AMEEN TRADER
 
 </header>
 
+
+<!-- CART BUTTON -->
+
 <button
 class="main"
 style="width:100%"
@@ -561,7 +701,13 @@ onclick="showCart()"
 🛒 View Cart (<span id="count">0</span>)
 </button>
 
+
+<!-- CATEGORIES -->
+
 <div class="cats" id="cats"></div>
+
+
+<!-- SEARCH -->
 
 <input
 class="search"
@@ -569,6 +715,9 @@ id="search"
 placeholder="Search product name or SKU code..."
 autocomplete="off"
 >
+
+
+<!-- PRODUCTS -->
 
 <div id="list">
 
@@ -578,6 +727,9 @@ Loading products...
 
 </div>
 
+
+<!-- EMAIL -->
+
 <div class="emailFooter">
 ✉ binameentrader@gmail.com
 </div>
@@ -585,7 +737,9 @@ Loading products...
 </div>
 
 
-<!-- CART -->
+<!-- ==================================================
+     CART
+================================================== -->
 
 <div class="cartOverlay" id="cartOverlay">
 
@@ -623,18 +777,35 @@ Send Order on WhatsApp
 </div>
 
 
-<!-- IMAGE VIEWER -->
+<!-- ==================================================
+     FULL PRODUCT VIEWER
+================================================== -->
 
 <div class="viewer" id="viewer">
 
-<div class="viewerBox">
+<div class="viewerTop">
 
-<button
-class="closeViewer"
-onclick="closeViewer()"
->
-✕
+<button onclick="closeViewer()">
+← Back
 </button>
+
+<div class="viewerTitle">
+PRODUCT VIEW
+</div>
+
+<button onclick="showCartFromViewer()">
+🛒 Cart (<span id="viewerCount">0</span>)
+</button>
+
+</div>
+
+
+<div class="viewerBody">
+
+
+<!-- IMAGE -->
+
+<div class="viewerImageBox">
 
 <img
 id="viewerImg"
@@ -649,6 +820,72 @@ BIN AMEEN TRADER
 
 </div>
 
+
+<!-- FULL NAME -->
+
+<div
+class="viewerName"
+id="viewerName"
+>
+</div>
+
+
+<!-- VARIANT NAV -->
+
+<div class="viewerNav">
+
+<button onclick="previousViewerVariant()">
+‹
+</button>
+
+<div
+class="viewerCode"
+id="viewerCode"
+>
+CODE
+</div>
+
+<button onclick="nextViewerVariant()">
+›
+</button>
+
+</div>
+
+
+<!-- QUANTITY -->
+
+<div class="viewerQty">
+
+<button onclick="viewerChange(-1)">
+−
+</button>
+
+<div
+class="viewerQtyValue"
+id="viewerQty"
+>
+0
+</div>
+
+<button onclick="viewerChange(1)">
++
+</button>
+
+</div>
+
+
+<!-- VIEW CART -->
+
+<button
+class="main viewerCartButton"
+onclick="showCartFromViewer()"
+>
+🛒 View Cart (<span id="viewerCountBottom">0</span>)
+</button>
+
+
+</div>
+
 </div>
 
 
@@ -659,20 +896,60 @@ let sel={};
 let cartData={};
 let category="ALL";
 
-const catsEl=document.getElementById("cats");
-const searchEl=document.getElementById("search");
-const listEl=document.getElementById("list");
+/* VIEWER STATE */
 
-const cartOverlay=document.getElementById("cartOverlay");
-const cartItemsEl=document.getElementById("cartItems");
-const countEl=document.getElementById("count");
-const cartTotalEl=document.getElementById("cartTotal");
-
-const viewerEl=document.getElementById("viewer");
-const viewerImgEl=document.getElementById("viewerImg");
+let viewerProduct=null;
+let viewerIndex=0;
 
 
-/* ================= LOAD ================= */
+/* ELEMENTS */
+
+const catsEl=
+document.getElementById("cats");
+
+const searchEl=
+document.getElementById("search");
+
+const listEl=
+document.getElementById("list");
+
+const cartOverlay=
+document.getElementById("cartOverlay");
+
+const cartItemsEl=
+document.getElementById("cartItems");
+
+const countEl=
+document.getElementById("count");
+
+const cartTotalEl=
+document.getElementById("cartTotal");
+
+const viewerEl=
+document.getElementById("viewer");
+
+const viewerImgEl=
+document.getElementById("viewerImg");
+
+const viewerNameEl=
+document.getElementById("viewerName");
+
+const viewerCodeEl=
+document.getElementById("viewerCode");
+
+const viewerQtyEl=
+document.getElementById("viewerQty");
+
+const viewerCountEl=
+document.getElementById("viewerCount");
+
+const viewerCountBottomEl=
+document.getElementById("viewerCountBottom");
+
+
+/* ==================================================
+   LOAD
+================================================== */
 
 async function load(){
 
@@ -681,12 +958,14 @@ listEl.innerHTML=
 
 try{
 
-const response=await fetch("/api/products",{
+const response=
+await fetch("/api/products",{
 method:"GET",
 cache:"no-store"
 });
 
-const text=await response.text();
+const text=
+await response.text();
 
 if(!response.ok){
 
@@ -729,7 +1008,8 @@ if(!Array.isArray(p.variants)){
 p.variants=[{
 label:"",
 code:p.code||"",
-img:p.img||""
+img:p.img||"",
+name:p.name||""
 }];
 
 }
@@ -749,8 +1029,6 @@ listEl.innerHTML=
 '<div class="errorBox">'+
 '<b>Products Load Error</b><br><br>'+
 escapeHTML(error.message)+
-'<br><br>'+
-'اگر یہاں 404 آ رہا ہے تو /api/products ابھی Vercel پر available نہیں ہے۔'+
 '</div>';
 
 }
@@ -758,11 +1036,14 @@ escapeHTML(error.message)+
 }
 
 
-/* ================= CATEGORIES ================= */
+/* ==================================================
+   CATEGORIES
+================================================== */
 
 function drawCats(){
 
-const categorySet=new Set();
+const categorySet=
+new Set();
 
 products.forEach(function(p){
 
@@ -781,10 +1062,13 @@ catsEl.innerHTML="";
 
 categories.forEach(function(x){
 
-const btn=document.createElement("button");
+const btn=
+document.createElement("button");
 
 btn.textContent=
-x==="ALL"?"ALL ITEMS":x;
+x==="ALL"
+?"ALL ITEMS"
+:x;
 
 if(x===category){
 btn.className="active";
@@ -806,7 +1090,9 @@ catsEl.appendChild(btn);
 }
 
 
-/* ================= RENDER ================= */
+/* ==================================================
+   HOME RENDER
+================================================== */
 
 function render(){
 
@@ -835,12 +1121,22 @@ return String(v.code||"")
 
 });
 
+const labelMatch=
+variants.some(function(v){
+
+return String(v.label||"")
+.toLowerCase()
+.includes(q);
+
+});
+
 return(
 (category==="ALL"||p.category===category)
 &&
 (
 name.includes(q)||
-codeMatch
+codeMatch||
+labelMatch
 )
 );
 
@@ -848,6 +1144,7 @@ codeMatch
 
 
 listEl.innerHTML="";
+
 
 if(!filtered.length){
 
@@ -868,7 +1165,8 @@ return;
 
 }
 
-let index=sel[p.id]||0;
+let index=
+sel[p.id]||0;
 
 if(index>=p.variants.length){
 
@@ -877,7 +1175,8 @@ sel[p.id]=0;
 
 }
 
-const v=p.variants[index];
+const v=
+p.variants[index];
 
 const key=
 p.id+"_"+index;
@@ -887,6 +1186,8 @@ cartData[key]
 ?cartData[key].qty
 :0;
 
+
+/* CARD */
 
 const card=
 document.createElement("div");
@@ -904,7 +1205,8 @@ pic.className="pic";
 pic.onclick=function(){
 
 openViewer(
-v.img||p.img||""
+p.id,
+index
 );
 
 };
@@ -913,8 +1215,14 @@ v.img||p.img||""
 const img=
 document.createElement("img");
 
-img.src=v.img||p.img||"";
-img.alt=p.name||"";
+img.src=
+v.img||p.img||"";
+
+img.alt=
+v.name||
+p.name||
+"";
+
 img.draggable=false;
 
 pic.appendChild(img);
@@ -947,7 +1255,7 @@ document.createElement("b");
 name.className="name";
 
 name.textContent=
-p.name||"";
+getDisplayName(p,v);
 
 
 /* VARIANTS */
@@ -955,6 +1263,8 @@ p.name||"";
 const variantArea=
 document.createElement("div");
 
+
+/* ONLY 2 VARIANTS */
 
 if(p.variants.length===2){
 
@@ -991,6 +1301,8 @@ variantArea.appendChild(btn);
 });
 
 }else{
+
+/* 3 OR MORE */
 
 variantArea.className="variantRow";
 
@@ -1068,7 +1380,8 @@ document.createElement("div");
 
 qty.className="qtyBox";
 
-qty.textContent=quantity;
+qty.textContent=
+quantity;
 
 
 const plus=
@@ -1090,6 +1403,8 @@ qbox.appendChild(qty);
 qbox.appendChild(plus);
 
 
+/* ADD */
+
 info.appendChild(code);
 info.appendChild(name);
 info.appendChild(variantArea);
@@ -1105,16 +1420,43 @@ listEl.appendChild(card);
 }
 
 
-/* ================= VARIANTS ================= */
+/* ==================================================
+   DISPLAY NAME
+================================================== */
+
+function getDisplayName(p,v){
+
+/*
+If variant has its own name,
+show that.
+
+Otherwise show product name.
+*/
+
+if(v && v.name){
+return v.name;
+}
+
+return p.name||"";
+
+}
+
+
+/* ==================================================
+   HOME VARIANTS
+================================================== */
 
 function prevVariant(id){
 
 const p=
 products.find(x=>x.id===id);
 
-if(!p||!p.variants.length)return;
+if(!p||!p.variants.length){
+return;
+}
 
-let i=sel[id]||0;
+let i=
+sel[id]||0;
 
 i--;
 
@@ -1134,9 +1476,12 @@ function nextVariant(id){
 const p=
 products.find(x=>x.id===id);
 
-if(!p||!p.variants.length)return;
+if(!p||!p.variants.length){
+return;
+}
 
-let i=sel[id]||0;
+let i=
+sel[id]||0;
 
 i++;
 
@@ -1151,20 +1496,27 @@ render();
 }
 
 
-/* ================= QUANTITY ================= */
+/* ==================================================
+   HOME QUANTITY
+================================================== */
 
 function change(id,d){
 
 const p=
 products.find(x=>x.id===id);
 
-if(!p||!p.variants.length)return;
+if(!p||!p.variants.length){
+return;
+}
+
+const index=
+sel[id]||0;
 
 const v=
-p.variants[sel[id]||0];
+p.variants[index];
 
 const key=
-p.id+"_"+sel[id];
+p.id+"_"+index;
 
 const newQty=
 (cartData[key]?.qty||0)+d;
@@ -1177,26 +1529,42 @@ delete cartData[key];
 }else{
 
 cartData[key]={
-name:p.name||"",
-variant:v.label||"",
-code:v.code||"",
-img:v.img||p.img||"",
-qty:newQty
+
+name:
+p.name||"",
+
+variant:
+v.label||"",
+
+code:
+v.code||"",
+
+img:
+v.img||p.img||"",
+
+qty:
+newQty
+
 };
 
 }
 
 updateCartCount();
+
 render();
 
 if(cartOverlay.classList.contains("open")){
+
 renderCart();
-}
 
 }
 
+}
 
-/* ================= CART COUNT ================= */
+
+/* ==================================================
+   CART COUNT
+================================================== */
 
 function updateCartCount(){
 
@@ -1204,17 +1572,25 @@ const total=
 Object.values(cartData)
 .reduce(function(sum,item){
 
-return sum+Number(item.qty||0);
+return sum+
+Number(item.qty||0);
 
 },0);
 
 countEl.textContent=total;
+
 cartTotalEl.textContent=total;
+
+viewerCountEl.textContent=total;
+
+viewerCountBottomEl.textContent=total;
 
 }
 
 
-/* ================= CART ================= */
+/* ==================================================
+   CART
+================================================== */
 
 function showCart(){
 
@@ -1254,9 +1630,11 @@ return;
 
 cartItemsEl.innerHTML="";
 
+
 keys.forEach(function(key,index){
 
-const x=cartData[key];
+const x=
+cartData[key];
 
 const item=
 document.createElement("div");
@@ -1270,7 +1648,8 @@ document.createElement("div");
 name.className="itemName";
 
 name.textContent=
-(index+1)+". "+x.name;
+(index+1)+". "+x.name+
+(x.variant?" ("+x.variant+")":"");
 
 
 const info=
@@ -1279,233 +1658,8 @@ document.createElement("div");
 info.className="itemInfo";
 
 info.textContent=
-"("+x.variant+") | Code: "+
-x.code;
+"Code: "+x.code+
+" | Qty: "+x.qty;
 
 
-const controls=
-document.createElement("div");
-
-controls.className="cartControls";
-
-
-const minus=
-document.createElement("button");
-
-minus.textContent="−";
-
-minus.onclick=function(){
-
-cartChange(key,-1);
-
-};
-
-
-const qty=
-document.createElement("b");
-
-qty.textContent=x.qty;
-
-
-const plus=
-document.createElement("button");
-
-plus.textContent="+";
-
-plus.onclick=function(){
-
-cartChange(key,1);
-
-};
-
-
-const remove=
-document.createElement("button");
-
-remove.className="removeBtn";
-remove.textContent="Remove";
-
-remove.onclick=function(){
-
-removeCart(key);
-
-};
-
-
-controls.appendChild(minus);
-controls.appendChild(qty);
-controls.appendChild(plus);
-controls.appendChild(remove);
-
-item.appendChild(name);
-item.appendChild(info);
-item.appendChild(controls);
-
-cartItemsEl.appendChild(item);
-
-});
-
-updateCartCount();
-
-}
-
-
-function cartChange(key,d){
-
-if(!cartData[key])return;
-
-cartData[key].qty+=d;
-
-if(cartData[key].qty<=0){
-delete cartData[key];
-}
-
-renderCart();
-render();
-
-}
-
-
-function removeCart(key){
-
-delete cartData[key];
-
-renderCart();
-render();
-
-}
-
-
-/* ================= IMAGE VIEWER ================= */
-
-function openViewer(src){
-
-if(!src)return;
-
-viewerImgEl.src=src;
-
-viewerEl.classList.add("open");
-
-document.body.style.overflow="hidden";
-
-}
-
-
-function closeViewer(){
-
-viewerEl.classList.remove("open");
-
-viewerImgEl.src="";
-
-document.body.style.overflow="";
-
-}
-
-
-viewerEl.addEventListener(
-"click",
-function(e){
-
-if(e.target===viewerEl){
-closeViewer();
-}
-
-});
-
-
-/* ================= WHATSAPP ================= */
-
-function wa(){
-
-const keys=
-Object.keys(cartData);
-
-if(!keys.length){
-
-alert("Cart is empty");
-
-return;
-
-}
-
-let message=
-"*NEW ORDER - BIN AMEEN TRADER*\n\n";
-
-
-keys.forEach(function(key,index){
-
-const x=cartData[key];
-
-message+=
-(index+1)+
-". *"+
-x.name+
-"* ("+
-x.variant+
-")\n"+
-"   Code: "+
-x.code+
-" | Qty: *"+
-x.qty+
-"*\n\n";
-
-});
-
-
-window.open(
-"https://wa.me/923331390045?text="+
-encodeURIComponent(message),
-"_blank"
-);
-
-}
-
-
-/* ================= SEARCH ================= */
-
-searchEl.addEventListener(
-"input",
-render
-);
-
-
-/* ================= PROTECTION ================= */
-
-document.addEventListener(
-"contextmenu",
-function(e){
-
-if(
-e.target.tagName==="IMG"||
-e.target.closest(".pic")||
-e.target.closest(".viewerBox")
-){
-
-e.preventDefault();
-
-}
-
-});
-
-
-document.addEventListener(
-"dragstart",
-function(e){
-
-if(e.target.tagName==="IMG"){
-e.preventDefault();
-}
-
-});
-
-
-/* ================= START ================= */
-
-updateCartCount();
-
-load();
-
-</script>
-
-</body>
-</html>
+const con
