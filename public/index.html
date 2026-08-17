@@ -18,7 +18,7 @@ html,body{
   user-select:none;
 }
 
-body{padding:8px}
+body{padding:7px}
 
 .wrap{
   width:100%;
@@ -27,19 +27,18 @@ body{padding:8px}
 }
 
 /* HEADER */
-
 header{
   background:#fff;
   border:2px solid #8fa0b5;
-  padding:8px;
-  margin-bottom:8px;
   border-radius:0;
+  padding:7px;
+  margin-bottom:7px;
 }
 
 header h2{
   text-align:center;
-  font-size:23px;
-  margin:2px 0 4px;
+  font-size:22px;
+  margin:2px 0 3px;
 }
 
 header div{
@@ -48,7 +47,6 @@ header div{
 }
 
 /* BUTTONS */
-
 button{
   border:0;
   border-radius:0;
@@ -65,13 +63,12 @@ button{
 
 .cartTop{
   width:100%;
-  margin-bottom:8px;
+  margin-bottom:7px;
   padding:10px;
   font-size:15px;
 }
 
 /* CATEGORIES */
-
 .cats{
   display:flex;
   gap:5px;
@@ -82,6 +79,7 @@ button{
 
 .cats button{
   background:#fff;
+  color:#1f293d;
   border:1px solid #8fa0b5;
   white-space:nowrap;
 }
@@ -92,7 +90,6 @@ button{
 }
 
 /* SEARCH */
-
 .search{
   width:100%;
   padding:9px;
@@ -100,28 +97,26 @@ button{
   border-radius:0;
   background:white;
   font-size:14px;
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
 /* PRODUCT CARD */
-
 .card{
   background:#fff;
   border:2px solid #8fa0b5;
   border-radius:0;
-  padding:7px;
-  margin-bottom:7px;
+  padding:6px;
+  margin-bottom:6px;
   display:flex;
-  gap:8px;
+  gap:7px;
   align-items:center;
-  min-height:105px;
+  min-height:98px;
 }
 
 /* IMAGE */
-
 .pic{
-  width:82px;
-  height:82px;
+  width:78px;
+  height:78px;
   border:1px solid #8fa0b5;
   display:flex;
   align-items:center;
@@ -142,11 +137,10 @@ button{
 }
 
 /* WATERMARK */
-
 .pic:after{
   content:"BIN AMEEN";
   position:absolute;
-  font-size:9px;
+  font-size:8px;
   font-weight:bold;
   color:rgba(31,41,61,.16);
   transform:rotate(-25deg);
@@ -154,50 +148,48 @@ button{
 }
 
 /* INFO */
-
 .info{
   flex:1;
   min-width:0;
 }
 
 .productName{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  line-height:15px;
+  margin:1px 0 4px;
+
   display:-webkit-box;
   -webkit-line-clamp:2;
   -webkit-box-orient:vertical;
   overflow:hidden;
-
-  font-size:13px;
-  font-weight:bold;
-  line-height:16px;
-  margin:2px 0 5px;
 }
 
 /* VARIANT NAV */
-
 .variantNav{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:3px;
-  margin:3px 0 5px;
+  margin:3px 0 4px;
 }
 
 .variantNav button{
   background:#475569;
   color:white;
-  width:30px;
-  height:27px;
+  width:28px;
+  height:25px;
   padding:0;
-  flex-shrink:0;
 }
 
 .variantCode{
   background:#f1f5f9;
   border:1px solid #cbd5e1;
-  padding:5px 7px;
-  font-size:11px;
+  padding:4px 6px;
+  font-size:10px;
   font-weight:bold;
-  min-width:70px;
+  min-width:65px;
   text-align:center;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -205,127 +197,123 @@ button{
 }
 
 /* QUANTITY */
-
 .q{
   display:flex;
   align-items:center;
-  gap:5px;
+  gap:4px;
 }
 
 .q button{
   background:#475569;
   color:white;
-  width:29px;
-  height:27px;
+  width:27px;
+  height:25px;
   padding:0;
 }
 
 .q b{
-  min-width:18px;
+  min-width:17px;
+  text-align:center;
+  font-size:12px;
+}
+
+/* ERROR / EMPTY */
+.noItems{
+  background:#fff;
+  border:2px solid #8fa0b5;
+  padding:12px;
   text-align:center;
   font-size:13px;
 }
 
-/* =================================================
-   SEPARATE CART SCREEN
-================================================= */
+/* =========================
+   CART FULL SCREEN
+========================= */
 
 .cartScreen{
   display:none;
   position:fixed;
   inset:0;
-  z-index:9998;
+  z-index:9000;
   background:#c8d3df;
-  overflow:auto;
+  overflow-y:auto;
 }
 
 .cartScreen.open{
   display:block;
 }
 
-.cartPage{
+.cartInner{
   width:100%;
   max-width:480px;
   margin:auto;
-  padding:8px;
+  padding:7px;
 }
 
-.cartHeader{
-  background:#fff;
-  border:2px solid #8fa0b5;
-  padding:10px;
-  margin-bottom:7px;
-
+.cartTopBar{
+  background:#1f293d;
+  color:white;
+  height:48px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  padding:0 8px;
+  margin-bottom:7px;
 }
 
-.cartHeader h3{
+.cartTopBar button{
+  background:white;
+  color:#1f293d;
+}
+
+.cartTitle{
+  background:white;
+  border:2px solid #8fa0b5;
+  padding:10px;
+  text-align:center;
+  margin-bottom:7px;
+}
+
+.cartTitle h3{
   margin:0;
-  font-size:18px;
 }
 
-.cartBack{
-  background:#1f293d;
-  color:white;
-  padding:8px 12px;
-}
-
-.item{
-  background:#fff;
+.cartItem{
+  background:white;
   border:2px solid #8fa0b5;
   padding:8px;
   margin-bottom:6px;
   font-size:13px;
 }
 
-.cartQty{
+.cartItemQty{
   display:flex;
   align-items:center;
   gap:5px;
-  margin-top:7px;
+  margin-top:6px;
 }
 
-.cartQty button{
+.cartItemQty button{
   background:#475569;
   color:white;
-  min-width:30px;
-  height:28px;
+  width:27px;
+  height:25px;
   padding:0;
 }
 
-.cartQty .remove{
-  background:#991b1b;
-  padding:0 9px;
-}
-
-.cartBottom{
+.cartButtons{
   display:flex;
   gap:5px;
   margin-top:8px;
 }
 
-.cartBottom button{
+.cartButtons button{
   flex:1;
-  padding:11px 5px;
 }
 
-.whatsapp{
-  background:#128c7e;
-  color:white;
-}
-
-.emptyCart{
-  background:#fff;
-  border:2px solid #8fa0b5;
-  padding:20px;
-  text-align:center;
-}
-
-/* =================================================
+/* =========================
    FULL PRODUCT VIEW
-================================================= */
+========================= */
 
 .viewer{
   display:none;
@@ -347,7 +335,7 @@ button{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 10px;
+  padding:0 8px;
   position:sticky;
   top:0;
   z-index:5;
@@ -356,19 +344,19 @@ button{
 .viewerTop button{
   background:#fff;
   color:#1f293d;
-  min-width:70px;
+  min-width:65px;
 }
 
 .viewerBody{
   max-width:600px;
   margin:auto;
-  padding:12px;
+  padding:10px;
   text-align:center;
 }
 
 .viewerImageBox{
   width:100%;
-  height:min(68vh,650px);
+  height:min(64vh,620px);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -399,106 +387,109 @@ button{
 }
 
 .viewerName{
-  font-size:19px;
+  font-size:18px;
   font-weight:bold;
-  line-height:24px;
-  margin:12px 4px 6px;
+  line-height:23px;
+  margin:10px 4px 5px;
 }
 
 .viewerNav{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:7px;
-  margin:8px 0;
+  gap:6px;
+  margin:7px 0;
 }
 
 .viewerNav button{
   background:#1f293d;
   color:#fff;
-  width:45px;
-  height:38px;
-  font-size:20px;
+  width:42px;
+  height:36px;
+  font-size:19px;
+  padding:0;
 }
 
 .viewerCode{
   border:2px solid #8fa0b5;
   background:#f1f5f9;
-  padding:9px 15px;
-  min-width:110px;
+  padding:8px 12px;
+  min-width:100px;
   font-weight:bold;
-  font-size:14px;
+  font-size:13px;
 }
 
 .viewerQty{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:8px;
-  margin-top:10px;
+  gap:7px;
+  margin-top:8px;
 }
 
 .viewerQty button{
   background:#1f293d;
   color:#fff;
-  width:42px;
-  height:38px;
+  width:40px;
+  height:36px;
   font-size:20px;
+  padding:0;
 }
 
 .viewerQty b{
-  min-width:35px;
-  font-size:18px;
+  min-width:32px;
+  font-size:17px;
 }
 
-.noItems{
-  background:#fff;
+/* LOADING */
+.loading{
+  background:white;
   border:2px solid #8fa0b5;
-  padding:12px;
+  padding:15px;
   text-align:center;
 }
 
+/* MOBILE */
 @media(max-width:380px){
 
-  body{padding:6px}
+  body{padding:5px}
 
-  header h2{font-size:20px}
+  header h2{
+    font-size:20px;
+  }
 
   .pic{
-    width:72px;
-    height:72px;
+    width:70px;
+    height:70px;
   }
 
   .card{
-    min-height:91px;
-    padding:6px;
+    min-height:88px;
+    padding:5px;
   }
 
   .productName{
-    font-size:12px;
+    font-size:11px;
     line-height:14px;
   }
 
   .viewerName{
     font-size:17px;
   }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HOME ================= -->
-
-<div class="wrap" id="home">
+<div class="wrap">
 
 <header>
   <h2>BIN AMEEN TRADER</h2>
   <div>Call: 03331390045</div>
 </header>
 
-<button class="main cartTop" onclick="openCart()">
+<button class="main cartTop" onclick="showCart()">
   View Cart (<span id="count">0</span>)
 </button>
 
@@ -511,33 +502,40 @@ button{
   autocomplete="off"
 >
 
-<div id="list"></div>
+<div id="list">
+  <div class="loading">Loading products...</div>
+</div>
 
 </div>
 
 
-<!-- ================= SEPARATE CART ================= -->
+<!-- =========================
+     CART SCREEN
+========================= -->
 
 <div class="cartScreen" id="cartScreen">
 
-  <div class="cartPage">
+  <div class="cartInner">
 
-    <div class="cartHeader">
+    <div class="cartTopBar">
 
+      <button onclick="closeCart()">← Back</button>
+
+      <b>YOUR CART</b>
+
+      <span>
+        <span id="cartScreenCount">0</span>
+      </span>
+
+    </div>
+
+    <div class="cartTitle">
       <h3>Your Selected Items</h3>
-
-      <button
-        class="cartBack"
-        onclick="closeCart()"
-      >
-        ← Back
-      </button>
-
     </div>
 
     <div id="cartItems"></div>
 
-    <div class="cartBottom">
+    <div class="cartButtons">
 
       <button
         class="main"
@@ -547,7 +545,7 @@ button{
       </button>
 
       <button
-        class="whatsapp"
+        class="main"
         onclick="wa()"
       >
         WhatsApp Order
@@ -560,7 +558,9 @@ button{
 </div>
 
 
-<!-- ================= PRODUCT VIEW ================= -->
+<!-- =========================
+     FULL PRODUCT VIEW
+========================= -->
 
 <div class="viewer" id="viewer">
 
@@ -572,7 +572,7 @@ button{
 
     <b>PRODUCT VIEW</b>
 
-    <button onclick="cartFromViewer()">
+    <button onclick="showCartFromViewer()">
       Cart (<span id="viewerCount">0</span>)
     </button>
 
@@ -598,37 +598,29 @@ button{
 
     <div
       class="viewerName"
-      id="viewerName">
-    </div>
+      id="viewerName"
+    ></div>
 
     <div class="viewerNav">
 
-      <button onclick="previousVariant()">
-        ←
-      </button>
+      <button onclick="previousVariant()">←</button>
 
       <div
         class="viewerCode"
-        id="viewerCode">
-      </div>
+        id="viewerCode"
+      ></div>
 
-      <button onclick="nextVariant()">
-        →
-      </button>
+      <button onclick="nextVariant()">→</button>
 
     </div>
 
     <div class="viewerQty">
 
-      <button onclick="viewerChange(-1)">
-        −
-      </button>
+      <button onclick="viewerChange(-1)">−</button>
 
       <b id="viewerQty">0</b>
 
-      <button onclick="viewerChange(1)">
-        +
-      </button>
+      <button onclick="viewerChange(1)">+</button>
 
     </div>
 
@@ -639,156 +631,221 @@ button{
 
 <script>
 
-/* =================================================
-   DATA
-================================================= */
+let products = [];
+let sel = {};
+let cart = {};
+let category = "ALL";
 
-let products=[];
-let sel={};
-let cart={};
-
-let category="ALL";
-
-let viewerProduct=null;
-let viewerIndex=0;
+let viewerProduct = null;
+let viewerIndex = 0;
 
 
-/* =================================================
+/* =========================
    LOAD
-================================================= */
+========================= */
 
 async function load(){
 
+  const list =
+    document.getElementById("list");
+
   try{
 
-    const response=
-      await fetch("/api/products");
+    const response =
+      await fetch("/api/products",{
+        cache:"no-store"
+      });
 
     if(!response.ok){
-      throw new Error("API error");
+
+      throw new Error(
+        "API returned " +
+        response.status
+      );
+
     }
 
-    const data=
+    const data =
       await response.json();
 
-    products=
-      Array.isArray(data)
-      ? data
-      : [];
+    /*
+      Support both:
+      [
+        {...}
+      ]
 
-    products.forEach(p=>{
+      and
 
-      if(!Array.isArray(p.variants)){
-        p.variants=[];
+      {
+        products:[...]
+      }
+    */
+
+    if(Array.isArray(data)){
+
+      products = data;
+
+    }else if(
+      data &&
+      Array.isArray(data.products)
+    ){
+
+      products = data.products;
+
+    }else{
+
+      throw new Error(
+        "Invalid products data"
+      );
+
+    }
+
+
+    products.forEach((p,index)=>{
+
+      /*
+        Make sure every product
+        has an ID.
+      */
+
+      if(
+        p.id === undefined ||
+        p.id === null
+      ){
+
+        p.id = "p_" + index;
+
       }
 
-      if(p.variants.length===0){
 
-        p.variants=[{
+      /*
+        Make sure variants exist.
+      */
+
+      if(
+        !Array.isArray(p.variants) ||
+        p.variants.length === 0
+      ){
+
+        p.variants = [{
           label:"",
-          code:p.code||"",
-          img:p.img||""
+          code:p.code || "",
+          img:p.img || "",
+          name:p.name || ""
         }];
 
       }
 
-      sel[p.id]=0;
+
+      /*
+        Clean variants.
+      */
+
+      p.variants =
+        p.variants.map(v => {
+
+          return {
+
+            label:
+              v && v.label != null
+                ? String(v.label)
+                : "",
+
+            code:
+              v && v.code != null
+                ? String(v.code)
+                : "",
+
+            img:
+              v && v.img
+                ? String(v.img)
+                : "",
+
+            name:
+              v && v.name
+                ? String(v.name)
+                : ""
+
+          };
+
+        });
+
+
+      sel[p.id] = 0;
 
     });
+
+
+    /*
+      NOW categories are created
+      only after products are loaded.
+    */
+
+    category = "ALL";
 
     drawCats();
     render();
 
+
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "PRODUCT LOAD ERROR:",
+      error
+    );
 
-    document.getElementById("list").innerHTML=
-      '<div class="noItems">Unable to load products.</div>';
+    list.innerHTML = `
+      <div class="noItems">
+        <b>Products could not be loaded.</b>
+        <br><br>
+        Please refresh the page.
+      </div>
+    `;
 
   }
 
 }
 
 
-/* =================================================
-   CATEGORY NORMALIZATION
-   یہ category filtering کو مضبوط کرتا ہے
-================================================= */
-
-function cleanCategory(value){
-
-  return String(value||"")
-    .trim()
-    .toLowerCase();
-
-}
-
-
-/* =================================================
-   DRAW CATEGORIES
-================================================= */
+/* =========================
+   CATEGORIES
+========================= */
 
 function drawCats(){
 
-  const seen=new Set();
+  const cats =
+    document.getElementById("cats");
 
-  const categories=[];
-
-  products.forEach(p=>{
-
-    const original=
-      String(p.category||"").trim();
-
-    if(!original)return;
-
-    const key=
-      cleanCategory(original);
-
-    if(!seen.has(key)){
-
-      seen.add(key);
-
-      categories.push(original);
-
-    }
-
-  });
-
-
-  const allCategories=[
+  const categoryList = [
     "ALL",
-    ...categories
+    ...new Set(
+      products
+        .map(p => String(p.category || "").trim())
+        .filter(Boolean)
+    )
   ];
 
 
-  document.getElementById("cats").innerHTML=
+  cats.innerHTML =
+    categoryList.map(x => {
 
-    allCategories.map(x=>{
+      const active =
+        x === category
+          ? "active"
+          : "";
 
-      const active=
-        cleanCategory(x)===
-        cleanCategory(category)
-        ? "active"
-        : "";
-
-      const label=
-        x==="ALL"
-        ? "ALL ITEMS"
-        : x;
-
+      const label =
+        x === "ALL"
+          ? "ALL ITEMS"
+          : x;
 
       return `
-
         <button
           class="${active}"
           onclick='setCategory(${JSON.stringify(x)})'
         >
-
           ${escapeHTML(label)}
-
         </button>
-
       `;
 
     }).join("");
@@ -796,94 +853,75 @@ function drawCats(){
 }
 
 
-/* =================================================
-   SET CATEGORY
-================================================= */
-
 function setCategory(x){
 
-  category=x;
+  category = x;
 
   drawCats();
-
   render();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
 
 }
 
 
-/* =================================================
-   RENDER
-================================================= */
+/* =========================
+   HOME PRODUCTS
+========================= */
 
 function render(){
 
-  const searchValue=
-    document
-      .getElementById("search")
-      .value
+  const search =
+    document.getElementById("search");
+
+  const list =
+    document.getElementById("list");
+
+  const searchValue =
+    String(search.value || "")
       .toLowerCase()
       .trim();
 
 
-  const list=
-    document.getElementById("list");
+  const filtered =
+    products.filter(p => {
+
+      const categoryOK =
+        category === "ALL" ||
+        String(p.category || "").trim() === category;
 
 
-  const selectedCategory=
-    cleanCategory(category);
-
-
-  const filtered=
-    products.filter(p=>{
-
-      const productCategory=
-        cleanCategory(p.category);
-
-
-      const categoryOK=
-        selectedCategory==="all" ||
-        productCategory===selectedCategory;
-
-
-      const name=
-        String(p.name||"")
+      const productName =
+        String(p.name || "")
           .toLowerCase();
 
 
-      const variantMatch=
-        p.variants.some(v=>{
+      const variantMatch =
+        p.variants.some(v => {
 
-          const code=
-            String(v.code||"")
+          const code =
+            String(v.code || "")
               .toLowerCase();
 
-          const label=
-            String(v.label||"")
+          const label =
+            String(v.label || "")
               .toLowerCase();
 
-          const variantName=
-            String(v.name||"")
+          const name =
+            String(v.name || "")
               .toLowerCase();
 
-          return(
+          return (
             code.includes(searchValue) ||
             label.includes(searchValue) ||
-            variantName.includes(searchValue)
+            name.includes(searchValue)
           );
 
         });
 
 
-      return(
+      return (
         categoryOK &&
         (
-          searchValue==="" ||
-          name.includes(searchValue) ||
+          productName.includes(searchValue) ||
           variantMatch
         )
       );
@@ -893,7 +931,7 @@ function render(){
 
   if(!filtered.length){
 
-    list.innerHTML=
+    list.innerHTML =
       '<div class="noItems">No items found</div>';
 
     return;
@@ -901,54 +939,61 @@ function render(){
   }
 
 
-  list.innerHTML="";
+  list.innerHTML = "";
 
 
-  filtered.forEach(p=>{
+  filtered.forEach(p => {
 
-    let index=
-      Number(sel[p.id]||0);
+    let index =
+      Number(sel[p.id] || 0);
 
 
-    if(index<0)index=0;
+    if(
+      index < 0 ||
+      index >= p.variants.length
+    ){
 
-    if(index>=p.variants.length){
-      index=0;
+      index = 0;
+
     }
 
-    sel[p.id]=index;
+
+    sel[p.id] = index;
 
 
-    const v=
+    const v =
       p.variants[index];
 
 
-    const key=
-      p.id+"_"+index;
+    const key =
+      String(p.id) +
+      "_" +
+      String(index);
 
 
-    const qty=
-      cart[key]?.qty||0;
+    const qty =
+      cart[key]
+        ? cart[key].qty
+        : 0;
 
 
-    const image=
+    const image =
       v.img ||
       p.img ||
       "";
 
 
-    const card=
+    const card =
       document.createElement("div");
 
+    card.className = "card";
 
-    card.className="card";
 
-
-    card.innerHTML=`
+    card.innerHTML = `
 
       <div
         class="pic"
-        onclick="openViewer(${Number(p.id)},${index})"
+        onclick='openViewer(${JSON.stringify(p.id)},${index})'
       >
 
         <img
@@ -973,23 +1018,19 @@ function render(){
         <div class="variantNav">
 
           <button
-            onclick="changeVariant(${Number(p.id)},-1)"
+            onclick='changeVariant(${JSON.stringify(p.id)},-1)'
           >
             ←
           </button>
 
-
           <div class="variantCode">
-
             ${escapeHTML(
-              v.code||"CODE"
+              v.code || "CODE"
             )}
-
           </div>
 
-
           <button
-            onclick="changeVariant(${Number(p.id)},1)"
+            onclick='changeVariant(${JSON.stringify(p.id)},1)'
           >
             →
           </button>
@@ -1000,7 +1041,7 @@ function render(){
         <div class="q">
 
           <button
-            onclick="change(${Number(p.id)},-1)"
+            onclick='change(${JSON.stringify(p.id)},-1)'
           >
             −
           </button>
@@ -1008,7 +1049,7 @@ function render(){
           <b>${qty}</b>
 
           <button
-            onclick="change(${Number(p.id)},1)"
+            onclick='change(${JSON.stringify(p.id)},1)'
           >
             +
           </button>
@@ -1027,128 +1068,170 @@ function render(){
 }
 
 
-/* =================================================
+/* =========================
    VARIANT NAME
-================================================= */
+========================= */
 
 function getVariantName(product,variant){
 
-  if(variant && variant.name){
-    return variant.name;
-  }
+  /*
+    For variants with their own name:
+    use that name.
+
+    Example:
+    PERT PLUS ANTI HAIR FALL SHAMPOO 400ML
+  */
 
   if(
     variant &&
-    variant.label
+    String(variant.name || "").trim()
   ){
 
-    return(
-      product.name+
-      " "+
-      variant.label
+    return variant.name;
+
+  }
+
+
+  /*
+    Normal products:
+    Product Name + Size
+  */
+
+  if(
+    variant &&
+    String(variant.label || "").trim()
+  ){
+
+    return (
+      String(product.name || "") +
+      " " +
+      String(variant.label)
     );
 
   }
 
-  return product.name||"";
+
+  return String(product.name || "");
 
 }
 
 
-/* =================================================
-   CHANGE VARIANT
-================================================= */
+/* =========================
+   HOME VARIANT
+========================= */
 
 function changeVariant(id,d){
 
-  const p=
-    products.find(x=>x.id===id);
+  const p =
+    products.find(
+      x => String(x.id) === String(id)
+    );
+
 
   if(
     !p ||
     !p.variants ||
     !p.variants.length
   ){
+
     return;
+
   }
 
 
-  let i=
-    Number(sel[id]||0);
+  let i =
+    Number(sel[p.id] || 0);
 
 
-  i+=d;
+  i += d;
 
 
-  if(i<0){
-    i=p.variants.length-1;
+  if(i < 0){
+
+    i =
+      p.variants.length - 1;
+
   }
 
-  if(i>=p.variants.length){
-    i=0;
+
+  if(
+    i >= p.variants.length
+  ){
+
+    i = 0;
+
   }
 
 
-  sel[id]=i;
+  sel[p.id] = i;
 
   render();
 
 }
 
 
-/* =================================================
-   CHANGE QUANTITY
-================================================= */
+/* =========================
+   ADD / REMOVE CART
+========================= */
 
 function change(id,d){
 
-  const p=
-    products.find(x=>x.id===id);
-
-  if(!p)return;
-
-
-  const index=
-    Number(sel[id]||0);
+  const p =
+    products.find(
+      x => String(x.id) === String(id)
+    );
 
 
-  const v=
+  if(!p){
+    return;
+  }
+
+
+  const index =
+    Number(sel[p.id] || 0);
+
+
+  const v =
     p.variants[index];
 
 
-  const key=
-    p.id+"_"+index;
+  const key =
+    String(p.id) +
+    "_" +
+    String(index);
 
 
-  const newQty=
-    (cart[key]?.qty||0)+d;
+  const newQty =
+    Number(
+      cart[key]?.qty || 0
+    ) + d;
 
 
-  if(newQty<=0){
+  if(newQty <= 0){
 
     delete cart[key];
 
   }else{
 
-    cart[key]={
+    cart[key] = {
+
+      productName:
+        String(p.name || ""),
 
       name:
         getVariantName(p,v),
 
-      productName:
-        p.name||"",
-
       variant:
-        v.label||"",
+        String(v.label || ""),
 
       code:
-        v.code||"",
+        String(v.code || ""),
 
       qty:newQty,
 
       img:
-        v.img||
-        p.img||
+        v.img ||
+        p.img ||
         ""
 
     };
@@ -1163,36 +1246,41 @@ function change(id,d){
 }
 
 
-/* =================================================
+/* =========================
    CART COUNT
-================================================= */
+========================= */
 
 function updateCartCount(){
 
-  const total=
+  const total =
     Object.values(cart)
       .reduce(
-        (sum,x)=>
-          sum+Number(x.qty||0),
+        (sum,x) =>
+          sum +
+          Number(x.qty || 0),
         0
       );
 
 
   document.getElementById("count")
-    .textContent=total;
+    .textContent = total;
+
+
+  document.getElementById("cartScreenCount")
+    .textContent = total;
 
 
   document.getElementById("viewerCount")
-    .textContent=total;
+    .textContent = total;
 
 }
 
 
-/* =================================================
-   OPEN SEPARATE CART
-================================================= */
+/* =========================
+   CART OPEN
+========================= */
 
-function openCart(){
+function showCart(){
 
   renderCart();
 
@@ -1200,14 +1288,11 @@ function openCart(){
     .getElementById("cartScreen")
     .classList.add("open");
 
-  document.body.style.overflow="hidden";
+  document.body.style.overflow =
+    "hidden";
 
 }
 
-
-/* =================================================
-   CLOSE CART
-================================================= */
 
 function closeCart(){
 
@@ -1215,71 +1300,71 @@ function closeCart(){
     .getElementById("cartScreen")
     .classList.remove("open");
 
-  document.body.style.overflow="";
+  document.body.style.overflow =
+    "";
 
 }
 
 
-/* =================================================
-   RENDER CART
-================================================= */
+/* =========================
+   CART CONTENT
+========================= */
 
 function renderCart(){
 
-  const box=
+  const box =
     document.getElementById("cartItems");
 
 
-  const items=
-    Object.values(cart);
+  const items =
+    Object.entries(cart);
 
 
   if(!items.length){
 
-    box.innerHTML=
-      '<div class="emptyCart">Cart is empty</div>';
+    box.innerHTML =
+      '<div class="cartItem">Cart is empty</div>';
 
     return;
 
   }
 
 
-  box.innerHTML=
+  box.innerHTML =
+    items.map(([key,x]) => {
 
-    items.map((x,i)=>{
+      return `
 
-      return`
-
-        <div class="item">
+        <div class="cartItem">
 
           <b>
-            ${i+1}.
             ${escapeHTML(
-              x.productName||x.name
+              x.productName ||
+              x.name ||
+              ""
             )}
           </b>
 
           ${
             x.variant
-            ? ` (${escapeHTML(x.variant)})`
-            : ""
+              ? ` (${escapeHTML(x.variant)})`
+              : ""
           }
 
           <br>
 
           Code:
-          ${escapeHTML(x.code||"")}
+          ${escapeHTML(x.code || "")}
 
           &nbsp; | &nbsp;
 
           Qty:
           <b>${x.qty}</b>
 
-
-          <div class="cartQty">
+          <div class="cartItemQty">
 
             <button
-              onclick="cartChange(${i},-1)"
+              onclick='cartChange(${JSON.stringify(key)},-1)'
             >
               −
             </button>
@@ -1287,16 +1372,9 @@ function renderCart(){
             <b>${x.qty}</b>
 
             <button
-              onclick="cartChange(${i},1)"
+              onclick='cartChange(${JSON.stringify(key)},1)'
             >
               +
-            </button>
-
-            <button
-              class="remove"
-              onclick="cartRemove(${i})"
-            >
-              Remove
             </button>
 
           </div>
@@ -1310,28 +1388,25 @@ function renderCart(){
 }
 
 
-/* =================================================
-   CART CHANGE
-================================================= */
+function cartChange(key,d){
 
-function cartChange(index,d){
-
-  const keys=
-    Object.keys(cart);
-
-  const key=
-    keys[index];
+  if(!cart[key]){
+    return;
+  }
 
 
-  if(!key)return;
+  const newQty =
+    Number(cart[key].qty || 0) + d;
 
 
-  cart[key].qty+=d;
-
-
-  if(cart[key].qty<=0){
+  if(newQty <= 0){
 
     delete cart[key];
+
+  }else{
+
+    cart[key].qty =
+      newQty;
 
   }
 
@@ -1340,60 +1415,35 @@ function cartChange(index,d){
 
   renderCart();
 
-  render();
-
 }
 
 
-/* =================================================
-   CART REMOVE
-================================================= */
-
-function cartRemove(index){
-
-  const keys=
-    Object.keys(cart);
-
-  const key=
-    keys[index];
-
-
-  if(key){
-
-    delete cart[key];
-
-  }
-
-
-  updateCartCount();
-
-  renderCart();
-
-  render();
-
-}
-
-
-/* =================================================
-   PRODUCT VIEW
-================================================= */
+/* =========================
+   FULL PRODUCT VIEW
+========================= */
 
 function openViewer(id,index){
 
-  const p=
-    products.find(x=>x.id===id);
+  const p =
+    products.find(
+      x => String(x.id) === String(id)
+    );
 
-  if(!p)return;
+
+  if(!p){
+    return;
+  }
 
 
-  viewerProduct=p;
+  viewerProduct = p;
 
-  viewerIndex=
+
+  viewerIndex =
     Math.max(
       0,
       Math.min(
-        index,
-        p.variants.length-1
+        Number(index) || 0,
+        p.variants.length - 1
       )
     );
 
@@ -1406,14 +1456,11 @@ function openViewer(id,index){
     .classList.add("open");
 
 
-  document.body.style.overflow="hidden";
+  document.body.style.overflow =
+    "hidden";
 
 }
 
-
-/* =================================================
-   CLOSE VIEWER
-================================================= */
 
 function closeViewer(){
 
@@ -1421,15 +1468,5 @@ function closeViewer(){
     .getElementById("viewer")
     .classList.remove("open");
 
-  document.body.style.overflow="";
 
-}
-
-
-/* =================================================
-   UPDATE VIEWER
-================================================= */
-
-function updateViewer(){
-
-  if(!viewerPr
+  document.b
