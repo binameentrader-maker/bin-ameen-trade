@@ -7,149 +7,146 @@
 <title>BIN AMEEN TRADER</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
 background:#c8d3df;
 font-family:Arial,sans-serif;
 color:#1f293d;
-padding:12px
+padding:7px;
 }
 
 .wrap{
 max-width:480px;
-margin:auto
+margin:auto;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:14px;
-padding:12px;
-margin-bottom:12px;
-text-align:center
+border-radius:0;
+padding:8px;
+margin-bottom:8px;
+text-align:center;
 }
 
 .logoBox{
 border:2px solid #8fa0b5;
-border-radius:10px;
-padding:10px 6px;
-font-size:29px;
+border-radius:0;
+padding:6px 4px;
+font-size:23px;
 font-weight:900;
-letter-spacing:.5px;
-background:#fff
+letter-spacing:.4px;
 }
 
 .phoneRow{
 display:flex;
 align-items:center;
 justify-content:center;
-margin-top:22px;
-position:relative
+margin-top:10px;
+position:relative;
 }
 
 .phoneLine{
-height:3px;
+height:2px;
 background:#9aa7b9;
 position:absolute;
-left:40px;
-right:40px;
-top:50%
+left:35px;
+right:35px;
+top:50%;
 }
 
 .phoneBox{
 position:relative;
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:30px;
-padding:7px 18px;
-font-size:18px;
+border-radius:0;
+padding:4px 12px;
+font-size:15px;
 font-weight:bold;
-z-index:1
+z-index:1;
 }
 
-/* CART BUTTON */
+/* ================= BUTTONS ================= */
+
+button{
+border:0;
+border-radius:0;
+padding:7px;
+font-weight:bold;
+cursor:pointer;
+}
 
 .main{
 background:#1f293d!important;
 color:#fff;
-border:0;
-border-radius:10px;
-padding:15px;
-font-size:18px;
+border-radius:0;
+padding:11px;
+font-size:16px;
 font-weight:bold;
-cursor:pointer
 }
 
-button{
-border:0;
-border-radius:8px;
-padding:9px;
-font-weight:bold;
-cursor:pointer
-}
-
-/* CATEGORIES */
+/* ================= CATEGORIES ================= */
 
 .cats{
 display:flex;
-gap:8px;
+gap:5px;
 overflow:auto;
-margin:14px 0
+margin:8px 0;
 }
 
 .cats button{
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 white-space:nowrap;
-font-size:16px;
-padding:12px 20px
+font-size:13px;
+padding:7px 12px;
 }
 
-.cats .active{
+.cats button.active{
 background:#1f293d;
 color:#fff;
-border-color:#1f293d
+border-color:#1f293d;
 }
 
-/* SEARCH */
+/* ================= SEARCH ================= */
 
 .search{
 width:100%;
-padding:14px;
+padding:10px;
 border:2px solid #8fa0b5;
-border-radius:10px;
-font-size:16px;
-margin-bottom:12px;
-outline:none
+border-radius:0;
+font-size:14px;
+margin-bottom:8px;
+outline:none;
+background:#fff;
 }
 
-.search:focus{
-border-color:#1f293d
-}
-
-/* PRODUCT CARD */
+/* ================= PRODUCT CARD ================= */
 
 .card{
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:14px;
-padding:14px;
-margin-bottom:12px;
+border-radius:0;
+padding:7px;
+margin-bottom:8px;
 display:flex;
-gap:14px;
+gap:9px;
 align-items:center;
-box-shadow:0 1px 1px rgba(31,41,61,.05)
+box-shadow:none;
 }
 
 .pic{
-width:145px;
-height:145px;
+width:92px;
+height:92px;
 border:1px solid #8fa0b5;
-border-radius:8px;
+border-radius:0;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -158,132 +155,135 @@ position:relative;
 overflow:hidden;
 background:#fff;
 cursor:pointer;
-user-select:none
+user-select:none;
 }
 
 .pic img{
 max-width:100%;
 max-height:100%;
+width:100%;
+height:100%;
 object-fit:contain;
 pointer-events:none;
 user-select:none;
--webkit-user-drag:none
+-webkit-user-drag:none;
 }
 
 .info{
 flex:1;
-min-width:0
+min-width:0;
 }
 
-/* CODE */
+/* ================= CODE ================= */
 
 .code{
 display:inline-block;
-font-size:17px;
+font-size:11px;
 font-weight:bold;
-background:#f8fafc;
-border:2px solid #8fa0b5;
-padding:6px 10px;
-border-radius:7px;
-color:#475569
+background:#f1f5f9;
+border:1px solid #8fa0b5;
+padding:3px 5px;
+border-radius:0;
+color:#475569;
 }
 
-/* PRODUCT NAME */
+/* ================= PRODUCT NAME ================= */
 
 .name{
 display:block;
-font-size:19px;
+font-size:14px;
 font-weight:900;
-margin-top:7px;
-line-height:1.15
+margin-top:4px;
+line-height:1.15;
 }
 
-/* VARIANTS */
-
-.variantRow{
-display:flex;
-align-items:center;
-gap:8px;
-margin:10px 0 8px
-}
-
-/* 2 VARIANTS */
+/* ================= TWO VARIANTS ================= */
 
 .twoVariant{
 display:flex;
-gap:8px;
-flex-wrap:wrap
+gap:5px;
+flex-wrap:wrap;
+margin:5px 0;
 }
 
 .variantBtn{
 background:#fff;
 border:2px solid #8fa0b5;
 color:#475569;
-font-size:17px;
-padding:9px 18px;
-border-radius:8px
+font-size:12px;
+padding:5px 9px;
+border-radius:0;
 }
 
 .variantBtn.selected{
 background:#1f293d;
 color:#fff;
-border-color:#1f293d
+border-color:#1f293d;
 }
 
-/* 3+ VARIANTS */
+/* ================= 3+ VARIANTS ================= */
+
+.variantRow{
+display:flex;
+align-items:center;
+gap:4px;
+margin:5px 0;
+}
 
 .arrowBtn{
 background:#475569;
 color:#fff;
-font-size:20px;
-width:48px;
-height:43px;
-padding:0
+font-size:17px;
+width:34px;
+height:31px;
+padding:0;
+border-radius:0;
 }
 
 .variantLabel{
 flex:1;
 text-align:center;
-font-size:17px;
+font-size:12px;
 font-weight:bold;
 background:#f8fafc;
 border:2px solid #8fa0b5;
-border-radius:8px;
-padding:10px 5px;
-white-space:nowrap
+border-radius:0;
+padding:6px 3px;
+white-space:nowrap;
 }
 
-/* QUANTITY */
+/* ================= QUANTITY ================= */
 
 .q{
 display:flex;
-gap:8px;
-align-items:center
+gap:4px;
+align-items:center;
 }
 
 .q button{
 background:#475569;
 color:#fff;
-font-size:21px;
-width:48px;
-height:43px;
-padding:0
+font-size:17px;
+width:32px;
+height:30px;
+padding:0;
+border-radius:0;
 }
 
 .qtyBox{
-min-width:65px;
-height:43px;
+min-width:40px;
+height:30px;
 display:flex;
 align-items:center;
 justify-content:center;
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:8px;
-font-size:20px;
-color:#111
+border-radius:0;
+font-size:15px;
+color:#111;
 }
 
-/* CART MODAL */
+/* ================= CART POPUP ================= */
 
 .cartOverlay{
 display:none;
@@ -291,24 +291,24 @@ position:fixed;
 inset:0;
 background:rgba(0,0,0,.65);
 z-index:9000;
-padding:15px;
+padding:8px;
 overflow:auto;
 align-items:center;
-justify-content:center
+justify-content:center;
 }
 
 .cartOverlay.open{
-display:flex
+display:flex;
 }
 
 .cartbox{
-width:min(100%,480px);
+width:min(100%,470px);
 max-height:90vh;
 overflow:auto;
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:14px;
-padding:14px
+border-radius:0;
+padding:10px;
 }
 
 .cartHeader{
@@ -316,81 +316,85 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 border-bottom:1px solid #d1d5db;
-padding-bottom:8px;
-margin-bottom:8px
+padding-bottom:7px;
+margin-bottom:7px;
 }
 
 .cartHeader h3{
-margin:0
+margin:0;
+font-size:18px;
 }
 
 .cartClose{
 background:#475569;
 color:#fff;
-width:40px;
-height:40px;
-font-size:20px;
-padding:0
+width:35px;
+height:35px;
+font-size:18px;
+padding:0;
+border-radius:0;
 }
 
 .item{
-padding:11px;
+padding:8px;
 border:1px solid #8fa0b5;
-border-radius:8px;
-margin:8px 0;
-background:#f8fafc
+border-radius:0;
+margin:5px 0;
+background:#f8fafc;
 }
 
 .itemName{
 font-weight:bold;
-font-size:16px
+font-size:14px;
 }
 
 .itemInfo{
-font-size:13px;
-margin-top:5px
+font-size:12px;
+margin-top:4px;
 }
 
 .cartControls{
 display:flex;
-gap:7px;
+gap:5px;
 align-items:center;
-margin-top:9px
+margin-top:7px;
 }
 
 .cartControls button{
 background:#475569;
-color:#fff
+color:#fff;
+padding:6px 10px;
 }
 
 .removeBtn{
 margin-left:auto;
-background:#a11!important
+background:#9b2226!important;
 }
 
 .total{
 font-weight:bold;
-margin:12px 0;
-padding-top:8px;
-border-top:1px solid #d1d5db
+margin:10px 0;
+padding-top:7px;
+border-top:1px solid #d1d5db;
+font-size:14px;
 }
 
-/* EMAIL FOOTER */
+/* ================= EMAIL FOOTER ================= */
 
 .emailFooter{
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:12px;
-padding:14px 8px;
-margin-top:8px;
-margin-bottom:10px;
+border-radius:0;
+padding:9px 5px;
+margin-top:6px;
+margin-bottom:7px;
 text-align:center;
-font-size:20px;
+font-size:15px;
 font-weight:bold;
-color:#475569
+color:#475569;
 }
 
-/* IMAGE VIEWER */
+/* ================= IMAGE VIEWER ================= */
 
 .viewer{
 display:none;
@@ -400,25 +404,25 @@ inset:0;
 background:rgba(0,0,0,.82);
 align-items:center;
 justify-content:center;
-padding:15px;
-user-select:none
+padding:10px;
+user-select:none;
 }
 
 .viewer.open{
-display:flex
+display:flex;
 }
 
 .viewerBox{
 position:relative;
-width:min(95vw,500px);
-height:min(85vh,650px);
+width:min(95vw,480px);
+height:min(85vh,600px);
 background:#fff;
-border-radius:12px;
-padding:15px;
+border-radius:0;
+padding:12px;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden
+overflow:hidden;
 }
 
 .viewerBox img{
@@ -427,32 +431,20 @@ max-height:100%;
 object-fit:contain;
 pointer-events:none;
 user-select:none;
--webkit-user-drag:none
+-webkit-user-drag:none;
 }
 
 .closeViewer{
 position:absolute;
-right:7px;
-top:7px;
-width:40px;
-height:40px;
-border-radius:50%;
+right:5px;
+top:5px;
+width:35px;
+height:35px;
 background:#1f293d;
 color:#fff;
-font-size:20px;
-padding:0
-}
-
-.watermark{
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%) rotate(-25deg);
-font-size:15px;
-font-weight:bold;
-color:rgba(31,41,61,.18);
-white-space:nowrap;
-pointer-events:none
+font-size:18px;
+padding:0;
+border-radius:0;
 }
 
 .viewerWatermark{
@@ -460,76 +452,105 @@ position:absolute;
 left:50%;
 top:50%;
 transform:translate(-50%,-50%) rotate(-25deg);
-font-size:22px;
+font-size:20px;
 font-weight:bold;
-color:rgba(31,41,61,.18);
+color:rgba(31,41,61,.16);
 white-space:nowrap;
-pointer-events:none
+pointer-events:none;
 }
+
+/* ================= LOADING ================= */
 
 .loading{
 text-align:center;
-padding:20px;
+padding:15px;
 background:#fff;
 border:2px solid #8fa0b5;
-border-radius:12px
+border-radius:0;
+font-size:14px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:420px){
 
+body{
+padding:5px;
+}
+
 .logoBox{
-font-size:25px
+font-size:21px;
+}
+
+.phoneRow{
+margin-top:8px;
+}
+
+.phoneBox{
+font-size:14px;
+padding:4px 10px;
 }
 
 .card{
-padding:10px;
-gap:10px
+padding:6px;
+gap:8px;
+margin-bottom:7px;
 }
 
 .pic{
-width:115px;
-height:115px
-}
-
-.code{
-font-size:14px
+width:88px;
+height:88px;
 }
 
 .name{
-font-size:16px
+font-size:13px;
+}
+
+.code{
+font-size:10px;
 }
 
 .variantBtn{
-font-size:14px;
-padding:8px 12px
+font-size:11px;
+padding:5px 7px;
 }
 
 .arrowBtn{
-width:40px;
-height:38px
+width:31px;
+height:29px;
+font-size:16px;
 }
 
 .variantLabel{
-font-size:14px;
-padding:8px 3px
+font-size:11px;
+padding:5px 2px;
 }
 
 .q button{
-width:40px;
-height:38px
+width:30px;
+height:28px;
+font-size:16px;
 }
 
 .qtyBox{
-height:38px;
-min-width:55px
+height:28px;
+min-width:36px;
+font-size:14px;
 }
 
 .emailFooter{
-font-size:17px
+font-size:14px;
+padding:8px 4px;
 }
 
+}
+
+/* ================= PREVENT IMAGE SAVE ================= */
+
+img{
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+user-select:none;
 }
 </style>
 </head>
@@ -559,7 +580,7 @@ BIN AMEEN TRADER
 </header>
 
 
-<!-- CART -->
+<!-- CART BUTTON -->
 
 <button
 class="main"
@@ -587,7 +608,11 @@ placeholder="Search product name or SKU code..."
 <!-- PRODUCTS -->
 
 <div id="list">
-<div class="loading">Loading products...</div>
+
+<div class="loading">
+Loading products...
+</div>
+
 </div>
 
 
@@ -600,7 +625,7 @@ placeholder="Search product name or SKU code..."
 </div>
 
 
-<!-- CART MODAL -->
+<!-- CART -->
 
 <div class="cartOverlay" id="cartOverlay">
 
@@ -688,7 +713,7 @@ const viewerEl=document.getElementById("viewer");
 const viewerImgEl=document.getElementById("viewerImg");
 
 
-/* LOAD */
+/* ================= LOAD PRODUCTS ================= */
 
 async function load(){
 
@@ -709,7 +734,9 @@ throw new Error("Invalid products data");
 products=data;
 
 products.forEach(function(p){
+
 sel[p.id]=0;
+
 });
 
 drawCats();
@@ -727,7 +754,7 @@ listEl.innerHTML=
 }
 
 
-/* CATEGORIES */
+/* ================= CATEGORIES ================= */
 
 function drawCats(){
 
@@ -772,7 +799,7 @@ catsEl.appendChild(btn);
 }
 
 
-/* RENDER */
+/* ================= RENDER PRODUCTS ================= */
 
 function render(){
 
@@ -803,6 +830,7 @@ return(
 
 });
 
+
 listEl.innerHTML="";
 
 if(!filtered.length){
@@ -824,8 +852,10 @@ return;
 let index=sel[p.id]||0;
 
 if(index>=p.variants.length){
+
 index=0;
 sel[p.id]=0;
+
 }
 
 const v=p.variants[index];
@@ -838,18 +868,25 @@ cartData[key]
 :0;
 
 
+/* CARD */
+
 const card=document.createElement("div");
+
 card.className="card";
 
 
 /* IMAGE */
 
 const pic=document.createElement("div");
+
 pic.className="pic";
 
 pic.onclick=function(){
+
 openViewer(v.img||p.img||"");
+
 };
+
 
 const img=document.createElement("img");
 
@@ -860,19 +897,10 @@ img.draggable=false;
 pic.appendChild(img);
 
 
-/* WATERMARK */
-
-const wm=document.createElement("div");
-
-wm.className="watermark";
-wm.textContent="BIN AMEEN TRADER";
-
-pic.appendChild(wm);
-
-
-/* INFO */
+/* PRODUCT INFO */
 
 const info=document.createElement("div");
+
 info.className="info";
 
 
@@ -881,7 +909,9 @@ info.className="info";
 const code=document.createElement("span");
 
 code.className="code";
-code.textContent="CODE: "+(v.code||"");
+
+code.textContent=
+"CODE: "+(v.code||"");
 
 
 /* NAME */
@@ -889,17 +919,18 @@ code.textContent="CODE: "+(v.code||"");
 const name=document.createElement("b");
 
 name.className="name";
+
 name.textContent=p.name||"";
 
 
 /* VARIANTS */
 
-let variantArea=document.createElement("div");
+let variantArea=
+document.createElement("div");
 
 
 /*
-ONLY 2 VARIANTS:
-show both sizes.
+ONLY TWO VARIANTS
 */
 
 if(p.variants.length===2){
@@ -913,7 +944,9 @@ const btn=document.createElement("button");
 btn.className="variantBtn";
 
 if(j===index){
+
 btn.classList.add("selected");
+
 }
 
 btn.textContent=item.label||"";
@@ -935,35 +968,43 @@ variantArea.appendChild(btn);
 }else{
 
 /*
-3 OR MORE:
-keep left/right system
+THREE OR MORE VARIANTS
 */
 
 variantArea.className="variantRow";
 
-const left=document.createElement("button");
+
+const left=
+document.createElement("button");
 
 left.className="arrowBtn";
 left.textContent="‹";
 
 left.onclick=function(){
+
 prevVariant(p.id);
+
 };
 
 
-const label=document.createElement("div");
+const label=
+document.createElement("div");
 
 label.className="variantLabel";
+
 label.textContent=v.label||"";
 
 
-const right=document.createElement("button");
+const right=
+document.createElement("button");
 
 right.className="arrowBtn";
 right.textContent="›";
 
 right.onclick=function(){
+
 nextVariant(p.id);
+
 };
 
 
@@ -977,28 +1018,36 @@ variantArea.appendChild(right);
 /* QUANTITY */
 
 const qbox=document.createElement("div");
+
 qbox.className="q";
 
 
 const minus=document.createElement("button");
+
 minus.textContent="−";
 
 minus.onclick=function(){
+
 change(p.id,-1);
+
 };
 
 
 const qty=document.createElement("div");
 
 qty.className="qtyBox";
+
 qty.textContent=quantity;
 
 
 const plus=document.createElement("button");
+
 plus.textContent="+";
 
 plus.onclick=function(){
+
 change(p.id,1);
+
 };
 
 
@@ -1006,6 +1055,8 @@ qbox.appendChild(minus);
 qbox.appendChild(qty);
 qbox.appendChild(plus);
 
+
+/* ADD */
 
 info.appendChild(code);
 info.appendChild(name);
@@ -1022,7 +1073,7 @@ listEl.appendChild(card);
 }
 
 
-/* PREVIOUS */
+/* ================= PREVIOUS VARIANT ================= */
 
 function prevVariant(id){
 
@@ -1035,7 +1086,9 @@ let i=sel[id]||0;
 i--;
 
 if(i<0){
+
 i=p.variants.length-1;
+
 }
 
 sel[id]=i;
@@ -1045,7 +1098,7 @@ render();
 }
 
 
-/* NEXT */
+/* ================= NEXT VARIANT ================= */
 
 function nextVariant(id){
 
@@ -1058,7 +1111,9 @@ let i=sel[id]||0;
 i++;
 
 if(i>=p.variants.length){
+
 i=0;
+
 }
 
 sel[id]=i;
@@ -1068,7 +1123,7 @@ render();
 }
 
 
-/* CHANGE QUANTITY */
+/* ================= QUANTITY ================= */
 
 function change(id,d){
 
@@ -1082,6 +1137,7 @@ const key=p.id+"_"+v.label;
 
 let newQty=
 (cartData[key]?.qty||0)+d;
+
 
 if(newQty<=0){
 
@@ -1100,30 +1156,39 @@ qty:newQty
 }
 
 updateCartCount();
+
 render();
 
 if(cartOverlay.classList.contains("open")){
+
 renderCart();
-}
 
 }
 
+}
 
-/* CART COUNT */
+
+/* ================= CART COUNT ================= */
 
 function updateCartCount(){
 
 const total=
 Object.values(cartData)
-.reduce((sum,item)=>sum+item.qty,0);
+.reduce(
+function(sum,item){
+return sum+item.qty;
+},
+0
+);
 
 countEl.textContent=total;
+
 cartTotalEl.textContent=total;
 
 }
 
 
-/* OPEN CART */
+/* ================= OPEN CART ================= */
 
 function showCart(){
 
@@ -1136,7 +1201,7 @@ document.body.style.overflow="hidden";
 }
 
 
-/* CLOSE CART */
+/* ================= CLOSE CART ================= */
 
 function closeCart(){
 
@@ -1147,7 +1212,7 @@ document.body.style.overflow="";
 }
 
 
-/* CART */
+/* ================= CART ================= */
 
 function renderCart(){
 
@@ -1179,6 +1244,7 @@ item.className="item";
 const name=document.createElement("div");
 
 name.className="itemName";
+
 name.textContent=x.name;
 
 
@@ -1200,7 +1266,9 @@ const minus=document.createElement("button");
 minus.textContent="−";
 
 minus.onclick=function(){
+
 cartChange(key,-1);
+
 };
 
 
@@ -1214,17 +1282,22 @@ const plus=document.createElement("button");
 plus.textContent="+";
 
 plus.onclick=function(){
+
 cartChange(key,1);
+
 };
 
 
 const remove=document.createElement("button");
 
 remove.className="removeBtn";
+
 remove.textContent="Remove";
 
 remove.onclick=function(){
+
 removeCart(key);
+
 };
 
 
@@ -1246,7 +1319,7 @@ updateCartCount();
 }
 
 
-/* CART CHANGE */
+/* ================= CART CHANGE ================= */
 
 function cartChange(key,d){
 
@@ -1255,7 +1328,9 @@ if(!cartData[key])return;
 cartData[key].qty+=d;
 
 if(cartData[key].qty<=0){
+
 delete cartData[key];
+
 }
 
 renderCart();
@@ -1264,7 +1339,7 @@ render();
 }
 
 
-/* REMOVE */
+/* ================= REMOVE ================= */
 
 function removeCart(key){
 
@@ -1276,7 +1351,7 @@ render();
 }
 
 
-/* IMAGE VIEWER */
+/* ================= IMAGE VIEWER ================= */
 
 function openViewer(src){
 
@@ -1291,8 +1366,6 @@ document.body.style.overflow="hidden";
 }
 
 
-/* CLOSE VIEWER */
-
 function closeViewer(){
 
 viewerEl.classList.remove("open");
@@ -1304,20 +1377,24 @@ document.body.style.overflow="";
 }
 
 
-/* OUTSIDE IMAGE */
+/* ================= VIEWER OUTSIDE CLICK ================= */
 
 viewerEl.addEventListener("click",function(e){
 
 if(e.target===viewerEl){
+
 closeViewer();
+
 }
 
 });
 
 
-/* BLOCK IMAGE CONTEXT MENU */
+/* ================= BLOCK IMAGE DOWNLOAD MENU ================= */
 
-document.addEventListener("contextmenu",function(e){
+document.addEventListener(
+"contextmenu",
+function(e){
 
 if(
 e.target.tagName==="IMG" ||
@@ -1329,10 +1406,11 @@ e.preventDefault();
 
 }
 
-});
+}
+);
 
 
-/* WHATSAPP */
+/* ================= WHATSAPP ================= */
 
 function wa(){
 
@@ -1341,14 +1419,14 @@ const keys=Object.keys(cartData);
 if(!keys.length){
 
 alert("Cart is empty");
+
 return;
 
 }
 
 
 /*
-IMPORTANT:
-Actual line breaks.
+CORRECT WHATSAPP FORMAT
 */
 
 let message=
@@ -1381,26 +1459,34 @@ encodeURIComponent(message),
 "_blank"
 );
 
-
-/* SEARCH */
-
 }
 
-searchEl.addEventListener("input",render);
+
+/* ================= SEARCH ================= */
+
+searchEl.addEventListener(
+"input",
+render
+);
 
 
-/* OUTSIDE CART */
+/* ================= OUTSIDE CART ================= */
 
-cartOverlay.addEventListener("click",function(e){
+cartOverlay.addEventListener(
+"click",
+function(e){
 
 if(e.target===cartOverlay){
+
 closeCart();
+
 }
 
-});
+}
+);
 
 
-/* START */
+/* ================= START ================= */
 
 load();
 
