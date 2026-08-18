@@ -1,14 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>BIN AMEEN TRADER</title>
 
 <style>
-
 *{
 box-sizing:border-box;
 }
@@ -19,8 +17,6 @@ padding:0;
 background:#c8d3df;
 font-family:Arial,Helvetica,sans-serif;
 color:#1f293d;
--webkit-user-select:none;
-user-select:none;
 }
 
 body{
@@ -32,12 +28,12 @@ max-width:480px;
 margin:auto;
 }
 
-
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 padding:8px;
 margin-bottom:8px;
 text-align:center;
@@ -45,6 +41,7 @@ text-align:center;
 
 .logoBox{
 border:2px solid #8fa0b5;
+border-radius:0;
 padding:6px 4px;
 font-size:23px;
 font-weight:900;
@@ -72,14 +69,14 @@ top:50%;
 position:relative;
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 padding:4px 12px;
 font-size:15px;
 font-weight:bold;
 z-index:1;
 }
 
-
-/* ================= BUTTONS ================= */
+/* BUTTONS */
 
 button{
 border:0;
@@ -92,13 +89,13 @@ cursor:pointer;
 .main{
 background:#1f293d!important;
 color:#fff;
+border-radius:0;
 padding:11px;
 font-size:16px;
 font-weight:bold;
 }
 
-
-/* ================= CATEGORIES ================= */
+/* CATEGORIES */
 
 .cats{
 display:flex;
@@ -110,6 +107,7 @@ margin:8px 0;
 .cats button{
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 white-space:nowrap;
 font-size:13px;
 padding:7px 12px;
@@ -121,36 +119,38 @@ color:#fff;
 border-color:#1f293d;
 }
 
-
-/* ================= SEARCH ================= */
+/* SEARCH */
 
 .search{
 width:100%;
 padding:10px;
 border:2px solid #8fa0b5;
+border-radius:0;
 font-size:14px;
 margin-bottom:8px;
 outline:none;
 background:#fff;
 }
 
-
-/* ================= PRODUCT CARD ================= */
+/* PRODUCT CARD */
 
 .card{
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 padding:7px;
 margin-bottom:8px;
 display:flex;
 gap:9px;
 align-items:center;
+box-shadow:none;
 }
 
 .pic{
 width:92px;
 height:92px;
 border:1px solid #8fa0b5;
+border-radius:0;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -159,6 +159,7 @@ position:relative;
 overflow:hidden;
 background:#fff;
 cursor:pointer;
+user-select:none;
 }
 
 .pic img{
@@ -168,8 +169,11 @@ width:100%;
 height:100%;
 object-fit:contain;
 pointer-events:none;
+user-select:none;
 -webkit-user-drag:none;
 }
+
+/* WATERMARK */
 
 .pic:after{
 content:"BIN AMEEN";
@@ -184,13 +188,14 @@ pointer-events:none;
 white-space:nowrap;
 }
 
-
-/* ================= INFO ================= */
+/* INFO */
 
 .info{
 flex:1;
 min-width:0;
 }
+
+/* CODE */
 
 .code{
 display:inline-block;
@@ -199,8 +204,11 @@ font-weight:bold;
 background:#f1f5f9;
 border:1px solid #8fa0b5;
 padding:3px 5px;
+border-radius:0;
 color:#475569;
 }
+
+/* NAME */
 
 .name{
 display:block;
@@ -210,8 +218,7 @@ margin-top:4px;
 line-height:1.15;
 }
 
-
-/* ================= VARIANTS ================= */
+/* TWO VARIANTS */
 
 .twoVariant{
 display:flex;
@@ -226,6 +233,7 @@ border:2px solid #8fa0b5;
 color:#475569;
 font-size:12px;
 padding:5px 9px;
+border-radius:0;
 }
 
 .variantBtn.selected{
@@ -233,6 +241,8 @@ background:#1f293d;
 color:#fff;
 border-color:#1f293d;
 }
+
+/* 3+ VARIANTS */
 
 .variantRow{
 display:flex;
@@ -248,6 +258,7 @@ font-size:17px;
 width:34px;
 height:31px;
 padding:0;
+border-radius:0;
 }
 
 .variantLabel{
@@ -257,14 +268,14 @@ font-size:12px;
 font-weight:bold;
 background:#f8fafc;
 border:2px solid #8fa0b5;
+border-radius:0;
 padding:6px 3px;
 white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis;
 }
 
-
-/* ================= QUANTITY ================= */
+/* QUANTITY */
 
 .q{
 display:flex;
@@ -279,6 +290,7 @@ font-size:17px;
 width:32px;
 height:30px;
 padding:0;
+border-radius:0;
 }
 
 .qtyBox{
@@ -289,12 +301,12 @@ align-items:center;
 justify-content:center;
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 font-size:15px;
 color:#111;
 }
 
-
-/* ================= CART ================= */
+/* CART */
 
 .cartOverlay{
 display:none;
@@ -318,6 +330,7 @@ max-height:90vh;
 overflow:auto;
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 padding:10px;
 }
 
@@ -342,11 +355,13 @@ width:35px;
 height:35px;
 font-size:18px;
 padding:0;
+border-radius:0;
 }
 
 .item{
 padding:8px;
 border:1px solid #8fa0b5;
+border-radius:0;
 margin:5px 0;
 background:#f8fafc;
 }
@@ -387,12 +402,12 @@ border-top:1px solid #d1d5db;
 font-size:14px;
 }
 
-
-/* ================= EMAIL ================= */
+/* EMAIL */
 
 .emailFooter{
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 padding:9px 5px;
 margin-top:6px;
 margin-bottom:7px;
@@ -402,18 +417,18 @@ font-weight:bold;
 color:#475569;
 }
 
-
-/* ================= IMAGE SELECTION VIEWER ================= */
+/* IMAGE VIEWER */
 
 .viewer{
 display:none;
 position:fixed;
 z-index:99999;
 inset:0;
-background:rgba(0,0,0,.88);
+background:rgba(0,0,0,.82);
 align-items:center;
 justify-content:center;
-padding:8px;
+padding:10px;
+user-select:none;
 }
 
 .viewer.open{
@@ -422,148 +437,63 @@ display:flex;
 
 .viewerBox{
 position:relative;
-width:min(96vw,480px);
-height:min(94vh,720px);
+width:min(95vw,480px);
+height:min(85vh,600px);
 background:#fff;
-padding:10px;
-display:flex;
-flex-direction:column;
-align-items:center;
-overflow:hidden;
-}
-
-
-/* FULL PRODUCT NAME */
-
-.viewerName{
-width:100%;
-background:#1f293d;
-color:#fff;
-font-size:16px;
-font-weight:900;
-text-align:center;
-padding:10px 34px 10px 10px;
-line-height:1.2;
-}
-
-
-/* IMAGE AREA */
-
-.viewerImageArea{
-position:relative;
-width:100%;
-flex:1;
-min-height:0;
+border-radius:0;
+padding:12px;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#fff;
 overflow:hidden;
-margin-top:7px;
 }
 
-.viewerImageArea img{
+.viewerBox img{
 max-width:100%;
 max-height:100%;
-width:auto;
-height:auto;
 object-fit:contain;
 pointer-events:none;
+user-select:none;
 -webkit-user-drag:none;
 }
 
-
-/* WATERMARK */
+.closeViewer{
+position:absolute;
+right:5px;
+top:5px;
+width:35px;
+height:35px;
+background:#1f293d;
+color:#fff;
+font-size:18px;
+padding:0;
+border-radius:0;
+}
 
 .viewerWatermark{
 position:absolute;
 left:50%;
 top:50%;
 transform:translate(-50%,-50%) rotate(-25deg);
-font-size:25px;
+font-size:20px;
 font-weight:bold;
 color:rgba(31,41,61,.16);
 white-space:nowrap;
 pointer-events:none;
 }
 
-
-/* VIEWER INFO */
-
-.viewerInfo{
-width:100%;
-text-align:center;
-background:#f1f5f9;
-border:2px solid #8fa0b5;
-padding:7px;
-margin-top:7px;
-font-size:13px;
-font-weight:bold;
-}
-
-
-/* VIEWER NAVIGATION */
-
-.viewerNav{
-display:flex;
-width:100%;
-gap:6px;
-margin-top:7px;
-}
-
-.viewerNav button{
-flex:1;
-background:#475569;
-color:#fff;
-font-size:15px;
-padding:9px 5px;
-}
-
-.viewerNav button:active{
-background:#1f293d;
-}
-
-
-/* ADD CART */
-
-.viewerAdd{
-width:100%;
-background:#1f293d;
-color:#fff;
-font-size:16px;
-padding:11px;
-margin-top:7px;
-}
-
-
-/* CLOSE */
-
-.closeViewer{
-position:absolute;
-right:15px;
-top:15px;
-z-index:5;
-width:34px;
-height:34px;
-background:#9b2226;
-color:#fff;
-font-size:18px;
-padding:0;
-}
-
-
-/* ================= LOADING ================= */
+/* LOADING */
 
 .loading{
 text-align:center;
 padding:15px;
 background:#fff;
 border:2px solid #8fa0b5;
+border-radius:0;
 font-size:14px;
 }
 
-
-/* ================= ERROR ================= */
+/* ERROR */
 
 .errorBox{
 background:#fff;
@@ -574,8 +504,7 @@ line-height:20px;
 word-break:break-word;
 }
 
-
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:420px){
 
@@ -648,45 +577,21 @@ font-size:14px;
 padding:8px 4px;
 }
 
-.viewerName{
-font-size:14px;
 }
 
-.viewerInfo{
-font-size:12px;
-}
-
-.viewerNav button{
-font-size:14px;
-padding:8px 3px;
-}
-
-.viewerAdd{
-font-size:15px;
-}
-
-}
-
-
-/* ================= IMAGE PROTECTION ================= */
+/* PREVENT IMAGE SAVE */
 
 img{
 -webkit-touch-callout:none;
 -webkit-user-select:none;
 user-select:none;
 }
-
 </style>
-
 </head>
-
 
 <body>
 
 <div class="wrap">
-
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -707,7 +612,7 @@ BIN AMEEN TRADER
 </header>
 
 
-<!-- ================= CART BUTTON ================= -->
+<!-- CART BUTTON -->
 
 <button
 class="main"
@@ -718,15 +623,12 @@ onclick="showCart()"
 </button>
 
 
-<!-- ================= CATEGORIES ================= -->
+<!-- CATEGORIES -->
 
-<div
-class="cats"
-id="cats"
-></div>
+<div class="cats" id="cats"></div>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- SEARCH -->
 
 <input
 class="search"
@@ -736,7 +638,7 @@ autocomplete="off"
 >
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- PRODUCTS -->
 
 <div id="list">
 
@@ -747,7 +649,7 @@ Loading products...
 </div>
 
 
-<!-- ================= EMAIL ================= -->
+<!-- EMAIL -->
 
 <div class="emailFooter">
 ✉ binameentrader@gmail.com
@@ -756,20 +658,15 @@ Loading products...
 </div>
 
 
-<!-- ================= CART POPUP ================= -->
+<!-- CART -->
 
-<div
-class="cartOverlay"
-id="cartOverlay"
->
+<div class="cartOverlay" id="cartOverlay">
 
 <div class="cartbox">
 
 <div class="cartHeader">
 
-<h3>
-Your Selected Items
-</h3>
+<h3>Your Selected Items</h3>
 
 <button
 class="cartClose"
@@ -783,8 +680,7 @@ onclick="closeCart()"
 <div id="cartItems"></div>
 
 <div class="total">
-Total Items:
-<span id="cartTotal">0</span>
+Total Items: <span id="cartTotal">0</span>
 </div>
 
 <button
@@ -800,12 +696,9 @@ Send Order on WhatsApp
 </div>
 
 
-<!-- ================= IMAGE SELECTION VIEWER ================= -->
+<!-- IMAGE VIEWER -->
 
-<div
-class="viewer"
-id="viewer"
->
+<div class="viewer" id="viewer">
 
 <div class="viewerBox">
 
@@ -815,17 +708,6 @@ onclick="closeViewer()"
 >
 ✕
 </button>
-
-
-<div
-class="viewerName"
-id="viewerName"
->
-Product
-</div>
-
-
-<div class="viewerImageArea">
 
 <img
 id="viewerImg"
@@ -840,127 +722,30 @@ BIN AMEEN TRADER
 
 </div>
 
-
-<div
-class="viewerInfo"
-id="viewerInfo"
->
-</div>
-
-
-<div class="viewerNav">
-
-<button
-onclick="viewerPrevious()"
->
-‹ Previous
-</button>
-
-<button
-onclick="viewerNext()"
->
-Next ›
-</button>
-
-</div>
-
-
-<button
-class="viewerAdd"
-onclick="viewerAddToCart()"
->
-🛒 Add Selected Item to Cart
-</button>
-
-
-</div>
-
 </div>
 
 
 <script>
 
-
-/* =========================================================
-   MAIN DATA
-========================================================= */
-
 let products=[];
-
 let sel={};
-
 let cartData={};
-
 let category="ALL";
 
+const catsEl=document.getElementById("cats");
+const searchEl=document.getElementById("search");
+const listEl=document.getElementById("list");
 
-/* =========================================================
-   VIEWER STATE
-========================================================= */
+const cartOverlay=document.getElementById("cartOverlay");
+const cartItemsEl=document.getElementById("cartItems");
+const countEl=document.getElementById("count");
+const cartTotalEl=document.getElementById("cartTotal");
 
-let viewerProduct=null;
-
-let viewerIndex=0;
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const catsEl=
-document.getElementById("cats");
-
-const searchEl=
-document.getElementById("search");
-
-const listEl=
-document.getElementById("list");
-
-const cartOverlay=
-document.getElementById("cartOverlay");
-
-const cartItemsEl=
-document.getElementById("cartItems");
-
-const countEl=
-document.getElementById("count");
-
-const cartTotalEl=
-document.getElementById("cartTotal");
-
-const viewerEl=
-document.getElementById("viewer");
-
-const viewerImgEl=
-document.getElementById("viewerImg");
-
-const viewerNameEl=
-document.getElementById("viewerName");
-
-const viewerInfoEl=
-document.getElementById("viewerInfo");
+const viewerEl=document.getElementById("viewer");
+const viewerImgEl=document.getElementById("viewerImg");
 
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(str){
-
-const div=
-document.createElement("div");
-
-div.textContent=
-String(str||"");
-
-return div.innerHTML;
-
-}
-
-
-/* =========================================================
-   LOAD PRODUCTS
-========================================================= */
+/* ================= LOAD PRODUCTS ================= */
 
 async function load(){
 
@@ -969,147 +754,60 @@ listEl.innerHTML=
 
 try{
 
-const response=
-await fetch(
-"/api/products",
-{
+const response=await fetch("/api/products",{
 method:"GET",
 cache:"no-store"
-}
-);
-
-
-const text=
-await response.text();
-
+});
 
 if(!response.ok){
 
+const text=await response.text();
+
 throw new Error(
-"API HTTP "+response.status+
-" — "+
-text.substring(0,500)
+"API Error "+response.status+
+": "+text.substring(0,300)
 );
 
 }
 
-
-let data;
-
-
-try{
-
-data=
-JSON.parse(text);
-
-}catch(e){
-
-throw new Error(
-"API نے JSON کے بجائے یہ جواب دیا: "+
-text.substring(0,500)
-);
-
-}
-
+const data=await response.json();
 
 if(!Array.isArray(data)){
 
-throw new Error(
-"Products data array نہیں ہے۔"
-);
+throw new Error("Invalid products data");
 
 }
 
-
 products=data;
-
-
-/* NORMALIZE PRODUCTS */
 
 products.forEach(function(p){
 
 if(!Array.isArray(p.variants)){
 
-p.variants=[
-{
+p.variants=[{
 label:p.size||"",
 size:p.size||"",
 code:p.code||"",
 img:p.img||""
-}
-];
+}];
 
 }
-
-
-/* MAKE SURE EVERY VARIANT HAS DATA */
-
-p.variants.forEach(function(v){
-
-if(!v.label){
-
-v.label=
-v.size||
-"";
-
-}
-
-if(!v.size){
-
-v.size=
-v.label||
-"";
-
-}
-
-if(!v.code){
-
-v.code=
-"";
-
-}
-
-if(!v.img){
-
-v.img=
-p.img||
-"";
-
-}
-
-});
-
 
 sel[p.id]=0;
 
 });
 
-
 drawCats();
-
 render();
 
 }catch(error){
 
-console.error(
-"PRODUCT LOAD ERROR:",
-error
-);
-
+console.error(error);
 
 listEl.innerHTML=
 '<div class="errorBox">'+
-
-'<b>Products Load Error</b>'+
-
-'<br><br>'+
-
+'<b>Products Load Error</b><br><br>'+
 escapeHTML(error.message)+
-
-'<br><br>'+
-
-'<b>اہم:</b> اگر یہاں API HTTP 404 یا 500 آ رہا ہے تو مسئلہ index.html میں نہیں بلکہ Vercel API میں ہے۔'+
-
 '</div>';
 
 }
@@ -1117,70 +815,64 @@ escapeHTML(error.message)+
 }
 
 
-/* =========================================================
-   CATEGORIES
-========================================================= */
+/* ================= ESCAPE HTML ================= */
+
+function escapeHTML(str){
+
+return String(str)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= CATEGORIES ================= */
 
 function drawCats(){
 
-const categorySet=
-new Set();
-
+const categorySet=new Set();
 
 products.forEach(function(p){
 
 if(p.category){
 
-categorySet.add(
-p.category
-);
+categorySet.add(p.category);
 
 }
 
 });
-
 
 const categories=[
 "ALL",
 ...categorySet
 ];
 
-
 catsEl.innerHTML="";
-
 
 categories.forEach(function(x){
 
-const btn=
-document.createElement("button");
-
+const btn=document.createElement("button");
 
 btn.textContent=
-x==="ALL"
-?
-"ALL ITEMS"
-:
-x;
-
+x==="ALL"?"ALL ITEMS":x;
 
 if(x===category){
 
-btn.className=
-"active";
+btn.className="active";
 
 }
-
 
 btn.onclick=function(){
 
 category=x;
 
 drawCats();
-
 render();
 
 };
-
 
 catsEl.appendChild(btn);
 
@@ -1189,9 +881,7 @@ catsEl.appendChild(btn);
 }
 
 
-/* =========================================================
-   RENDER PRODUCTS
-========================================================= */
+/* ================= RENDER ================= */
 
 function render(){
 
@@ -1200,69 +890,39 @@ searchEl.value
 .toLowerCase()
 .trim();
 
-
 const filtered=
 products.filter(function(p){
 
 const name=
-String(
-p.name||""
-)
+String(p.name||"")
 .toLowerCase();
-
 
 const variants=
 Array.isArray(p.variants)
-?
-p.variants
-:
-[];
-
+?p.variants:[];
 
 const codeMatch=
 variants.some(function(v){
 
-return String(
-v.code||""
-)
+return String(v.code||"")
 .toLowerCase()
 .includes(q);
 
 });
-
-
-const variantNameMatch=
-variants.some(function(v){
-
-return String(
-v.label||v.size||""
-)
-.toLowerCase()
-.includes(q);
-
-});
-
 
 return(
-
-(category==="ALL"||
-p.category===category)
-
+(category==="ALL"||p.category===category)
 &&
-
 (
 name.includes(q)||
-codeMatch||
-variantNameMatch
+codeMatch
 )
-
 );
 
 });
 
 
 listEl.innerHTML="";
-
 
 if(!filtered.length){
 
@@ -1276,43 +936,33 @@ return;
 
 filtered.forEach(function(p){
 
-if(
-!Array.isArray(p.variants)||
-!p.variants.length
-){
+if(!Array.isArray(p.variants)||
+!p.variants.length){
 
 return;
 
 }
 
-
 let index=
 sel[p.id]||0;
-
 
 if(index>=p.variants.length){
 
 index=0;
-
 sel[p.id]=0;
 
 }
 
-
 const v=
 p.variants[index];
-
 
 const key=
 p.id+"_"+index;
 
-
 const quantity=
 cartData[key]
-?
-cartData[key].qty
-:
-0;
+?cartData[key].qty
+:0;
 
 
 /* CARD */
@@ -1320,8 +970,7 @@ cartData[key].qty
 const card=
 document.createElement("div");
 
-card.className=
-"card";
+card.className="card";
 
 
 /* IMAGE */
@@ -1329,16 +978,14 @@ card.className=
 const pic=
 document.createElement("div");
 
-pic.className=
-"pic";
+pic.className="pic";
 
-
-pic.onclick=
-function(){
+pic.onclick=function(){
 
 openViewer(
-p,
-index
+v.img||
+p.img||
+""
 );
 
 };
@@ -1347,21 +994,15 @@ index
 const img=
 document.createElement("img");
 
-
 img.src=
 v.img||
 p.img||
 "";
 
-
 img.alt=
-p.name||
-"";
+p.name||"";
 
-
-img.draggable=
-false;
-
+img.draggable=false;
 
 pic.appendChild(img);
 
@@ -1371,8 +1012,7 @@ pic.appendChild(img);
 const info=
 document.createElement("div");
 
-info.className=
-"info";
+info.className="info";
 
 
 /* CODE */
@@ -1380,9 +1020,7 @@ info.className=
 const code=
 document.createElement("span");
 
-code.className=
-"code";
-
+code.className="code";
 
 code.textContent=
 "CODE: "+
@@ -1394,16 +1032,13 @@ code.textContent=
 const name=
 document.createElement("b");
 
-name.className=
-"name";
-
+name.className="name";
 
 name.textContent=
-p.name||
-"";
+p.name||"";
 
 
-/* VARIANT AREA */
+/* VARIANTS */
 
 const variantArea=
 document.createElement("div");
@@ -1416,17 +1051,13 @@ if(p.variants.length===2){
 variantArea.className=
 "twoVariant";
 
-
-p.variants.forEach(
-function(item,j){
+p.variants.forEach(function(item,j){
 
 const btn=
 document.createElement("button");
 
-
 btn.className=
 "variantBtn";
-
 
 if(j===index){
 
@@ -1436,15 +1067,12 @@ btn.classList.add(
 
 }
 
-
 btn.textContent=
 item.label||
 item.size||
 "";
 
-
-btn.onclick=
-function(e){
+btn.onclick=function(e){
 
 e.stopPropagation();
 
@@ -1454,18 +1082,13 @@ render();
 
 };
 
-
 variantArea.appendChild(btn);
 
-}
-);
+});
 
-}
+}else{
 
-
-/* THREE OR MORE */
-
-else{
+/* 3 OR MORE */
 
 variantArea.className=
 "variantRow";
@@ -1477,18 +1100,13 @@ document.createElement("button");
 left.className=
 "arrowBtn";
 
-left.textContent=
-"‹";
+left.textContent="‹";
 
-
-left.onclick=
-function(e){
+left.onclick=function(e){
 
 e.stopPropagation();
 
-prevVariant(
-p.id
-);
+prevVariant(p.id);
 
 };
 
@@ -1498,7 +1116,6 @@ document.createElement("div");
 
 label.className=
 "variantLabel";
-
 
 label.textContent=
 v.label||
@@ -1512,26 +1129,19 @@ document.createElement("button");
 right.className=
 "arrowBtn";
 
-right.textContent=
-"›";
+right.textContent="›";
 
-
-right.onclick=
-function(e){
+right.onclick=function(e){
 
 e.stopPropagation();
 
-nextVariant(
-p.id
-);
+nextVariant(p.id);
 
 };
 
 
 variantArea.appendChild(left);
-
 variantArea.appendChild(label);
-
 variantArea.appendChild(right);
 
 }
@@ -1542,26 +1152,19 @@ variantArea.appendChild(right);
 const qbox=
 document.createElement("div");
 
-qbox.className=
-"q";
+qbox.className="q";
 
 
 const minus=
 document.createElement("button");
 
-minus.textContent=
-"−";
+minus.textContent="−";
 
-
-minus.onclick=
-function(e){
+minus.onclick=function(e){
 
 e.stopPropagation();
 
-change(
-p.id,
--1
-);
+change(p.id,-1);
 
 };
 
@@ -1579,99 +1182,62 @@ quantity;
 const plus=
 document.createElement("button");
 
-plus.textContent=
-"+";
+plus.textContent="+";
 
-
-plus.onclick=
-function(e){
+plus.onclick=function(e){
 
 e.stopPropagation();
 
-change(
-p.id,
-1
-);
+change(p.id,1);
 
 };
 
 
-qbox.appendChild(
-minus
-);
-
-qbox.appendChild(
-qty
-);
-
-qbox.appendChild(
-plus
-);
+qbox.appendChild(minus);
+qbox.appendChild(qty);
+qbox.appendChild(plus);
 
 
-info.appendChild(
-code
-);
+/* ADD INFO */
 
-info.appendChild(
-name
-);
+info.appendChild(code);
+info.appendChild(name);
+info.appendChild(variantArea);
+info.appendChild(qbox);
 
-info.appendChild(
-variantArea
-);
+card.appendChild(pic);
+card.appendChild(info);
 
-info.appendChild(
-qbox
-);
-
-
-card.appendChild(
-pic
-);
-
-card.appendChild(
-info
-);
-
-
-listEl.appendChild(
-card
-);
+listEl.appendChild(card);
 
 });
 
 }
 
 
-/* =========================================================
-   PREVIOUS CARD VARIANT
-========================================================= */
+/* ================= PREVIOUS ================= */
 
 function prevVariant(id){
 
 const p=
-products.find(
-x=>String(x.id)===String(id)
-);
+products.find(function(x){
 
-if(
-!p||
+return x.id===id;
+
+});
+
+if(!p||
 !p.variants||
-!p.variants.length
-){
+!p.variants.length){
 
 return;
 
 }
 
-
 let i=
-sel[p.id]||0;
-
+sel[id]||0;
 
 i--;
-
 
 if(i<0){
 
@@ -1680,94 +1246,146 @@ p.variants.length-1;
 
 }
 
-
-sel[p.id]=i;
+sel[id]=i;
 
 render();
 
 }
 
 
-/* =========================================================
-   NEXT CARD VARIANT
-========================================================= */
+/* ================= NEXT ================= */
 
 function nextVariant(id){
 
 const p=
-products.find(
-x=>String(x.id)===String(id)
-);
+products.find(function(x){
 
-if(
-!p||
+return x.id===id;
+
+});
+
+if(!p||
 !p.variants||
-!p.variants.length
-){
+!p.variants.length){
 
 return;
 
 }
 
-
 let i=
-sel[p.id]||0;
-
+sel[id]||0;
 
 i++;
 
-
-if(
-i>=p.variants.length
-){
+if(i>=p.variants.length){
 
 i=0;
 
 }
 
-
-sel[p.id]=i;
+sel[id]=i;
 
 render();
 
 }
 
 
-/* =========================================================
-   IMAGE VIEWER OPEN
-========================================================= */
+/* ================= QUANTITY ================= */
 
-function openViewer(
-product,
-index
-){
+function change(id,d){
 
-if(
-!product||
-!Array.isArray(product.variants)||
-!product.variants.length
-){
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
 
 return;
 
 }
 
+const index=
+sel[id]||0;
 
-viewerProduct=
-product;
+const v=
+p.variants[index];
+
+const key=
+p.id+"_"+index;
+
+const newQty=
+(cartData[key]?.qty||0)+d;
+
+if(newQty<=0){
+
+delete cartData[key];
+
+}else{
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:newQty
+};
+
+}
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+}
 
 
-viewerIndex=
-index||0;
+/* ================= CART COUNT ================= */
+
+function updateCartCount(){
+
+const total=
+Object.values(cartData)
+.reduce(function(sum,item){
+
+return sum+
+Number(item.qty||0);
+
+},0);
+
+countEl.textContent=
+total;
+
+cartTotalEl.textContent=
+total;
+
+}
 
 
-updateViewer();
+/* ================= SHOW CART ================= */
 
+function showCart(){
 
-viewerEl.classList.add(
-"open"
-);
+renderCart();
 
+cartOverlay.classList.add("open");
 
 document.body.style.overflow=
 "hidden";
@@ -1775,83 +1393,353 @@ document.body.style.overflow=
 }
 
 
-/* =========================================================
-   UPDATE VIEWER
-========================================================= */
+/* ================= CLOSE CART ================= */
 
-function updateViewer(){
+function closeCart(){
 
-if(
-!viewerProduct||
-!viewerProduct.variants||
-!viewerProduct.variants.length
-){
+cartOverlay.classList.remove("open");
+
+document.body.style.overflow=
+"";
+
+}
+
+
+/* ================= RENDER CART ================= */
+
+function renderCart(){
+
+const keys=
+Object.keys(cartData);
+
+if(!keys.length){
+
+cartItemsEl.innerHTML=
+'<div class="item">Cart is empty</div>';
+
+updateCartCount();
 
 return;
 
 }
 
+cartItemsEl.innerHTML="";
 
-const variants=
-viewerProduct.variants;
+keys.forEach(function(key,index){
+
+const x=
+cartData[key];
+
+const item=
+document.createElement("div");
+
+item.className="item";
 
 
-if(
-viewerIndex<0
-){
+const name=
+document.createElement("div");
 
-viewerIndex=
-variants.length-1;
+name.className=
+"itemName";
+
+name.textContent=
+(index+1)+
+". "+
+x.name;
+
+
+const info=
+document.createElement("div");
+
+info.className=
+"itemInfo";
+
+info.textContent=
+"("+
+x.variant+
+") | Code: "+
+x.code;
+
+
+const controls=
+document.createElement("div");
+
+controls.className=
+"cartControls";
+
+
+const minus=
+document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(){
+
+cartChange(key,-1);
+
+};
+
+
+const qty=
+document.createElement("b");
+
+qty.textContent=
+x.qty;
+
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+cartChange(key,1);
+
+};
+
+
+const remove=
+document.createElement("button");
+
+remove.className=
+"removeBtn";
+
+remove.textContent=
+"Remove";
+
+remove.onclick=function(){
+
+removeCart(key);
+
+};
+
+
+controls.appendChild(minus);
+controls.appendChild(qty);
+controls.appendChild(plus);
+controls.appendChild(remove);
+
+item.appendChild(name);
+item.appendChild(info);
+item.appendChild(controls);
+
+cartItemsEl.appendChild(item);
+
+});
+
+updateCartCount();
 
 }
 
 
-if(
-viewerIndex>=variants.length
-){
+/* ================= CART CHANGE ================= */
 
-viewerIndex=0;
+function cartChange(key,d){
+
+if(!cartData[key]){
+
+return;
+
+}
+
+cartData[key].qty+=d;
+
+if(cartData[key].qty<=0){
+
+delete cartData[key];
+
+}
+
+renderCart();
+render();
 
 }
 
 
-const v=
-variants[viewerIndex];
+/* ================= REMOVE ================= */
+
+function removeCart(key){
+
+delete cartData[key];
+
+renderCart();
+render();
+
+}
 
 
-viewerNameEl.textContent=
-viewerProduct.name||
-"";
+/* ================= IMAGE VIEWER ================= */
 
+function openViewer(src){
+
+if(!src){
+
+return;
+
+}
 
 viewerImgEl.src=
-v.img||
-viewerProduct.img||
-"";
+src;
 
+viewerEl.classList.add(
+"open"
+);
 
-viewerInfoEl.textContent=
-"SIZE: "+
-(v.label||v.size||"")+
-"   |   CODE: "+
-(v.code||"");
-
-
-/* KEEP CARD SELECTION IN SYNC */
-
-sel[viewerProduct.id]=
-viewerIndex;
+document.body.style.overflow=
+"hidden";
 
 }
 
 
-/* =========================================================
-   VIEWER PREVIOUS
-========================================================= */
+/* ================= CLOSE VIEWER ================= */
 
-function viewerPrevious(){
+function closeViewer(){
 
-if(!viewerProduct)return;
+viewerEl.classList.remove(
+"open"
+);
+
+viewerImgEl.src="";
+
+document.body.style.overflow=
+"";
+
+}
 
 
-vi
+/* ================= OUTSIDE VIEWER ================= */
+
+viewerEl.addEventListener(
+"click",
+function(e){
+
+if(e.target===viewerEl){
+
+closeViewer();
+
+}
+
+});
+
+
+/* ================= WHATSAPP ================= */
+
+function wa(){
+
+const keys=
+Object.keys(cartData);
+
+if(!keys.length){
+
+alert(
+"Cart is empty"
+);
+
+return;
+
+}
+
+let message=
+"*NEW ORDER - BIN AMEEN TRADER*\n\n";
+
+keys.forEach(
+function(key,index){
+
+const x=
+cartData[key];
+
+message+=
+(index+1)+
+". *"+
+x.name+
+"* ("+
+x.variant+
+")\n"+
+"   Code: "+
+x.code+
+" | Qty: *"+
+x.qty+
+"*\n\n";
+
+});
+
+
+window.open(
+"https://wa.me/923331390045?text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+
+/* ================= SEARCH ================= */
+
+searchEl.addEventListener(
+"input",
+render
+);
+
+
+/* ================= OUTSIDE CART ================= */
+
+cartOverlay.addEventListener(
+"click",
+function(e){
+
+if(
+e.target===cartOverlay
+){
+
+closeCart();
+
+}
+
+});
+
+
+/* ================= BLOCK IMAGE MENU ================= */
+
+document.addEventListener(
+"contextmenu",
+function(e){
+
+if(
+e.target.tagName==="IMG"||
+e.target.closest(".pic")||
+e.target.closest(".viewerBox")
+){
+
+e.preventDefault();
+
+}
+
+});
+
+
+document.addEventListener(
+"dragstart",
+function(e){
+
+if(
+e.target.tagName==="IMG"
+){
+
+e.preventDefault();
+
+}
+
+});
+
+
+/* ================= START ================= */
+
+updateCartCount();
+
+load();
+
+</script>
+
+</body>
+</html>
