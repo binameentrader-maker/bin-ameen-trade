@@ -160,6 +160,7 @@ overflow:hidden;
 background:#fff;
 cursor:pointer;
 user-select:none;
+-webkit-touch-callout:none;
 }
 
 .pic img{
@@ -171,6 +172,7 @@ object-fit:contain;
 pointer-events:none;
 user-select:none;
 -webkit-user-drag:none;
+-webkit-touch-callout:none;
 }
 
 /* WATERMARK */
@@ -417,14 +419,14 @@ font-weight:bold;
 color:#475569;
 }
 
-/* IMAGE VIEWER */
+/* PRODUCT VIEWER */
 
 .viewer{
 display:none;
 position:fixed;
 z-index:99999;
 inset:0;
-background:rgba(0,0,0,.82);
+background:rgba(0,0,0,.85);
 align-items:center;
 justify-content:center;
 padding:10px;
@@ -438,29 +440,21 @@ display:flex;
 .viewerBox{
 position:relative;
 width:min(95vw,480px);
-height:min(85vh,600px);
+max-height:90vh;
 background:#fff;
+border:2px solid #8fa0b5;
 border-radius:0;
-padding:12px;
+padding:14px;
 display:flex;
+flex-direction:column;
 align-items:center;
-justify-content:center;
-overflow:hidden;
-}
-
-.viewerBox img{
-max-width:100%;
-max-height:100%;
-object-fit:contain;
-pointer-events:none;
-user-select:none;
--webkit-user-drag:none;
+overflow-y:auto;
 }
 
 .closeViewer{
 position:absolute;
-right:5px;
-top:5px;
+right:8px;
+top:8px;
 width:35px;
 height:35px;
 background:#1f293d;
@@ -468,6 +462,32 @@ color:#fff;
 font-size:18px;
 padding:0;
 border-radius:0;
+z-index:10;
+}
+
+.viewerImgContainer{
+position:relative;
+width:100%;
+height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border:1px solid #8fa0b5;
+margin-top:25px;
+overflow:hidden;
+}
+
+.viewerImgContainer img{
+max-width:100%;
+max-height:100%;
+width:100%;
+height:100%;
+object-fit:contain;
+pointer-events:none;
+user-select:none;
+-webkit-user-drag:none;
+-webkit-touch-callout:none;
 }
 
 .viewerWatermark{
@@ -475,11 +495,75 @@ position:absolute;
 left:50%;
 top:50%;
 transform:translate(-50%,-50%) rotate(-25deg);
-font-size:20px;
+font-size:22px;
 font-weight:bold;
-color:rgba(31,41,61,.16);
+color:rgba(31,41,61,.18);
 white-space:nowrap;
 pointer-events:none;
+}
+
+.viewerMeta{
+width:100%;
+margin-top:12px;
+text-align:center;
+}
+
+.viewerName{
+font-size:16px;
+font-weight:900;
+color:#1f293d;
+margin-bottom:6px;
+line-height:1.2;
+}
+
+.viewerBadgeRow{
+display:flex;
+justify-content:center;
+gap:8px;
+align-items:center;
+margin-bottom:12px;
+flex-wrap:wrap;
+}
+
+.viewerCode{
+font-size:12px;
+font-weight:bold;
+background:#f1f5f9;
+border:1px solid #8fa0b5;
+padding:4px 8px;
+color:#475569;
+}
+
+.viewerVariantLabel{
+font-size:12px;
+font-weight:bold;
+background:#1f293d;
+color:#fff;
+padding:4px 8px;
+}
+
+.viewerNav{
+display:flex;
+gap:8px;
+width:100%;
+margin-top:8px;
+}
+
+.viewerNav button{
+flex:1;
+background:#475569;
+color:#fff;
+padding:9px;
+font-size:14px;
+}
+
+.viewerAddToCart{
+width:100%;
+margin-top:10px;
+background:#1f293d!important;
+color:#fff;
+padding:11px;
+font-size:15px;
 }
 
 /* LOADING */
@@ -577,6 +661,14 @@ font-size:14px;
 padding:8px 4px;
 }
 
+.viewerImgContainer{
+height:210px;
+}
+
+.viewerName{
+font-size:14px;
+}
+
 }
 
 /* PREVENT IMAGE SAVE */
@@ -611,7 +703,6 @@ BIN AMEEN TRADER
 
 </header>
 
-
 <!-- CART BUTTON -->
 
 <button
@@ -622,11 +713,9 @@ onclick="showCart()"
 🛒 View Cart (<span id="count">0</span>)
 </button>
 
-
 <!-- CATEGORIES -->
 
 <div class="cats" id="cats"></div>
-
 
 <!-- SEARCH -->
 
@@ -636,7 +725,6 @@ id="search"
 placeholder="Search product name or SKU code..."
 autocomplete="off"
 >
-
 
 <!-- PRODUCTS -->
 
@@ -648,7 +736,6 @@ Loading products...
 
 </div>
 
-
 <!-- EMAIL -->
 
 <div class="emailFooter">
@@ -656,7 +743,6 @@ Loading products...
 </div>
 
 </div>
-
 
 <!-- CART -->
 
@@ -695,8 +781,7 @@ Send Order on WhatsApp
 
 </div>
 
-
-<!-- IMAGE VIEWER -->
+<!-- PRODUCT VIEWER -->
 
 <div class="viewer" id="viewer">
 
@@ -708,6 +793,8 @@ onclick="closeViewer()"
 >
 ✕
 </button>
+
+<div class="viewerImgContainer">
 
 <img
 id="viewerImg"
@@ -722,8 +809,39 @@ BIN AMEEN TRADER
 
 </div>
 
+<div class="viewerMeta">
+
+<div class="viewerName" id="viewerName">---</div>
+
+<div class="viewerBadgeRow">
+<span class="viewerCode" id="viewerCode">CODE: ---</span>
+<span class="viewerVariantLabel" id="viewerVariantLabel">---</span>
 </div>
 
+</div>
+
+<div class="viewerNav" id="viewerNav">
+
+<button onclick="viewerPrev()">
+‹ Previous Variant
+</button>
+
+<button onclick="viewerNext()">
+Next Variant ›
+</button>
+
+</div>
+
+<button
+class="viewerAddToCart"
+onclick="viewerAddToCart()"
+>
+🛒 Add to Cart (+1)
+</button>
+
+</div>
+
+</div>
 
 <script>
 
@@ -731,6 +849,10 @@ let products=[];
 let sel={};
 let cartData={};
 let category="ALL";
+
+/* VIEWER STATE */
+
+let activeViewerProductId=null;
 
 const catsEl=document.getElementById("cats");
 const searchEl=document.getElementById("search");
@@ -743,6 +865,10 @@ const cartTotalEl=document.getElementById("cartTotal");
 
 const viewerEl=document.getElementById("viewer");
 const viewerImgEl=document.getElementById("viewerImg");
+const viewerNameEl=document.getElementById("viewerName");
+const viewerCodeEl=document.getElementById("viewerCode");
+const viewerVariantLabelEl=document.getElementById("viewerVariantLabel");
+const viewerNavEl=document.getElementById("viewerNav");
 
 
 /* ================= LOAD PRODUCTS ================= */
@@ -782,6 +908,11 @@ products=data;
 
 products.forEach(function(p){
 
+/*
+  Support old product format as well as
+  the new variants format.
+*/
+
 if(!Array.isArray(p.variants)){
 
 p.variants=[{
@@ -793,12 +924,22 @@ img:p.img||""
 
 }
 
+if(!p.id){
+
+p.id=
+"product_"+Math.random()
+.toString(36)
+.substring(2,10);
+
+}
+
 sel[p.id]=0;
 
 });
 
 drawCats();
 render();
+updateCartCount();
 
 }catch(error){
 
@@ -839,7 +980,9 @@ products.forEach(function(p){
 
 if(p.category){
 
-categorySet.add(p.category);
+categorySet.add(
+String(p.category)
+);
 
 }
 
@@ -847,17 +990,20 @@ categorySet.add(p.category);
 
 const categories=[
 "ALL",
-...categorySet
+...Array.from(categorySet)
 ];
 
 catsEl.innerHTML="";
 
 categories.forEach(function(x){
 
-const btn=document.createElement("button");
+const btn=
+document.createElement("button");
 
 btn.textContent=
-x==="ALL"?"ALL ITEMS":x;
+x==="ALL"
+?"ALL ITEMS"
+:x;
 
 if(x===category){
 
@@ -879,6 +1025,18 @@ catsEl.appendChild(btn);
 });
 
 }
+
+
+/* ================= SEARCH ================= */
+
+searchEl.addEventListener(
+"input",
+function(){
+
+render();
+
+}
+);
 
 
 /* ================= RENDER ================= */
@@ -911,7 +1069,8 @@ return String(v.code||"")
 });
 
 return(
-(category==="ALL"||p.category===category)
+(category==="ALL"||
+String(p.category||"")===category)
 &&
 (
 name.includes(q)||
@@ -944,14 +1103,21 @@ return;
 }
 
 let index=
-sel[p.id]||0;
+Number(sel[p.id]||0);
+
+if(index<0){
+
+index=0;
+
+}
 
 if(index>=p.variants.length){
 
 index=0;
-sel[p.id]=0;
 
 }
+
+sel[p.id]=index;
 
 const v=
 p.variants[index];
@@ -982,11 +1148,7 @@ pic.className="pic";
 
 pic.onclick=function(){
 
-openViewer(
-v.img||
-p.img||
-""
-);
+openViewer(p.id);
 
 };
 
@@ -1044,7 +1206,10 @@ const variantArea=
 document.createElement("div");
 
 
-/* TWO VARIANTS */
+/*
+  Exactly 2 variants:
+  show both buttons.
+*/
 
 if(p.variants.length===2){
 
@@ -1055,6 +1220,8 @@ p.variants.forEach(function(item,j){
 
 const btn=
 document.createElement("button");
+
+btn.type="button";
 
 btn.className=
 "variantBtn";
@@ -1070,7 +1237,7 @@ btn.classList.add(
 btn.textContent=
 item.label||
 item.size||
-"";
+("Variant "+(j+1));
 
 btn.onclick=function(e){
 
@@ -1088,18 +1255,44 @@ variantArea.appendChild(btn);
 
 }else{
 
-/* 3 OR MORE */
+/*
+  1 variant:
+  show simple label.
+*/
+
+if(p.variants.length===1){
 
 variantArea.className=
 "variantRow";
 
+const label=
+document.createElement("div");
+
+label.className=
+"variantLabel";
+
+label.textContent=
+v.label||
+v.size||
+"";
+
+variantArea.appendChild(label);
+
+}else{
+
+/*
+  3 or more variants:
+  show Previous / Next.
+*/
+
+variantArea.className=
+"variantRow";
 
 const left=
 document.createElement("button");
 
-left.className=
-"arrowBtn";
-
+left.type="button";
+left.className="arrowBtn";
 left.textContent="‹";
 
 left.onclick=function(e){
@@ -1126,9 +1319,8 @@ v.size||
 const right=
 document.createElement("button");
 
-right.className=
-"arrowBtn";
-
+right.type="button";
+right.className="arrowBtn";
 right.textContent="›";
 
 right.onclick=function(e){
@@ -1146,6 +1338,8 @@ variantArea.appendChild(right);
 
 }
 
+}
+
 
 /* QUANTITY */
 
@@ -1158,6 +1352,7 @@ qbox.className="q";
 const minus=
 document.createElement("button");
 
+minus.type="button";
 minus.textContent="−";
 
 minus.onclick=function(e){
@@ -1182,6 +1377,7 @@ quantity;
 const plus=
 document.createElement("button");
 
+plus.type="button";
 plus.textContent="+";
 
 plus.onclick=function(e){
@@ -1215,19 +1411,19 @@ listEl.appendChild(card);
 }
 
 
-/* ================= PREVIOUS ================= */
+/* ================= PREVIOUS VARIANT ================= */
 
 function prevVariant(id){
 
 const p=
 products.find(function(x){
 
-return x.id===id;
+return String(x.id)===String(id);
 
 });
 
 if(!p||
-!p.variants||
+!Array.isArray(p.variants)||
 !p.variants.length){
 
 return;
@@ -1235,14 +1431,13 @@ return;
 }
 
 let i=
-sel[id]||0;
+Number(sel[id]||0);
 
 i--;
 
 if(i<0){
 
-i=
-p.variants.length-1;
+i=p.variants.length-1;
 
 }
 
@@ -1253,19 +1448,19 @@ render();
 }
 
 
-/* ================= NEXT ================= */
+/* ================= NEXT VARIANT ================= */
 
 function nextVariant(id){
 
 const p=
 products.find(function(x){
 
-return x.id===id;
+return String(x.id)===String(id);
 
 });
 
 if(!p||
-!p.variants||
+!Array.isArray(p.variants)||
 !p.variants.length){
 
 return;
@@ -1273,7 +1468,7 @@ return;
 }
 
 let i=
-sel[id]||0;
+Number(sel[id]||0);
 
 i++;
 
@@ -1297,12 +1492,12 @@ function change(id,d){
 const p=
 products.find(function(x){
 
-return x.id===id;
+return String(x.id)===String(id);
 
 });
 
 if(!p||
-!p.variants||
+!Array.isArray(p.variants)||
 !p.variants.length){
 
 return;
@@ -1310,7 +1505,7 @@ return;
 }
 
 const index=
-sel[id]||0;
+Number(sel[id]||0);
 
 const v=
 p.variants[index];
@@ -1319,7 +1514,7 @@ const key=
 p.id+"_"+index;
 
 const newQty=
-(cartData[key]?.qty||0)+d;
+Number(cartData[key]?.qty||0)+Number(d);
 
 if(newQty<=0){
 
@@ -1439,8 +1634,7 @@ item.className="item";
 const name=
 document.createElement("div");
 
-name.className=
-"itemName";
+name.className="itemName";
 
 name.textContent=
 (index+1)+
@@ -1451,14 +1645,13 @@ x.name;
 const info=
 document.createElement("div");
 
-info.className=
-"itemInfo";
+info.className="itemInfo";
 
 info.textContent=
 "("+
-x.variant+
+(x.variant||"")+
 ") | Code: "+
-x.code;
+(x.code||"");
 
 
 const controls=
@@ -1471,6 +1664,7 @@ controls.className=
 const minus=
 document.createElement("button");
 
+minus.type="button";
 minus.textContent="−";
 
 minus.onclick=function(){
@@ -1490,256 +1684,5 @@ x.qty;
 const plus=
 document.createElement("button");
 
-plus.textContent="+";
-
-plus.onclick=function(){
-
-cartChange(key,1);
-
-};
-
-
-const remove=
-document.createElement("button");
-
-remove.className=
-"removeBtn";
-
-remove.textContent=
-"Remove";
-
-remove.onclick=function(){
-
-removeCart(key);
-
-};
-
-
-controls.appendChild(minus);
-controls.appendChild(qty);
-controls.appendChild(plus);
-controls.appendChild(remove);
-
-item.appendChild(name);
-item.appendChild(info);
-item.appendChild(controls);
-
-cartItemsEl.appendChild(item);
-
-});
-
-updateCartCount();
-
-}
-
-
-/* ================= CART CHANGE ================= */
-
-function cartChange(key,d){
-
-if(!cartData[key]){
-
-return;
-
-}
-
-cartData[key].qty+=d;
-
-if(cartData[key].qty<=0){
-
-delete cartData[key];
-
-}
-
-renderCart();
-render();
-
-}
-
-
-/* ================= REMOVE ================= */
-
-function removeCart(key){
-
-delete cartData[key];
-
-renderCart();
-render();
-
-}
-
-
-/* ================= IMAGE VIEWER ================= */
-
-function openViewer(src){
-
-if(!src){
-
-return;
-
-}
-
-viewerImgEl.src=
-src;
-
-viewerEl.classList.add(
-"open"
-);
-
-document.body.style.overflow=
-"hidden";
-
-}
-
-
-/* ================= CLOSE VIEWER ================= */
-
-function closeViewer(){
-
-viewerEl.classList.remove(
-"open"
-);
-
-viewerImgEl.src="";
-
-document.body.style.overflow=
-"";
-
-}
-
-
-/* ================= OUTSIDE VIEWER ================= */
-
-viewerEl.addEventListener(
-"click",
-function(e){
-
-if(e.target===viewerEl){
-
-closeViewer();
-
-}
-
-});
-
-
-/* ================= WHATSAPP ================= */
-
-function wa(){
-
-const keys=
-Object.keys(cartData);
-
-if(!keys.length){
-
-alert(
-"Cart is empty"
-);
-
-return;
-
-}
-
-let message=
-"*NEW ORDER - BIN AMEEN TRADER*\n\n";
-
-keys.forEach(
-function(key,index){
-
-const x=
-cartData[key];
-
-message+=
-(index+1)+
-". *"+
-x.name+
-"* ("+
-x.variant+
-")\n"+
-"   Code: "+
-x.code+
-" | Qty: *"+
-x.qty+
-"*\n\n";
-
-});
-
-
-window.open(
-"https://wa.me/923331390045?text="+
-encodeURIComponent(message),
-"_blank"
-);
-
-}
-
-
-/* ================= SEARCH ================= */
-
-searchEl.addEventListener(
-"input",
-render
-);
-
-
-/* ================= OUTSIDE CART ================= */
-
-cartOverlay.addEventListener(
-"click",
-function(e){
-
-if(
-e.target===cartOverlay
-){
-
-closeCart();
-
-}
-
-});
-
-
-/* ================= BLOCK IMAGE MENU ================= */
-
-document.addEventListener(
-"contextmenu",
-function(e){
-
-if(
-e.target.tagName==="IMG"||
-e.target.closest(".pic")||
-e.target.closest(".viewerBox")
-){
-
-e.preventDefault();
-
-}
-
-});
-
-
-document.addEventListener(
-"dragstart",
-function(e){
-
-if(
-e.target.tagName==="IMG"
-){
-
-e.preventDefault();
-
-}
-
-});
-
-
-/* ================= START ================= */
-
-updateCartCount();
-
-load();
-
-</script>
-
-</body>
-</html>
+plus.type="button";
+plus.textCo
