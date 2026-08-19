@@ -417,7 +417,7 @@ font-weight:bold;
 color:#475569;
 }
 
-/* IMAGE VIEWER - now full screen */
+/* IMAGE VIEWER - full screen */
 
 .viewer{
 display:none;
@@ -469,7 +469,7 @@ color:#fff;
 font-size:15px;
 font-weight:bold;
 border-radius:0;
-z-index:2;
+z-index:3;
 letter-spacing:.3px;
 }
 
@@ -484,6 +484,55 @@ color:rgba(31,41,61,.18);
 white-space:nowrap;
 pointer-events:none;
 z-index:1;
+}
+
+/* VIEWER PREV/NEXT ARROWS */
+
+.viewerArrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:#475569;
+color:#fff;
+font-size:26px;
+width:44px;
+height:56px;
+padding:0;
+border-radius:0;
+z-index:3;
+}
+
+.viewerArrowLeft{
+left:8px;
+}
+
+.viewerArrowRight{
+right:8px;
+}
+
+/* VIEWER VARIANT/CODE INFO */
+
+.viewerInfo{
+position:absolute;
+left:50%;
+bottom:14px;
+transform:translateX(-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:5px;
+z-index:3;
+background:#fff;
+border:2px solid #8fa0b5;
+padding:7px 14px;
+max-width:90%;
+}
+
+.viewerVariantText{
+font-size:14px;
+font-weight:900;
+color:#1f293d;
+text-align:center;
 }
 
 /* LOADING */
@@ -579,6 +628,12 @@ font-size:14px;
 .emailFooter{
 font-size:14px;
 padding:8px 4px;
+}
+
+.viewerArrow{
+width:38px;
+height:48px;
+font-size:22px;
 }
 
 }
@@ -700,7 +755,7 @@ Send Order on WhatsApp
 </div>
 
 
-<!-- IMAGE VIEWER (full screen) -->
+<!-- IMAGE VIEWER (full screen + variant navigation) -->
 
 <div class="viewer" id="viewer">
 
@@ -713,12 +768,31 @@ onclick="closeViewer()"
 ← BACK
 </button>
 
+<button
+class="viewerArrow viewerArrowLeft"
+onclick="prevViewerVariant()"
+>
+‹
+</button>
+
 <img
 id="viewerImg"
 src=""
 alt="Product"
 draggable="false"
 >
+
+<button
+class="viewerArrow viewerArrowRight"
+onclick="nextViewerVariant()"
+>
+›
+</button>
+
+<div class="viewerInfo" id="viewerInfo">
+<b class="viewerVariantText" id="viewerVariantText"></b>
+<span class="code" id="viewerCodeText"></span>
+</div>
 
 <div class="viewerWatermark">
 BIN AMEEN TRADER
@@ -727,7 +801,6 @@ BIN AMEEN TRADER
 </div>
 
 </div>
-
 
 <script>
 
@@ -747,10 +820,18 @@ const cartTotalEl=document.getElementById("cartTotal");
 
 const viewerEl=document.getElementById("viewer");
 const viewerImgEl=document.getElementById("viewerImg");
+const viewerVariantTextEl=document.getElementById("viewerVariantText");
+const viewerCodeTextEl=document.getElementById("viewerCodeText");
+const viewerArrowLeftEl=document.querySelector(".viewerArrowLeft");
+const viewerArrowRightEl=document.querySelector(".viewerArrowRight");
 
 /* tracks whether the currently open viewer added a history entry,
    so BACK button + phone back button behave the same way */
 let viewerHistoryPushed=false;
+
+/* tracks which product/variant is currently shown in the full-screen viewer */
+let viewerProductId=null;
+let viewerIndex=0;
 
 
 /* ================= LOAD PRODUCTS ================= */
@@ -990,11 +1071,7 @@ pic.className="pic";
 
 pic.onclick=function(){
 
-openViewer(
-v.img||
-p.img||
-""
-);
+openViewer(p.id,index);
 
 };
 
@@ -1577,18 +1654,34 @@ render();
 }
 
 
-/* ================= IMAGE VIEWER (full screen + back support) ================= */
+/* ================= IMAGE VIEWER (full screen + variant navigation + back support) ================= */
 
-function openViewer(src){
+function openViewer(productId,index){
 
-if(!src){
+const p=
+products.find(function(x){
+
+return x.id===productId;
+
+});
+
+if(!p||
+!Array.isArray(p.variants)||
+!p.variants.length){
 
 return;
 
 }
 
-viewerImgEl.src=
-src;
+viewerProductId=productId;
+
+viewerIndex=
+(typeof index==="number"&&
+index>=0&&
+index<p.variants.length)
+?index:0;
+
+showViewerVariant();
 
 viewerEl.classList.add(
 "open"
@@ -1605,6 +1698,155 @@ history.pushState(
 );
 
 viewerHistoryPushed=true;
+
+}
+
+
+/* Shows the currently selected product/variant inside the viewer,
+   and keeps the product card in sync with the same variant */
+
+function showViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!Array.isArray(p.variants)||
+!p.variants.length){
+
+return;
+
+}
+
+if(viewerIndex>=p.variants.length){
+
+viewerIndex=0;
+
+}
+
+if(viewerIndex<0){
+
+viewerIndex=
+p.variants.length-1;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+viewerImgEl.src=
+v.img||
+p.img||
+"";
+
+const variantText=
+v.label||
+v.size||
+"";
+
+viewerVariantTextEl.textContent=
+variantText;
+
+viewerVariantTextEl.style.display=
+variantText?"":"none";
+
+viewerCodeTextEl.textContent=
+"CODE: "+
+(v.code||"");
+
+const hasMultiple=
+p.variants.length>1;
+
+viewerArrowLeftEl.style.display=
+hasMultiple?"":"none";
+
+viewerArrowRightEl.style.display=
+hasMultiple?"":"none";
+
+/* keep the product card's selected variant in sync with the viewer */
+
+if(sel[p.id]!==viewerIndex){
+
+sel[p.id]=viewerIndex;
+
+render();
+
+}
+
+}
+
+
+/* Previous variant inside the viewer */
+
+function prevViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+viewerIndex-1;
+
+if(i<0){
+
+i=
+p.variants.length-1;
+
+}
+
+viewerIndex=i;
+
+showViewerVariant();
+
+}
+
+
+/* Next variant inside the viewer */
+
+function nextViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+viewerIndex+1;
+
+if(i>=p.variants.length){
+
+i=0;
+
+}
+
+viewerIndex=i;
+
+showViewerVariant();
 
 }
 
@@ -1756,9 +1998,9 @@ closeCart();
 });
 
 
-/* ================= BLOCK IMAGE MENU
+/* ================= BLOCK IMAGE MENU ================= */
 
-  document.addEventListener(
+document.addEventListener(
 "contextmenu",
 function(e){
 
