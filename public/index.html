@@ -479,8 +479,6 @@ border-radius:0;
 z-index:10;
 }
 
-/* FULL SCREEN WATERMARK */
-
 .viewerWatermark{
 position:absolute;
 left:50%;
@@ -491,6 +489,7 @@ font-weight:bold;
 color:rgba(31,41,61,.18);
 white-space:nowrap;
 pointer-events:none;
+z-index:5;
 }
 
 
@@ -1606,30 +1605,27 @@ return;
 
 }
 
-/* Show image in full screen */
+viewerImgEl.src=src;
 
-viewerImgEl.src=
-src;
+viewerEl.classList.add("open");
 
-viewerEl.classList.add(
-"open"
-);
-
-document.body.style.overflow=
-"hidden";
+document.body.style.overflow="hidden";
 
 /*
-Create browser history state.
-This makes the phone's BACK button
-close the image screen instead of
-leaving the catalogue.
+Important:
+Use a history state so the phone's
+BACK button closes the image viewer.
 */
+
+if(location.hash!=="#viewer"){
 
 history.pushState(
 {viewerOpen:true},
 "",
 "#viewer"
 );
+
+}
 
 }
 
@@ -1644,19 +1640,17 @@ return;
 
 }
 
-viewerEl.classList.remove(
-"open"
-);
+viewerEl.classList.remove("open");
 
 viewerImgEl.src="";
 
 document.body.style.overflow="";
 
-/* Remove #viewer from browser history */
+/*
+Remove viewer history state.
+*/
 
-if(
-location.hash==="#viewer"
-){
+if(location.hash==="#viewer"){
 
 history.back();
 
@@ -1667,17 +1661,11 @@ history.back();
 
 /* ================= PHONE BACK BUTTON ================= */
 
-window.addEventListener(
-"popstate",
-function(){
+window.addEventListener("popstate",function(){
 
-if(
-viewerEl.classList.contains("open")
-){
+if(viewerEl.classList.contains("open")){
 
-viewerEl.classList.remove(
-"open"
-);
+viewerEl.classList.remove("open");
 
 viewerImgEl.src="";
 
@@ -1690,9 +1678,7 @@ document.body.style.overflow="";
 
 /* ================= OUTSIDE VIEWER ================= */
 
-viewerEl.addEventListener(
-"click",
-function(e){
+viewerEl.addEventListener("click",function(e){
 
 if(e.target===viewerEl){
 
@@ -1712,9 +1698,7 @@ Object.keys(cartData);
 
 if(!keys.length){
 
-alert(
-"Cart is empty"
-);
+alert("Cart is empty");
 
 return;
 
@@ -1723,8 +1707,7 @@ return;
 let message=
 "*NEW ORDER - BIN AMEEN TRADER*\n\n";
 
-keys.forEach(
-function(key,index){
+keys.forEach(function(key,index){
 
 const x=
 cartData[key];
@@ -1762,4 +1745,10 @@ render
 );
 
 
-/* ================= OUTSIDE CART ====
+/* ================= OUTSIDE CART ================= */
+
+cartOverlay.addEventListener(
+"click",
+function(e){
+
+if(e.targe
