@@ -49,7 +49,7 @@
   },
   {
     "id": 1787115779215,
-    "name": "G&L RE-NEW BRIGHT CREAM 50GM",
+    "name": "G&L RE-NEW BRIGHT CREAM",
     "category": "ACCESSORIES",
     "optionTitle": "SIZE",
     "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
@@ -58,7 +58,13 @@
         "label": "50GM",
         "size": "50GM",
         "code": "G&L-50GM",
-        "img": "https://drive.google.com/uc?export=view&id=1WE1WejZOU75PuMuSvNimOt7u-pS5Ue3v"
+        "img": "https://drive.google.com/thumbnail?id=1WE1WejZOU75PuMuSvNimOt7u-pS5Ue3v&sz=w1000"
+      },
+      {
+        "label": "25GM",
+        "size": "25GM",
+        "code": "G&L-25GM",
+        "img": "https://drive.google.com/thumbnail?id=1WE1WejZOU75PuMuSvNimOt7u-pS5Ue3v&sz=w1000"
       }
     ]
   }
