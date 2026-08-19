@@ -417,17 +417,17 @@ font-weight:bold;
 color:#475569;
 }
 
-/* IMAGE VIEWER */
+/* IMAGE VIEWER - now full screen */
 
 .viewer{
 display:none;
 position:fixed;
 z-index:99999;
 inset:0;
-background:rgba(0,0,0,.82);
+background:#000;
 align-items:center;
 justify-content:center;
-padding:10px;
+padding:0;
 user-select:none;
 }
 
@@ -437,11 +437,11 @@ display:flex;
 
 .viewerBox{
 position:relative;
-width:min(95vw,480px);
-height:min(85vh,600px);
+width:100%;
+height:100%;
 background:#fff;
 border-radius:0;
-padding:12px;
+padding:16px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -459,15 +459,18 @@ user-select:none;
 
 .closeViewer{
 position:absolute;
-right:5px;
-top:5px;
-width:35px;
-height:35px;
+left:10px;
+top:10px;
+height:40px;
+width:auto;
+padding:0 16px;
 background:#1f293d;
 color:#fff;
-font-size:18px;
-padding:0;
+font-size:15px;
+font-weight:bold;
 border-radius:0;
+z-index:2;
+letter-spacing:.3px;
 }
 
 .viewerWatermark{
@@ -475,11 +478,12 @@ position:absolute;
 left:50%;
 top:50%;
 transform:translate(-50%,-50%) rotate(-25deg);
-font-size:20px;
+font-size:26px;
 font-weight:bold;
-color:rgba(31,41,61,.16);
+color:rgba(31,41,61,.18);
 white-space:nowrap;
 pointer-events:none;
+z-index:1;
 }
 
 /* LOADING */
@@ -696,7 +700,7 @@ Send Order on WhatsApp
 </div>
 
 
-<!-- IMAGE VIEWER -->
+<!-- IMAGE VIEWER (full screen) -->
 
 <div class="viewer" id="viewer">
 
@@ -706,7 +710,7 @@ Send Order on WhatsApp
 class="closeViewer"
 onclick="closeViewer()"
 >
-✕
+← BACK
 </button>
 
 <img
@@ -743,6 +747,10 @@ const cartTotalEl=document.getElementById("cartTotal");
 
 const viewerEl=document.getElementById("viewer");
 const viewerImgEl=document.getElementById("viewerImg");
+
+/* tracks whether the currently open viewer added a history entry,
+   so BACK button + phone back button behave the same way */
+let viewerHistoryPushed=false;
 
 
 /* ================= LOAD PRODUCTS ================= */
@@ -1569,7 +1577,7 @@ render();
 }
 
 
-/* ================= IMAGE VIEWER ================= */
+/* ================= IMAGE VIEWER (full screen + back support) ================= */
 
 function openViewer(src){
 
@@ -1589,12 +1597,41 @@ viewerEl.classList.add(
 document.body.style.overflow=
 "hidden";
 
+/* push a history entry so the phone/browser BACK button
+   closes the viewer instead of leaving the page */
+history.pushState(
+{binAmeenViewer:true},
+""
+);
+
+viewerHistoryPushed=true;
+
 }
 
 
-/* ================= CLOSE VIEWER ================= */
+/* Called by the on-screen BACK button */
 
 function closeViewer(){
+
+if(viewerHistoryPushed){
+
+viewerHistoryPushed=false;
+
+/* triggers popstate below, which actually closes the viewer */
+history.back();
+
+}else{
+
+closeViewerNow();
+
+}
+
+}
+
+
+/* Actually hides the viewer (used by both BACK button and phone back) */
+
+function closeViewerNow(){
 
 viewerEl.classList.remove(
 "open"
@@ -1606,6 +1643,26 @@ document.body.style.overflow=
 "";
 
 }
+
+
+/* Handles the phone/browser physical BACK button */
+
+window.addEventListener(
+"popstate",
+function(){
+
+if(
+viewerEl.classList.contains("open")
+){
+
+viewerHistoryPushed=false;
+
+closeViewerNow();
+
+}
+
+}
+);
 
 
 /* ================= OUTSIDE VIEWER ================= */
@@ -1699,9 +1756,9 @@ closeCart();
 });
 
 
-/* ================= BLOCK IMAGE MENU ================= */
+/* ================= BLOCK IMAGE MENU
 
-document.addEventListener(
+  document.addEventListener(
 "contextmenu",
 function(e){
 
