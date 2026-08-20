@@ -14,6 +14,12 @@ button{padding:9px;margin:3px;border:0;border-radius:6px;font-weight:bold;cursor
 .red{background:#dc2626;color:#fff}
 .row{border:1px solid #8fa0b5;border-radius:7px;padding:10px;margin:8px 0}
 #status{margin:10px 0;padding:8px;border-radius:6px;display:none}
+.pubBox{border:2px solid #1f293d;border-radius:8px;padding:12px;margin-top:18px}
+.pubBox h3{margin-top:0}
+.pubMsg{margin:8px 0;padding:8px;border-radius:6px;display:none;font-size:14px}
+.toggleRow{display:flex;align-items:center;gap:10px;margin:8px 0}
+.stateOn{color:#16a34a;font-weight:bold}
+.stateOff{color:#dc2626;font-weight:bold}
 </style>
 </head>
 
@@ -34,11 +40,33 @@ button{padding:9px;margin:3px;border:0;border-radius:6px;font-weight:bold;cursor
 <div id="editor"></div>
 <hr>
 <div id="items"></div>
+
+<div class="pubBox">
+
+<h3>PUBLIC WEBSITE PASSWORD</h3>
+
+<div class="toggleRow">
+<span>Password Protection:</span>
+<span id="protectionState" class="stateOff">OFF</span>
+<button id="toggleBtn" class="dark" onclick="togglePublicProtection()">TOGGLE ON/OFF</button>
+</div>
+
+<div id="pubMsg" class="pubMsg"></div>
+
+<input id="newPubPw" type="password" placeholder="New Public Password">
+<input id="confirmPubPw" type="password" placeholder="Confirm Public Password">
+
+<button class="green" onclick="changePublicPassword()">
+CHANGE PUBLIC PASSWORD
+</button>
+
+</div>
+
 </div>
 
 </div>
 
-<script>
+  <script>
 
 let token = '';
 let data = [];
@@ -161,6 +189,8 @@ async function login(){
         );
 
         await load();
+
+        await loadPublicSettings();
 
     }catch(error){
 
@@ -488,45 +518,9 @@ function cancelEdit(){
 
 async function save(i){
 
-    console.log(
-        '=============================='
-    );
-
-    console.log(
-        'SAVE BUTTON CLICKED'
-    );
-
-    console.log(
-        'Edit index:',
-        i
-    );
-
-    console.log(
-        'Token exists:',
-        token ? 'YES' : 'NO'
-    );
-
-    console.log(
-        'Token length:',
-        token ? token.length : 0
-    );
-
-    console.log(
-        'Current products:',
-        data
-    );
-
-    console.log(
-        '=============================='
-    );
-
     try{
 
         if(!token){
-
-            console.error(
-                'SAVE STOPPED: TOKEN IS EMPTY'
-            );
 
             alert(
                 'Login session missing. Please login again.'
@@ -547,17 +541,6 @@ async function save(i){
 
         const imageElement=
             document.getElementById('ei');
-
-
-        console.log(
-            'Form elements:',
-            {
-                name: !!nameElement,
-                category: !!categoryElement,
-                optionTitle: !!optionElement,
-                image: !!imageElement
-            }
-        );
 
 
         if(
@@ -587,17 +570,6 @@ async function save(i){
             imageElement.value.trim();
 
 
-        console.log(
-            'Product name:',
-            name
-        );
-
-        console.log(
-            'Category:',
-            category
-        );
-
-
         if(!name){
 
             alert(
@@ -612,12 +584,6 @@ async function save(i){
             document.querySelectorAll(
                 '#vs .row'
             );
-
-
-        console.log(
-            'Variant rows found:',
-            variantRows.length
-        );
 
 
         const product={
@@ -669,12 +635,6 @@ async function save(i){
         };
 
 
-        console.log(
-            'PRODUCT TO SEND:',
-            product
-        );
-
-
         const url=i<0
             ? '/api/products'
             : '/api/products/'+data[i].id;
@@ -684,21 +644,6 @@ async function save(i){
             i<0
             ? 'POST'
             : 'PUT';
-
-
-        console.log(
-            'FETCH URL:',
-            url
-        );
-
-        console.log(
-            'FETCH METHOD:',
-            method
-        );
-
-        console.log(
-            'SENDING PRODUCT REQUEST NOW...'
-        );
 
 
         const response=
@@ -725,26 +670,10 @@ async function save(i){
             );
 
 
-        console.log(
-            'SAVE FETCH COMPLETED'
-        );
-
-        console.log(
-            'SAVE HTTP STATUS:',
-            response.status
-        );
-
-
         const result=
             await response
             .json()
             .catch(()=>({}));
-
-
-        console.log(
-            'SAVE SERVER RESPONSE:',
-            result
-        );
 
 
         if(!response.ok){
@@ -775,16 +704,8 @@ async function save(i){
     }catch(error){
 
         console.error(
-            '=============================='
-        );
-
-        console.error(
             'SAVE ERROR:',
             error
-        );
-
-        console.error(
-            '=============================='
         );
 
         alert(
@@ -801,34 +722,7 @@ async function save(i){
 
 async function del(id){
 
-    console.log(
-        '=============================='
-    );
-
-    console.log(
-        'DELETE BUTTON CLICKED'
-    );
-
-    console.log(
-        'Product ID:',
-        id
-    );
-
-    console.log(
-        'Token exists:',
-        token ? 'YES' : 'NO'
-    );
-
-    console.log(
-        '=============================='
-    );
-
-
     if(!confirm('Delete item?')){
-
-        console.log(
-            'DELETE CANCELLED BY USER'
-        );
 
         return;
     }
@@ -837,10 +731,6 @@ async function del(id){
     try{
 
         if(!token){
-
-            console.error(
-                'DELETE STOPPED: TOKEN IS EMPTY'
-            );
 
             alert(
                 'Login session missing. Please login again.'
@@ -852,20 +742,6 @@ async function del(id){
 
         const url=
             '/api/products/'+id;
-
-
-        console.log(
-            'DELETE URL:',
-            url
-        );
-
-        console.log(
-            'DELETE METHOD: DELETE'
-        );
-
-        console.log(
-            'SENDING DELETE REQUEST NOW...'
-        );
 
 
         const response=
@@ -886,26 +762,10 @@ async function del(id){
             );
 
 
-        console.log(
-            'DELETE FETCH COMPLETED'
-        );
-
-        console.log(
-            'DELETE HTTP STATUS:',
-            response.status
-        );
-
-
         const result=
             await response
             .json()
             .catch(()=>({}));
-
-
-        console.log(
-            'DELETE SERVER RESPONSE:',
-            result
-        );
 
 
         if(!response.ok){
@@ -931,16 +791,8 @@ async function del(id){
     }catch(error){
 
         console.error(
-            '=============================='
-        );
-
-        console.error(
             'DELETE ERROR:',
             error
-        );
-
-        console.error(
-            '=============================='
         );
 
         alert(
@@ -948,6 +800,168 @@ async function del(id){
             error.message
         );
     }
+}
+
+
+/* =========================
+   PUBLIC WEBSITE PASSWORD (ADMIN SECTION)
+========================= */
+
+function showPubMsg(message,type='normal'){
+
+    const el=document.getElementById('pubMsg');
+
+    el.style.display='block';
+    el.textContent=message;
+
+    if(type==='error'){
+        el.style.background='#fee2e2';
+        el.style.color='#991b1b';
+    }else{
+        el.style.background='#dcfce7';
+        el.style.color='#166534';
+    }
+}
+
+let currentProtectionOn=false;
+
+async function loadPublicSettings(){
+
+    try{
+
+        const response=await fetch('/api/admin/public-settings',{
+            headers:{
+                'Authorization':'Bearer '+token
+            }
+        });
+
+        if(!response.ok){
+            throw new Error('Failed to load public settings');
+        }
+
+        const result=await response.json();
+
+        currentProtectionOn=!!result.protectionOn;
+
+        updateProtectionStateUI();
+
+    }catch(error){
+
+        console.error('LOAD PUBLIC SETTINGS ERROR:', error);
+    }
+}
+
+function updateProtectionStateUI(){
+
+    const stateEl=document.getElementById('protectionState');
+
+    if(currentProtectionOn){
+        stateEl.textContent='ON';
+        stateEl.className='stateOn';
+    }else{
+        stateEl.textContent='OFF';
+        stateEl.className='stateOff';
+    }
+}
+
+async function togglePublicProtection(){
+
+    try{
+
+        const response=await fetch('/api/admin/public-settings/toggle',{
+
+            method:'POST',
+
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer '+token
+            },
+
+            body:JSON.stringify({
+                on: !currentProtectionOn
+            })
+
+        });
+
+        const result=await response.json().catch(()=>({}));
+
+        if(!response.ok){
+            throw new Error(result.error || 'Toggle failed');
+        }
+
+        currentProtectionOn=!!result.protectionOn;
+
+        updateProtectionStateUI();
+
+        showPubMsg(
+            'Public password protection is now '+
+            (currentProtectionOn ? 'ON' : 'OFF') + '.'
+        );
+
+    }catch(error){
+
+        console.error('TOGGLE ERROR:', error);
+
+        showPubMsg('Toggle failed: '+error.message,'error');
+    }
+
+}
+
+async function changePublicPassword(){
+
+    const newPw=document.getElementById('newPubPw').value;
+    const confirmPw=document.getElementById('confirmPubPw').value;
+
+    if(!newPw || !confirmPw){
+
+        showPubMsg('Passwords cannot be empty.','error');
+
+        return;
+    }
+
+    if(newPw !== confirmPw){
+
+        showPubMsg('Passwords do not match.','error');
+
+        return;
+    }
+
+    try{
+
+        const response=await fetch('/api/admin/public-settings/change-password',{
+
+            method:'POST',
+
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer '+token
+            },
+
+            body:JSON.stringify({
+                newPassword:newPw,
+                confirmPassword:confirmPw
+            })
+
+        });
+
+        const result=await response.json().catch(()=>({}));
+
+        if(!response.ok){
+            throw new Error(result.error || 'Password change failed');
+        }
+
+        document.getElementById('newPubPw').value='';
+        document.getElementById('confirmPubPw').value='';
+
+        showPubMsg('Public website password updated successfully.');
+
+    }catch(error){
+
+        console.error('CHANGE PUBLIC PASSWORD ERROR:', error);
+
+        showPubMsg('Password change failed: '+error.message,'error');
+    }
+
 }
 
 
@@ -994,4 +1008,4 @@ function escapeAttr(value){
 </script>
 
 </body>
-</html>
+</html>  
