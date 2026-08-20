@@ -121,13 +121,26 @@ border-color:#1f293d;
 
 /* SEARCH */
 
+.searchWrap{
+position:relative;
+margin-bottom:8px;
+}
+
+.searchIcon{
+position:absolute;
+left:11px;
+top:50%;
+transform:translateY(-50%);
+font-size:15px;
+pointer-events:none;
+}
+
 .search{
 width:100%;
-padding:10px;
+padding:10px 10px 10px 34px;
 border:2px solid #8fa0b5;
 border-radius:0;
 font-size:14px;
-margin-bottom:8px;
 outline:none;
 background:#fff;
 }
@@ -524,7 +537,7 @@ left:8px;
 right:8px;
 }
 
-/* VIEWER VARIANT/CODE INFO */
+/* VIEWER VARIANT/CODE/QTY INFO */
 
 .viewerInfo{
 position:absolute;
@@ -727,12 +740,18 @@ onclick="showCart()"
 
 <!-- SEARCH -->
 
+<div class="searchWrap">
+
+<span class="searchIcon">🔍</span>
+
 <input
 class="search"
 id="search"
-placeholder="Search product name or SKU code..."
+placeholder=""
 autocomplete="off"
 >
+
+</div>
 
 
 <!-- PRODUCTS -->
@@ -793,7 +812,7 @@ Send Order on WhatsApp
 </div>
 
 
-<!-- IMAGE VIEWER (full screen + variant navigation + add to cart) -->
+<!-- IMAGE VIEWER (full screen + variant navigation + add to cart + qty) -->
 
 <div class="viewer" id="viewer">
 
@@ -830,6 +849,11 @@ onclick="nextViewerVariant()"
 <div class="viewerInfo" id="viewerInfo">
 <b class="viewerVariantText" id="viewerVariantText"></b>
 <span class="code" id="viewerCodeText"></span>
+<div class="q" id="viewerQtyRow">
+<button onclick="viewerChange(-1)">−</button>
+<div class="qtyBox" id="viewerQtyBox" onclick="viewerEditQty()">0</div>
+<button onclick="viewerChange(1)">+</button>
+</div>
 <button
 class="viewerAddCart"
 id="viewerAddCartBtn"
@@ -854,6 +878,7 @@ let sel={};
 let cartData={};
 let category="ALL";
 let editingQty={};
+let viewerEditingQty=false;
 
 const catsEl=document.getElementById("cats");
 const searchEl=document.getElementById("search");
@@ -871,6 +896,7 @@ const viewerCodeTextEl=document.getElementById("viewerCodeText");
 const viewerArrowLeftEl=document.querySelector(".viewerArrowLeft");
 const viewerArrowRightEl=document.querySelector(".viewerArrowRight");
 const viewerAddCartBtn=document.getElementById("viewerAddCartBtn");
+const viewerQtyRow=document.getElementById("viewerQtyRow");
 
 let viewerHistoryPushed=false;
 let viewerProductId=null;
@@ -1451,7 +1477,7 @@ render();
 }
 
 
-/* ================= QUANTITY (+ / -) ================= */
+/* ================= QUANTITY (+ / -) home cards ================= */
 
 function change(id,d){
 
@@ -1515,10 +1541,20 @@ renderCart();
 
 }
 
+if(
+viewerEl.classList.contains("open")&&
+viewerProductId===id&&
+viewerIndex===index
+){
+
+updateViewerQtyDisplay();
+
+}
+
 }
 
 
-/* ================= QUANTITY (manual typed value) ================= */
+/* ================= QUANTITY (manual typed value) home cards ================= */
 
 function setQuantity(id,index,rawValue){
 
@@ -1587,6 +1623,16 @@ cartOverlay.classList.contains("open")
 ){
 
 renderCart();
+
+}
+
+if(
+viewerEl.classList.contains("open")&&
+viewerProductId===id&&
+viewerIndex===index
+){
+
+updateViewerQtyDisplay();
 
 }
 
@@ -1782,6 +1828,14 @@ delete cartData[key];
 renderCart();
 render();
 
+if(
+viewerEl.classList.contains("open")
+){
+
+updateViewerQtyDisplay();
+
+}
+
 }
 
 
@@ -1794,10 +1848,18 @@ delete cartData[key];
 renderCart();
 render();
 
+if(
+viewerEl.classList.contains("open")
+){
+
+updateViewerQtyDisplay();
+
+}
+
 }
 
 
-/* ================= IMAGE VIEWER (full screen + variant navigation + back support) ================= */
+/* ================= IMAGE VIEWER (full screen + variant navigation + back + qty + add to cart) ================= */
 
 function openViewer(productId,index){
 
@@ -1823,6 +1885,8 @@ viewerIndex=
 index>=0&&
 index<p.variants.length)
 ?index:0;
+
+viewerEditingQty=false;
 
 showViewerVariant();
 
@@ -1908,6 +1972,10 @@ hasMultiple?"":"none";
 viewerArrowRightEl.style.display=
 hasMultiple?"":"none";
 
+viewerEditingQty=false;
+
+updateViewerQtyDisplay();
+
 if(sel[p.id]!==viewerIndex){
 
 sel[p.id]=viewerIndex;
@@ -1915,6 +1983,290 @@ sel[p.id]=viewerIndex;
 render();
 
 }
+
+}
+
+
+/* Renders the quantity control inside the viewer (box or manual input),
+   based on the same cartData used everywhere else */
+
+function updateViewerQtyDisplay(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const quantity=
+cartData[key]
+?cartData[key].qty
+:0;
+
+viewerQtyRow.innerHTML="";
+
+const minus=
+document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(){
+
+viewerChange(-1);
+
+};
+
+let qtyEl;
+
+if(viewerEditingQty){
+
+qtyEl=
+document.createElement("input");
+
+qtyEl.className=
+"qtyInput";
+
+qtyEl.type=
+"tel";
+
+qtyEl.inputMode=
+"numeric";
+
+qtyEl.pattern=
+"[0-9]*";
+
+qtyEl.value=
+quantity||"";
+
+qtyEl.onkeydown=function(e){
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+
+viewerSetQty(qtyEl.value);
+
+}
+
+};
+
+qtyEl.onblur=function(){
+
+viewerSetQty(qtyEl.value);
+
+};
+
+}else{
+
+qtyEl=
+document.createElement("div");
+
+qtyEl.className=
+"qtyBox";
+
+qtyEl.id=
+"viewerQtyBox";
+
+qtyEl.textContent=
+quantity;
+
+qtyEl.onclick=function(){
+
+viewerEditQty();
+
+};
+
+}
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+viewerChange(1);
+
+};
+
+viewerQtyRow.appendChild(minus);
+viewerQtyRow.appendChild(qtyEl);
+viewerQtyRow.appendChild(plus);
+
+if(viewerEditingQty&&
+qtyEl.tagName==="INPUT"){
+
+qtyEl.focus();
+
+qtyEl.select();
+
+}
+
+}
+
+
+/* +/- quantity change inside the viewer */
+
+function viewerChange(d){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const newQty=
+(cartData[key]?.qty||0)+d;
+
+if(newQty<=0){
+
+delete cartData[key];
+
+}else{
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:newQty
+};
+
+}
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Switches the viewer's quantity box into manual-typing mode */
+
+function viewerEditQty(){
+
+viewerEditingQty=true;
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Confirms a manually typed quantity inside the viewer */
+
+function viewerSetQty(rawValue){
+
+viewerEditingQty=false;
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+updateViewerQtyDisplay();
+
+return;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const parsed=
+parseInt(
+String(rawValue).trim(),
+10
+);
+
+if(
+!isFinite(parsed)||
+isNaN(parsed)||
+parsed<1
+){
+
+updateViewerQtyDisplay();
+
+return;
+
+}
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:parsed
+};
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+updateViewerQtyDisplay();
 
 }
 
@@ -1990,59 +2342,12 @@ showViewerVariant();
 }
 
 
-/* Add to Cart button inside the viewer — adds the product/variant
-   currently shown in the viewer, without closing the viewer */
+/* Add to Cart button inside the viewer — adds one unit of the
+   product/variant currently shown, without closing the viewer */
 
 function addToCartFromViewer(){
 
-const p=
-products.find(function(x){
-
-return x.id===viewerProductId;
-
-});
-
-if(!p||
-!p.variants||
-!p.variants.length){
-
-return;
-
-}
-
-const v=
-p.variants[viewerIndex];
-
-const key=
-p.id+"_"+viewerIndex;
-
-const newQty=
-(cartData[key]?.qty||0)+1;
-
-cartData[key]={
-name:p.name||"",
-variant:
-v.label||
-v.size||
-"",
-code:v.code||"",
-img:v.img||
-p.img||
-"",
-qty:newQty
-};
-
-updateCartCount();
-
-render();
-
-if(
-cartOverlay.classList.contains("open")
-){
-
-renderCart();
-
-}
+viewerChange(1);
 
 const originalText=
 viewerAddCartBtn.textContent;
