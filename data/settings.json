@@ -1,5 +1,5 @@
 {
-  "protectionOn": false,
+  "protectionOn": true,
   "passwordHash": "1ddb06965ecd7a6f333f2e3798e36f76ea7b4376552d31c0a1f58f4c65be396b",
-  "authVersion": 2
+  "authVersion": 3
 }
