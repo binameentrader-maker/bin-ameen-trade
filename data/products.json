@@ -67,5 +67,32 @@
         "img": "https://drive.google.com/thumbnail?id=1WE1WejZOU75PuMuSvNimOt7u-pS5Ue3v&sz=w1000"
       }
     ]
+  },
+  {
+    "id": 1787200478827,
+    "name": "NIVEA SOFT CREAM",
+    "category": "CREAM,S",
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/uc?export=view&id=1KfqYfMtmMymoT5otCBy4eUWhO8MxZIuI",
+    "variants": [
+      {
+        "label": "100ML",
+        "size": "100ML",
+        "code": "NSC-100",
+        "img": "https://drive.google.com/uc?export=view&id=1KfqYfMtmMymoT5otCBy4eUWhO8MxZIuI"
+      },
+      {
+        "label": "200ML",
+        "size": "200ML",
+        "code": "NSC-200",
+        "img": "https://drive.google.com/uc?export=view&id=1KfqYfMtmMymoT5otCBy4eUWhO8MxZIuI"
+      },
+      {
+        "label": "300ML",
+        "size": "300ML",
+        "code": "NSC-300",
+        "img": "https://drive.google.com/uc?export=view&id=1KfqYfMtmMymoT5otCBy4eUWhO8MxZIuI"
+      }
+    ]
   }
 ]
