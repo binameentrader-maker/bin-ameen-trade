@@ -596,6 +596,82 @@ line-height:20px;
 word-break:break-word;
 }
 
+/* PASSWORD GATE */
+
+.gate{
+display:none;
+position:fixed;
+inset:0;
+z-index:999999;
+background:#c8d3df;
+align-items:center;
+justify-content:center;
+padding:12px;
+}
+
+.gate.open{
+display:flex;
+}
+
+.gateBox{
+width:min(100%,420px);
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:18px;
+text-align:center;
+}
+
+.gateLogo{
+font-size:22px;
+font-weight:900;
+letter-spacing:.4px;
+margin-bottom:14px;
+}
+
+.gateLabel{
+font-size:14px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.gateInput{
+width:100%;
+padding:11px;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:15px;
+outline:none;
+background:#fff;
+margin-bottom:10px;
+text-align:center;
+}
+
+.gateBtn{
+width:100%;
+background:#1f293d;
+color:#fff;
+padding:11px;
+font-size:15px;
+font-weight:bold;
+border-radius:0;
+}
+
+.gateError{
+display:none;
+margin-top:10px;
+color:#9b2226;
+font-weight:bold;
+font-size:13px;
+}
+
+.gateChecking{
+text-align:center;
+padding:20px;
+font-size:14px;
+color:#475569;
+}
+
 /* MOBILE */
 
 @media(max-width:420px){
@@ -701,7 +777,40 @@ user-select:none;
 
 <body>
 
-<div class="wrap">
+<!-- PASSWORD GATE (checked before the site is shown) -->
+
+<div class="gate" id="gate">
+
+<div class="gateBox">
+
+<div class="gateLogo">BIN AMEEN TRADER</div>
+
+<div id="gateChecking" class="gateChecking">Checking access...</div>
+
+<div id="gateForm" style="display:none">
+
+<div class="gateLabel">Enter Password</div>
+
+<input
+class="gateInput"
+id="gatePassword"
+type="password"
+placeholder=""
+autocomplete="off"
+>
+
+<button class="gateBtn" onclick="submitGatePassword()">ENTER</button>
+
+<div class="gateError" id="gateError">Incorrect Password</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="wrap" id="siteWrap" style="display:none">
 
 <header>
 
@@ -902,6 +1011,141 @@ let viewerHistoryPushed=false;
 let viewerProductId=null;
 let viewerIndex=0;
 
+const gateEl=document.getElementById("gate");
+const gateCheckingEl=document.getElementById("gateChecking");
+const gateFormEl=document.getElementById("gateForm");
+const gatePasswordEl=document.getElementById("gatePassword");
+const gateErrorEl=document.getElementById("gateError");
+const siteWrapEl=document.getElementById("siteWrap");
+
+
+/* ================= PASSWORD GATE ================= */
+
+async function checkGate(){
+
+gateEl.classList.add("open");
+
+gateCheckingEl.style.display="";
+
+gateFormEl.style.display="none";
+
+try{
+
+const response=await fetch("/api/public-status",{
+method:"GET",
+cache:"no-store"
+});
+
+const result=await response.json();
+
+if(!result.protectionOn||result.authenticated){
+
+unlockSite();
+
+return;
+
+}
+
+gateCheckingEl.style.display="none";
+
+gateFormEl.style.display="";
+
+gatePasswordEl.focus();
+
+}catch(error){
+
+console.error("GATE STATUS ERROR:",error);
+
+gateCheckingEl.style.display="none";
+
+gateFormEl.style.display="";
+
+}
+
+}
+
+
+function unlockSite(){
+
+gateEl.classList.remove("open");
+
+siteWrapEl.style.display="";
+
+updateCartCount();
+
+load();
+
+}
+
+
+async function submitGatePassword(){
+
+const password=gatePasswordEl.value;
+
+gateErrorEl.style.display="none";
+
+if(!password){
+
+return;
+
+}
+
+try{
+
+const response=await fetch("/api/public-login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+password:password
+})
+
+});
+
+if(!response.ok){
+
+gateErrorEl.style.display="";
+
+gatePasswordEl.value="";
+
+gatePasswordEl.focus();
+
+return;
+
+}
+
+unlockSite();
+
+}catch(error){
+
+console.error("GATE LOGIN ERROR:",error);
+
+gateErrorEl.textContent="Connection error. Please try again.";
+
+gateErrorEl.style.display="";
+
+}
+
+}
+
+
+gatePasswordEl.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Enter"){
+
+submitGatePassword();
+
+}
+
+}
+);
+
 
 /* ================= LOAD PRODUCTS ================= */
 
@@ -1038,8 +1282,7 @@ catsEl.appendChild(btn);
 
 }
 
-
-/* ================= RENDER ================= */
+      /* ================= RENDER ================= */
 
 function render(){
 
@@ -1858,8 +2101,7 @@ updateViewerQtyDisplay();
 
 }
 
-
-/* ================= IMAGE VIEWER (full screen + variant navigation + back + qty + add to cart) ================= */
+      /* ================= IMAGE VIEWER (full screen + variant navigation + back + qty + add to cart) ================= */
 
 function openViewer(productId,index){
 
@@ -2546,9 +2788,7 @@ e.preventDefault();
 
 /* ================= START ================= */
 
-updateCartCount();
-
-load();
+checkGate();
 
 </script>
 
