@@ -240,10 +240,8 @@ function setPublicCookie(res, token) {
    PUBLIC GUARD
    Blocks /api/products when protection is ON and there is no
    valid, up-to-date session.
-   FIX: Admin requests (valid Bearer token from /api/login) are
+   Admin requests (valid Bearer token from /api/login) are
    always allowed through, regardless of public protection state.
-   This is what was missing — Admin Panel never sets the public
-   password cookie, so it was being blocked like a normal visitor.
 ========================================================= */
 
 function publicGuard(req, res, next) {
