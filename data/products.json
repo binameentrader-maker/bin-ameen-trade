@@ -94,5 +94,20 @@
         "img": "https://lh3.googleusercontent.com/d/1KfqYfMtmMymoT5otCBy4eUWhO8MxZIuI"
       }
     ]
+  },
+  {
+    "id": 1787305012721,
+    "name": "GATSBY FACE WASH 100GM",
+    "category": "FACE WASH",
+    "optionTitle": "100GM",
+    "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
+    "variants": [
+      {
+        "label": "STANDARD",
+        "size": "STANDARD",
+        "code": "",
+        "img": ""
+      }
+    ]
   }
 ]
