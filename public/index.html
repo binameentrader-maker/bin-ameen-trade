@@ -131,13 +131,17 @@ position:absolute;
 left:11px;
 top:50%;
 transform:translateY(-50%);
-font-size:15px;
+font-size:13px;
+font-weight:700;
+letter-spacing:0.5px;
+text-transform:uppercase;
+color:#1f293d;
 pointer-events:none;
 }
 
 .search{
 width:100%;
-padding:10px 10px 10px 34px;
+padding:10px 10px 10px 78px;
 border:2px solid #8fa0b5;
 border-radius:0;
 font-size:14px;
@@ -851,7 +855,7 @@ onclick="showCart()"
 
 <div class="searchWrap">
 
-<span class="searchIcon">🔍</span>
+<span class="searchIcon">SEARCH</span>
 
 <input
 class="search"
@@ -1489,9 +1493,10 @@ label.className=
 "variantLabel";
 
 label.textContent=
-v.label||
+(p.name?p.name+" ":"")+
+(v.label||
 v.size||
-"";
+"");
 
 const right=
 document.createElement("button");
@@ -1992,8 +1997,6 @@ controls.className=
 const minus=
 document.createElement("button");
 
-minus.textContent="−";
-
 minus.onclick=function(){
 
 cartChange(key,-1);
@@ -2191,9 +2194,10 @@ p.img||
 "";
 
 const variantText=
-v.label||
+(p.name?p.name+" ":"")+
+(v.label||
 v.size||
-"";
+"");
 
 viewerVariantTextEl.textContent=
 variantText;
