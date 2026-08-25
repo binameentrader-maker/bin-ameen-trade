@@ -265,6 +265,10 @@ color:#475569;
 font-size:12px;
 padding:5px 9px;
 border-radius:0;
+white-space:normal;
+word-break:break-word;
+text-align:center;
+max-width:100%;
 }
 
 .variantBtn.selected{
@@ -917,7 +921,7 @@ Loading products...
 
 <button
 class="cartClose"
-   onclick="closeCart()"
+onclick="closeCart()"
 >
 ✕
 </button>
@@ -933,7 +937,7 @@ Total Items: <span id="cartTotal">0</span>
 <button
 class="main"
 style="width:100%"
-onclick="wa()"
+   onclick="wa()"
 >
 Send Order on WhatsApp
 </button>
@@ -1435,12 +1439,57 @@ v.label||
 v.size||
 "";
 
+const twoVariantArea=
+document.createElement("div");
+
+twoVariantArea.className=
+"twoVariant";
+
+if(p.variants.length===2){
+
+p.variants.forEach(function(item,j){
+
+const vbtn=
+document.createElement("button");
+
+vbtn.className=
+"variantBtn";
+
+if(j===index){
+
+vbtn.classList.add(
+"selected"
+);
+
+}
+
+vbtn.textContent=
+item.label||
+item.size||
+"";
+
+vbtn.onclick=function(e){
+
+e.stopPropagation();
+
+sel[p.id]=j;
+
+render();
+
+};
+
+twoVariantArea.appendChild(vbtn);
+
+});
+
+}
+
 const qbox=
 document.createElement("div");
 
 qbox.className="q";
 
-if(p.variants.length>1){
+if(p.variants.length>2){
 
 const left=
 document.createElement("button");
@@ -1563,7 +1612,7 @@ qbox.appendChild(minus);
 qbox.appendChild(qtyEl);
 qbox.appendChild(plus);
 
-if(p.variants.length>1){
+if(p.variants.length>2){
 
 const right=
 document.createElement("button");
@@ -1586,7 +1635,17 @@ qbox.appendChild(right);
 }
 
 info.appendChild(name);
+
+if(p.variants.length===2){
+
+info.appendChild(twoVariantArea);
+
+}else{
+
 info.appendChild(variantText);
+
+}
+
 info.appendChild(qbox);
 
 card.appendChild(pic);
@@ -1815,9 +1874,7 @@ v.size||
 "",
 code:v.code||"",
 img:v.img||
-p.img||
-"",
-qty:parsed
+p.img||qty:parsed
 };
 
 updateCartCount();
@@ -1836,7 +1893,7 @@ if(
 viewerEl.classList.contains("open")&&
 viewerProductId===id&&
 viewerIndex===index
-   ){
+){
 
 updateViewerQtyDisplay();
 
@@ -2756,3 +2813,5 @@ checkGate();
 
 </body>
 </html>
+"",
+   
