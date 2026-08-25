@@ -235,6 +235,20 @@ margin-top:4px;
 line-height:1.15;
 }
 
+/* VARIANT NAME (own line, wraps, no truncation) */
+
+.variantText{
+display:block;
+font-size:12px;
+font-weight:600;
+color:#475569;
+margin-top:3px;
+line-height:1.25;
+white-space:normal;
+overflow-wrap:break-word;
+word-break:break-word;
+}
+
 /* TWO VARIANTS */
 
 .twoVariant{
@@ -712,6 +726,10 @@ height:88px;
 font-size:13px;
 }
 
+.variantText{
+font-size:11px;
+}
+
 .code{
 font-size:10px;
 }
@@ -899,7 +917,7 @@ Loading products...
 
 <button
 class="cartClose"
-onclick="closeCart()"
+   onclick="closeCart()"
 >
 ✕
 </button>
@@ -932,7 +950,7 @@ Send Order on WhatsApp
 <div class="viewerBox">
 
 <button
-   class="closeViewer"
+class="closeViewer"
 onclick="closeViewer()"
 >
 ← BACK
@@ -1398,27 +1416,6 @@ document.createElement("div");
 
 info.className="info";
 
-const code=
-document.createElement("span");
-
-code.className="code";
-
-if(p.variants.length===2){
-
-code.textContent=
-"CODE: "+
-(v.code||"");
-
-}else{
-
-code.textContent=
-(p.name?p.name+" ":"")+
-(v.label||
-v.size||
-"");
-
-}
-
 const name=
 document.createElement("b");
 
@@ -1427,53 +1424,23 @@ name.className="name";
 name.textContent=
 p.name||"";
 
-const variantArea=
+const variantText=
 document.createElement("div");
 
-if(p.variants.length===2){
+variantText.className=
+"variantText";
 
-variantArea.className=
-"twoVariant";
-
-p.variants.forEach(function(item,j){
-
-const btn=
-document.createElement("button");
-
-btn.className=
-"variantBtn";
-
-if(j===index){
-
-btn.classList.add(
-"selected"
-);
-
-}
-
-btn.textContent=
-item.label||
-item.size||
+variantText.textContent=
+v.label||
+v.size||
 "";
 
-btn.onclick=function(e){
+const qbox=
+document.createElement("div");
 
-e.stopPropagation();
+qbox.className="q";
 
-sel[p.id]=j;
-
-render();
-
-};
-
-variantArea.appendChild(btn);
-
-});
-
-}else{
-
-variantArea.className=
-"variantRow";
+if(p.variants.length>1){
 
 const left=
 document.createElement("button");
@@ -1491,41 +1458,9 @@ prevVariant(p.id);
 
 };
 
-const label=
-document.createElement("div");
-
-label.className=
-"variantLabel";
-
-label.textContent=
-v.code||"";
-
-const right=
-document.createElement("button");
-
-right.className=
-"arrowBtn";
-
-right.textContent="›";
-
-right.onclick=function(e){
-
-e.stopPropagation();
-
-nextVariant(p.id);
-
-};
-
-variantArea.appendChild(left);
-variantArea.appendChild(label);
-variantArea.appendChild(right);
+qbox.appendChild(left);
 
 }
-
-const qbox=
-document.createElement("div");
-
-qbox.className="q";
 
 const minus=
 document.createElement("button");
@@ -1628,9 +1563,30 @@ qbox.appendChild(minus);
 qbox.appendChild(qtyEl);
 qbox.appendChild(plus);
 
+if(p.variants.length>1){
+
+const right=
+document.createElement("button");
+
+right.className=
+"arrowBtn";
+
+right.textContent="›";
+
+right.onclick=function(e){
+
+e.stopPropagation();
+
+nextVariant(p.id);
+
+};
+
+qbox.appendChild(right);
+
+}
+
 info.appendChild(name);
-info.appendChild(code);
-info.appendChild(variantArea);
+info.appendChild(variantText);
 info.appendChild(qbox);
 
 card.appendChild(pic);
@@ -1865,7 +1821,8 @@ qty:parsed
 };
 
 updateCartCount();
-   render();
+
+render();
 
 if(
 cartOverlay.classList.contains("open")
@@ -1879,7 +1836,7 @@ if(
 viewerEl.classList.contains("open")&&
 viewerProductId===id&&
 viewerIndex===index
-){
+   ){
 
 updateViewerQtyDisplay();
 
