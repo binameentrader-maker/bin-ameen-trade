@@ -932,7 +932,7 @@ Send Order on WhatsApp
 <div class="viewerBox">
 
 <button
-class="closeViewer"
+   class="closeViewer"
 onclick="closeViewer()"
 >
 ← BACK
@@ -1403,9 +1403,21 @@ document.createElement("span");
 
 code.className="code";
 
+if(p.variants.length===2){
+
 code.textContent=
 "CODE: "+
 (v.code||"");
+
+}else{
+
+code.textContent=
+(p.name?p.name+" ":"")+
+(v.label||
+v.size||
+"");
+
+}
 
 const name=
 document.createElement("b");
@@ -1486,10 +1498,7 @@ label.className=
 "variantLabel";
 
 label.textContent=
-(p.name?p.name+" ":"")+
-(v.label||
-v.size||
-"");
+v.code||"";
 
 const right=
 document.createElement("button");
@@ -1856,9 +1865,8 @@ qty:parsed
 };
 
 updateCartCount();
+   render();
 
-render();
-   
 if(
 cartOverlay.classList.contains("open")
 ){
