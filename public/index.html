@@ -967,13 +967,6 @@ onclick="nextViewerVariant()"
 <div class="qtyBox" id="viewerQtyBox" onclick="viewerEditQty()">0</div>
 <button onclick="viewerChange(1)">+</button>
 </div>
-<button
-class="viewerAddCart"
-id="viewerAddCartBtn"
-onclick="addToCartFromViewer()"
->
-🛒 ADD TO CART
-</button>
 </div>
 
 <div class="viewerWatermark">
@@ -1626,8 +1619,8 @@ qbox.appendChild(minus);
 qbox.appendChild(qtyEl);
 qbox.appendChild(plus);
 
-info.appendChild(code);
 info.appendChild(name);
+info.appendChild(code);
 info.appendChild(variantArea);
 info.appendChild(qbox);
 
@@ -1865,7 +1858,7 @@ qty:parsed
 updateCartCount();
 
 render();
-
+   
 if(
 cartOverlay.classList.contains("open")
 ){
