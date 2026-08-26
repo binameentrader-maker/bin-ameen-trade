@@ -328,6 +328,12 @@ padding:0;
 border-radius:0;
 }
 
+.q .arrowBtn{
+width:34px;
+height:31px;
+font-size:17px;
+}
+
 .qtyBox{
 min-width:40px;
 height:30px;
@@ -760,6 +766,12 @@ height:28px;
 font-size:16px;
 }
 
+.q .arrowBtn{
+width:31px;
+height:29px;
+font-size:16px;
+}
+
 .qtyBox{
 height:28px;
 min-width:36px;
@@ -937,7 +949,7 @@ Total Items: <span id="cartTotal">0</span>
 <button
 class="main"
 style="width:100%"
-   onclick="wa()"
+onclick="wa()"
 >
 Send Order on WhatsApp
 </button>
@@ -1872,9 +1884,11 @@ variant:
 v.label||
 v.size||
 "",
-code:v.code||"",
+   code:v.code||"",
 img:v.img||
-p.img||qty:parsed
+p.img||
+"",
+qty:parsed
 };
 
 updateCartCount();
@@ -2813,5 +2827,3 @@ checkGate();
 
 </body>
 </html>
-"",
-   
