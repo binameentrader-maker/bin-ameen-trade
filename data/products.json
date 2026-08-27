@@ -124,15 +124,15 @@
   },
   {
     "id": 1787821235361,
-    "name": "RS",
-    "category": "ACCESSORIES",
+    "name": "RS OLIVE OIL",
+    "category": "",
     "optionTitle": "SIZE",
     "img": "",
     "variants": [
       {
-        "label": "OLIVE OIL 90ML",
-        "size": "OLIVE OIL 90ML",
-        "code": "ROO-90",
+        "label": "(90ML)",
+        "size": "(90ML)",
+        "code": "RSOO-90ML",
         "img": ""
       }
     ]
