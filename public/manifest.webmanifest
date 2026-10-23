@@ -1,0 +1,21 @@
+
+{
+  "id": "/",
+  "name": "BIN AMEEN",
+  "short_name": "BIN AMEEN",
+  "description": "BIN AMEEN Product Catalogue",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#1B2A4A",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
