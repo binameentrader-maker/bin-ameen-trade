@@ -1,0 +1,30 @@
+{
+  "draft": {
+    "siteTitle": "BIN AMEEN",
+    "pageBg": "#c8d3df",
+    "headerBg": "#ffffff",
+    "primaryColor": "#1f293d",
+    "textColor": "#1f293d",
+    "cardBg": "#ffffff",
+    "borderColor": "#8fa0b5",
+    "borderRadius": 0,
+    "productImageSize": 92,
+    "cardPadding": 7,
+    "desktopContentWidth": 900,
+    "desktopColumns": 2
+  },
+  "published": {
+    "siteTitle": "BIN AMEEN",
+    "pageBg": "#c8d3df",
+    "headerBg": "#ffffff",
+    "primaryColor": "#1f293d",
+    "textColor": "#1f293d",
+    "cardBg": "#ffffff",
+    "borderColor": "#8fa0b5",
+    "borderRadius": 0,
+    "productImageSize": 92,
+    "cardPadding": 7,
+    "desktopContentWidth": 900,
+    "desktopColumns": 2
+  }
+}
