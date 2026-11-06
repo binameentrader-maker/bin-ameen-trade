@@ -6,25 +6,37 @@
     "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
     "variants": [
       {
+        "name": "100ML",
         "label": "100ML",
         "size": "100ML",
         "code": "VHT-100",
-        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
+        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
+        "mrp": null,
+        "salePrice": null
       },
       {
+        "name": "200ML",
         "label": "200ML",
         "size": "200ML",
         "code": "VHT-200",
-        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
+        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
+        "mrp": null,
+        "salePrice": null
       },
       {
+        "name": "300ML",
         "label": "300ML",
         "size": "300ML",
         "code": "VHT-300",
-        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k"
+        "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
+        "mrp": null,
+        "salePrice": null
       }
     ],
-    "optionTitle": "SIZE"
+    "optionTitle": "SIZE",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null
   },
   {
     "id": 1786909578959,
