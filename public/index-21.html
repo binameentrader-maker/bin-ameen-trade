@@ -1,0 +1,2941 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>BIN AMEEN TRADER</title>
+
+<style>
+*{
+box-sizing:border-box;
+}
+
+html,body{
+margin:0;
+padding:0;
+background:#c8d3df;
+font-family:Arial,Helvetica,sans-serif;
+color:#1f293d;
+}
+
+body{
+padding:7px;
+}
+
+.wrap{
+max-width:480px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:8px;
+margin-bottom:8px;
+text-align:center;
+}
+
+.logoBox{
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:6px 4px;
+font-size:23px;
+font-weight:900;
+letter-spacing:.4px;
+}
+
+.phoneRow{
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:10px;
+position:relative;
+}
+
+.phoneLine{
+height:2px;
+background:#9aa7b9;
+position:absolute;
+left:35px;
+right:35px;
+top:50%;
+}
+
+.phoneBox{
+position:relative;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:4px 12px;
+font-size:15px;
+font-weight:bold;
+z-index:1;
+}
+
+/* BUTTONS */
+
+button{
+border:0;
+border-radius:0;
+padding:7px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.main{
+background:#1f293d!important;
+color:#fff;
+border-radius:0;
+padding:11px;
+font-size:16px;
+font-weight:bold;
+}
+
+/* CATEGORIES */
+
+.cats{
+display:flex;
+gap:5px;
+overflow:auto;
+margin:8px 0;
+}
+
+.cats button{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+white-space:nowrap;
+font-size:13px;
+padding:7px 12px;
+}
+
+.cats button.active{
+background:#1f293d;
+color:#fff;
+border-color:#1f293d;
+}
+
+/* SEARCH */
+
+.searchWrap{
+position:relative;
+margin-bottom:8px;
+}
+
+.searchIcon{
+position:absolute;
+left:11px;
+top:50%;
+transform:translateY(-50%);
+font-size:13px;
+font-weight:700;
+letter-spacing:0.5px;
+text-transform:uppercase;
+color:#1f293d;
+pointer-events:none;
+}
+
+.search{
+width:100%;
+padding:10px 10px 10px 78px;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:14px;
+outline:none;
+background:#fff;
+}
+
+/* PRODUCT CARD */
+
+.card{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:7px;
+margin-bottom:8px;
+display:flex;
+gap:9px;
+align-items:center;
+box-shadow:none;
+}
+
+.pic{
+width:92px;
+height:92px;
+border:1px solid #8fa0b5;
+border-radius:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+position:relative;
+overflow:hidden;
+background:#fff;
+cursor:pointer;
+user-select:none;
+}
+
+.pic img{
+max-width:100%;
+max-height:100%;
+width:100%;
+height:100%;
+object-fit:contain;
+pointer-events:none;
+user-select:none;
+-webkit-user-drag:none;
+}
+
+/* VARIANT SLIDESHOW INDICATOR */
+.variantDots{
+position:absolute;
+left:0;
+right:0;
+bottom:3px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:3px;
+z-index:2;
+pointer-events:auto;
+}
+.variantDot{
+width:5px;
+height:5px;
+padding:0;
+min-width:5px;
+min-height:5px;
+border:0;
+border-radius:50%;
+background:rgba(71,85,105,.45);
+}
+.variantDot.active{
+background:#1B2A4A;
+transform:scale(1.25);
+}
+@keyframes variantImageFade{
+from{opacity:.45;}
+to{opacity:1;}
+}
+.pic img.variantFade{
+animation:variantImageFade .35s ease;
+}
+
+/* WATERMARK */
+
+.pic:after{
+content:"BIN AMEEN";
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-25deg);
+font-size:11px;
+font-weight:bold;
+color:rgba(31,41,61,.15);
+pointer-events:none;
+white-space:nowrap;
+}
+
+/* INFO */
+
+.info{
+flex:1;
+min-width:0;
+}
+
+/* CODE */
+
+.code{
+display:inline-block;
+font-size:11px;
+font-weight:bold;
+background:#f1f5f9;
+border:1px solid #8fa0b5;
+padding:3px 5px;
+border-radius:0;
+color:#475569;
+}
+
+/* NAME */
+
+.name{
+display:block;
+font-size:14px;
+font-weight:900;
+margin-top:4px;
+line-height:1.15;
+}
+
+/* VARIANT NAME (own line, wraps, no truncation) */
+
+.variantText{
+display:block;
+font-size:12px;
+font-weight:600;
+color:#475569;
+margin-top:3px;
+line-height:1.25;
+white-space:normal;
+overflow-wrap:break-word;
+word-break:break-word;
+}
+
+/* TWO VARIANTS */
+
+.twoVariant{
+display:flex;
+gap:5px;
+flex-wrap:wrap;
+margin:5px 0;
+}
+
+.variantBtn{
+background:#fff;
+border:2px solid #8fa0b5;
+color:#475569;
+font-size:12px;
+padding:5px 9px;
+border-radius:0;
+white-space:normal;
+word-break:break-word;
+text-align:center;
+max-width:100%;
+}
+
+.variantBtn.selected{
+background:#1f293d;
+color:#fff;
+border-color:#1f293d;
+}
+
+/* 3+ VARIANTS */
+
+.variantRow{
+display:flex;
+align-items:center;
+gap:4px;
+margin:5px 0;
+}
+
+.arrowBtn{
+background:#475569;
+color:#fff;
+font-size:17px;
+width:34px;
+height:31px;
+padding:0;
+border-radius:0;
+}
+
+.variantLabel{
+flex:1;
+text-align:center;
+font-size:12px;
+font-weight:bold;
+background:#f8fafc;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:6px 3px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+/* QUANTITY */
+
+.q{
+display:flex;
+gap:4px;
+align-items:center;
+}
+
+.q button{
+background:#475569;
+color:#fff;
+font-size:17px;
+width:32px;
+height:30px;
+padding:0;
+border-radius:0;
+}
+
+.q .arrowBtn{
+width:34px;
+height:31px;
+font-size:17px;
+}
+
+.qtyBox{
+min-width:40px;
+height:30px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:15px;
+color:#111;
+cursor:pointer;
+}
+
+.qtyInput{
+min-width:40px;
+width:46px;
+height:30px;
+text-align:center;
+background:#fff;
+border:2px solid #1f293d;
+border-radius:0;
+font-size:15px;
+color:#111;
+padding:0;
+}
+
+/* CART */
+
+.cartOverlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+z-index:9000;
+padding:8px;
+overflow:auto;
+align-items:center;
+justify-content:center;
+}
+
+.cartOverlay.open{
+display:flex;
+}
+
+.cartbox{
+width:min(100%,470px);
+max-height:90vh;
+overflow:auto;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:10px;
+}
+
+.cartHeader{
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid #d1d5db;
+padding-bottom:7px;
+margin-bottom:7px;
+}
+
+.cartHeader h3{
+margin:0;
+font-size:18px;
+}
+
+.cartClose{
+background:#475569;
+color:#fff;
+width:35px;
+height:35px;
+font-size:18px;
+padding:0;
+border-radius:0;
+}
+
+.item{
+padding:8px;
+border:1px solid #8fa0b5;
+border-radius:0;
+margin:5px 0;
+background:#f8fafc;
+}
+
+.itemName{
+font-weight:bold;
+font-size:14px;
+}
+
+.itemInfo{
+font-size:12px;
+margin-top:4px;
+}
+
+.cartControls{
+display:flex;
+gap:5px;
+align-items:center;
+margin-top:7px;
+}
+
+.cartControls button{
+background:#475569;
+color:#fff;
+padding:6px 10px;
+}
+
+.removeBtn{
+margin-left:auto;
+background:#9b2226!important;
+}
+
+.total{
+font-weight:bold;
+margin:10px 0;
+padding-top:7px;
+border-top:1px solid #d1d5db;
+font-size:14px;
+}
+
+/* EMAIL */
+
+.emailFooter{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:9px 5px;
+margin-top:6px;
+margin-bottom:7px;
+text-align:center;
+font-size:15px;
+font-weight:bold;
+color:#475569;
+}
+
+/* IMAGE VIEWER - full screen */
+
+.viewer{
+display:none;
+position:fixed;
+z-index:99999;
+inset:0;
+background:#000;
+align-items:center;
+justify-content:center;
+padding:0;
+user-select:none;
+}
+
+.viewer.open{
+display:flex;
+}
+
+.viewerBox{
+position:relative;
+width:100%;
+height:100%;
+background:#fff;
+border-radius:0;
+padding:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.viewerBox img{
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+pointer-events:none;
+user-select:none;
+-webkit-user-drag:none;
+}
+
+.closeViewer{
+position:absolute;
+left:10px;
+top:10px;
+height:40px;
+width:auto;
+padding:0 16px;
+background:#1f293d;
+color:#fff;
+font-size:15px;
+font-weight:bold;
+border-radius:0;
+z-index:3;
+letter-spacing:.3px;
+}
+
+.viewerWatermark{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-25deg);
+font-size:26px;
+font-weight:bold;
+color:rgba(31,41,61,.18);
+white-space:nowrap;
+pointer-events:none;
+z-index:1;
+}
+
+/* VIEWER PREV/NEXT ARROWS */
+
+.viewerArrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:#475569;
+color:#fff;
+font-size:26px;
+width:44px;
+height:56px;
+padding:0;
+border-radius:0;
+z-index:3;
+}
+
+.viewerArrowLeft{
+left:8px;
+}
+
+.viewerArrowRight{
+right:8px;
+}
+
+/* VIEWER VARIANT/CODE/QTY INFO */
+
+.viewerInfo{
+position:absolute;
+left:50%;
+bottom:14px;
+transform:translateX(-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:7px;
+z-index:3;
+background:#fff;
+border:2px solid #8fa0b5;
+padding:9px 14px;
+max-width:92%;
+}
+
+.viewerVariantText{
+font-size:14px;
+font-weight:900;
+color:#1f293d;
+text-align:center;
+}
+
+/* VIEWER ADD TO CART BUTTON */
+
+.viewerAddCart{
+background:#1f293d;
+color:#fff;
+border-radius:0;
+padding:9px 18px;
+font-size:14px;
+font-weight:bold;
+white-space:nowrap;
+}
+
+/* LOADING */
+
+.loading{
+text-align:center;
+padding:15px;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:14px;
+}
+
+/* ERROR */
+
+.errorBox{
+background:#fff;
+border:2px solid #9b2226;
+padding:14px;
+font-size:13px;
+line-height:20px;
+word-break:break-word;
+}
+
+/* PASSWORD GATE */
+
+.gate{
+display:none;
+position:fixed;
+inset:0;
+z-index:999999;
+background:#c8d3df;
+align-items:center;
+justify-content:center;
+padding:12px;
+}
+
+.gate.open{
+display:flex;
+}
+
+.gateBox{
+width:min(100%,420px);
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:18px;
+text-align:center;
+}
+
+.gateLogo{
+font-size:22px;
+font-weight:900;
+letter-spacing:.4px;
+margin-bottom:14px;
+}
+
+.gateLabel{
+font-size:14px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.gateInput{
+width:100%;
+padding:11px;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:15px;
+outline:none;
+background:#fff;
+margin-bottom:10px;
+text-align:center;
+}
+
+.gateBtn{
+width:100%;
+background:#1f293d;
+color:#fff;
+padding:11px;
+font-size:15px;
+font-weight:bold;
+border-radius:0;
+}
+
+.gateError{
+display:none;
+margin-top:10px;
+color:#9b2226;
+font-weight:bold;
+font-size:13px;
+}
+
+.gateChecking{
+text-align:center;
+padding:20px;
+font-size:14px;
+color:#475569;
+}
+
+/* MOBILE */
+
+@media(max-width:420px){
+
+body{
+padding:5px;
+}
+
+.logoBox{
+font-size:21px;
+}
+
+.phoneRow{
+margin-top:8px;
+}
+
+.phoneBox{
+font-size:14px;
+padding:4px 10px;
+}
+
+.card{
+padding:6px;
+gap:8px;
+margin-bottom:7px;
+}
+
+.pic{
+width:88px;
+height:88px;
+}
+
+.name{
+font-size:13px;
+}
+
+.variantText{
+font-size:11px;
+}
+
+.code{
+font-size:10px;
+}
+
+.variantBtn{
+font-size:11px;
+padding:5px 7px;
+}
+
+.arrowBtn{
+width:31px;
+height:29px;
+font-size:16px;
+}
+
+.variantLabel{
+font-size:11px;
+padding:5px 2px;
+}
+
+.q button{
+width:30px;
+height:28px;
+font-size:16px;
+}
+
+.q .arrowBtn{
+width:31px;
+height:29px;
+font-size:16px;
+}
+
+.qtyBox{
+height:28px;
+min-width:36px;
+font-size:14px;
+}
+
+.qtyInput{
+height:28px;
+min-width:36px;
+width:42px;
+font-size:14px;
+}
+
+.emailFooter{
+font-size:14px;
+padding:8px 4px;
+}
+
+.viewerArrow{
+width:38px;
+height:48px;
+font-size:22px;
+}
+
+.viewerAddCart{
+font-size:13px;
+padding:8px 14px;
+}
+
+}
+
+/* PREVENT IMAGE SAVE */
+
+img{
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+user-select:none;
+}
+/* BIN AMEEN DESIGN SETTINGS */
+
+:root{
+ --design-page-bg:#c8d3df;
+ --design-header-bg:#fff;
+ --design-primary:#1f293d;
+ --design-text:#1f293d;
+ --design-card-bg:#fff;
+ --design-border:#8fa0b5;
+ --design-radius:0px;
+ --design-image-size:92px;
+ --design-card-padding:7px;
+}
+html,body{background:var(--design-page-bg);color:var(--design-text)}
+.wrap{max-width:var(--design-content-width,480px)}
+@media(min-width:700px){#list{display:grid;grid-template-columns:repeat(var(--design-desktop-columns,1),minmax(0,1fr));gap:8px}#list .card{margin-bottom:0}}
+header{background:var(--design-header-bg);border-color:var(--design-border);border-radius:var(--design-radius)}
+.logoBox,.phoneBox{border-color:var(--design-border);border-radius:var(--design-radius)}
+.main,.cats button.active{background:var(--design-primary)!important;border-color:var(--design-primary)!important}
+.card{background:var(--design-card-bg);border-color:var(--design-border);border-radius:var(--design-radius);padding:var(--design-card-padding)}
+.pic{width:var(--design-image-size);height:var(--design-image-size);border-color:var(--design-border);border-radius:var(--design-radius)}
+.search,.cats button,.variantBtn,.variantLabel,.code,.qtyBox,.qtyInput{border-color:var(--design-border);border-radius:var(--design-radius)}
+
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD GATE (checked before the site is shown) -->
+
+<div class="gate" id="gate">
+
+<div class="gateBox">
+
+<div class="gateLogo">BIN AMEEN TRADER</div>
+
+<div id="gateChecking" class="gateChecking">Checking access...</div>
+
+<div id="gateForm" style="display:none">
+
+<div class="gateLabel">ENTER PASSWORD</div>
+
+<input
+class="gateInput"
+id="gatePassword"
+type="password"
+placeholder=""
+autocomplete="off"
+>
+
+<button class="gateBtn" onclick="submitGatePassword()">ENTER</button>
+
+<div class="gateError" id="gateError">Incorrect Password</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="wrap" id="siteWrap" style="display:none">
+
+<header>
+
+<div class="logoBox">
+BIN AMEEN TRADER
+</div>
+
+<div class="phoneRow">
+
+<div class="phoneLine"></div>
+
+<div class="phoneBox">
+☎ 03331390045
+</div>
+
+</div>
+
+</header>
+
+
+<!-- CART BUTTON -->
+
+<button
+class="main"
+style="width:100%"
+onclick="showCart()"
+>
+🛒 View Cart (<span id="count">0</span>)
+</button>
+
+
+<!-- CATEGORIES -->
+
+<div class="cats" id="cats"></div>
+
+
+<!-- SEARCH -->
+
+<div class="searchWrap">
+
+<span class="searchIcon">SEARCH</span>
+
+<input
+class="search"
+id="search"
+placeholder=""
+autocomplete="off"
+>
+
+</div>
+
+
+<!-- PRODUCTS -->
+
+<div id="list">
+
+<div class="loading">
+Loading products...
+</div>
+
+</div>
+
+
+<!-- EMAIL -->
+
+<div class="emailFooter">
+✉ binameentrader@gmail.com
+</div>
+
+</div>
+
+
+<!-- CART -->
+
+<div class="cartOverlay" id="cartOverlay">
+
+<div class="cartbox">
+
+<div class="cartHeader">
+
+<h3>Your Selected Items</h3>
+
+<button
+class="cartClose"
+onclick="closeCart()"
+>
+✕
+</button>
+
+</div>
+
+<div id="cartItems"></div>
+
+<div class="total">
+Total Items: <span id="cartTotal">0</span>
+</div>
+
+<button
+class="main"
+style="width:100%"
+onclick="wa()"
+>
+Send Order on WhatsApp
+</button>
+
+</div>
+
+</div>
+
+
+<!-- IMAGE VIEWER (full screen + variant navigation + add to cart + qty) -->
+
+<div class="viewer" id="viewer">
+
+<div class="viewerBox">
+
+<button
+class="closeViewer"
+onclick="closeViewer()"
+>
+← BACK
+</button>
+
+<button
+class="viewerArrow viewerArrowLeft"
+onclick="prevViewerVariant()"
+>
+‹
+</button>
+
+<img
+id="viewerImg"
+src=""
+alt="Product"
+draggable="false"
+>
+
+<button
+class="viewerArrow viewerArrowRight"
+onclick="nextViewerVariant()"
+>
+›
+</button>
+
+<div class="viewerInfo" id="viewerInfo">
+<b class="viewerVariantText" id="viewerVariantText"></b>
+<span class="code" id="viewerCodeText"></span>
+<div class="q" id="viewerQtyRow">
+<button onclick="viewerChange(-1)">−</button>
+<div class="qtyBox" id="viewerQtyBox" onclick="viewerEditQty()">0</div>
+<button onclick="viewerChange(1)">+</button>
+</div>
+</div>
+
+<div class="viewerWatermark">
+BIN AMEEN TRADER
+</div>
+
+</div>
+
+</div>
+
+   <script>
+
+let products=[];
+let sel={};
+let cartData={};
+let category="ALL";
+let editingQty={};
+let viewerEditingQty=false;
+let autoStopped={};
+let hoverPaused={};
+let touchPaused={};
+let variantAutoTimer=null;
+
+const catsEl=document.getElementById("cats");
+const searchEl=document.getElementById("search");
+const listEl=document.getElementById("list");
+
+const cartOverlay=document.getElementById("cartOverlay");
+const cartItemsEl=document.getElementById("cartItems");
+const countEl=document.getElementById("count");
+const cartTotalEl=document.getElementById("cartTotal");
+
+const viewerEl=document.getElementById("viewer");
+const viewerImgEl=document.getElementById("viewerImg");
+const viewerVariantTextEl=document.getElementById("viewerVariantText");
+const viewerCodeTextEl=document.getElementById("viewerCodeText");
+const viewerArrowLeftEl=document.querySelector(".viewerArrowLeft");
+const viewerArrowRightEl=document.querySelector(".viewerArrowRight");
+const viewerAddCartBtn=document.getElementById("viewerAddCartBtn");
+const viewerQtyRow=document.getElementById("viewerQtyRow");
+
+let viewerHistoryPushed=false;
+let viewerProductId=null;
+let viewerIndex=0;
+
+const gateEl=document.getElementById("gate");
+const gateCheckingEl=document.getElementById("gateChecking");
+const gateFormEl=document.getElementById("gateForm");
+const gatePasswordEl=document.getElementById("gatePassword");
+const gateErrorEl=document.getElementById("gateError");
+const siteWrapEl=document.getElementById("siteWrap");
+
+
+/* ================= PASSWORD GATE ================= */
+
+async function checkGate(){
+
+gateEl.classList.add("open");
+
+gateCheckingEl.style.display="";
+
+gateFormEl.style.display="none";
+
+try{
+
+const response=await fetch("/api/public-status",{
+method:"GET",
+cache:"no-store"
+});
+
+const result=await response.json();
+
+if(!result.protectionOn||result.authenticated){
+
+unlockSite();
+
+return;
+
+}
+
+gateCheckingEl.style.display="none";
+
+gateFormEl.style.display="";
+
+gatePasswordEl.focus();
+
+}catch(error){
+
+console.error("GATE STATUS ERROR:",error);
+
+gateCheckingEl.style.display="none";
+
+gateFormEl.style.display="";
+
+}
+
+}
+
+
+function unlockSite(){
+
+gateEl.classList.remove("open");
+
+siteWrapEl.style.display="";
+
+updateCartCount();
+
+load();
+
+}
+
+
+async function submitGatePassword(){
+
+const password=gatePasswordEl.value;
+
+gateErrorEl.style.display="none";
+
+if(!password){
+
+return;
+
+}
+
+try{
+
+const response=await fetch("/api/public-login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+password:password
+})
+
+});
+
+if(!response.ok){
+
+gateErrorEl.style.display="";
+
+gatePasswordEl.value="";
+
+gatePasswordEl.focus();
+
+return;
+
+}
+
+unlockSite();
+
+}catch(error){
+
+console.error("GATE LOGIN ERROR:",error);
+
+gateErrorEl.textContent="Connection error. Please try again.";
+
+gateErrorEl.style.display="";
+
+}
+
+}
+
+
+gatePasswordEl.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Enter"){
+
+submitGatePassword();
+
+}
+
+}
+);
+
+
+/* ================= LOAD PRODUCTS ================= */
+
+async function load(){
+
+listEl.innerHTML=
+'<div class="loading">Loading products...</div>';
+
+try{
+
+const response=await fetch("/api/products",{
+method:"GET",
+cache:"no-store"
+});
+
+if(!response.ok){
+
+const text=await response.text();
+
+throw new Error(
+"API Error "+response.status+
+": "+text.substring(0,300)
+);
+
+}
+
+const data=await response.json();
+
+if(!Array.isArray(data)){
+
+throw new Error("Invalid products data");
+
+}
+
+products=data;
+
+products.forEach(function(p){
+
+if(!Array.isArray(p.variants)){
+
+p.variants=[{
+label:p.size||"",
+size:p.size||"",
+code:p.code||"",
+img:p.img||""
+}];
+
+}
+
+sel[p.id]=0;
+
+});
+
+drawCats();
+render();
+
+}catch(error){
+
+console.error(error);
+
+listEl.innerHTML=
+'<div class="errorBox">'+
+'<b>Products Load Error</b><br><br>'+
+escapeHTML(error.message)+
+'</div>';
+
+}
+
+}
+
+
+/* ================= ESCAPE HTML ================= */
+
+function escapeHTML(str){
+
+return String(str)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= CATEGORIES ================= */
+
+function drawCats(){
+
+const categorySet=new Set();
+
+products.forEach(function(p){
+
+if(p.category){
+
+categorySet.add(p.category);
+
+}
+
+});
+
+const categories=[
+"ALL",
+...categorySet
+];
+
+catsEl.innerHTML="";
+
+categories.forEach(function(x){
+
+const btn=document.createElement("button");
+
+btn.textContent=
+x==="ALL"?"ALL ITEMS":x;
+
+if(x===category){
+
+btn.className="active";
+
+}
+
+btn.onclick=function(){
+
+category=x;
+
+drawCats();
+render();
+
+};
+
+catsEl.appendChild(btn);
+
+});
+
+}
+
+      /* ================= RENDER ================= */
+
+function render(){
+
+const q=
+searchEl.value
+.toLowerCase()
+.trim();
+
+const filtered=
+products.filter(function(p){
+
+const name=
+String(p.name||"")
+.toLowerCase();
+
+const variants=
+Array.isArray(p.variants)
+?p.variants:[];
+
+const codeMatch=
+variants.some(function(v){
+
+return String(v.code||"")
+.toLowerCase()
+.includes(q);
+
+});
+
+return(
+(category==="ALL"||p.category===category)
+&&
+(
+name.includes(q)||
+codeMatch
+)
+);
+
+});
+
+
+hoverPaused={};
+touchPaused={};
+listEl.innerHTML="";
+
+if(!filtered.length){
+
+listEl.innerHTML=
+'<div class="card">No items found</div>';
+
+return;
+
+}
+
+
+filtered.forEach(function(p){
+
+if(!Array.isArray(p.variants)||
+!p.variants.length){
+
+return;
+
+}
+
+let index=
+sel[p.id]||0;
+
+if(index>=p.variants.length){
+
+index=0;
+sel[p.id]=0;
+
+}
+
+const v=
+p.variants[index];
+
+const key=
+p.id+"_"+index;
+
+const quantity=
+cartData[key]
+?cartData[key].qty
+:0;
+
+const card=
+document.createElement("div");
+
+card.className="card";
+card.dataset.productId=String(p.id);
+
+const pic=
+document.createElement("div");
+
+pic.className="pic";
+
+pic.onclick=function(){
+
+openViewer(p.id,index);
+
+};
+
+const img=
+document.createElement("img");
+
+img.src=
+v.img||
+p.img||
+"";
+
+img.alt=
+p.name||"";
+
+img.draggable=false;
+
+pic.appendChild(img);
+
+if(p.variants.length>1){
+const dots=document.createElement("div");
+dots.className="variantDots";
+p.variants.forEach(function(variant,dotIndex){
+const dot=document.createElement("button");
+dot.type="button";
+dot.className="variantDot"+(dotIndex===index?" active":"");
+dot.setAttribute("aria-label","Show variant "+(dotIndex+1));
+dot.onclick=function(e){
+e.stopPropagation();
+autoStopped[p.id]=true;
+sel[p.id]=dotIndex;
+render();
+};
+dots.appendChild(dot);
+});
+pic.appendChild(dots);
+}
+
+const info=
+document.createElement("div");
+
+info.className="info";
+
+const name=
+document.createElement("b");
+
+name.className="name";
+
+name.textContent=
+p.name||"";
+
+const variantText=
+document.createElement("div");
+
+variantText.className=
+"variantText";
+
+variantText.textContent=
+v.label||
+v.size||
+"";
+
+const qbox=
+document.createElement("div");
+
+qbox.className="q";
+
+if(p.variants.length>1){
+
+const left=
+document.createElement("button");
+
+left.className=
+"arrowBtn";
+
+left.textContent="‹";
+
+left.onclick=function(e){
+
+e.stopPropagation();
+
+prevVariant(p.id);
+
+};
+
+qbox.appendChild(left);
+
+}
+
+const minus=
+document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(e){
+
+e.stopPropagation();
+
+change(p.id,-1);
+
+};
+
+let qtyEl;
+
+if(editingQty[p.id]){
+
+qtyEl=
+document.createElement("input");
+
+qtyEl.className=
+"qtyInput";
+
+qtyEl.type=
+"tel";
+
+qtyEl.inputMode=
+"numeric";
+
+qtyEl.pattern=
+"[0-9]*";
+
+qtyEl.value=
+quantity||"";
+
+qtyEl.onclick=function(e){
+
+e.stopPropagation();
+
+};
+
+qtyEl.onkeydown=function(e){
+
+e.stopPropagation();
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+
+setQuantity(p.id,index,qtyEl.value);
+
+}
+
+};
+
+qtyEl.onblur=function(){
+
+setQuantity(p.id,index,qtyEl.value);
+
+};
+
+}else{
+
+qtyEl=
+document.createElement("div");
+
+qtyEl.className=
+"qtyBox";
+
+qtyEl.textContent=
+quantity;
+
+qtyEl.onclick=function(e){
+
+e.stopPropagation();
+
+editingQty[p.id]=true;
+
+render();
+
+};
+
+}
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(e){
+
+e.stopPropagation();
+
+change(p.id,1);
+
+};
+
+qbox.appendChild(minus);
+qbox.appendChild(qtyEl);
+qbox.appendChild(plus);
+
+if(p.variants.length>1){
+
+const right=
+document.createElement("button");
+
+right.className=
+"arrowBtn";
+
+right.textContent="›";
+
+right.onclick=function(e){
+
+e.stopPropagation();
+
+nextVariant(p.id);
+
+};
+
+qbox.appendChild(right);
+
+}
+
+info.appendChild(name);
+
+info.appendChild(variantText);
+
+info.appendChild(qbox);
+
+card.appendChild(pic);
+card.appendChild(info);
+
+card.addEventListener("mouseenter",function(){hoverPaused[p.id]=true;});
+card.addEventListener("mouseleave",function(){delete hoverPaused[p.id];});
+card.addEventListener("touchstart",function(){touchPaused[p.id]=true;},{passive:true});
+card.addEventListener("touchend",function(){delete touchPaused[p.id];},{passive:true});
+card.addEventListener("touchcancel",function(){delete touchPaused[p.id];},{passive:true});
+
+listEl.appendChild(card);
+
+if(editingQty[p.id]&&
+qtyEl.tagName==="INPUT"){
+
+qtyEl.focus();
+
+qtyEl.select();
+
+}
+
+});
+
+}
+
+
+/* ================= PREVIOUS ================= */
+
+function prevVariant(id){
+autoStopped[id]=true;
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+sel[id]||0;
+
+i--;
+
+if(i<0){
+
+i=
+p.variants.length-1;
+
+}
+
+sel[id]=i;
+
+render();
+
+}
+
+
+/* ================= NEXT ================= */
+
+function nextVariant(id){
+autoStopped[id]=true;
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+sel[id]||0;
+
+i++;
+
+if(i>=p.variants.length){
+
+i=0;
+
+}
+
+sel[id]=i;
+
+render();
+
+}
+
+
+/* ================= AUTOMATIC HOME VARIANT SLIDESHOW ================= */
+
+function rotateHomeVariants(){
+if(viewerEl.classList.contains("open")) return;
+const cards=listEl.querySelectorAll(".card[data-product-id]");
+cards.forEach(function(card){
+const id=card.dataset.productId;
+if(!id||autoStopped[id]||hoverPaused[id]||touchPaused[id]) return;
+const p=products.find(function(item){return String(item.id)===String(id);});
+if(!p||!Array.isArray(p.variants)||p.variants.length<2) return;
+let index=Number(sel[id]||0)+1;
+if(index>=p.variants.length) index=0;
+sel[id]=index;
+const v=p.variants[index];
+const image=card.querySelector(".pic img");
+const variantText=card.querySelector(".variantText");
+if(image){
+image.classList.remove("variantFade");
+image.src=v.img||p.img||"";
+void image.offsetWidth;
+image.classList.add("variantFade");
+}
+if(variantText) variantText.textContent=v.label||v.size||"";
+const dots=card.querySelectorAll(".variantDot");
+dots.forEach(function(dot,dotIndex){dot.classList.toggle("active",dotIndex===index);});
+const qtyBox=card.querySelector(".qtyBox");
+if(qtyBox&&!editingQty[id]){
+const key=p.id+"_"+index;
+qtyBox.textContent=cartData[key]?cartData[key].qty:0;
+}
+});
+}
+
+function startVariantAutoSlideshow(){
+if(variantAutoTimer) clearInterval(variantAutoTimer);
+variantAutoTimer=setInterval(rotateHomeVariants,3000);
+}
+
+/* ================= QUANTITY (+ / -) home cards ================= */
+
+function change(id,d){
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const index=
+sel[id]||0;
+
+const v=
+p.variants[index];
+
+const key=
+p.id+"_"+index;
+
+const newQty=
+(cartData[key]?.qty||0)+d;
+
+if(newQty<=0){
+
+delete cartData[key];
+
+}else{
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:newQty
+};
+
+}
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+if(
+viewerEl.classList.contains("open")&&
+viewerProductId===id&&
+viewerIndex===index
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+
+/* ================= QUANTITY (manual typed value) home cards ================= */
+
+function setQuantity(id,index,rawValue){
+
+editingQty[id]=false;
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+render();
+
+return;
+
+}
+
+const v=
+p.variants[index];
+
+const key=
+p.id+"_"+index;
+
+const parsed=
+parseInt(
+String(rawValue).trim(),
+10
+);
+
+if(
+!isFinite(parsed)||
+isNaN(parsed)||
+parsed<1
+){
+
+render();
+
+return;
+
+}
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.label||
+v.size||
+"",
+   code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:parsed
+};
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+if(
+viewerEl.classList.contains("open")&&
+viewerProductId===id&&
+viewerIndex===index
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+
+/* ================= CART COUNT ================= */
+
+function updateCartCount(){
+
+const total=
+Object.values(cartData)
+.reduce(function(sum,item){
+
+return sum+
+Number(item.qty||0);
+
+},0);
+
+countEl.textContent=
+total;
+
+cartTotalEl.textContent=
+total;
+
+}
+
+
+/* ================= SHOW CART ================= */
+
+function showCart(){
+
+renderCart();
+
+cartOverlay.classList.add("open");
+
+document.body.style.overflow=
+"hidden";
+
+}
+
+
+/* ================= CLOSE CART ================= */
+
+function closeCart(){
+
+cartOverlay.classList.remove("open");
+
+document.body.style.overflow=
+"";
+
+}
+
+
+/* ================= RENDER CART ================= */
+
+function renderCart(){
+
+const keys=
+Object.keys(cartData);
+
+if(!keys.length){
+
+cartItemsEl.innerHTML=
+'<div class="item">Cart is empty</div>';
+
+updateCartCount();
+
+return;
+
+}
+
+cartItemsEl.innerHTML="";
+
+keys.forEach(function(key,index){
+
+const x=
+cartData[key];
+
+const item=
+document.createElement("div");
+
+item.className="item";
+
+const name=
+document.createElement("div");
+
+name.className=
+"itemName";
+
+name.textContent=
+(index+1)+
+". "+
+x.name;
+
+const info=
+document.createElement("div");
+
+info.className=
+"itemInfo";
+
+info.textContent=
+"("+
+x.variant+
+") | Code: "+
+x.code;
+
+const controls=
+document.createElement("div");
+
+controls.className=
+"cartControls";
+
+const minus=
+document.createElement("button");
+
+minus.onclick=function(){
+
+cartChange(key,-1);
+
+};
+
+const qty=
+document.createElement("b");
+
+qty.textContent=
+x.qty;
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+cartChange(key,1);
+
+};
+
+const remove=
+document.createElement("button");
+
+remove.className=
+"removeBtn";
+
+remove.textContent=
+"Remove";
+
+remove.onclick=function(){
+
+removeCart(key);
+
+};
+
+controls.appendChild(minus);
+controls.appendChild(qty);
+controls.appendChild(plus);
+controls.appendChild(remove);
+
+item.appendChild(name);
+item.appendChild(info);
+item.appendChild(controls);
+
+cartItemsEl.appendChild(item);
+
+});
+
+updateCartCount();
+
+}
+
+
+/* ================= CART CHANGE ================= */
+
+function cartChange(key,d){
+
+if(!cartData[key]){
+
+return;
+
+}
+
+cartData[key].qty+=d;
+
+if(cartData[key].qty<=0){
+
+delete cartData[key];
+
+}
+
+renderCart();
+render();
+
+if(
+viewerEl.classList.contains("open")
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+
+/* ================= REMOVE ================= */
+
+function removeCart(key){
+
+delete cartData[key];
+
+renderCart();
+render();
+
+if(
+viewerEl.classList.contains("open")
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+      /* ================= IMAGE VIEWER (full screen + variant navigation + back + qty + add to cart) ================= */
+
+function openViewer(productId,index){
+
+const p=
+products.find(function(x){
+
+return x.id===productId;
+
+});
+
+if(!p||
+!Array.isArray(p.variants)||
+!p.variants.length){
+
+return;
+
+}
+
+viewerProductId=productId;
+
+viewerIndex=
+(typeof index==="number"&&
+index>=0&&
+index<p.variants.length)
+?index:0;
+
+viewerEditingQty=false;
+
+showViewerVariant();
+
+viewerEl.classList.add(
+"open"
+);
+
+document.body.style.overflow=
+"hidden";
+
+history.pushState(
+{binAmeenViewer:true},
+""
+);
+
+viewerHistoryPushed=true;
+
+}
+
+
+/* Shows the currently selected product/variant inside the viewer,
+   and keeps the product card in sync with the same variant */
+
+function showViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!Array.isArray(p.variants)||
+!p.variants.length){
+
+return;
+
+}
+
+if(viewerIndex>=p.variants.length){
+
+viewerIndex=0;
+
+}
+
+if(viewerIndex<0){
+
+viewerIndex=
+p.variants.length-1;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+viewerImgEl.src=
+v.img||
+p.img||
+"";
+
+const variantText=
+(p.name?p.name+" ":"")+
+(v.label||
+v.size||
+"");
+
+viewerVariantTextEl.textContent=
+variantText;
+
+viewerVariantTextEl.style.display=
+variantText?"":"none";
+
+viewerCodeTextEl.textContent=
+"CODE: "+
+(v.code||"");
+
+const hasMultiple=
+p.variants.length>1;
+
+viewerArrowLeftEl.style.display=
+hasMultiple?"":"none";
+
+viewerArrowRightEl.style.display=
+hasMultiple?"":"none";
+
+viewerEditingQty=false;
+
+updateViewerQtyDisplay();
+
+if(sel[p.id]!==viewerIndex){
+
+sel[p.id]=viewerIndex;
+
+render();
+
+}
+
+}
+
+
+/* Renders the quantity control inside the viewer (box or manual input),
+   based on the same cartData used everywhere else */
+
+function updateViewerQtyDisplay(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const quantity=
+cartData[key]
+?cartData[key].qty
+:0;
+
+viewerQtyRow.innerHTML="";
+
+const minus=
+document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(){
+
+viewerChange(-1);
+
+};
+
+let qtyEl;
+
+if(viewerEditingQty){
+
+qtyEl=
+document.createElement("input");
+
+qtyEl.className=
+"qtyInput";
+
+qtyEl.type=
+"tel";
+
+qtyEl.inputMode=
+"numeric";
+
+qtyEl.pattern=
+"[0-9]*";
+
+qtyEl.value=
+quantity||"";
+
+qtyEl.onkeydown=function(e){
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+
+viewerSetQty(qtyEl.value);
+
+}
+
+};
+
+qtyEl.onblur=function(){
+
+viewerSetQty(qtyEl.value);
+
+};
+
+}else{
+
+qtyEl=
+document.createElement("div");
+
+qtyEl.className=
+"qtyBox";
+
+qtyEl.id=
+"viewerQtyBox";
+
+qtyEl.textContent=
+quantity;
+
+qtyEl.onclick=function(){
+
+viewerEditQty();
+
+};
+
+}
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+viewerChange(1);
+
+};
+
+viewerQtyRow.appendChild(minus);
+viewerQtyRow.appendChild(qtyEl);
+viewerQtyRow.appendChild(plus);
+
+if(viewerEditingQty&&
+qtyEl.tagName==="INPUT"){
+
+qtyEl.focus();
+
+qtyEl.select();
+
+}
+
+}
+
+
+/* +/- quantity change inside the viewer */
+
+function viewerChange(d){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const newQty=
+(cartData[key]?.qty||0)+d;
+
+if(newQty<=0){
+
+delete cartData[key];
+
+}else{
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:newQty
+};
+
+}
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Switches the viewer's quantity box into manual-typing mode */
+
+function viewerEditQty(){
+
+viewerEditingQty=true;
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Confirms a manually typed quantity inside the viewer */
+
+function viewerSetQty(rawValue){
+
+viewerEditingQty=false;
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+updateViewerQtyDisplay();
+
+return;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const parsed=
+parseInt(
+String(rawValue).trim(),
+10
+);
+
+if(
+!isFinite(parsed)||
+isNaN(parsed)||
+parsed<1
+){
+
+updateViewerQtyDisplay();
+
+return;
+
+}
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:parsed
+};
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Previous variant inside the viewer */
+
+function prevViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+viewerIndex-1;
+
+if(i<0){
+
+i=
+p.variants.length-1;
+
+}
+
+viewerIndex=i;
+
+showViewerVariant();
+
+}
+
+
+/* Next variant inside the viewer */
+
+function nextViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+viewerIndex+1;
+
+if(i>=p.variants.length){
+
+i=0;
+
+}
+
+viewerIndex=i;
+
+showViewerVariant();
+
+}
+
+
+/* Add to Cart button inside the viewer — adds one unit of the
+   product/variant currently shown, without closing the viewer */
+
+function addToCartFromViewer(){
+
+viewerChange(1);
+
+const originalText=
+viewerAddCartBtn.textContent;
+
+viewerAddCartBtn.textContent=
+"✓ ADDED";
+
+setTimeout(function(){
+
+viewerAddCartBtn.textContent=
+originalText;
+
+},900);
+
+}
+
+
+/* Called by the on-screen BACK button */
+
+function closeViewer(){
+
+if(viewerHistoryPushed){
+
+viewerHistoryPushed=false;
+
+history.back();
+
+}else{
+
+closeViewerNow();
+
+}
+
+}
+
+
+/* Actually hides the viewer (used by both BACK button and phone back) */
+
+function closeViewerNow(){
+
+viewerEl.classList.remove(
+"open"
+);
+
+viewerImgEl.src="";
+
+document.body.style.overflow=
+"";
+
+}
+
+
+/* Handles the phone/browser physical BACK button */
+
+window.addEventListener(
+"popstate",
+function(){
+
+if(
+viewerEl.classList.contains("open")
+){
+
+viewerHistoryPushed=false;
+
+closeViewerNow();
+
+}
+
+}
+);
+
+
+/* ================= OUTSIDE VIEWER ================= */
+
+viewerEl.addEventListener(
+"click",
+function(e){
+
+if(e.target===viewerEl){
+
+closeViewer();
+
+}
+
+});
+
+
+/* ================= WHATSAPP ================= */
+
+function wa(){
+
+const keys=
+Object.keys(cartData);
+
+if(!keys.length){
+
+alert(
+"Cart is empty"
+);
+
+return;
+
+}
+
+let message=
+"*NEW ORDER - BIN AMEEN TRADER*\n\n";
+
+keys.forEach(
+function(key,index){
+
+const x=
+cartData[key];
+
+message+=
+(index+1)+
+". *"+
+x.name+
+"* ("+
+x.variant+
+")\n"+
+"   Code: "+
+x.code+
+" | Qty: *"+
+x.qty+
+"*\n\n";
+
+});
+
+window.open(
+"https://wa.me/923331390045?text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+
+/* ================= SEARCH ================= */
+
+searchEl.addEventListener(
+"input",
+render
+);
+
+
+/* ================= OUTSIDE CART ================= */
+
+cartOverlay.addEventListener(
+"click",
+function(e){
+
+if(
+e.target===cartOverlay
+){
+
+closeCart();
+
+}
+
+});
+
+
+/* ================= BLOCK IMAGE MENU ================= */
+
+document.addEventListener(
+"contextmenu",
+function(e){
+
+if(
+e.target.tagName==="IMG"||
+e.target.closest(".pic")||
+e.target.closest(".viewerBox")
+){
+
+e.preventDefault();
+
+}
+
+});
+
+
+document.addEventListener(
+"dragstart",
+function(e){
+
+if(
+e.target.tagName==="IMG"
+){
+
+e.preventDefault();
+
+}
+
+});
+
+
+/* ================= DESIGN SETTINGS ================= */
+function applyCatalogueDesign(design){
+    if(!design || typeof design!=='object') return;
+    const root=document.documentElement;
+    const map={
+        pageBg:'--design-page-bg', headerBg:'--design-header-bg',
+        primaryColor:'--design-primary', textColor:'--design-text',
+        cardBg:'--design-card-bg', borderColor:'--design-border'
+    };
+    Object.keys(map).forEach(key=>{
+        if(typeof design[key]==='string' && /^#[0-9a-fA-F]{6}$/.test(design[key])){
+            root.style.setProperty(map[key],design[key]);
+        }
+    });
+    if(Number.isFinite(Number(design.borderRadius))) root.style.setProperty('--design-radius',Math.max(0,Math.min(24,Number(design.borderRadius)))+'px');
+    if(Number.isFinite(Number(design.productImageSize))) root.style.setProperty('--design-image-size',Math.max(56,Math.min(160,Number(design.productImageSize)))+'px');
+    if(Number.isFinite(Number(design.cardPadding))) root.style.setProperty('--design-card-padding',Math.max(3,Math.min(24,Number(design.cardPadding)))+'px');
+    if(Number.isFinite(Number(design.desktopContentWidth))) root.style.setProperty('--design-content-width',Math.max(480,Math.min(1400,Number(design.desktopContentWidth)))+'px');
+    if(Number.isFinite(Number(design.desktopColumns))) root.style.setProperty('--design-desktop-columns',String(Math.max(1,Math.min(3,Math.round(Number(design.desktopColumns))))));
+    if(typeof design.siteTitle==='string' && design.siteTitle.trim()){
+        const logo=document.querySelector('.logoBox');
+        if(logo) logo.textContent=design.siteTitle.trim();
+    }
+}
+async function loadCatalogueDesign(){
+    try{
+        const response=await fetch('/api/design',{cache:'no-store'});
+        if(!response.ok) return;
+        const result=await response.json();
+        applyCatalogueDesign(result.published || result);
+    }catch(error){console.warn('DESIGN SETTINGS LOAD:',error);}
+}
+
+/* ================= START ================= */
+
+startVariantAutoSlideshow();
+loadCatalogueDesign();
+checkGate();
+
+</script>
+
+</body>
+</html>
