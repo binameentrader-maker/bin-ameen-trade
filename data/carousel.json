@@ -1,5 +1,15 @@
 {
   "autoplay": true,
   "interval": 5000,
-  "slides": []
+  "slides": [
+    {
+      "id": "1794249576468",
+      "title": "YD LOTION 200ML",
+      "subtitle": "Don't have",
+      "link": "",
+      "imageUrl": "/uploads/carousel/1794249578416-230633-png.png",
+      "order": 1,
+      "enabled": true
+    }
+  ]
 }
