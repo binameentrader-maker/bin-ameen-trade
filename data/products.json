@@ -133,5 +133,26 @@
         "img": "https://lh3.googleusercontent.com/d/1VjeT_6m8fF0dwwad0eNv8IZXYoyHsxvJ"
       }
     ]
+  },
+  {
+    "id": 1794556372899,
+    "name": ".",
+    "category": "SHAMPOO",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "<img src=\"https://lh3.googleusercontent.com/d/19zzs-jP80YsVijC87KLaSoPkzI9qD3nb\" alt=\"YD Anti Dandruff Selsun Shampoo\">",
+    "variants": [
+      {
+        "name": "YD ANTI DANDRUFF SELSUN SHAMPOO 200GM",
+        "label": "YD ANTI DANDRUFF SELSUN SHAMPOO 200GM",
+        "size": "YD ANTI DANDRUFF SELSUN SHAMPOO 200GM",
+        "code": "YD-200GM",
+        "img": "YD ANTI DANDRUFF SELSUN SHAMPOO 200GM",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
