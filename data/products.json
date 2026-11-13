@@ -184,5 +184,26 @@
         "salePrice": 260
       }
     ]
+  },
+  {
+    "id": 1794557975174,
+    "name": "ARCHE",
+    "category": "BEAUTY CREAM",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1pi2LT6BoQkUZkeA_FHBIdTMz4mqMSVmq&sz=w1000",
+    "variants": [
+      {
+        "name": "CREAM 1 × 24",
+        "label": "CREAM 1 × 24",
+        "size": "CREAM 1 × 24",
+        "code": "ARCHE-1X24",
+        "img": "https://drive.google.com/thumbnail?id=1pi2LT6BoQkUZkeA_FHBIdTMz4mqMSVmq&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
