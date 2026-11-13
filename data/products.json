@@ -337,5 +337,35 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794568636181,
+    "name": "PONDS CREAM 200GM",
+    "category": "CREAM,S",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=15t00SvsiLW_LoXjWz5i4OrfoGofQMnh5&sz=w1000",
+    "variants": [
+      {
+        "name": "PONDS SOFT CREAM 200GM",
+        "label": "PONDS SOFT CREAM 200GM",
+        "size": "PONDS SOFT CREAM 200GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=15t00SvsiLW_LoXjWz5i4OrfoGofQMnh5&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "PONDS EVEN SKIN TONE CREAM 200GM",
+        "label": "PONDS EVEN SKIN TONE CREAM 200GM",
+        "size": "PONDS EVEN SKIN TONE CREAM 200GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1SodJgyjji98gdDs5r-D-wVW1hqDs4GMW&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
