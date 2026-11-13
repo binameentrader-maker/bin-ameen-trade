@@ -163,14 +163,14 @@
     "mrp": null,
     "salePrice": null,
     "optionTitle": "SIZE",
-    "img": "https://drive.google.com/file/d/1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8/view?usp=drivesdk",
+    "img": "https://drive.google.com/thumbnail?id=1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8&sz=w1000",
     "variants": [
       {
         "name": "COCONUT OIL 180ML",
         "label": "COCONUT OIL 180ML",
         "size": "COCONUT OIL 180ML",
         "code": "",
-        "img": "https://drive.google.com/file/d/1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8/view?usp=drivesdk",
+        "img": "https://drive.google.com/thumbnail?id=1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8&sz=w1000",
         "mrp": null,
         "salePrice": 360
       },
@@ -179,7 +179,7 @@
         "label": "COCONUT OIL 100ML",
         "size": "COCONUT OIL 100ML",
         "code": "",
-        "img": "https://drive.google.com/file/d/1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8/view?usp=drivesdk",
+        "img": "https://drive.google.com/thumbnail?id=1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8&sz=w1000",
         "mrp": null,
         "salePrice": 260
       }
