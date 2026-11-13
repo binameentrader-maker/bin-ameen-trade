@@ -452,5 +452,35 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794571910187,
+    "name": "THREE SEVEN NAIL CLIPPER",
+    "category": "HYGIENE ESSENTIALS",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=13IdtehNMZj-FrxJ-CKJE5ITy9UDGX_I5&sz=w1000",
+    "variants": [
+      {
+        "name": "777 NAIL CLIPPER NO. N-211",
+        "label": "777 NAIL CLIPPER NO. N-211",
+        "size": "777 NAIL CLIPPER NO. N-211",
+        "code": "N-211",
+        "img": "https://drive.google.com/thumbnail?id=13IdtehNMZj-FrxJ-CKJE5ITy9UDGX_I5&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "777 NAIL CLIPPER NO. N-608",
+        "label": "777 NAIL CLIPPER NO. N-608",
+        "size": "777 NAIL CLIPPER NO. N-608",
+        "code": "N-608",
+        "img": "https://drive.google.com/thumbnail?id=13IdtehNMZj-FrxJ-CKJE5ITy9UDGX_I5&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
