@@ -154,5 +154,35 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794557442053,
+    "name": "PARACHUTE",
+    "category": "HAIR OIL",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/file/d/1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8/view?usp=drivesdk",
+    "variants": [
+      {
+        "name": "COCONUT OIL 180ML",
+        "label": "COCONUT OIL 180ML",
+        "size": "COCONUT OIL 180ML",
+        "code": "",
+        "img": "https://drive.google.com/file/d/1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8/view?usp=drivesdk",
+        "mrp": null,
+        "salePrice": 360
+      },
+      {
+        "name": "COCONUT OIL 100ML",
+        "label": "COCONUT OIL 100ML",
+        "size": "COCONUT OIL 100ML",
+        "code": "",
+        "img": "https://drive.google.com/file/d/1aebI_Al5wlQ6fxvqa-W72PUxIIKixlV8/view?usp=drivesdk",
+        "mrp": null,
+        "salePrice": 260
+      }
+    ]
   }
 ]
