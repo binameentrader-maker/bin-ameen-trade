@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "VASELINE HAIR TONIC",
-    "category": "HAIR OIL",
+    "category": "HAIR COLOR ESSENTIALS",
     "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
     "variants": [
       {
@@ -38,6 +38,7 @@
     "mrp": null,
     "salePrice": null,
     "categories": [
+      "HAIR COLOR ESSENTIALS",
       "HAIR OIL"
     ]
   },
