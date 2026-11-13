@@ -1,0 +1,3146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>BIN AMEEN TRADER</title>
+
+<style>
+*{
+box-sizing:border-box;
+}
+
+html,body{
+margin:0;
+padding:0;
+background:#C5D0DA;
+font-family:Arial,Helvetica,sans-serif;
+color:#1B2A4A;
+}
+
+body{
+padding:7px;
+}
+
+.wrap{
+max-width:480px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:8px;
+margin-bottom:8px;
+text-align:center;
+}
+
+.logoBox{
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:6px 4px;
+font-size:23px;
+font-weight:900;
+letter-spacing:.4px;
+}
+
+.phoneRow{
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:10px;
+position:relative;
+}
+
+.phoneLine{
+height:2px;
+background:#9aa7b9;
+position:absolute;
+left:35px;
+right:35px;
+top:50%;
+}
+
+.phoneBox{
+position:relative;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:4px 12px;
+font-size:15px;
+font-weight:bold;
+z-index:1;
+}
+
+/* BUTTONS */
+
+button{
+border:0;
+border-radius:0;
+padding:7px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.main{
+background:#1B2A4A!important;
+color:#fff;
+border-radius:0;
+padding:11px;
+font-size:16px;
+font-weight:bold;
+}
+
+/* CATEGORIES */
+
+.cats{
+display:flex;
+gap:5px;
+overflow:auto;
+margin:8px 0;
+}
+
+.cats button{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+white-space:nowrap;
+font-size:13px;
+padding:7px 12px;
+}
+
+.cats button.active{
+background:#1B2A4A;
+color:#fff;
+border-color:#1B2A4A;
+}
+
+/* SEARCH */
+
+.searchWrap{
+position:relative;
+margin-bottom:8px;
+}
+
+.searchIcon{
+position:absolute;
+left:11px;
+top:50%;
+transform:translateY(-50%);
+font-size:13px;
+font-weight:700;
+letter-spacing:0.5px;
+text-transform:uppercase;
+color:#1B2A4A;
+pointer-events:none;
+}
+
+.search{
+width:100%;
+padding:10px 10px 10px 78px;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:14px;
+outline:none;
+background:#fff;
+}
+
+/* CATEGORY -> SEARCH TOOLBAR -> PRODUCTS */
+.searchToolbar{display:flex;align-items:stretch;gap:6px;width:100%;margin:0 0 8px}
+.searchToolbar .searchWrap{flex:3 1 0;min-width:0;margin:0}
+.searchToolbar .search{display:block;width:100%;height:44px}
+.viewSwitch{flex:1 1 0;min-width:0;height:44px;padding:0;display:flex;align-items:center;justify-content:center;background:#fff;color:#1B2A4A;border:2px solid #8fa0b5;border-radius:0}
+.viewSwitch svg{width:25px;height:25px;display:block}
+.viewSwitch:focus-visible{outline:2px solid #1B2A4A;outline-offset:2px}
+
+/* LIST / GRID VIEW */
+#list.view-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#list.view-grid .card{min-width:0;width:100%;margin:0;padding:7px;display:flex;flex-direction:column;align-items:stretch;gap:7px}
+#list.view-grid .pic{width:100%;height:auto;aspect-ratio:1/1;flex:none}
+#list.view-grid .info{width:100%;min-width:0;display:flex;flex-direction:column;align-items:stretch}
+#list.view-grid .name,#list.view-list .name{width:100%;text-align:center;overflow-wrap:anywhere;word-break:normal}
+#list.view-grid .q,#list.view-grid .twoVariant,#list.view-grid .variantRow,#list.view-grid .variantText{display:none!important}
+.gridAddCart{width:100%;max-width:100%;min-height:38px;margin-top:7px;padding:8px 5px;background:#1B2A4A;color:#fff;border:0;border-radius:0;font-size:12px;font-weight:800;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:360px){#list.view-grid{gap:6px}#list.view-grid .card{padding:5px}.searchToolbar{gap:5px}.searchToolbar .search,.viewSwitch{height:42px}}
+
+
+/* PRODUCT CARD */
+
+.card{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:7px;
+margin-bottom:8px;
+display:flex;
+gap:9px;
+align-items:center;
+box-shadow:none;
+}
+
+.pic{
+width:92px;
+height:92px;
+border:1px solid #8fa0b5;
+border-radius:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+position:relative;
+overflow:hidden;
+background:#fff;
+cursor:pointer;
+user-select:none;
+}
+
+.pic img{
+max-width:100%;
+max-height:100%;
+width:100%;
+height:100%;
+object-fit:contain;
+pointer-events:none;
+user-select:none;
+-webkit-user-drag:none;
+}
+
+
+/* WATERMARK */
+
+.pic:after{
+content:"BIN AMEEN";
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-25deg);
+font-size:11px;
+font-weight:bold;
+color:rgba(31,41,61,.15);
+pointer-events:none;
+white-space:nowrap;
+}
+
+/* INFO */
+
+.info{
+flex:1;
+min-width:0;
+}
+
+/* CODE */
+
+.code{
+display:inline-block;
+font-size:11px;
+font-weight:bold;
+background:#f1f5f9;
+border:1px solid #8fa0b5;
+padding:3px 5px;
+border-radius:0;
+color:#475569;
+}
+
+/* NAME */
+
+.name{
+display:block;
+font-size:14px;
+font-weight:900;
+margin-top:4px;
+line-height:1.15;
+}
+
+/* LIST VIEW item badges: RETAIL first, CATEGORY second */
+#list.view-list .listItemBadges{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:4px;
+  width:100%;
+  max-width:100%;
+  margin:0 0 4px;
+}
+#list.view-list .listItemBadge{
+  display:inline-block;
+  box-sizing:border-box;
+  max-width:100%;
+  padding:2px 5px;
+  border:1px solid #b7a66a;
+  background:#fbf4d8;
+  color:#493d20;
+  font-size:10px;
+  line-height:1.25;
+  font-weight:800;
+  text-align:center;
+  overflow-wrap:anywhere;
+  white-space:normal;
+}
+@media(max-width:420px){
+  #list.view-list .listItemBadges{gap:3px;margin-bottom:3px}
+  #list.view-list .listItemBadge{font-size:9px;padding:2px 4px}
+}
+
+
+/* VARIANT NAME (own line, wraps, no truncation) */
+
+.variantText{
+display:block;
+font-size:12px;
+font-weight:600;
+color:#475569;
+margin-top:3px;
+line-height:1.25;
+white-space:normal;
+overflow-wrap:break-word;
+word-break:break-word;
+}
+
+/* TWO VARIANTS */
+
+.twoVariant{
+display:flex;
+gap:5px;
+flex-wrap:wrap;
+margin:5px 0;
+}
+
+.variantBtn{
+background:#fff;
+border:2px solid #8fa0b5;
+color:#475569;
+font-size:12px;
+padding:5px 9px;
+border-radius:0;
+white-space:normal;
+word-break:break-word;
+text-align:center;
+max-width:100%;
+}
+
+.variantBtn.selected{
+background:#1B2A4A;
+color:#fff;
+border-color:#1B2A4A;
+}
+
+/* 3+ VARIANTS */
+
+.variantRow{
+display:flex;
+align-items:center;
+gap:4px;
+margin:5px 0;
+}
+
+.arrowBtn{
+background:#475569;
+color:#fff;
+font-size:17px;
+width:34px;
+height:31px;
+padding:0;
+border-radius:0;
+}
+
+.variantLabel{
+flex:1;
+text-align:center;
+font-size:12px;
+font-weight:bold;
+background:#f8fafc;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:6px 3px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+/* QUANTITY */
+
+.q{
+display:flex;
+gap:4px;
+align-items:center;
+}
+
+.q button{
+background:#475569;
+color:#fff;
+font-size:17px;
+width:32px;
+height:30px;
+padding:0;
+border-radius:0;
+}
+
+.q .arrowBtn{
+width:34px;
+height:31px;
+font-size:17px;
+}
+
+.qtyBox{
+min-width:40px;
+height:30px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:15px;
+color:#111;
+cursor:pointer;
+}
+
+.qtyInput{
+min-width:40px;
+width:46px;
+height:30px;
+text-align:center;
+background:#fff;
+border:2px solid #1B2A4A;
+border-radius:0;
+font-size:15px;
+color:#111;
+padding:0;
+}
+
+/* CART */
+
+.cartOverlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+z-index:9000;
+padding:8px;
+overflow:auto;
+align-items:center;
+justify-content:center;
+}
+
+.cartOverlay.open{
+display:flex;
+}
+
+.cartbox{
+width:min(100%,470px);
+max-height:90vh;
+overflow:auto;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:10px;
+}
+
+.cartHeader{
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid #d1d5db;
+padding-bottom:7px;
+margin-bottom:7px;
+}
+
+.cartHeader h3{
+margin:0;
+font-size:18px;
+}
+
+.cartClose{
+background:#475569;
+color:#fff;
+width:35px;
+height:35px;
+font-size:18px;
+padding:0;
+border-radius:0;
+}
+
+.item{
+padding:8px;
+border:1px solid #8fa0b5;
+border-radius:0;
+margin:5px 0;
+background:#f8fafc;
+}
+
+.itemName{
+font-weight:bold;
+font-size:14px;
+}
+
+.itemInfo{
+font-size:12px;
+margin-top:4px;
+}
+
+.cartControls{
+display:flex;
+gap:5px;
+align-items:center;
+margin-top:7px;
+}
+
+.cartControls button{
+background:#475569;
+color:#fff;
+padding:6px 10px;
+}
+
+.removeBtn{
+margin-left:auto;
+background:#9b2226!important;
+}
+
+.total{
+font-weight:bold;
+margin:10px 0;
+padding-top:7px;
+border-top:1px solid #d1d5db;
+font-size:14px;
+}
+
+/* EMAIL */
+
+.emailFooter{
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:9px 5px;
+margin-top:6px;
+margin-bottom:7px;
+text-align:center;
+font-size:15px;
+font-weight:bold;
+color:#475569;
+}
+
+/* IMAGE VIEWER - full screen */
+
+.viewer{
+display:none;
+position:fixed;
+z-index:99999;
+inset:0;
+background:#000;
+align-items:center;
+justify-content:center;
+padding:0;
+user-select:none;
+}
+
+.viewer.open{
+display:flex;
+}
+
+.viewerBox{
+position:relative;
+width:100%;
+height:100%;
+background:#fff;
+border-radius:0;
+padding:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.viewerBox img{
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+pointer-events:none;
+user-select:none;
+-webkit-user-drag:none;
+}
+
+.closeViewer{
+position:absolute;
+left:10px;
+top:10px;
+height:40px;
+width:auto;
+padding:0 16px;
+background:#1B2A4A;
+color:#fff;
+font-size:15px;
+font-weight:bold;
+border-radius:0;
+z-index:3;
+letter-spacing:.3px;
+}
+
+.viewerWatermark{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%) rotate(-25deg);
+font-size:26px;
+font-weight:bold;
+color:rgba(31,41,61,.18);
+white-space:nowrap;
+pointer-events:none;
+z-index:1;
+}
+
+/* VIEWER PREV/NEXT ARROWS */
+
+.viewerArrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:#475569;
+color:#fff;
+font-size:26px;
+width:44px;
+height:56px;
+padding:0;
+border-radius:0;
+z-index:3;
+}
+
+.viewerArrowLeft{
+left:8px;
+}
+
+.viewerArrowRight{
+right:8px;
+}
+
+/* VIEWER VARIANT/CODE/QTY INFO */
+
+.viewerInfo{
+position:absolute;
+left:50%;
+bottom:14px;
+transform:translateX(-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:7px;
+z-index:3;
+background:#fff;
+border:2px solid #8fa0b5;
+padding:9px 14px;
+max-width:92%;
+}
+
+.viewerVariantText{
+font-size:14px;
+font-weight:900;
+color:#1B2A4A;
+text-align:center;
+}
+
+/* VIEWER ADD TO CART BUTTON */
+
+.viewerAddCart{
+background:#1B2A4A;
+color:#fff;
+border-radius:0;
+padding:9px 18px;
+font-size:14px;
+font-weight:bold;
+white-space:nowrap;
+}
+
+/* LOADING */
+
+.loading{
+text-align:center;
+padding:15px;
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:14px;
+}
+
+/* ERROR */
+
+.errorBox{
+background:#fff;
+border:2px solid #9b2226;
+padding:14px;
+font-size:13px;
+line-height:20px;
+word-break:break-word;
+}
+
+/* PASSWORD GATE */
+
+.gate{
+display:none;
+position:fixed;
+inset:0;
+z-index:999999;
+background:#C5D0DA;
+align-items:center;
+justify-content:center;
+padding:12px;
+}
+
+.gate.open{
+display:flex;
+}
+
+.gateBox{
+width:min(100%,420px);
+background:#fff;
+border:2px solid #8fa0b5;
+border-radius:0;
+padding:18px;
+text-align:center;
+}
+
+.gateLogo{
+font-size:22px;
+font-weight:900;
+letter-spacing:.4px;
+margin-bottom:14px;
+}
+
+.gateLabel{
+font-size:14px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.gateInput{
+width:100%;
+padding:11px;
+border:2px solid #8fa0b5;
+border-radius:0;
+font-size:15px;
+outline:none;
+background:#fff;
+margin-bottom:10px;
+text-align:center;
+}
+
+.gateBtn{
+width:100%;
+background:#1B2A4A;
+color:#fff;
+padding:11px;
+font-size:15px;
+font-weight:bold;
+border-radius:0;
+}
+
+.gateError{
+display:none;
+margin-top:10px;
+color:#9b2226;
+font-weight:bold;
+font-size:13px;
+}
+
+.gateChecking{
+text-align:center;
+padding:20px;
+font-size:14px;
+color:#475569;
+}
+
+/* MOBILE */
+
+@media(max-width:420px){
+
+body{
+padding:5px;
+}
+
+.logoBox{
+font-size:21px;
+}
+
+.phoneRow{
+margin-top:8px;
+}
+
+.phoneBox{
+font-size:14px;
+padding:4px 10px;
+}
+
+.card{
+padding:6px;
+gap:8px;
+margin-bottom:7px;
+}
+
+.pic{
+width:88px;
+height:88px;
+}
+
+.name{
+font-size:13px;
+}
+
+.variantText{
+font-size:11px;
+}
+
+.code{
+font-size:10px;
+}
+
+.variantBtn{
+font-size:11px;
+padding:5px 7px;
+}
+
+.arrowBtn{
+width:31px;
+height:29px;
+font-size:16px;
+}
+
+.variantLabel{
+font-size:11px;
+padding:5px 2px;
+}
+
+.q button{
+width:30px;
+height:28px;
+font-size:16px;
+}
+
+.q .arrowBtn{
+width:31px;
+height:29px;
+font-size:16px;
+}
+
+.qtyBox{
+height:28px;
+min-width:36px;
+font-size:14px;
+}
+
+.qtyInput{
+height:28px;
+min-width:36px;
+width:42px;
+font-size:14px;
+}
+
+.emailFooter{
+font-size:14px;
+padding:8px 4px;
+}
+
+.viewerArrow{
+width:38px;
+height:48px;
+font-size:22px;
+}
+
+.viewerAddCart{
+font-size:13px;
+padding:8px 14px;
+}
+
+}
+
+/* PREVENT IMAGE SAVE */
+
+img{
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+user-select:none;
+}
+/* BIN AMEEN DESIGN SETTINGS */
+
+:root{
+ --design-page-bg:#C5D0DA;
+ --design-header-bg:#fff;
+ --design-primary:#1B2A4A;
+ --design-text:#1B2A4A;
+ --design-card-bg:#fff;
+ --design-border:#8fa0b5;
+ --design-radius:0px;
+ --design-image-size:92px;
+ --design-card-padding:7px;
+}
+html,body{background:var(--design-page-bg);color:var(--design-text)}
+.wrap{max-width:var(--design-content-width,480px)}
+
+header{background:var(--design-header-bg);border-color:var(--design-border);border-radius:var(--design-radius)}
+.logoBox,.phoneBox{border-color:var(--design-border);border-radius:var(--design-radius)}
+.main,.cats button.active{background:var(--design-primary)!important;border-color:var(--design-primary)!important}
+.card{background:var(--design-card-bg);border-color:var(--design-border);border-radius:var(--design-radius);padding:var(--design-card-padding)}
+.pic{width:var(--design-image-size);height:var(--design-image-size);border-color:var(--design-border);border-radius:var(--design-radius)}
+.search,.cats button,.variantBtn,.variantLabel,.code,.qtyBox,.qtyInput{border-color:var(--design-border);border-radius:var(--design-radius)}
+
+
+
+/* BIN AMEEN - FLOATING WHATSAPP CONTACT BUTTON */
+.ba-whatsapp-float{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:99999;
+  width:66px;
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 5px 18px rgba(0,0,0,.22);
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.ba-whatsapp-float:hover,
+.ba-whatsapp-float:focus-visible{
+  transform:translateY(-3px) scale(1.04);
+  box-shadow:0 8px 22px rgba(0,0,0,.28);
+  outline:none;
+}
+.ba-whatsapp-float::before{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  border:2px solid #25D366;
+  border-radius:50%;
+  animation:baWhatsappPulse 2s infinite;
+  pointer-events:none;
+}
+.ba-whatsapp-float svg{
+  display:block;
+  width:36px;
+  height:36px;
+  fill:#fff;
+  position:relative;
+  z-index:1;
+}
+@keyframes baWhatsappPulse{
+  0%{transform:scale(.92);opacity:.8}
+  70%{transform:scale(1.28);opacity:0}
+  100%{transform:scale(1.28);opacity:0}
+}
+@media(max-width:600px){
+  .ba-whatsapp-float{
+    width:56px;
+    height:56px;
+    right:16px;
+    bottom:16px;
+  }
+  .ba-whatsapp-float svg{width:30px;height:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ba-whatsapp-float::before{animation:none}
+  .ba-whatsapp-float{transition:none}
+}
+
+
+/* NATURAL PAGE FLOW: HEADER, CAROUSEL, THEN CATALOGUE */
+html{scroll-behavior:smooth;scroll-padding-top:0}
+body{overflow-x:hidden}
+#siteWrap{max-width:none;width:100%;margin:0 auto;padding:0}
+.snap-scroll{height:auto;min-height:0;overflow:visible;overflow-x:clip;overscroll-behavior-y:auto;scroll-snap-type:none;scroll-behavior:auto;-webkit-overflow-scrolling:touch}
+.snap-panel{width:min(100%,900px);margin:0 auto;padding:7px;}
+.header-panel,.carousel-panel{min-height:0;height:auto;display:flex;flex-direction:column;justify-content:flex-start}
+.header-panel header{width:100%;margin-bottom:0}
+.carousel-panel{padding-top:7px}
+.banner-carousel{position:relative;width:100%;height:clamp(170px,28vh,260px);overflow:hidden;background:#fff;border:2px solid #8fa0b5;}
+.banner-empty{height:100%;display:grid;place-items:center;font-size:clamp(20px,5vw,34px);font-weight:900;color:#1B2A4A}
+.ba-slide{position:absolute;inset:0;display:block;color:inherit;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .45s ease}
+.ba-slide.active{opacity:1;pointer-events:auto}
+.ba-slide.ba-image-error{background:#f1f5f9}
+.ba-slide img{width:100%;height:100%;object-fit:contain;display:block;background:#fff}
+.ba-slide-copy{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.72));text-shadow:0 1px 3px #000}
+.ba-slide-copy strong{display:block;font-size:clamp(17px,4vw,25px)}
+.ba-slide-copy span{display:block;font-size:13px;margin-top:3px}
+.ba-carousel-dots{position:absolute;z-index:3;left:0;right:0;bottom:7px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.ba-carousel-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.6);border:1px solid #555}
+.ba-carousel-dots i.active{background:#fff;transform:scale(1.25)}
+.catalogue-panel{min-height:0;height:auto;padding-top:7px}
+.catalogue-panel .searchWrap{margin-bottom:8px}
+.catalogue-panel .cats{margin:0 0 8px}
+
+/* NATURAL SCROLL: no forced stages, smooth native touch and pull-to-refresh */
+html{scroll-behavior:auto;scroll-padding-top:0;overscroll-behavior-y:auto}
+body{overscroll-behavior-y:auto;overflow-anchor:auto;touch-action:pan-y}
+.header-panel,.carousel-panel{overflow:visible;max-height:none;opacity:1;transition:none;overflow-anchor:auto}
+
+/* Fixed floating controls; touch scrolling does not drag them */
+.ba-whatsapp-float,.ba-cart-float{position:fixed;z-index:100001;touch-action:none;user-select:none;-webkit-user-select:none;cursor:pointer}
+.ba-whatsapp-float{right:16px;bottom:16px}
+.ba-cart-float{right:16px;bottom:88px;width:56px;height:56px;border:0;border-radius:50%;background:#1B2A4A;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 18px rgba(0,0,0,.24);padding:0}
+.ba-cart-float svg{width:28px;height:28px;fill:#fff;pointer-events:none}
+.ba-cart-count{position:absolute;right:-3px;top:-4px;min-width:21px;height:21px;padding:0 5px;border-radius:20px;background:#e53935;color:#fff;font:bold 12px Arial;display:grid;place-items:center;border:2px solid #fff}
+.ba-whatsapp-float.is-draggable,.ba-cart-float.is-draggable{box-shadow:0 0 0 5px rgba(37,211,102,.22),0 8px 24px rgba(0,0,0,.3);transform:scale(1.06)}
+.ba-cart-float.is-draggable{box-shadow:0 0 0 5px rgba(31,41,61,.2),0 8px 24px rgba(0,0,0,.3)}
+.ba-trash-zone{display:none;position:fixed;z-index:100000;left:50%;bottom:18px;transform:translateX(-50%);padding:12px 22px 12px 48px;border:2px dashed #e53935;border-radius:10px;background:#fff;color:#b42318;font:bold 12px Arial;box-shadow:0 4px 18px rgba(0,0,0,.2);white-space:nowrap}.ba-trash-zone::before{content:"\1F5D1";position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:25px}
+.ba-trash-zone.visible{display:block}
+.ba-trash-zone.over{background:#fee2e2;border-color:#b42318}
+.ba-whatsapp-float.drag-hidden{display:none}
+@media(min-width:700px){.snap-panel{padding:12px}.banner-carousel{height:clamp(230px,42vh,390px)}.ba-whatsapp-float{right:26px;bottom:24px;width:66px;height:66px}.ba-whatsapp-float svg{width:38px;height:38px}.ba-cart-float{right:26px;bottom:108px;width:62px;height:62px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ba-slide{transition:none}}
+
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD GATE (checked before the site is shown) -->
+
+<div class="gate" id="gate">
+
+<div class="gateBox">
+
+<div class="gateLogo">BIN AMEEN TRADER</div>
+
+<div id="gateChecking" class="gateChecking">Checking access...</div>
+
+<div id="gateForm" style="display:none">
+
+<div class="gateLabel">ENTER PASSWORD</div>
+
+<input
+class="gateInput"
+id="gatePassword"
+type="password"
+placeholder=""
+autocomplete="off"
+>
+
+<button class="gateBtn" onclick="submitGatePassword()">ENTER</button>
+
+<div class="gateError" id="gateError">Incorrect Password</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="wrap" id="siteWrap" style="display:none">
+<div class="snap-scroll" id="snapScroll">
+<section class="snap-panel header-panel" id="headerPanel">
+<header>
+
+<div class="logoBox">
+BIN AMEEN TRADER
+</div>
+
+<div class="phoneRow">
+
+<div class="phoneLine"></div>
+
+<div class="phoneBox">
+☎ 03331390045
+</div>
+
+</div>
+
+</header>
+</section>
+
+<section class="snap-panel carousel-panel" id="carouselPanel" aria-label="Promotions" style="display:none">
+  <div class="banner-carousel" id="bannerCarousel"></div>
+</section>
+
+<section class="snap-panel catalogue-panel" id="cataloguePanel">
+<span id="count" hidden>0</span>
+<!-- CATEGORIES -->
+<div class="cats" id="cats"></div>
+
+<!-- SEARCH + VIEW SWITCHER -->
+<div class="searchToolbar">
+  <div class="searchWrap">
+    <span class="searchIcon">SEARCH</span>
+    <input class="search" id="search" placeholder="" autocomplete="off">
+  </div>
+  <button type="button" class="viewSwitch" id="viewSwitch" aria-label="Switch to grid view" title="Switch view"></button>
+</div>
+
+<!-- PRODUCTS -->
+<div id="list">
+
+<div class="loading">
+Loading products...
+</div>
+
+</div>
+
+
+<!-- EMAIL -->
+
+<div class="emailFooter">
+✉ binameentrader@gmail.com
+</div>
+</section>
+</div>
+</div>
+
+
+<!-- CART -->
+
+<div class="cartOverlay" id="cartOverlay">
+
+<div class="cartbox">
+
+<div class="cartHeader">
+
+<h3>Your Selected Items</h3>
+
+<button
+class="cartClose"
+onclick="closeCart()"
+>
+✕
+</button>
+
+</div>
+
+<div id="cartItems"></div>
+
+<div class="total">
+Total Items: <span id="cartTotal">0</span>
+</div>
+
+<button
+class="main"
+style="width:100%"
+onclick="wa()"
+>
+Send Order on WhatsApp
+</button>
+
+</div>
+
+</div>
+
+
+<!-- IMAGE VIEWER (full screen + variant navigation + add to cart + qty) -->
+
+<div class="viewer" id="viewer">
+
+<div class="viewerBox">
+
+<button
+class="closeViewer"
+onclick="closeViewer()"
+>
+← BACK
+</button>
+
+<button
+class="viewerArrow viewerArrowLeft"
+onclick="prevViewerVariant()"
+>
+‹
+</button>
+
+<img
+id="viewerImg"
+src=""
+alt="Product"
+draggable="false"
+>
+
+<button
+class="viewerArrow viewerArrowRight"
+onclick="nextViewerVariant()"
+>
+›
+</button>
+
+<div class="viewerInfo" id="viewerInfo">
+<b class="viewerVariantText" id="viewerVariantText"></b>
+<span class="code" id="viewerCodeText"></span>
+<div class="q" id="viewerQtyRow">
+<button onclick="viewerChange(-1)">−</button>
+<div class="qtyBox" id="viewerQtyBox" onclick="viewerEditQty()">0</div>
+<button onclick="viewerChange(1)">+</button>
+</div>
+</div>
+
+<div class="viewerWatermark">
+BIN AMEEN TRADER
+</div>
+
+</div>
+
+</div>
+
+   <!-- BIN AMEEN FLOATING WHATSAPP BUTTON -->
+<a class="ba-whatsapp-float"
+   href="https://api.whatsapp.com/send?phone=923331390045&text=Assalam-o-Alaikum%21%20BIN%20AMEEN%20TRADER%20se%20mujhe%20is%20product%20ke%20bare%20me%20maloomat%20chahiye."
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" role="img" aria-hidden="true">
+    <path d="M16.02 3C8.86 3 3.04 8.78 3.04 15.9c0 2.28.6 4.5 1.75 6.46L3 29l6.85-1.78a13.1 13.1 0 0 0 6.17 1.55h.01c7.15 0 12.97-5.79 12.97-12.9A12.82 12.82 0 0 0 16.02 3zm0 23.58h-.01c-1.92 0-3.8-.51-5.43-1.49l-.39-.23-4.06 1.06 1.08-3.93-.25-.4a10.62 10.62 0 0 1-1.64-5.69c0-5.9 4.83-10.7 10.71-10.7 2.85 0 5.53 1.11 7.55 3.13a10.6 10.6 0 0 1 3.13 7.56c0 5.9-4.82 10.69-10.69 10.69zm5.88-8.01c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.51-.16-.72.16-.21.32-.83 1.05-1.02 1.27-.19.21-.37.24-.69.08-.32-.16-1.36-.5-2.59-1.6-.96-.85-1.61-1.9-1.8-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.99-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.1-1.12 2.67s1.15 3.1 1.31 3.31c.16.21 2.26 3.44 5.47 4.82.76.33 1.36.52 1.83.66.77.24 1.47.21 2.02.13.62-.09 1.9-.77 2.17-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/>
+  </svg>
+</a>
+
+<button class="ba-cart-float" id="floatingCart" type="button" aria-label="Open cart" onclick="showCart()">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14h9.9c.75 0 1.4-.41 1.75-1.03L22 6H5.21L4.27 4H1v2h2l3.6 7.59-1.35 2.44C4.52 17.37 5.48 19 7 19h12v-2H7l1.1-2z"/></svg>
+  <span class="ba-cart-count" id="floatingCartCount">0</span>
+</button>
+<div class="ba-trash-zone" id="baTrashZone">DROP HERE TO HIDE WHATSAPP</div>
+
+
+<script>
+
+let products=[];
+let sel={};
+let cartData={};
+let category="ALL";
+let editingQty={};
+let viewerEditingQty=false;
+
+const catsEl=document.getElementById("cats");
+const searchEl=document.getElementById("search");
+const listEl=document.getElementById("list");
+
+const viewSwitchEl=document.getElementById("viewSwitch");
+let catalogueView="list";
+try{catalogueView=localStorage.getItem("binAmeenCatalogueView")==="grid"?"grid":"list";}catch(e){}
+function updateViewSwitcher(){
+  if(!viewSwitchEl)return;
+  if(catalogueView==="grid"){
+    viewSwitchEl.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><rect x="3" y="3" width="6" height="6"/><rect x="15" y="3" width="6" height="6"/><rect x="3" y="15" width="6" height="6"/><rect x="15" y="15" width="6" height="6"/></svg>';
+    viewSwitchEl.setAttribute("aria-label","Switch to list view");
+  }else{
+    viewSwitchEl.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+    viewSwitchEl.setAttribute("aria-label","Switch to grid view");
+  }
+  listEl.classList.toggle("view-grid",catalogueView==="grid");
+  listEl.classList.toggle("view-list",catalogueView==="list");
+}
+viewSwitchEl.addEventListener("click",function(){
+  catalogueView=catalogueView==="list"?"grid":"list";
+  try{localStorage.setItem("binAmeenCatalogueView",catalogueView);}catch(e){}
+  updateViewSwitcher();
+  render();
+});
+updateViewSwitcher();
+
+
+const cartOverlay=document.getElementById("cartOverlay");
+const cartItemsEl=document.getElementById("cartItems");
+const countEl=document.getElementById("count");
+const cartTotalEl=document.getElementById("cartTotal");
+
+const viewerEl=document.getElementById("viewer");
+const viewerImgEl=document.getElementById("viewerImg");
+const viewerVariantTextEl=document.getElementById("viewerVariantText");
+const viewerCodeTextEl=document.getElementById("viewerCodeText");
+const viewerArrowLeftEl=document.querySelector(".viewerArrowLeft");
+const viewerArrowRightEl=document.querySelector(".viewerArrowRight");
+const viewerAddCartBtn=document.getElementById("viewerAddCartBtn");
+const viewerQtyRow=document.getElementById("viewerQtyRow");
+
+let viewerHistoryPushed=false;
+let viewerProductId=null;
+let viewerIndex=0;
+
+const gateEl=document.getElementById("gate");
+const gateCheckingEl=document.getElementById("gateChecking");
+const gateFormEl=document.getElementById("gateForm");
+const gatePasswordEl=document.getElementById("gatePassword");
+const gateErrorEl=document.getElementById("gateError");
+const siteWrapEl=document.getElementById("siteWrap");
+
+
+/* ================= PASSWORD GATE ================= */
+
+async function checkGate(){
+
+gateEl.classList.add("open");
+
+gateCheckingEl.style.display="";
+
+gateFormEl.style.display="none";
+
+try{
+
+const response=await fetch("/api/public-status",{
+method:"GET",
+cache:"no-store"
+});
+
+const result=await response.json();
+
+if(!result.protectionOn||result.authenticated){
+
+unlockSite();
+
+return;
+
+}
+
+gateCheckingEl.style.display="none";
+
+gateFormEl.style.display="";
+
+gatePasswordEl.focus();
+
+}catch(error){
+
+console.error("GATE STATUS ERROR:",error);
+
+gateCheckingEl.style.display="none";
+
+gateFormEl.style.display="";
+
+}
+
+}
+
+
+function unlockSite(){
+
+gateEl.classList.remove("open");
+
+siteWrapEl.style.display="";
+
+updateCartCount();
+
+load();
+
+}
+
+
+async function submitGatePassword(){
+
+const password=gatePasswordEl.value;
+
+gateErrorEl.style.display="none";
+
+if(!password){
+
+return;
+
+}
+
+try{
+
+const response=await fetch("/api/public-login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+password:password
+})
+
+});
+
+if(!response.ok){
+
+gateErrorEl.style.display="";
+
+gatePasswordEl.value="";
+
+gatePasswordEl.focus();
+
+return;
+
+}
+
+unlockSite();
+
+}catch(error){
+
+console.error("GATE LOGIN ERROR:",error);
+
+gateErrorEl.textContent="Connection error. Please try again.";
+
+gateErrorEl.style.display="";
+
+}
+
+}
+
+
+gatePasswordEl.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Enter"){
+
+submitGatePassword();
+
+}
+
+}
+);
+
+
+/* ================= LOAD PRODUCTS ================= */
+
+async function load(){
+
+listEl.innerHTML=
+'<div class="loading">Loading products...</div>';
+
+try{
+
+const response=await fetch("/api/products",{
+method:"GET",
+cache:"no-store"
+});
+
+if(!response.ok){
+
+const text=await response.text();
+
+throw new Error(
+"API Error "+response.status+
+": "+text.substring(0,300)
+);
+
+}
+
+const data=await response.json();
+
+if(!Array.isArray(data)){
+
+throw new Error("Invalid products data");
+
+}
+
+products=data;
+
+products.forEach(function(p){
+
+if(!Array.isArray(p.variants)){
+
+p.variants=[{
+label:p.size||"",
+size:p.size||"",
+code:p.code||"",
+img:p.img||""
+}];
+
+}
+
+sel[p.id]=0;
+
+});
+
+drawCats();
+render();
+
+}catch(error){
+
+console.error(error);
+
+listEl.innerHTML=
+'<div class="errorBox">'+
+'<b>Products Load Error</b><br><br>'+
+escapeHTML(error.message)+
+'</div>';
+
+}
+
+}
+
+
+/* ================= ESCAPE HTML ================= */
+
+function escapeHTML(str){
+
+return String(str)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= CATEGORIES ================= */
+
+function drawCats(){
+
+const categorySet=new Set();
+
+products.forEach(function(p){
+
+if(p.category){
+
+categorySet.add(p.category);
+
+}
+
+});
+
+const categories=[
+"ALL",
+...categorySet
+];
+
+catsEl.innerHTML="";
+
+categories.forEach(function(x){
+
+const btn=document.createElement("button");
+
+btn.textContent=
+x==="ALL"?"ALL ITEMS":x;
+
+if(x===category){
+
+btn.className="active";
+
+}
+
+btn.onclick=function(){
+
+category=x;
+
+drawCats();
+render();
+
+};
+
+catsEl.appendChild(btn);
+
+});
+
+}
+
+      /* ================= RENDER ================= */
+
+function render(){
+
+const q=
+searchEl.value
+.toLowerCase()
+.trim();
+
+const filtered=
+products.filter(function(p){
+if(p.visible===false || p.disabled===true) return false;
+const name=
+String(p.name||"")
+.toLowerCase();
+
+const variants=
+Array.isArray(p.variants)
+?p.variants:[];
+
+const codeMatch=
+variants.some(function(v){
+
+return String(v.code||"")
+.toLowerCase()
+.includes(q);
+
+});
+
+return(
+(category==="ALL"||p.category===category)
+&&
+(
+name.includes(q)||
+codeMatch
+)
+);
+
+});
+
+
+listEl.innerHTML="";
+
+if(!filtered.length){
+
+listEl.innerHTML=
+'<div class="card">No items found</div>';
+
+return;
+
+}
+
+
+filtered.forEach(function(p){
+
+if(!Array.isArray(p.variants)||
+!p.variants.length){
+
+return;
+
+}
+
+let index=
+sel[p.id]||0;
+
+if(index>=p.variants.length){
+
+index=0;
+sel[p.id]=0;
+
+}
+
+const v=
+p.variants[index];
+
+const key=
+p.id+"_"+index;
+
+const quantity=
+cartData[key]
+?cartData[key].qty
+:0;
+
+const card=
+document.createElement("div");
+
+card.className="card";
+card.dataset.productId=String(p.id);
+
+const pic=
+document.createElement("div");
+
+pic.className="pic";
+
+pic.onclick=function(){
+
+openViewer(p.id,index);
+
+};
+
+const img=
+document.createElement("img");
+
+img.src=
+v.img||
+p.img||
+"";
+
+img.alt=
+p.name||"";
+
+img.draggable=false;
+
+pic.appendChild(img);
+
+const info=
+document.createElement("div");
+
+info.className="info";
+
+const name=
+document.createElement("b");
+
+name.className="name";
+
+const selectedVariantName=
+(v.name||v.label||v.size||"").trim();
+name.textContent=
+[p.name||"",selectedVariantName].filter(Boolean).join(" ");
+
+/* LIST VIEW ONLY: item-level RETAIL/MRP and CATEGORY badges */
+if(catalogueView==="list"){
+  const badges=document.createElement("div");
+  badges.className="listItemBadges";
+
+  /* Admin stores MRP on the product and can also store MRP per variant.
+     Prefer the currently selected variant's MRP; fall back to item-level MRP. */
+  const variantRetail=(v && v.mrp!==undefined && v.mrp!==null && String(v.mrp).trim()!=="")?v.mrp:null;
+  const productRetail=(p && p.mrp!==undefined && p.mrp!==null && String(p.mrp).trim()!=="")?p.mrp:null;
+  const retailValue=variantRetail!==null?variantRetail:productRetail;
+  if(retailValue!==null){
+    const retailBadge=document.createElement("span");
+    retailBadge.className="listItemBadge";
+    retailBadge.textContent="RETAIL: "+String(retailValue);
+    badges.appendChild(retailBadge);
+  }
+
+  const categoryValue=String(p.category||"").trim();
+  if(categoryValue){
+    const categoryBadge=document.createElement("span");
+    categoryBadge.className="listItemBadge";
+    categoryBadge.textContent=categoryValue;
+    badges.appendChild(categoryBadge);
+  }
+
+  if(badges.childElementCount){
+    info.appendChild(badges);
+  }
+}
+
+const variantText=
+document.createElement("div");
+variantText.className="variantText";
+variantText.style.display="none";
+variantText.textContent="";
+
+const qbox=
+document.createElement("div");
+
+qbox.className="q";
+
+if(p.variants.length>1){
+
+const left=
+document.createElement("button");
+
+left.className=
+"arrowBtn";
+
+left.textContent="‹";
+
+left.onclick=function(e){
+
+e.stopPropagation();
+
+prevVariant(p.id);
+
+};
+
+qbox.appendChild(left);
+
+}
+
+const minus=
+document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(e){
+
+e.stopPropagation();
+
+change(p.id,-1);
+
+};
+
+let qtyEl;
+
+if(editingQty[p.id]){
+
+qtyEl=
+document.createElement("input");
+
+qtyEl.className=
+"qtyInput";
+
+qtyEl.type=
+"tel";
+
+qtyEl.inputMode=
+"numeric";
+
+qtyEl.pattern=
+"[0-9]*";
+
+qtyEl.value=
+quantity||"";
+
+qtyEl.onclick=function(e){
+
+e.stopPropagation();
+
+};
+
+qtyEl.onkeydown=function(e){
+
+e.stopPropagation();
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+
+setQuantity(p.id,index,qtyEl.value);
+
+}
+
+};
+
+qtyEl.onblur=function(){
+
+setQuantity(p.id,index,qtyEl.value);
+
+};
+
+}else{
+
+qtyEl=
+document.createElement("div");
+
+qtyEl.className=
+"qtyBox";
+
+qtyEl.textContent=
+quantity;
+
+qtyEl.onclick=function(e){
+
+e.stopPropagation();
+
+editingQty[p.id]=true;
+
+render();
+
+};
+
+}
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(e){
+
+e.stopPropagation();
+
+change(p.id,1);
+
+};
+
+qbox.appendChild(minus);
+qbox.appendChild(qtyEl);
+qbox.appendChild(plus);
+
+if(p.variants.length>1){
+
+const right=
+document.createElement("button");
+
+right.className=
+"arrowBtn";
+
+right.textContent="›";
+
+right.onclick=function(e){
+
+e.stopPropagation();
+
+nextVariant(p.id);
+
+};
+
+qbox.appendChild(right);
+
+}
+
+info.appendChild(name);
+
+info.appendChild(variantText);
+
+if(catalogueView==="grid"){
+  const addButton=document.createElement("button");
+  addButton.type="button";
+  addButton.className="gridAddCart";
+  addButton.textContent="ADD TO CART";
+  addButton.onclick=function(e){
+    e.stopPropagation();
+    change(p.id,1);
+  };
+  info.appendChild(addButton);
+}else{
+  info.appendChild(qbox);
+}
+
+card.appendChild(pic);
+card.appendChild(info);
+
+listEl.appendChild(card);
+
+if(editingQty[p.id]&&
+qtyEl.tagName==="INPUT"){
+
+qtyEl.focus();
+
+qtyEl.select();
+
+}
+
+});
+
+}
+
+
+/* ================= PREVIOUS ================= */
+
+function prevVariant(id){
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+sel[id]||0;
+
+i--;
+
+if(i<0){
+
+i=
+p.variants.length-1;
+
+}
+
+sel[id]=i;
+
+render();
+
+}
+
+
+/* ================= NEXT ================= */
+
+function nextVariant(id){
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+sel[id]||0;
+
+i++;
+
+if(i>=p.variants.length){
+
+i=0;
+
+}
+
+sel[id]=i;
+
+render();
+
+}
+
+
+/* ================= QUANTITY (+ / -) home cards ================= */
+
+function change(id,d){
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const index=
+sel[id]||0;
+
+const v=
+p.variants[index];
+
+const key=
+p.id+"_"+index;
+
+const newQty=
+(cartData[key]?.qty||0)+d;
+
+if(newQty<=0){
+
+delete cartData[key];
+
+}else{
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.name||v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:newQty
+};
+
+}
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+if(
+viewerEl.classList.contains("open")&&
+viewerProductId===id&&
+viewerIndex===index
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+
+/* ================= QUANTITY (manual typed value) home cards ================= */
+
+function setQuantity(id,index,rawValue){
+
+editingQty[id]=false;
+
+const p=
+products.find(function(x){
+
+return x.id===id;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+render();
+
+return;
+
+}
+
+const v=
+p.variants[index];
+
+const key=
+p.id+"_"+index;
+
+const parsed=
+parseInt(
+String(rawValue).trim(),
+10
+);
+
+if(
+!isFinite(parsed)||
+isNaN(parsed)||
+parsed<1
+){
+
+render();
+
+return;
+
+}
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.name||v.label||
+v.size||
+"",
+   code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:parsed
+};
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+if(
+viewerEl.classList.contains("open")&&
+viewerProductId===id&&
+viewerIndex===index
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+
+/* ================= CART COUNT ================= */
+
+function updateCartCount(){
+
+const total=
+Object.values(cartData)
+.reduce(function(sum,item){
+
+return sum+
+Number(item.qty||0);
+
+},0);
+
+countEl.textContent=
+total;
+
+cartTotalEl.textContent=
+total;
+
+}
+
+
+/* ================= SHOW CART ================= */
+
+function showCart(){
+
+renderCart();
+
+cartOverlay.classList.add("open");
+
+document.body.style.overflow=
+"hidden";
+
+}
+
+
+/* ================= CLOSE CART ================= */
+
+function closeCart(){
+
+cartOverlay.classList.remove("open");
+
+document.body.style.overflow=
+"";
+
+}
+
+
+/* ================= RENDER CART ================= */
+
+function renderCart(){
+
+const keys=
+Object.keys(cartData);
+
+if(!keys.length){
+
+cartItemsEl.innerHTML=
+'<div class="item">Cart is empty</div>';
+
+updateCartCount();
+
+return;
+
+}
+
+cartItemsEl.innerHTML="";
+
+keys.forEach(function(key,index){
+
+const x=
+cartData[key];
+
+const item=
+document.createElement("div");
+
+item.className="item";
+
+const name=
+document.createElement("div");
+
+name.className=
+"itemName";
+
+name.textContent=
+(index+1)+
+". "+
+x.name;
+
+const info=
+document.createElement("div");
+
+info.className=
+"itemInfo";
+
+info.textContent=
+"("+
+x.variant+
+") | Code: "+
+x.code;
+
+const controls=
+document.createElement("div");
+
+controls.className=
+"cartControls";
+
+const minus=
+document.createElement("button");
+
+minus.onclick=function(){
+
+cartChange(key,-1);
+
+};
+
+const qty=
+document.createElement("b");
+
+qty.textContent=
+x.qty;
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+cartChange(key,1);
+
+};
+
+const remove=
+document.createElement("button");
+
+remove.className=
+"removeBtn";
+
+remove.textContent=
+"Remove";
+
+remove.onclick=function(){
+
+removeCart(key);
+
+};
+
+controls.appendChild(minus);
+controls.appendChild(qty);
+controls.appendChild(plus);
+controls.appendChild(remove);
+
+item.appendChild(name);
+item.appendChild(info);
+item.appendChild(controls);
+
+cartItemsEl.appendChild(item);
+
+});
+
+updateCartCount();
+
+}
+
+
+/* ================= CART CHANGE ================= */
+
+function cartChange(key,d){
+
+if(!cartData[key]){
+
+return;
+
+}
+
+cartData[key].qty+=d;
+
+if(cartData[key].qty<=0){
+
+delete cartData[key];
+
+}
+
+renderCart();
+render();
+
+if(
+viewerEl.classList.contains("open")
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+
+/* ================= REMOVE ================= */
+
+function removeCart(key){
+
+delete cartData[key];
+
+renderCart();
+render();
+
+if(
+viewerEl.classList.contains("open")
+){
+
+updateViewerQtyDisplay();
+
+}
+
+}
+
+      /* ================= IMAGE VIEWER (full screen + variant navigation + back + qty + add to cart) ================= */
+
+function openViewer(productId,index){
+
+const p=
+products.find(function(x){
+
+return x.id===productId;
+
+});
+
+if(!p||
+!Array.isArray(p.variants)||
+!p.variants.length){
+
+return;
+
+}
+
+viewerProductId=productId;
+
+viewerIndex=
+(typeof index==="number"&&
+index>=0&&
+index<p.variants.length)
+?index:0;
+
+viewerEditingQty=false;
+
+showViewerVariant();
+
+viewerEl.classList.add(
+"open"
+);
+
+document.body.style.overflow=
+"hidden";
+
+history.pushState(
+{binAmeenViewer:true},
+""
+);
+
+viewerHistoryPushed=true;
+
+}
+
+
+/* Shows the currently selected product/variant inside the viewer,
+   and keeps the product card in sync with the same variant */
+
+function showViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!Array.isArray(p.variants)||
+!p.variants.length){
+
+return;
+
+}
+
+if(viewerIndex>=p.variants.length){
+
+viewerIndex=0;
+
+}
+
+if(viewerIndex<0){
+
+viewerIndex=
+p.variants.length-1;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+viewerImgEl.src=
+v.img||
+p.img||
+"";
+
+const variantText=
+(p.name?p.name+" ":"")+
+(v.name||v.label||
+v.size||
+"");
+
+viewerVariantTextEl.textContent=
+variantText;
+
+viewerVariantTextEl.style.display=
+variantText?"":"none";
+
+viewerCodeTextEl.textContent=
+"CODE: "+
+(v.code||"");
+
+const hasMultiple=
+p.variants.length>1;
+
+viewerArrowLeftEl.style.display=
+hasMultiple?"":"none";
+
+viewerArrowRightEl.style.display=
+hasMultiple?"":"none";
+
+viewerEditingQty=false;
+
+updateViewerQtyDisplay();
+
+if(sel[p.id]!==viewerIndex){
+
+sel[p.id]=viewerIndex;
+
+render();
+
+}
+
+}
+
+
+/* Renders the quantity control inside the viewer (box or manual input),
+   based on the same cartData used everywhere else */
+
+function updateViewerQtyDisplay(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const quantity=
+cartData[key]
+?cartData[key].qty
+:0;
+
+viewerQtyRow.innerHTML="";
+
+const minus=
+document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=function(){
+
+viewerChange(-1);
+
+};
+
+let qtyEl;
+
+if(viewerEditingQty){
+
+qtyEl=
+document.createElement("input");
+
+qtyEl.className=
+"qtyInput";
+
+qtyEl.type=
+"tel";
+
+qtyEl.inputMode=
+"numeric";
+
+qtyEl.pattern=
+"[0-9]*";
+
+qtyEl.value=
+quantity||"";
+
+qtyEl.onkeydown=function(e){
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+
+viewerSetQty(qtyEl.value);
+
+}
+
+};
+
+qtyEl.onblur=function(){
+
+viewerSetQty(qtyEl.value);
+
+};
+
+}else{
+
+qtyEl=
+document.createElement("div");
+
+qtyEl.className=
+"qtyBox";
+
+qtyEl.id=
+"viewerQtyBox";
+
+qtyEl.textContent=
+quantity;
+
+qtyEl.onclick=function(){
+
+viewerEditQty();
+
+};
+
+}
+
+const plus=
+document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=function(){
+
+viewerChange(1);
+
+};
+
+viewerQtyRow.appendChild(minus);
+viewerQtyRow.appendChild(qtyEl);
+viewerQtyRow.appendChild(plus);
+
+if(viewerEditingQty&&
+qtyEl.tagName==="INPUT"){
+
+qtyEl.focus();
+
+qtyEl.select();
+
+}
+
+}
+
+
+/* +/- quantity change inside the viewer */
+
+function viewerChange(d){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const newQty=
+(cartData[key]?.qty||0)+d;
+
+if(newQty<=0){
+
+delete cartData[key];
+
+}else{
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.name||v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:newQty
+};
+
+}
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Switches the viewer's quantity box into manual-typing mode */
+
+function viewerEditQty(){
+
+viewerEditingQty=true;
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Confirms a manually typed quantity inside the viewer */
+
+function viewerSetQty(rawValue){
+
+viewerEditingQty=false;
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+updateViewerQtyDisplay();
+
+return;
+
+}
+
+const v=
+p.variants[viewerIndex];
+
+const key=
+viewerProductId+"_"+viewerIndex;
+
+const parsed=
+parseInt(
+String(rawValue).trim(),
+10
+);
+
+if(
+!isFinite(parsed)||
+isNaN(parsed)||
+parsed<1
+){
+
+updateViewerQtyDisplay();
+
+return;
+
+}
+
+cartData[key]={
+name:p.name||"",
+variant:
+v.name||v.label||
+v.size||
+"",
+code:v.code||"",
+img:v.img||
+p.img||
+"",
+qty:parsed
+};
+
+updateCartCount();
+
+render();
+
+if(
+cartOverlay.classList.contains("open")
+){
+
+renderCart();
+
+}
+
+updateViewerQtyDisplay();
+
+}
+
+
+/* Previous variant inside the viewer */
+
+function prevViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+viewerIndex-1;
+
+if(i<0){
+
+i=
+p.variants.length-1;
+
+}
+
+viewerIndex=i;
+
+showViewerVariant();
+
+}
+
+
+/* Next variant inside the viewer */
+
+function nextViewerVariant(){
+
+const p=
+products.find(function(x){
+
+return x.id===viewerProductId;
+
+});
+
+if(!p||
+!p.variants||
+!p.variants.length){
+
+return;
+
+}
+
+let i=
+viewerIndex+1;
+
+if(i>=p.variants.length){
+
+i=0;
+
+}
+
+viewerIndex=i;
+
+showViewerVariant();
+
+}
+
+
+/* Add to Cart button inside the viewer — adds one unit of the
+   product/variant currently shown, without closing the viewer */
+
+function addToCartFromViewer(){
+
+viewerChange(1);
+
+const originalText=
+viewerAddCartBtn.textContent;
+
+viewerAddCartBtn.textContent=
+"✓ ADDED";
+
+setTimeout(function(){
+
+viewerAddCartBtn.textContent=
+originalText;
+
+},900);
+
+}
+
+
+/* Called by the on-screen BACK button */
+
+function closeViewer(){
+
+if(viewerHistoryPushed){
+
+viewerHistoryPushed=false;
+
+history.back();
+
+}else{
+
+closeViewerNow();
+
+}
+
+}
+
+
+/* Actually hides the viewer (used by both BACK button and phone back) */
+
+function closeViewerNow(){
+
+viewerEl.classList.remove(
+"open"
+);
+
+viewerImgEl.src="";
+
+document.body.style.overflow=
+"";
+
+}
+
+
+/* Handles the phone/browser physical BACK button */
+
+window.addEventListener(
+"popstate",
+function(){
+
+if(
+viewerEl.classList.contains("open")
+){
+
+viewerHistoryPushed=false;
+
+closeViewerNow();
+
+}
+
+}
+);
+
+
+/* ================= OUTSIDE VIEWER ================= */
+
+viewerEl.addEventListener(
+"click",
+function(e){
+
+if(e.target===viewerEl){
+
+closeViewer();
+
+}
+
+});
+
+
+/* ================= WHATSAPP ================= */
+
+function wa(){
+
+const keys=
+Object.keys(cartData);
+
+if(!keys.length){
+
+alert(
+"Cart is empty"
+);
+
+return;
+
+}
+
+let message=
+"*NEW ORDER - BIN AMEEN TRADER*\n\n";
+
+keys.forEach(
+function(key,index){
+
+const x=
+cartData[key];
+
+message+=
+(index+1)+
+". *"+
+x.name+
+"* ("+
+x.variant+
+")\n"+
+"   Code: "+
+x.code+
+" | Qty: *"+
+x.qty+
+"*\n\n";
+
+});
+
+window.open(
+"https://api.whatsapp.com/send?phone=923331390045&text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+
+/* ================= SEARCH ================= */
+
+searchEl.addEventListener(
+"input",
+render
+);
+
+
+/* ================= OUTSIDE CART ================= */
+
+cartOverlay.addEventListener(
+"click",
+function(e){
+
+if(
+e.target===cartOverlay
+){
+
+closeCart();
+
+}
+
+});
+
+
+/* ================= BLOCK IMAGE MENU ================= */
+
+document.addEventListener(
+"contextmenu",
+function(e){
+
+if(
+e.target.tagName==="IMG"||
+e.target.closest(".pic")||
+e.target.closest(".viewerBox")
+){
+
+e.preventDefault();
+
+}
+
+});
+
+
+document.addEventListener(
+"dragstart",
+function(e){
+
+if(
+e.target.tagName==="IMG"
+){
+
+e.preventDefault();
+
+}
+
+});
+
+
+/* ================= DESIGN SETTINGS ================= */
+function applyCatalogueDesign(design){
+    if(!design || typeof design!=='object') return;
+    const root=document.documentElement;
+    const map={
+        pageBg:'--design-page-bg', headerBg:'--design-header-bg',
+        primaryColor:'--design-primary', textColor:'--design-text',
+        cardBg:'--design-card-bg', borderColor:'--design-border'
+    };
+    Object.keys(map).forEach(key=>{
+        if(typeof design[key]==='string' && /^#[0-9a-fA-F]{6}$/.test(design[key])){
+            root.style.setProperty(map[key],design[key]);
+        }
+    });
+    if(Number.isFinite(Number(design.borderRadius))) root.style.setProperty('--design-radius',Math.max(0,Math.min(24,Number(design.borderRadius)))+'px');
+    if(Number.isFinite(Number(design.productImageSize))) root.style.setProperty('--design-image-size',Math.max(56,Math.min(160,Number(design.productImageSize)))+'px');
+    if(Number.isFinite(Number(design.cardPadding))) root.style.setProperty('--design-card-padding',Math.max(3,Math.min(24,Number(design.cardPadding)))+'px');
+    if(Number.isFinite(Number(design.desktopContentWidth))) root.style.setProperty('--design-content-width',Math.max(480,Math.min(1400,Number(design.desktopContentWidth)))+'px');
+    if(Number.isFinite(Number(design.desktopColumns))) root.style.setProperty('--design-desktop-columns',String(Math.max(1,Math.min(3,Math.round(Number(design.desktopColumns))))));
+    if(typeof design.siteTitle==='string' && design.siteTitle.trim()){
+        const logo=document.querySelector('.logoBox');
+        if(logo) logo.textContent=design.siteTitle.trim();
+    }
+}
+async function loadCatalogueDesign(){
+    try{
+        const response=await fetch('/api/design',{cache:'no-store'});
+        if(!response.ok) return;
+        const result=await response.json();
+        applyCatalogueDesign(result.published || result);
+    }catch(error){console.warn('DESIGN SETTINGS LOAD:',error);}
+}
+
+
+/* ================= CAROUSEL + FLOATING ACTIONS ================= */
+let baCarouselSlides=[];let baCarouselSettings={autoplay:true,interval:5000};let baCarouselTimer=null;let baCarouselIndex=0;let baWhatsAppHidden=false;
+function baSafeUrl(value){try{const u=new URL(String(value||''),location.origin);return ['http:','https:'].includes(u.protocol)?u.href:'';}catch{return ''}}
+function baNormalizeCarouselSlide(s){if(!s||typeof s!=='object')return null;const image=s.imageUrl||s.image_url||s.image||s.bannerUrl||s.banner_url||s.url||'';return {...s,imageUrl:baSafeUrl(image),title:s.title||s.heading||'',subtitle:s.subtitle||s.description||'',enabled:s.enabled!==false};}
+function baSetCarouselVisibility(show){
+ const panel=document.getElementById('carouselPanel');
+ const host=document.getElementById('bannerCarousel');
+ if(panel)panel.style.display=show?'':'none';
+ if(host)host.style.display=show?'':'none';
+}
+function renderPublicCarousel(){
+ const host=document.getElementById('bannerCarousel');
+ if(!host)return;
+ const slides=baCarouselSlides.map(baNormalizeCarouselSlide)
+  .filter(x=>x&&x.enabled&&x.imageUrl)
+  .sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0));
+ clearInterval(baCarouselTimer);baCarouselTimer=null;
+ if(!slides.length){host.innerHTML='';baSetCarouselVisibility(false);return;}
+ baSetCarouselVisibility(true);
+ baCarouselIndex=Math.max(0,Math.min(baCarouselIndex,slides.length-1));
+ host.innerHTML=slides.map((s,i)=>{
+  const link=baSafeUrl(s.link),tag=link?'a':'div';
+  const href=link?' href="'+escapeHTML(link)+'" target="_blank" rel="noopener noreferrer"':'';
+  return '<'+tag+' class="ba-slide '+(i===baCarouselIndex?'active':'')+'"'+href+'>'+
+   '<img src="'+escapeHTML(s.imageUrl)+'" alt="'+escapeHTML(s.title||'BIN AMEEN promotion')+
+   '" loading="'+(i?'lazy':'eager')+'" onerror="this.closest(\'.ba-slide\').remove();if(!document.querySelector(\'#bannerCarousel .ba-slide\'))baSetCarouselVisibility(false)">'+
+   '<div class="ba-slide-copy">'+(s.title?'<strong>'+escapeHTML(s.title)+'</strong>':'')+
+   (s.subtitle?'<span>'+escapeHTML(s.subtitle)+'</span>':'')+'</div></'+tag+'>';
+ }).join('')+'<div class="ba-carousel-dots">'+
+  slides.map((s,i)=>'<i class="'+(i===baCarouselIndex?'active':'')+'"></i>').join('')+'</div>';
+ if(baCarouselSettings.autoplay&&slides.length>1){
+  baCarouselTimer=setInterval(()=>{
+   baCarouselIndex=(baCarouselIndex+1)%slides.length;
+   renderPublicCarousel();
+  },Math.max(2000,Number(baCarouselSettings.interval)||5000));
+ }
+}
+async function loadPublicCarousel(){
+ const host=document.getElementById('bannerCarousel');
+ try{
+  const r=await fetch('/api/carousel?_='+Date.now(),{cache:'no-store',headers:{'Accept':'application/json'}});
+  const d=await r.json();
+  if(!r.ok)throw new Error((d&&d.error)||('HTTP '+r.status));
+  const payload=d.data||d.carousel||d;
+  const raw=Array.isArray(payload)?payload:(Array.isArray(payload.slides)?payload.slides:[]);
+  baCarouselSlides=raw;
+  baCarouselSettings={autoplay:payload.autoplay!==false,interval:Number(payload.interval)||5000};
+  renderPublicCarousel();
+ }catch(e){
+  console.warn('Carousel load failed:',e);
+  baCarouselSlides=[];
+  if(host)host.innerHTML='';
+  baSetCarouselVisibility(false);
+ }
+}
+function baUpdateCartBadge(){const source=document.getElementById('count');const badge=document.getElementById('floatingCartCount');if(source&&badge)badge.textContent=source.textContent||'0';}
+const baCountObserver=new MutationObserver(baUpdateCartBadge);const baCountNode=document.getElementById('count');if(baCountNode)baCountObserver.observe(baCountNode,{childList:true,subtree:true,characterData:true});
+baUpdateCartBadge();
+function baInitDraggable(el,kind){
+ let holdTimer=null,dragging=false,moved=false,startX=0,startY=0,baseX=0,baseY=0,lastTap=0,pointerId=null;
+ const trash=document.getElementById('baTrashZone');
+ function clearHold(){if(holdTimer){clearTimeout(holdTimer);holdTimer=null;}}
+ function reset(){el.style.left='';el.style.top='';el.style.right=kind==='wa'?'16px':'16px';el.style.bottom=kind==='wa'?'16px':'88px';el.style.transform='';}
+ function point(e){return {x:e.clientX,y:e.clientY}}
+ el.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;pointerId=e.pointerId;const now=Date.now();if(now-lastTap<330){reset();lastTap=0;e.preventDefault();return;}lastTap=now;const r=el.getBoundingClientRect();startX=e.clientX;startY=e.clientY;baseX=r.left;baseY=r.top;moved=false;dragging=false;clearHold();holdTimer=setTimeout(()=>{dragging=true;el.classList.add('is-draggable');if(kind==='wa')trash.classList.add('visible');try{if(el.setPointerCapture)el.setPointerCapture(pointerId);}catch{}try{if(navigator.vibrate)navigator.vibrate(35);}catch{}},800);});
+ el.addEventListener('pointermove',e=>{if(pointerId!==e.pointerId)return;const dx=e.clientX-startX,dy=e.clientY-startY;if(!dragging){if(Math.hypot(dx,dy)>10)clearHold();return;}moved=true;e.preventDefault();const x=Math.max(0,Math.min(innerWidth-el.offsetWidth,baseX+dx));const y=Math.max(0,Math.min(innerHeight-el.offsetHeight,baseY+dy));el.style.left=x+'px';el.style.top=y+'px';el.style.right='auto';el.style.bottom='auto';if(kind==='wa'){const t=trash.getBoundingClientRect();const over=e.clientX>=t.left&&e.clientX<=t.right&&e.clientY>=t.top&&e.clientY<=t.bottom;trash.classList.toggle('over',over);}});
+ function finish(e){if(pointerId!==e.pointerId)return;clearHold();if(dragging&&kind==='wa'){const t=trash.getBoundingClientRect();if(e.clientX>=t.left&&e.clientX<=t.right&&e.clientY>=t.top&&e.clientY<=t.bottom){baWhatsAppHidden=true;el.classList.add('drag-hidden');}}if(dragging){el.classList.remove('is-draggable');trash.classList.remove('visible','over');}const wasDragging=dragging;dragging=false;pointerId=null;if(wasDragging){el.dataset.dragged='1';setTimeout(()=>delete el.dataset.dragged,350);}}
+ el.addEventListener('pointerup',finish);el.addEventListener('pointercancel',finish);
+ el.addEventListener('click',e=>{if(el.dataset.dragged==='1'){e.preventDefault();e.stopImmediatePropagation();delete el.dataset.dragged;return;}if(kind==='wa'){e.preventDefault();location.href='https://api.whatsapp.com/send?phone=923331390045&text=Assalam-o-Alaikum%21%20BIN%20AMEEN%20TRADER%20se%20mujhe%20is%20product%20ke%20bare%20me%20maloomat%20chahiye.';}});
+}
+const baWa=document.querySelector('.ba-whatsapp-float');const baCart=document.getElementById('floatingCart');if(baWa)baInitDraggable(baWa,'wa');if(baCart)baInitDraggable(baCart,'cart');
+loadPublicCarousel();
+
+
+/* Native browser scrolling is intentionally preserved.
+   Header and (when present) carousel move naturally with the page.
+   If the carousel is absent, its display:none state leaves no blank scroll stage.
+   Native pull-to-refresh remains enabled on mobile browsers.
+*/
+
+/* ================= START ================= */
+
+loadCatalogueDesign();
+checkGate();
+
+</script>
+
+
+
+</body>
+</html>
