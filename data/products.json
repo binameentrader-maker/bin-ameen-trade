@@ -441,6 +441,16 @@
     "salePrice": null,
     "optionTitle": "SIZE",
     "img": "https://drive.google.com/thumbnail?id=1wR3NGnNIGauvdHfJP8fO-dvR7oWMyP7x&sz=w1000",
-    "variants": []
+    "variants": [
+      {
+        "name": "VEET SENSITIVE HAIR REMOVAL CREAM 100ML",
+        "label": "VEET SENSITIVE HAIR REMOVAL CREAM 100ML",
+        "size": "VEET SENSITIVE HAIR REMOVAL CREAM 100ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1wR3NGnNIGauvdHfJP8fO-dvR7oWMyP7x&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
