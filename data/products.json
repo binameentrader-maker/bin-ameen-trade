@@ -205,5 +205,35 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794558298149,
+    "name": "GLOW & HANDSOME CREAM",
+    "category": "BEAUTY CREAM",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1BjNa5N1qEP4CSFdOhJwaFZVZGT6AZftF&sz=w1000",
+    "variants": [
+      {
+        "name": "50GM",
+        "label": "50GM",
+        "size": "50GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1BjNa5N1qEP4CSFdOhJwaFZVZGT6AZftF&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "25GM",
+        "label": "25GM",
+        "size": "25GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1BjNa5N1qEP4CSFdOhJwaFZVZGT6AZftF&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
