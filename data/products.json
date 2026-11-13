@@ -482,5 +482,16 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794572110543,
+    "name": "GILLETTE 7 Ó CLOCK RAZOR 20 × 5",
+    "category": "HYGIENE ESSENTIALS",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1WFBDtc9mxuSvzUle8S2iWgQ-iz_ZfFNk&sz=w1000",
+    "variants": []
   }
 ]
