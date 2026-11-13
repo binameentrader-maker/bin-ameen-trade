@@ -36,7 +36,10 @@
     "optionTitle": "SIZE",
     "visible": true,
     "mrp": null,
-    "salePrice": null
+    "salePrice": null,
+    "categories": [
+      "HAIR OIL"
+    ]
   },
   {
     "id": 1786909578959,
@@ -57,6 +60,9 @@
         "code": "JBS-200",
         "img": "https://drive.google.com/thumbnail?id=1EVO5p9XoPusDaf2LbfS5oqEqLu3ev6KN&sz=w1000"
       }
+    ],
+    "categories": [
+      "ACCESSORIES"
     ]
   },
   {
@@ -78,12 +84,15 @@
         "code": "G&L-25GM",
         "img": "https://drive.google.com/thumbnail?id=1WE1WejZOU75PuMuSvNimOt7u-pS5Ue3v&sz=w1000"
       }
+    ],
+    "categories": [
+      "ACCESSORIES"
     ]
   },
   {
     "id": 1787200479794,
     "name": "NIVEA SOFT CREAM",
-    "category": "CREAM,S",
+    "category": "CREAMS",
     "optionTitle": "SIZE",
     "img": "https://lh3.googleusercontent.com/d/1KfqYfMtmMymoT5otCBy4eUWhO8MxZIuI",
     "variants": [
@@ -105,6 +114,9 @@
         "code": "NSC-300",
         "img": "https://lh3.googleusercontent.com/d/1KfqYfMtmMymoT5otCBy4eUWhO8MxZIuI"
       }
+    ],
+    "categories": [
+      "CREAMS"
     ]
   },
   {
@@ -132,6 +144,9 @@
         "code": "GTPFW-100GM",
         "img": "https://lh3.googleusercontent.com/d/1VjeT_6m8fF0dwwad0eNv8IZXYoyHsxvJ"
       }
+    ],
+    "categories": [
+      "FACE WASH"
     ]
   },
   {
@@ -153,6 +168,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "SHAMPOO"
     ]
   },
   {
@@ -183,6 +201,9 @@
         "mrp": null,
         "salePrice": 260
       }
+    ],
+    "categories": [
+      "HAIR OIL"
     ]
   },
   {
@@ -204,6 +225,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "BEAUTY CREAM"
     ]
   },
   {
@@ -234,6 +258,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "BEAUTY CREAM"
     ]
   },
   {
@@ -255,6 +282,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "HAIR OIL"
     ]
   },
   {
@@ -276,6 +306,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "AIR FRESHENER"
     ]
   },
   {
@@ -306,6 +339,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "BABY ESSENTIALS"
     ]
   },
   {
@@ -336,12 +372,15 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "HAIR COLOR ESSENTIALS"
     ]
   },
   {
     "id": 1794568636181,
     "name": "PONDS CREAM 200GM",
-    "category": "CREAM,S",
+    "category": "CREAMS",
     "visible": true,
     "mrp": null,
     "salePrice": null,
@@ -366,18 +405,24 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "CREAMS"
     ]
   },
   {
     "id": 1794569601457,
     "name": "JOHNSONS SOFT CREAM 200ML",
-    "category": "CREAM,S",
+    "category": "CREAMS",
     "visible": true,
     "mrp": null,
     "salePrice": null,
     "optionTitle": "SIZE",
     "img": "https://drive.google.com/thumbnail?id=1CzqsJIoiRMYG5LSSyNUiK_7j16jBtKUo&sz=w1000",
-    "variants": []
+    "variants": [],
+    "categories": [
+      "CREAMS"
+    ]
   },
   {
     "id": 1794569996321,
@@ -388,7 +433,10 @@
     "salePrice": null,
     "optionTitle": "SIZE",
     "img": "https://drive.google.com/thumbnail?id=1VOFovIdnHb01AKido8wCp2f2hoF9FLpD&sz=w1000",
-    "variants": []
+    "variants": [],
+    "categories": [
+      "HYGIENE ESSENTIALS"
+    ]
   },
   {
     "id": 1794571241444,
@@ -409,6 +457,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "BABY ESSENTIALS"
     ]
   },
   {
@@ -430,6 +481,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "BABY ESSENTIALS"
     ]
   },
   {
@@ -451,6 +505,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "HAIR REMOVAL ESSENTIALS"
     ]
   },
   {
@@ -481,6 +538,9 @@
         "mrp": null,
         "salePrice": null
       }
+    ],
+    "categories": [
+      "HYGIENE ESSENTIALS"
     ]
   },
   {
@@ -492,6 +552,9 @@
     "salePrice": null,
     "optionTitle": "SIZE",
     "img": "https://drive.google.com/thumbnail?id=1WFBDtc9mxuSvzUle8S2iWgQ-iz_ZfFNk&sz=w1000",
-    "variants": []
+    "variants": [],
+    "categories": [
+      "HYGIENE ESSENTIALS"
+    ]
   }
 ]
