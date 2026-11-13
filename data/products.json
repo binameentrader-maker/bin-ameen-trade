@@ -235,5 +235,26 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794558574249,
+    "name": "JOHNSONS BABY OIL",
+    "category": "HAIR OIL",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1lfi3m0bG-hs3a5XWyJuiCXLquFZ0LwjY&sz=w1000",
+    "variants": [
+      {
+        "name": "300ML",
+        "label": "300ML",
+        "size": "300ML",
+        "code": "JBO-300ML",
+        "img": "https://drive.google.com/thumbnail?id=1lfi3m0bG-hs3a5XWyJuiCXLquFZ0LwjY&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
