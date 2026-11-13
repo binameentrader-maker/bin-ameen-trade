@@ -389,5 +389,26 @@
     "optionTitle": "SIZE",
     "img": "https://drive.google.com/thumbnail?id=1VOFovIdnHb01AKido8wCp2f2hoF9FLpD&sz=w1000",
     "variants": []
+  },
+  {
+    "id": 1794571241444,
+    "name": "JOHNSONS BABY SOAP 75GM",
+    "category": "BABY ESSENTIALS",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1gVPkTFYFJG4slvkWt2XIxBZgN9BmuVN-&sz=w1000",
+    "variants": [
+      {
+        "name": "JOHNSONS BLOSSOMS BABY SOAP 75GM",
+        "label": "JOHNSONS BLOSSOMS BABY SOAP 75GM",
+        "size": "JOHNSONS BLOSSOMS BABY SOAP 75GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1gVPkTFYFJG4slvkWt2XIxBZgN9BmuVN-&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
