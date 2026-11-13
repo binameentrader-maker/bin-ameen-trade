@@ -1,5 +1,15 @@
 {
   "autoplay": true,
   "interval": 5000,
-  "slides": []
+  "slides": [
+    {
+      "id": "1794544992220",
+      "title": "",
+      "subtitle": "",
+      "link": "",
+      "imageUrl": "/uploads/carousel/1794544997514-235289-jpg.jpg",
+      "order": 1,
+      "enabled": true
+    }
+  ]
 }
