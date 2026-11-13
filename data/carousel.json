@@ -10,6 +10,15 @@
       "imageUrl": "/uploads/carousel/1794544997514-235289-jpg.jpg",
       "order": 1,
       "enabled": true
+    },
+    {
+      "id": "1794545196335",
+      "title": "",
+      "subtitle": "",
+      "link": "",
+      "imageUrl": "/uploads/carousel/1794545212140-235290-webp.webp",
+      "order": 2,
+      "enabled": true
     }
   ]
 }
