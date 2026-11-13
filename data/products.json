@@ -277,5 +277,35 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794563146067,
+    "name": "FISH GLASS FIDER",
+    "category": "BABY ESSENTIALS",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=19gGfrmQg0YJXkBSUs4ro_OOYJ0akxqkK&sz=w1000",
+    "variants": [
+      {
+        "name": "120ML NO. B-8878",
+        "label": "120ML NO. B-8878",
+        "size": "120ML NO. B-8878",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=19gGfrmQg0YJXkBSUs4ro_OOYJ0akxqkK&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "240ML NO. 8879",
+        "label": "240ML NO. 8879",
+        "size": "240ML NO. 8879",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=19gGfrmQg0YJXkBSUs4ro_OOYJ0akxqkK&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
