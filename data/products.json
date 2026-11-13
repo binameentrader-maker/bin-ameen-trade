@@ -11,7 +11,7 @@
         "size": "100ML",
         "code": "VHT-100",
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
-        "mrp": null,
+        "mrp": 450,
         "salePrice": null
       },
       {
@@ -20,7 +20,7 @@
         "size": "200ML",
         "code": "VHT-200",
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
-        "mrp": null,
+        "mrp": 600,
         "salePrice": null
       },
       {
@@ -29,7 +29,7 @@
         "size": "300ML",
         "code": "VHT-300",
         "img": "https://lh3.googleusercontent.com/d/10xXWgBKAdXw8Q-YxCqSxWNYrXRWafs1k",
-        "mrp": null,
+        "mrp": 800,
         "salePrice": null
       }
     ],
