@@ -133,26 +133,5 @@
         "img": "https://lh3.googleusercontent.com/d/1VjeT_6m8fF0dwwad0eNv8IZXYoyHsxvJ"
       }
     ]
-  },
-  {
-    "id": 1794164742524,
-    "name": "EMAMI 7OIL",
-    "category": "HAIR OIL",
-    "visible": true,
-    "mrp": null,
-    "salePrice": 1,
-    "optionTitle": "SIZE",
-    "img": "",
-    "variants": [
-      {
-        "name": "100ML",
-        "label": "100ML",
-        "size": "100ML",
-        "code": "100-ML",
-        "img": "",
-        "mrp": null,
-        "salePrice": null
-      }
-    ]
   }
 ]
