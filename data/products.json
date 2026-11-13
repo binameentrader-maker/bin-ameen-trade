@@ -307,5 +307,35 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794568070144,
+    "name": "AMIR HENNA 10GM × 6",
+    "category": "HAIR COLOR ESSENTIALS",
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1CUxy8GJ4UD_N67-J4suZctvbxsFI0Qd7&sz=w1000",
+    "variants": [
+      {
+        "name": "AMIR BLACK HENNA 10GM × 6",
+        "label": "AMIR BLACK HENNA 10GM × 6",
+        "size": "AMIR BLACK HENNA 10GM × 6",
+        "code": "",
+        "img": "AMIR BLACK HENNA 10GM × 6",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "AMIR BROWN HENNA 10GM × 6",
+        "label": "AMIR BROWN HENNA 10GM × 6",
+        "size": "AMIR BROWN HENNA 10GM × 6",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1qr1hrI06d8iVqWGk9iaFodJERGDUZVJe&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
