@@ -569,6 +569,16 @@
     "salePrice": null,
     "optionTitle": "SIZE",
     "img": "",
-    "variants": []
+    "variants": [
+      {
+        "name": "JOHNSONS LIGHLTY FRAGNANCE JELLY 250ML",
+        "label": "JOHNSONS LIGHLTY FRAGNANCE JELLY 250ML",
+        "size": "JOHNSONS LIGHLTY FRAGNANCE JELLY 250ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1iAA9TNJ186r6dVWbE9VePg4pq1zECPdI&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
