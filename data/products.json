@@ -613,5 +613,38 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794640849776,
+    "name": "PONDS BRIGHT MIRACLE CREAM 45GM",
+    "category": "BEAUTY CREAM",
+    "categories": [
+      "BEAUTY CREAM"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=13H5y-G2ZYpKluCP7FiqB1B-9TbQUYVL4&sz=w1000",
+    "variants": [
+      {
+        "name": "PONDS BRIGHT MIRACLE DAY CREAM 45GM",
+        "label": "PONDS BRIGHT MIRACLE DAY CREAM 45GM",
+        "size": "PONDS BRIGHT MIRACLE DAY CREAM 45GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=13H5y-G2ZYpKluCP7FiqB1B-9TbQUYVL4&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "PONDS BRIGHT MIRACLE NIGHT CREAM 45GM",
+        "label": "PONDS BRIGHT MIRACLE NIGHT CREAM 45GM",
+        "size": "PONDS BRIGHT MIRACLE NIGHT CREAM 45GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1WWq5zb2-wn8fPcuR0cQlHcO_g7lIN9qm&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
