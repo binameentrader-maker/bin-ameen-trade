@@ -556,5 +556,19 @@
     "categories": [
       "HYGIENE ESSENTIALS"
     ]
+  },
+  {
+    "id": 1794637294992,
+    "name": "JOHNSONS BABY JELLY 250ML",
+    "category": "BABY ESSENTIALS",
+    "categories": [
+      "BABY ESSENTIALS"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "",
+    "variants": []
   }
 ]
