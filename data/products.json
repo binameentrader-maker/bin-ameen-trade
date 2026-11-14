@@ -679,5 +679,38 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794659048305,
+    "name": "TRESEMME SHAMPOO 700ML",
+    "category": "SHAMPOO",
+    "categories": [
+      "SHAMPOO"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1f9a6U9SQJRbLT8PQ0MxBmOdi707Fc5UN&sz=w1000",
+    "variants": [
+      {
+        "name": "TRESEMME KERATIN SMOOTH SHAMPOO 700ML",
+        "label": "TRESEMME KERATIN SMOOTH SHAMPOO 700ML",
+        "size": "TRESEMME KERATIN SMOOTH SHAMPOO 700ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1f9a6U9SQJRbLT8PQ0MxBmOdi707Fc5UN&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "TRESEMME BIOTIN REPAIR SHAMPOO 700ML",
+        "label": "TRESEMME BIOTIN REPAIR SHAMPOO 700ML",
+        "size": "TRESEMME BIOTIN REPAIR SHAMPOO 700ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=14Z1XBBZADvaCGParB1eoF_pZk0sr_D3O&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
