@@ -646,5 +646,38 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1794644277445,
+    "name": "PONDS AGE MIRACLE CREAM 45GM",
+    "category": "BEAUTY CREAM",
+    "categories": [
+      "BEAUTY CREAM"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1pHfwGxHAuwqZKdHR60y5PxKH3RTwO_PP&sz=w1000",
+    "variants": [
+      {
+        "name": "PONDS AGE MIRACLE DAY CREAM 45GM",
+        "label": "PONDS AGE MIRACLE DAY CREAM 45GM",
+        "size": "PONDS AGE MIRACLE DAY CREAM 45GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1pHfwGxHAuwqZKdHR60y5PxKH3RTwO_PP&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "PONDS AGE MIRACLE NIGHT CREAM 45GM",
+        "label": "PONDS AGE MIRACLE NIGHT CREAM 45GM",
+        "size": "PONDS AGE MIRACLE NIGHT CREAM 45GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1XJBzAF5EuBZkNP664ybbuvpdJ-fYx8Jr&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ]
   }
 ]
