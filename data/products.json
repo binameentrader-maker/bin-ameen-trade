@@ -713,5 +713,31 @@
         "salePrice": null
       }
     ]
+  },
+  {
+    "id": 1795202722011,
+    "name": "TRESEMME CONDITIONER 700ML",
+    "category": "ACCESSORIES",
+    "categories": [
+      "ACCESSORIES"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1M0mJhXrbQPDz94eJsBhWbU9VX21qwRI4&sz=w1000",
+    "variants": [
+      {
+        "name": "TRESEMME KERATIN SMOOTH CONDITIONER 700ML",
+        "label": "TRESEMME KERATIN SMOOTH CONDITIONER 700ML",
+        "size": "TRESEMME KERATIN SMOOTH CONDITIONER 700ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1M0mJhXrbQPDz94eJsBhWbU9VX21qwRI4&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ],
+    "pinAsNewArrival": true,
+    "newArrivalExpiresAt": "2026-11-27T19:25:20.532Z"
   }
 ]
