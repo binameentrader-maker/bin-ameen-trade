@@ -765,5 +765,31 @@
     ],
     "pinAsNewArrival": true,
     "newArrivalExpiresAt": "2026-12-02T08:46:49.533Z"
+  },
+  {
+    "id": 1795596993458,
+    "name": "SIMPLE FACE WASH 150ML",
+    "category": "FACE WASH",
+    "categories": [
+      "FACE WASH"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1S_gtffMTY8c3SAH7ZC8fdd3apPMBPznq&sz=w1000",
+    "variants": [
+      {
+        "name": "SIMPLE REFRESHING FACE WASH 150ML",
+        "label": "SIMPLE REFRESHING FACE WASH 150ML",
+        "size": "SIMPLE REFRESHING FACE WASH 150ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1S_gtffMTY8c3SAH7ZC8fdd3apPMBPznq&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ],
+    "pinAsNewArrival": true,
+    "newArrivalExpiresAt": "2026-12-02T08:56:32.716Z"
   }
 ]
