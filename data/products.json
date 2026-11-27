@@ -822,27 +822,9 @@
         "img": "https://drive.google.com/thumbnail?id=1w7S8Zy0585nomZXAEG1vijgJLFGlV91s&sz=w1000",
         "mrp": null,
         "salePrice": null
-      },
-      {
-        "name": "MEC CUCUMBER FACE WASH 100GM",
-        "label": "MEC CUCUMBER FACE WASH 100GM",
-        "size": "MEC CUCUMBER FACE WASH 100GM",
-        "code": "",
-        "img": "https://drive.google.com/thumbnail?id=1QWvTLIN8PDodwracb_-6wohZpjndVj-4&sz=w1000",
-        "mrp": null,
-        "salePrice": null
-      },
-      {
-        "name": "MEC FLAWLESS FACE WASH 100GM",
-        "label": "MEC FLAWLESS FACE WASH 100GM",
-        "size": "MEC FLAWLESS FACE WASH 100GM",
-        "code": "",
-        "img": "https://drive.google.com/thumbnail?id=158zeb74n3hfDSt0itM_mpBgc4XnY8j-D&sz=w1000",
-        "mrp": null,
-        "salePrice": null
       }
     ],
-    "pinAsNewArrival": false,
-    "newArrivalExpiresAt": null
+    "pinAsNewArrival": true,
+    "newArrivalExpiresAt": "2026-12-04T13:59:12.071Z"
   }
 ]
