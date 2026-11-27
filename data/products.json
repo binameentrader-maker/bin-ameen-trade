@@ -844,5 +844,49 @@
     ],
     "pinAsNewArrival": true,
     "newArrivalExpiresAt": "2026-12-04T14:02:33.904Z"
+  },
+  {
+    "id": 1795790053261,
+    "name": "ZINC SHAMPOO 340ML",
+    "category": "SHAMPOO",
+    "categories": [
+      "SHAMPOO"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=10Xp0chAeYVkZGrrgYnEcICnVM05oFn-j&sz=w1000",
+    "variants": [
+      {
+        "name": "ZINC REFRESHING COOL GREEN TEA SHAMPOO 340ML",
+        "label": "ZINC REFRESHING COOL GREEN TEA SHAMPOO 340ML",
+        "size": "ZINC REFRESHING COOL GREEN TEA SHAMPOO 340ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=10Xp0chAeYVkZGrrgYnEcICnVM05oFn-j&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "ZINC ACTIVE FRESH LEMON SHAMOOO 340ML",
+        "label": "ZINC ACTIVE FRESH LEMON SHAMOOO 340ML",
+        "size": "ZINC ACTIVE FRESH LEMON SHAMOOO 340ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=19qG3hAiSUHyiOCUGiMQ_2V3ygwibGGJq&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "ZINC ACTIVE SOFT CARE SHAMPOO 340ML",
+        "label": "ZINC ACTIVE SOFT CARE SHAMPOO 340ML",
+        "size": "ZINC ACTIVE SOFT CARE SHAMPOO 340ML",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1jsGonbmgEdzWYu45QIDTV4gEGintYT9n&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ],
+    "pinAsNewArrival": false,
+    "newArrivalExpiresAt": null
   }
 ]
