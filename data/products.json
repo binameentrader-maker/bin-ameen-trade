@@ -791,5 +791,40 @@
     ],
     "pinAsNewArrival": true,
     "newArrivalExpiresAt": "2026-12-02T08:56:32.716Z"
+  },
+  {
+    "id": 1795787626437,
+    "name": "MEC FACE WASH 100GM",
+    "category": "FACE WASH",
+    "categories": [
+      "FACE WASH"
+    ],
+    "visible": true,
+    "mrp": null,
+    "salePrice": null,
+    "optionTitle": "SIZE",
+    "img": "https://drive.google.com/thumbnail?id=1numEYlDWbQWmr-ptHvL-kDrf5KpvQRap&sz=w1000",
+    "variants": [
+      {
+        "name": "MEC MILK FACE WASH 100GM",
+        "label": "MEC MILK FACE WASH 100GM",
+        "size": "MEC MILK FACE WASH 100GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1numEYlDWbQWmr-ptHvL-kDrf5KpvQRap&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      },
+      {
+        "name": "MEC ALOE VERA FACE WASH 100GM",
+        "label": "MEC ALOE VERA FACE WASH 100GM",
+        "size": "MEC ALOE VERA FACE WASH 100GM",
+        "code": "",
+        "img": "https://drive.google.com/thumbnail?id=1w7S8Zy0585nomZXAEG1vijgJLFGlV91s&sz=w1000",
+        "mrp": null,
+        "salePrice": null
+      }
+    ],
+    "pinAsNewArrival": false,
+    "newArrivalExpiresAt": null
   }
 ]
